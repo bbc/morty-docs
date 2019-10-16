@@ -1,6 +1,7 @@
 const showdown = require('showdown')
 
 // there may be an option to enable this, but since we haven't found it here is a reg-ex
+// to convert links within a file from *.md to *.html
 const linkExtensionExtension = {
   type: 'output',
   regex: /<a href="(.*).md">/g,

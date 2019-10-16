@@ -12,7 +12,7 @@ const generateIndex = (htmlFilePaths, subDirPaths, contentTitle) => {
   }))
 
   const fileLinks = htmlFilePaths.map(filePath => {
-    const fileName = path.basename(filePath).replace(/\+/g, 'plus') // S3 treats '+' symbols as spaces so we have to rewrite them to something else
+    const fileName = path.basename(filePath).replace(/\+/g, 'plus')
     const encodedFileName = encodeURIComponent(fileName)
     const encodedFilePath = `${path.dirname(fileName)}/${encodedFileName}`
 
