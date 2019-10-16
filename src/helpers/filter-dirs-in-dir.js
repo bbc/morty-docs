@@ -11,8 +11,3 @@ module.exports = (directoryPaths, directory) => directoryPaths
     // or return the path...?
     : directoryPath)
 
-// 'bar'
-// 'bar/qux'
-
-// 'foo'
-//
