@@ -1,0 +1,19 @@
+# OSX files
+.DS_Store
+
+# VSCode
+.vscode/
+
+# Dependency directories
+node_modules/
+
+# Build artifacts
+build/
+
+# Test results
+test-results.json
+
+# Local dev
+md-files
+www
+inputMDFiles
