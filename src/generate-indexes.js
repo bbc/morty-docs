@@ -12,7 +12,7 @@ const generateIndex = (htmlFilePaths, subDirPaths, contentTitle) => {
   }))
 
   const fileLinks = htmlFilePaths.map(filePath => {
-    const fileName = path.basename(filePath).replace(/\+/g, 'plus')
+    const fileName = path.basename(filePath)
     const encodedFileName = encodeURIComponent(fileName)
     const encodedFilePath = `${path.dirname(fileName)}/${encodedFileName}`
 
