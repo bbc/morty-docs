@@ -12,13 +12,11 @@ const generateIndex = (htmlFilePaths, subDirPaths, contentTitle) => {
   }))
 
   const fileLinks = htmlFilePaths.map(filePath => {
-    const fileName = path.basename(filePath).replace(/\+/g, 'plus')
-    const encodedFileName = encodeURIComponent(fileName)
-    const encodedFilePath = `${path.dirname(fileName)}/${encodedFileName}`
+    const text = path.basename(filePath)
 
     return {
-      link: encodedFilePath,
-      text: fileName,
+      link: encodeURI(text),
+      text,
       iconClass: 'fas fa-file-alt'
     }
   })
