@@ -62,7 +62,7 @@ exports[`Generate Indexes with the correct html to match snapshot 1`] = `
             <li class="index-list"
                 style="font-size:1.6em;border-bottom:solid black 1px;margin-bottom:10px"
             >
-              <a href="./foo1.html">
+              <a href="foo1.html">
                 <i class="fas fa-file-alt">
                 </i>
                 <span style="margin-left:5px">
@@ -73,7 +73,7 @@ exports[`Generate Indexes with the correct html to match snapshot 1`] = `
             <li class="index-list"
                 style="font-size:1.6em;border-bottom:solid black 1px;margin-bottom:10px"
             >
-              <a href="./foo2.html">
+              <a href="foo2.html">
                 <i class="fas fa-file-alt">
                 </i>
                 <span style="margin-left:5px">

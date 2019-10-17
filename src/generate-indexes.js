@@ -12,15 +12,11 @@ const generateIndex = (htmlFilePaths, subDirPaths, contentTitle) => {
   }))
 
   const fileLinks = htmlFilePaths.map(filePath => {
-    // TODO: is this what we want? We encodeURIComponent only the basename. And why is dirname on fileName, not on filePath? That should loose directories.
-    // TODO: check whether we can just encodeURIComponent(filePath)? Or is there a problem with encoding forward slashes?
-    const fileName = path.basename(filePath)
-    const encodedFileName = encodeURIComponent(fileName)
-    const encodedFilePath = `${path.dirname(fileName)}/${encodedFileName}`
+    const text = path.basename(filePath)
 
     return {
-      link: encodedFilePath,
-      text: fileName,
+      link: encodeURI(text),
+      text,
       iconClass: 'fas fa-file-alt'
     }
   })

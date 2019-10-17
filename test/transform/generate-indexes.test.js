@@ -55,16 +55,16 @@ describe('Generate Indexes with the correct html', () => {
     const expectedRootIndexLinks = [
       '<a href="bar/index.html">',
       '<a href="bar/qux/index.html">',
-      '<a href="./foo.html">'
+      '<a href="foo.html">'
     ]
 
     const expectedBarIndexLinks = [
-      '<a href="./baz.html">',
+      '<a href="baz.html">',
       '<a href="qux/index.html">'
     ]
 
     const expectedQuxIndexLinks = [
-      '<a href="./qar.html">'
+      '<a href="qar.html">'
     ]
 
     expectedRootIndexLinks.forEach(link => {
