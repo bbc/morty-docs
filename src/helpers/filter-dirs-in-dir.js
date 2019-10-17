@@ -10,4 +10,3 @@ module.exports = (directoryPaths, directory) => directoryPaths
     ? directoryPath.replace(`${directory}/`, '')
     // or return the path...?
     : directoryPath)
-

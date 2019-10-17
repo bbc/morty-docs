@@ -1,5 +1,5 @@
 {
-  "name": "morty-lib",
+  "name": "morty-docs",
   "version": "1.0.0",
   "description": "To expose Markdown files in a static website",
   "main": "src/index.js",
@@ -15,17 +15,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bbc/morty-lib.git"
+    "url": "git+https://github.com/bbc/morty-docs.git"
   },
   "keywords": [
-    "morty-lib"
+    "morty-docs"
   ],
   "author": "",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/bbc/morty-lib/issues"
+    "url": "https://github.com/bbc/morty-docs/issues"
   },
-  "homepage": "https://github.com/bbc/morty-lib#readme",
+  "homepage": "https://github.com/bbc/morty-docs#readme",
   "dependencies": {
     "fs-extra": "^7.0.1",
     "react": "^16.8.6",
