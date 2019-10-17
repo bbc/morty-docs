@@ -7,6 +7,7 @@
 
 # Dependency directories
 node_modules/
+*.code-workspace
 
 # Build artifacts
 build/
