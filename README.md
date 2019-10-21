@@ -5,17 +5,31 @@ Morty docs is a library to enable documentation to be generated as a static webs
 
 Morty is specifically aimed at requiring little to no change in the markdown files.
 
-## Checkout the project 
-`git clone git@github.com:bbc/morty-docs.git`
+## Use as a library 
+Install
+`npm install morty-docs`
 
-## How to run it locally
-Install dependencies:
-`npm run install`
+Require in code
+`const mortyDocs = require('morty-docs')`
 
-To perform the transform of md files to html enter this command in the Terminal:
-`npm start ${path/to/directory/containing/md/files}`
+Use library
+`const inputObjs = await mortyDocs.generateTransformInput(directoryToConvert)`
 
-If no path is supplied, the path to `default-md-files` will be passed instead.
+`const transformedFiles = await mortyDocs.transform(inputObjs)`
+
+transformedFiles will have the following structure;
+
+`transformedFiles = [
+  {
+    relativePath: 'path/to/file1.txt',
+    raw: file data as string
+  },
+  {
+    relativePath: 'path/to/file2.png',
+    raw: file data as buffer
+  }
+]`
+
 
 ## Known issues 
 
