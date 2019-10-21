@@ -19,16 +19,19 @@ Use library
 
 transformedFiles will have the following structure;
 
-`transformedFiles = [
-  {
-    relativePath: 'path/to/file1.txt',
-    raw: file data as string
-  },
-  {
-    relativePath: 'path/to/file2.png',
-    raw: file data as buffer
-  }
-]`
+
+transformedFiles = [
+
+    {
+      relativePath: 'path/to/file1.txt',
+      raw: file data as string
+    },
+
+    {
+      relativePath: 'path/to/file2.png',
+      raw: file data as buffer
+    }
+]
 
 
 ## Known issues 
@@ -94,3 +97,5 @@ discuss the pull request in the issue.
 We would expect code quality to be at least as good if not better than
 the code quality of the project at the time you make your contribution.
 After all, we all hope to leave things better than we find them!
+
+© BBC 2019
