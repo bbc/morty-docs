@@ -1,7 +1,9 @@
 # Morty docs
 
 ## Overview 
-Morty docs is a library to enable documentation to be generated as a static website, to allow users to consume the content in an easily accessible format. It takes an array of files and creates a static website. 
+Morty docs is a library to enable documentation to be generated as a static website, to allow users to consume the content in an easily accessible format. It takes an array of markdown files and creates a static website. 
+
+Morty is specifically aimed at requiring little to no change in the markdown files.
 
 ## Checkout the project 
 `git clone git@github.com:bbc/morty-docs.git`
