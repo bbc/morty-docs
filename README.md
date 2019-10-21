@@ -63,6 +63,10 @@ However, documentation, examples, videos, blogs, vlogs, podcasts, active
 examples, media, hosted versions, and testimonials of usage are all
 useful contributions. 
 
+## Adding an issue
+
+If you spot an issue or just want to raise one please use the issue template.
+
 ## Contact us!
 
 It's always great to hear from people who are interested and
@@ -70,17 +74,15 @@ using morty-docs.
 
 The best way to do this is to open an issue.  Please note, that where a
 feature is requested, but we can't add *right now*, will result in us
-adding it to a "possible features" file, with a link to the issue, and
-close the issue.  Please don't take offense if we close the issue.  It
-means we've listened and acknowledged it.  We will also have taken some
-sort of action.  We will have either implemented it, added it to the
-discussion pile, or similar.
+adding a TODO label to it. We'll come back to it when we can or someone
+out there might implement it.
 
-## Rejecting Contributions
+## Incorporating Contributions
 
-We will sometimes have to reject contributions. This is a fact of life
+We will always accept contributions. We endeavour to ensure that they 
+fit with the existing code base. 
 
-If we reject the contribution we will let you know clearly why. We're
+If we alter the contribution we will let you know clearly why. We're
 actually more likely to also let you know what we think would be
 necessary changes in order to accept your contribution.
 
