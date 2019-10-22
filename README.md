@@ -1,4 +1,4 @@
-# Morty docs
+# Morty Docs
 
 ![](https://api.travis-ci.com/bbc/morty-docs.svg?branch=master)
 
