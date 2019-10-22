@@ -1,5 +1,7 @@
 # Morty docs
 
+![](https://api.travis-ci.com/bbc/morty-docs.svg?branch=master)
+
 ## Overview 
 Morty docs is a library to enable documentation to be generated as a static website, to allow users to consume the content in an easily accessible format. It takes an array of markdown files and creates a static website. 
 
