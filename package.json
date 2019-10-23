@@ -14,7 +14,9 @@
     "lint": "standard",
     "prepublishOnly": "npm run package-clean && babel src --out-dir package/dist && npm run package-add-root-files",
     "package-clean": "rm -rf package && mkdir package",
-    "package-add-root-files": "cp package.json package/package.json && cp README.md package/README.md && cp LICENCE.md package/LICENCE.md"
+    "package-add-root-files": "cp package.json package/package.json && cp README.md package/README.md && cp LICENCE.md package/LICENCE.md",
+    "preversion": "npm run test",
+    "postversion": "git push origin master && git push --tags origin master"
   },
   "repository": {
     "type": "git",
