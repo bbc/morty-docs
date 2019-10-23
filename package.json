@@ -1,7 +1,7 @@
 {
   "name": "@bbc/morty-docs",
   "version": "1.0.0",
-  "description": "To expose Markdown files in a static website",
+  "description": "To generate a static website from markdown documentation, to allow users to consume content in an easily accessible format",
   "main": "src/index.js",
   "scripts": {
     "start": "rm -rf www && npm run build && node run.js && npx http-server www",
@@ -18,7 +18,7 @@
     "url": "git+https://github.com/bbc/morty-docs.git"
   },
   "keywords": [
-    "morty-docs"
+    "morty-docs", "markdown"
   ],
   "author": "",
   "license": "Apache-2.0",
