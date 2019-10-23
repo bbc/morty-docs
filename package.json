@@ -1,5 +1,5 @@
 {
-  "name": "morty-docs",
+  "name": "@bbc/morty-docs",
   "version": "1.0.0",
   "description": "To expose Markdown files in a static website",
   "main": "src/index.js",
