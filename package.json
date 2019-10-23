@@ -2,7 +2,7 @@
   "name": "@bbc/morty-docs",
   "version": "1.0.0",
   "description": "To generate a static website from markdown documentation, to allow users to consume content in an easily accessible format",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "start": "rm -rf www && npm run build && node run.js && npx http-server www",
     "build": "npm run build-clean && babel src --out-dir build/src --source-maps && npm run build-copy-json && npm run build-npm-install",
@@ -11,7 +11,10 @@
     "build-npm-install": "cd build && npm ci && cd ..",
     "test": "jest --runInBand --outputFile test-results.json --json && npm run lint",
     "coverage": "jest  --coverage --runInBand && open coverage/lcov-report/index.html",
-    "lint": "standard"
+    "lint": "standard",
+    "prepublishOnly": "npm run package-clean && babel src --out-dir package/dist && npm run package-add-root-files",
+    "package-clean": "rm -rf package && mkdir package",
+    "package-add-root-files": "cp package.json package/package.json && cp README.md package/README.md && cp LICENCE.md package/LICENCE.md"
   },
   "repository": {
     "type": "git",
