@@ -21,7 +21,8 @@
     "url": "git+https://github.com/bbc/morty-docs.git"
   },
   "keywords": [
-    "morty-docs", "markdown"
+    "morty-docs",
+    "markdown"
   ],
   "author": "",
   "license": "Apache-2.0",
