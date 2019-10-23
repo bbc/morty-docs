@@ -12,7 +12,7 @@
     "test": "jest --runInBand --outputFile test-results.json --json && npm run lint",
     "coverage": "jest  --coverage --runInBand && open coverage/lcov-report/index.html",
     "lint": "standard",
-    "prepublishOnly": "npm run package-clean && babel src --out-dir package/dist && npm run package-add-root-files",
+    "make-dist": "npm run package-clean && babel src --out-dir package/dist && npm run package-add-root-files",
     "package-clean": "rm -rf package && mkdir package",
     "package-add-root-files": "cp package.json package/package.json && cp README.md package/README.md && cp LICENCE.md package/LICENCE.md",
     "preversion": "npm run test",
