@@ -1,8 +1,8 @@
 {
-  "name": "morty-docs",
+  "name": "@bbc/morty-docs",
   "version": "1.0.0",
-  "description": "To expose Markdown files in a static website",
-  "main": "src/index.js",
+  "description": "To generate a static website from markdown documentation, to allow users to consume content in an easily accessible format",
+  "main": "dist/index.js",
   "scripts": {
     "start": "rm -rf www && npm run build && node run.js && npx http-server www",
     "build": "npm run build-clean && babel src --out-dir build/src --source-maps && npm run build-copy-json && npm run build-npm-install",
@@ -11,14 +11,20 @@
     "build-npm-install": "cd build && npm ci && cd ..",
     "test": "jest --runInBand --outputFile test-results.json --json && npm run lint",
     "coverage": "jest  --coverage --runInBand && open coverage/lcov-report/index.html",
-    "lint": "standard"
+    "lint": "standard",
+    "make-package": "npm run package-clean && babel src --out-dir package/dist && npm run package-add-root-files",
+    "package-clean": "rm -rf package && mkdir package",
+    "package-add-root-files": "cp package.json package/package.json && cp README.md package/README.md && cp LICENCE.md package/LICENCE.md",
+    "preversion": "npm run test",
+    "postversion": "git push origin master && git push --tags origin master"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bbc/morty-docs.git"
   },
   "keywords": [
-    "morty-docs"
+    "morty-docs",
+    "markdown"
   ],
   "author": "",
   "license": "Apache-2.0",
