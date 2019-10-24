@@ -5,7 +5,7 @@ const fs = require('fs')
 jest.mock('recursive-readdir')
 jest.mock('fs')
 
-readdir.mockImplementation(() => Promise.resolve(['someDirectory/some/path/tofile.md', 'someDirectory/another/path/tofile.md']))
+readdir.mockImplementation(() => Promise.resolve(['/someDirectory/some/path/tofile.md', '/someDirectory/another/path/tofile.md']))
 fs.readFileSync.mockImplementation(() => 'some text in a file')
 
 describe('Generate transform input', () => {
@@ -21,7 +21,7 @@ describe('Generate transform input', () => {
       }
     ]
 
-    const actual = await generateTransformInput('someDirectory')
+    const actual = await generateTransformInput('/someDirectory/')
 
     expect(actual).toEqual(expected)
   })
