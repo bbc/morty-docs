@@ -4,7 +4,7 @@ const { transform, generateTransformInput } = require('./build/src')
 const directoryToConvert = JSON.parse(process.env.npm_config_argv).remain[0] || 'default-md-files'
 
 const mortyDocs = async () => {
-  const inputObjs = await generateTransformInput(`${directoryToConvert}/`)
+  const inputObjs = await generateTransformInput(directoryToConvert)
 
   const files = await transform(inputObjs, { contentTitle: 'repo' })
 
