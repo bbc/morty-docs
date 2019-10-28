@@ -42,6 +42,10 @@ const transformedFiles = await mortyDocs.transform(inputObjs)
 
 We are currently unaware of any issues with morty-docs - if you find an issue please raise it using our Contribution Guide. 
 
+## Why Call it Morty Docs?
+
+Morty Docs originated from an internal project specifically created to publish our Post Mortem documents which we were writting in Markdown storing in GitHub. This project was called PostMortemer. We then realised this would be useful for _any_ Markdown documents! So we made it more generic and called it Morty Docs! 
+
 ## Contributing
 
 Thanks for wanting to improve the project!
