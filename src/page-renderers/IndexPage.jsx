@@ -12,7 +12,7 @@ const Styles = {
   },
 
   heading: {
-    fontSize: '74px'
+    fontSize: '32px'
   },
 
   subtitle: {
@@ -39,7 +39,7 @@ const Styles = {
   }
 }
 
-const IndexPage = ({ listItems }) => (
+const IndexPage = ({ listItems, contentTitle }) => (
   <html lang='en' style={Styles.html}>
     <head>
       <meta charSet='utf-8' />
@@ -55,7 +55,7 @@ const IndexPage = ({ listItems }) => (
         <Header />
         <div className='container' style={{ marginTop: '10px' }}>
           <div className='row col-md-6 col-md-offset-3' style={{ textAlign: 'center', marginBottom: '20px' }}>
-            <h1 style={Styles.heading}>Morty-Docs</h1>
+            <h1 style={Styles.heading}>{contentTitle}</h1>
           </div>
           <div className='row col-md-8 col-md-offset-2'>
             <ul className='list-unstyled'>
@@ -72,6 +72,6 @@ const IndexPage = ({ listItems }) => (
   </html>
 )
 
-const renderIndexPage = (listItems) => ReactDOMServer.renderToString(<IndexPage listItems={listItems} />)
+const renderIndexPage = (listItems, contentTitle) => ReactDOMServer.renderToString(<IndexPage listItems={listItems} contentTitle={contentTitle} />)
 
 module.exports = renderIndexPage
