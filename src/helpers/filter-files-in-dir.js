@@ -1,9 +1,7 @@
-const dateRegex = /\d{4}-\d{2}-\d{2}/
+const dateRegex = /\d{4}-\d{2}-\d{2}/ //2019-10-29
 
 module.exports = (filePaths, directory) => filePaths.filter(filePath => {
-  if (filePath.lastIndexOf('/') !== -1) {
-    return directory === filePath.slice(0, filePath.lastIndexOf('/'))
-  } else {
-    return directory === ''
-  }
+  return directory 
+    ? filePath.startsWith(directory)
+    : !filePath.includes('/')  // returns true for files in root directory
 }).sort((a, b) => a.match(dateRegex) && b.match(dateRegex) ? b.localeCompare(a) : a.localeCompare(b))
