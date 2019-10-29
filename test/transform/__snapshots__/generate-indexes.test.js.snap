@@ -51,11 +51,6 @@ exports[`Generate Indexes with the correct html to match snapshot 1`] = `
           <h1 style="font-size:74px">
             Morty-Docs
           </h1>
-          <p style="font-size:1.9em;margin-top:0.5em"
-             class="lead subtitle"
-          >
-            Secure, open docs and central hosting for all your markdown files
-          </p>
         </div>
         <div class="row col-md-8 col-md-offset-2">
           <ul class="list-unstyled">

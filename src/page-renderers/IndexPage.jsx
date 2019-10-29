@@ -56,7 +56,6 @@ const IndexPage = ({ listItems }) => (
         <div className='container' style={{ marginTop: '10px' }}>
           <div className='row col-md-6 col-md-offset-3' style={{ textAlign: 'center', marginBottom: '20px' }}>
             <h1 style={Styles.heading}>Morty-Docs</h1>
-            <p style={Styles.subtitle} className='lead subtitle'>Secure, open docs and central hosting for all your markdown files</p>
           </div>
           <div className='row col-md-8 col-md-offset-2'>
             <ul className='list-unstyled'>
