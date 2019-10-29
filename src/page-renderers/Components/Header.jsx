@@ -13,10 +13,9 @@ const Styles = {
   }
 }
 
-const Header = ({ contentTitle }) => (
+const Header = () => (
   <div className='container' style={Styles.navbar}>
     <div className='row col-md-12' style={{ width: '100%', paddingTop: '10px', paddingRight: '0px', paddingLeft: '25px' }}>
-      {/* this href below is specific to our hosting in an S3 bucket called 'morty-docs' */}
       <h3 className='col-md-4' style={{ textAlign: 'left', paddingRight: '0px', paddingBottom: '20px', color: '#fff' }}>
         Morty-Docs
       </h3>

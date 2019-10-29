@@ -6,7 +6,7 @@ const directoryToConvert = JSON.parse(process.env.npm_config_argv).remain[0] || 
 const mortyDocs = async () => {
   const inputObjs = await generateTransformInput(directoryToConvert)
 
-  const files = await transform(inputObjs, { contentTitle: 'repo' })
+  const files = await transform(inputObjs, { contentTitle: 'Content Title - located in run.js' })
 
   files.forEach(file => {
     let filePath = `www/${file.relativePath}`

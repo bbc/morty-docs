@@ -2,6 +2,7 @@ const React = require('react')
 const ReactDOMServer = require('react-dom/server')
 
 const Header = require('./Components/Header')
+const Title = require('./Components/Title')
 const Footer = require('./Components/Footer')
 const IndexListItem = require('./Components/IndexListItem')
 
@@ -9,10 +10,6 @@ const Styles = {
   headingContainer: {
     padding: '40px 15px',
     textAlign: 'center'
-  },
-
-  heading: {
-    fontSize: '74px'
   },
 
   subtitle: {
@@ -39,7 +36,7 @@ const Styles = {
   }
 }
 
-const IndexPage = ({ listItems }) => (
+const IndexPage = ({ listItems, contentTitle }) => (
   <html lang='en' style={Styles.html}>
     <head>
       <meta charSet='utf-8' />
@@ -54,10 +51,7 @@ const IndexPage = ({ listItems }) => (
       <div style={Styles.wrapper}>
         <Header />
         <div className='container' style={{ marginTop: '10px' }}>
-          <div className='row col-md-6 col-md-offset-3' style={{ textAlign: 'center', marginBottom: '20px' }}>
-            <h1 style={Styles.heading}>Morty-Docs</h1>
-            <p style={Styles.subtitle} className='lead subtitle'>Secure, open docs and central hosting for all your markdown files</p>
-          </div>
+          <Title contentTitle={contentTitle} />
           <div className='row col-md-8 col-md-offset-2'>
             <ul className='list-unstyled'>
               {
@@ -73,6 +67,6 @@ const IndexPage = ({ listItems }) => (
   </html>
 )
 
-const renderIndexPage = (listItems) => ReactDOMServer.renderToString(<IndexPage listItems={listItems} />)
+const renderIndexPage = (listItems, contentTitle) => ReactDOMServer.renderToString(<IndexPage listItems={listItems} contentTitle={contentTitle} />)
 
 module.exports = renderIndexPage

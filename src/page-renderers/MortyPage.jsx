@@ -29,7 +29,7 @@ const MortyPage = ({ pageTitle, body, contentTitle }) => {
       </head>
       <body style={Styles.body}>
         <div style={Styles.wrapper}>
-          <Header contentTitle={contentTitle} />
+          <Header />
           <div className='container' dangerouslySetInnerHTML={{ __html: body }} />
         </div>
         <Footer />
