@@ -153,12 +153,6 @@ exports[`Generate Indexes with the correct html to match snapshot without a cont
       <div class="container"
            style="margin-top:10px"
       >
-        <div class="row col-md-6 col-md-offset-3"
-             style="text-align:center;margin-bottom:20px"
-        >
-          <h1 style="font-size:32px">
-          </h1>
-        </div>
         <div class="row col-md-8 col-md-offset-2">
           <ul class="list-unstyled">
             <li class="index-list"

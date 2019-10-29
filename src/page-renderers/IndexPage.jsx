@@ -2,6 +2,7 @@ const React = require('react')
 const ReactDOMServer = require('react-dom/server')
 
 const Header = require('./Components/Header')
+const Title = require('./Components/Title')
 const Footer = require('./Components/Footer')
 const IndexListItem = require('./Components/IndexListItem')
 
@@ -9,10 +10,6 @@ const Styles = {
   headingContainer: {
     padding: '40px 15px',
     textAlign: 'center'
-  },
-
-  heading: {
-    fontSize: '32px'
   },
 
   subtitle: {
@@ -54,9 +51,7 @@ const IndexPage = ({ listItems, contentTitle }) => (
       <div style={Styles.wrapper}>
         <Header />
         <div className='container' style={{ marginTop: '10px' }}>
-          <div className='row col-md-6 col-md-offset-3' style={{ textAlign: 'center', marginBottom: '20px' }}>
-            <h1 style={Styles.heading}>{contentTitle}</h1>
-          </div>
+          <Title contentTitle={contentTitle} />
           <div className='row col-md-8 col-md-offset-2'>
             <ul className='list-unstyled'>
               {
