@@ -80,7 +80,7 @@ describe('Generate Indexes with the correct html', () => {
     })
   })
 
-  it('to match snapshot', () => {
+  it('to match snapshot with a content title', () => {
     const input = [{
       relativePath: 'foo1.html'
     }, {
@@ -88,6 +88,18 @@ describe('Generate Indexes with the correct html', () => {
     }]
 
     const actual = generateIndexes(input, { contentTitle: 'some-repo' })
+
+    expect(actual[0].raw.toString()).toMatchSnapshot()
+  })
+
+  it('to match snapshot without a content title', () => {
+    const input = [{
+      relativePath: 'foo1.html'
+    }, {
+      relativePath: 'foo2.html'
+    }]
+
+    const actual = generateIndexes(input, { })
 
     expect(actual[0].raw.toString()).toMatchSnapshot()
   })
