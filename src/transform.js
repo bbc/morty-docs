@@ -4,6 +4,8 @@ const transformContent = require('./transform-content')
 const generateIndexes = require('./generate-indexes')
 
 const transform = (inputObjs, options) => {
+  validate(inputObjs)
+
   const contentObjs = inputObjs.map(inputObj => {
     if (path.extname(inputObj.relativePath) === '.md') {
       return transformContent(inputObj, options)
@@ -18,3 +20,12 @@ const transform = (inputObjs, options) => {
 }
 
 module.exports = transform
+
+const validate = (inputObjs) => {
+  if (!Array.isArray(inputObjs)) throw new Error('First arg to transform() must be an array')
+
+  inputObjs.map(inputObj => {
+    if (typeof inputObj.raw === 'undefined') throw new Error('All objects in input array must have a .raw property')
+    if (typeof inputObj.relativePath === 'undefined') throw new Error('All objects in input array must have a .relativePath property')
+  })
+}
