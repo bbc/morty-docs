@@ -11,7 +11,7 @@ const Title = ({ contentTitle }) => {
         <h1 style={Styles.heading}>{contentTitle}</h1>
       </div>
     )
-  } else { return null }
+  } else return null
 }
 
 module.exports = Title
