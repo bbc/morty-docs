@@ -3,6 +3,9 @@
   "version": "1.0.3",
   "description": "To generate a static website from markdown documentation, to allow users to consume content in an easily accessible format",
   "main": "dist/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "start": "rm -rf www && npm run build && node run.js && npx http-server www",
     "build": "npm run build-clean && babel src --out-dir build/src --source-maps && npm run build-copy-json && npm run build-npm-install",
