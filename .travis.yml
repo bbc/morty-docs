@@ -11,6 +11,7 @@ deploy:
   provider: npm
   email: ConnectedTV-Development@lists.forge.bbc.co.uk
   api_key: $NPM_TOKEN # removed quotes around $NPM_TOKEN
+  skip_cleanup: true # may not be necessary, but faster too
   on:
     tags: true
     repo: bbc/morty-docs # probably prevents forks from triggering a deploy
