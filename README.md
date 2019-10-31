@@ -3,48 +3,55 @@
 [![Build Status](https://travis-ci.com/bbc/morty-docs.svg?branch=master)](https://travis-ci.com/bbc/morty-docs)
 [![Maintainability](https://api.codeclimate.com/v1/badges/99927fb03004d8d44134/maintainability)](https://codeclimate.com/github/bbc/morty-docs/maintainability)
 
-## Overview 
-Morty docs is a library to enable documentation to be generated as a static website, to allow users to consume the content in an easily accessible format. It takes an array of markdown files and creates a static website. 
+## Overview
+Morty docs is a library to enable documentation to be generated as a static website, to allow users to consume the content in an easily accessible format. It takes an array of markdown files and creates a static website.
 
 Morty is specifically aimed at requiring little to no change in the markdown files.
 
-## Use as a library 
+## Use as a library
 
 ### Install
 
 `npm install --save morty-docs`
 
-### Import
+### Require
 
-`const mortyDocs = require('morty-docs')`
-
-### Use
-
-```
-const directoryToConvert = 'a/folder/containing/markdown/files'
-const inputObjs = await mortyDocs.generateTransformInput(directoryToConvert)
-const transformedFiles = await mortyDocs.transform(inputObjs)
+```javascript
+const { generateTransformInput, transform } = require('@bbc/morty-docs')
 ```
 
-`transformedFiles` will be an array of objects:
+### Typical use
+
+```javascript
+const inputObjs = await mortyDocs.generateTransformInput('a/folder/with/markdown/files')
+
+const outputObjs = await mortyDocs.transform(
+  inputObjs,
+  { contentTitle: 'My Docs' })
+```
+- `transform()` can be used alone, but if your markdown files are in a local directory the `generateTransformInput()` function is a convenience
+- the 2nd argument to transform() can *optionally* be used to provide a Title that is displayed on the generated index pages.
+
+
+- `outputObjs` will be an array of objects like this:
 
 ```
 [
   {
     relativePath: 'path/to/file',
-    raw: <string> | <Buffer> // The contents of the file
+    raw: <string> | <Buffer> // generated HTML **or** passed through input when not markdown
   },
   ...
 ]
 ```
 
-## Known issues 
+## Known issues
 
-We are currently unaware of any issues with morty-docs - if you find an issue please raise it using our Contribution Guide. 
+We are currently unaware of any issues with morty-docs - if you find an issue please raise it using our Contribution Guide.
 
 ## Why Call it Morty Docs?
 
-Morty Docs originated from an internal project specifically created to publish our Post Mortem documents which we were writting in Markdown storing in GitHub. This project was called PostMortemer. We then realised this would be useful for _any_ Markdown documents! So we made it more generic and called it Morty Docs! 
+Morty Docs originated from an internal project specifically created to publish our Post Mortem documents which we were writting in Markdown storing in GitHub. This project was called PostMortemer. We then realised this would be useful for _any_ Markdown documents! So we made it more generic and called it Morty Docs!
 
 ## Contributing
 
@@ -58,7 +65,7 @@ we mention below.
 Yes.  Contributions are accepted based on the merit of the contribution,
 not on the basis of who they are from.
 
-We welcome contributions from everyone. 
+We welcome contributions from everyone.
 
 Please respect each other.
 
@@ -69,7 +76,7 @@ feature improvement, new minor feature, major feature or complete rehaul.
 
 However, documentation, examples, videos, blogs, vlogs, podcasts, active
 examples, media, hosted versions, and testimonials of usage are all
-useful contributions. 
+useful contributions.
 
 ## Adding an issue
 
@@ -78,7 +85,7 @@ If you spot an issue or just want to raise one please use the issue template.
 ## Contact us!
 
 It's always great to hear from people who are interested and
-using morty-docs. 
+using morty-docs.
 
 The best way to do this is to open an issue.  Please note, that where a
 feature is requested, but we can't add *right now*, will result in us
@@ -87,8 +94,8 @@ out there might implement it.
 
 ## Incorporating Contributions
 
-We will always accept contributions. We endeavour to ensure that they 
-fit with the existing code base. 
+We will always accept contributions. We endeavour to ensure that they
+fit with the existing code base.
 
 If we alter the contribution we will let you know clearly why. We're
 actually more likely to also let you know what we think would be
