@@ -2,6 +2,10 @@ language: node_js
 node_js:
 - 10
 
+branches:
+  only:
+    - master
+
 before_deploy: npm run make-package && cd package # cd so that the default use of 'npm publish' by this provider deploys/publishes the right files
 
 deploy:
