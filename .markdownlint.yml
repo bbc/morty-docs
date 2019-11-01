@@ -1,0 +1,2 @@
+# disable 'Trailing punctuation in heading' rule, as we want to use ? at the end of titles
+MD026: false
