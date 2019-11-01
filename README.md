@@ -5,7 +5,9 @@
 
 ## Overview
 
-Morty docs is a library to enable documentation to be generated as a static website, to allow users to consume the content in an easily accessible format. It takes an array of markdown files and creates a static website.
+Morty docs is a library to enable documentation to be generated as a static
+website, to allow users to consume the content in an easily accessible format.
+It takes an array of markdown files and creates a static website.
 
 Morty is specifically aimed at requiring little to no change in the markdown files.
 
@@ -31,8 +33,10 @@ const outputObjs = await mortyDocs.transform(
   { contentTitle: 'My Docs' })
 ```
 
-- `transform()` can be used alone, but if your markdown files are in a local directory the `generateTransformInput()` function is a convenience
-- the 2nd argument to transform() can *optionally* be used to provide a Title that is displayed on the generated index pages.
+- `transform()` can be used alone, but if your markdown files are in a local
+directory the `generateTransformInput()` function is a convenience
+- the 2nd argument to transform() can *optionally* be used to provide a Title
+that is displayed on the generated index pages.
 
 - `outputObjs` will be an array of objects like this:
 
@@ -40,19 +44,26 @@ const outputObjs = await mortyDocs.transform(
 [
   {
     relativePath: 'path/to/file',
-    raw: <string> | <Buffer> // generated HTML **or** passed through input when not markdown
+    raw: <string> | <Buffer>
   },
   ...
 ]
 ```
 
+where value for raw is either generated HTML **or** input that was passed
+through because it is not markdown e.g. images
+
 ## Known issues
 
-We are currently unaware of any issues with morty-docs - if you find an issue please raise it using our Contribution Guide.
+We are currently unaware of any issues with morty-docs - if you find an issue
+please raise it using our Contribution Guide.
 
-## Why Call it Morty Docs? 
+## Why Call it Morty Docs?
 
-Morty Docs originated from an internal project specifically created to publish our Post Mortem documents which we were writting in Markdown storing in GitHub. This project was called PostMortemer. We then realised this would be useful for _any_ Markdown documents! So we made it more generic and called it Morty Docs!
+Morty Docs originated from an internal project specifically created to publish
+our Post Mortem documents which we were writting in Markdown storing in GitHub.
+This project was called PostMortemer. We then realised this would be useful for
+_any_ Markdown documents! So we made it more generic and called it Morty Docs!
 
 ## Contributing
 
