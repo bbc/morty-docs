@@ -26,9 +26,9 @@ const { generateTransformInput, transform } = require('@bbc/morty-docs')
 ### Typical use
 
 ```javascript
-const inputObjs = await mortyDocs.generateTransformInput('a/folder/with/markdown-files')
+const inputObjs = await generateTransformInput('a/folder/with/markdown-files')
 
-const outputObjs = mortyDocs.transform(inputObjs,{ contentTitle: 'My Docs' })
+const outputObjs = transform(inputObjs,{ contentTitle: 'My Docs' })
 ```
 
 - `transform()` can be used alone, but if your markdown files are in a local
