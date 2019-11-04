@@ -2,9 +2,9 @@ const showdown = require('showdown')
 
 // there may be an option to enable this, but since we haven't found it here is a reg-ex
 // to convert links within a file from *.md to *.html
-const linkExtensionExtension = {
+const convertMdLinksToHtmlLinks = {
   type: 'output',
-  regex: /<a href="(.*).md">/g,
+  regex: /<a href="([^:]*).md">/g, // exclude colon, so external links aren't converted
   replace: '<a href="$1.html">'
 }
 
@@ -27,7 +27,7 @@ const bindings = Object.keys(classMap)
   }))
 
 const parser = new showdown.Converter({
-  extensions: [linkExtensionExtension, headingExtension, ...bindings]
+  extensions: [convertMdLinksToHtmlLinks, headingExtension, ...bindings]
 })
 
 parser.setFlavor('github')

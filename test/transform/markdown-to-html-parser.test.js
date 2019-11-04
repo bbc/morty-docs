@@ -40,4 +40,14 @@ describe('Markdown Parser', () => {
 
     expect(actual).toEqual(expected)
   })
+
+  it('doesn\'t break absolute links', () => {
+    const markdown = '[here](https://bbc.co.uk/docs/user/publishing-your-repo.md)'
+
+    const actual = parseToHtml(markdown)
+
+    const expected = '<p><a href="https://bbc.co.uk/docs/user/publishing-your-repo.md">here</a></p>'
+
+    expect(actual).toEqual(expected)
+  })
 })
