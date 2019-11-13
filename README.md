@@ -13,7 +13,7 @@ Morty is specifically aimed at requiring little to no change in the markdown fil
 
 In the BBC we have a large amount of git respositories which often have markdown documentation within them, they dont follow a consistent structure and their content structure can also be wildly different. We wanted a way to publish these with the minimal amount of effort from teams, Morty Docs is what we use to solve this problem.
 
-## Example Site Made with Morty-Docs
+## Example site made with Morty-Docs
 
 The documentation located [here](https://github.com/bbc/lrud) has been converted to a site using morty-docs, the converted docs can be viewed [here](https://bbc.github.io/morty-docs/).
 
