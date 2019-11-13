@@ -1,0 +1,277 @@
+<html lang="en" style="min-height:100vh" data-reactroot=""><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>docs/usage.md</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/></head><body style="min-height:100vh"><div style="min-height:75vh;padding-bottom:20px"><div class="container" style="border:none;border-radius:0;background-color:#000;min-height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"><div class="row col-md-12" style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"><h3 class="col-md-4" style="text-align:left;padding-right:0px;padding-bottom:20px;color:#fff">Morty-Docs</h3></div></div><div class="container"><h1 id="usage"><a href="#usage">Usage</a></h1>
+<p>LRUD handles the registering of new navigation nodes, the handling of key events, and the emitting of events based on internal state changes.</p>
+<p>These nodes represent 2D space in an "abstract" manner - there is no visual component to LRUD, but its data represents spatial grids, lists, and items.</p>
+<p>For some examples of common desired behaviour and how to achieve it, see our <a href="./recipes.html">common recipes</a>.</p>
+<h2 id="creating-a-new-instance"><a href="#creating-a-new-instance">Creating a new instance</a></h2>
+<pre><code class="js language-js">const { Lrud } = require('Lrud')
+
+const navigation = new Lrud()</code></pre>
+<h2 id="registering-a-node"><a href="#registering-a-node">Registering a node</a></h2>
+<p>A node can be added to the navigation tree by calling <code>navigation.registerNode</code> with the <code>id</code> of the node and any node options</p>
+<pre><code class="js language-js">navigation.registerNode('root', {})</code></pre>
+<p>The very first node that is registered will become the <em>root node</em>. From here, any node that is registered without a parent will automatically become a child of the root node.</p>
+<pre><code class="js language-js">navigation
+    .registerNode('root', { orientation: 'horizontal' })
+    .registerNode('alpha', { isFocusable: true })
+
+// ...is the same as
+
+navigation
+    .registerNode('root', { orientation: 'horizontal' })
+    .registerNode('alpha', { isFocusable: true, parent: 'root' })</code></pre>
+<p>Nodes must be registered with <em>unique</em> IDs. If <code>registerNode()</code> is called with an ID that has already been registered against the navigation instance, an exception will be thrown.</p>
+<h2 id="registration-options"><a href="#registration-options">Registration options</a></h2>
+<p>Most options affect behaviour for when LRUD is handling key events and assigning focus.</p>
+<h3 id="orientation"><a href="#orientation"><code>orientation</code></a></h3>
+<p><code>"vertical" | "horizontal"</code></p>
+<p>Any node that has children should be registered with an <code>orientation</code>. A node of vertical orientation will handle up/down key events while horizontal will handle left/right key events.</p>
+<pre><code class="js language-js">navigation
+    .registerNode('row', { orientation: 'horizontal' })
+    .registerNode('item-1', { parent: 'row', isFocusable: true })
+    .registerNode('item-2', { parent: 'row', isFocusable: true })
+    .registerNode('item-3', { parent: 'row', isFocusable: true })</code></pre>
+<p>If focus was on <code>item-2</code>, a <code>left</code> keypress will put focus to <code>item-1</code>, and <code>right</code> keypress will put focus to <code>item-3</code>. This is because the <code>row</code> is set to <code>orientation: horizontal</code>. If the <code>row</code> was set to <code>orientation: vertical</code>, it would respond to key presses of <code>up</code> and <code>down</code>, respectively.</p>
+<h3 id="iswrapping"><a href="#iswrapping"><code>isWrapping</code></a></h3>
+<p><code>boolean</code></p>
+<p>Used in conjunction with orientation to make a list wrap at the top/bottom or left/right depending on orientation.</p>
+<pre><code class="js language-js">navigation
+    .registerNode('row', { orientation: 'horizontal', isWrapping: true })
+    .registerNode('item-1', { parent: 'row', isFocusable: true })
+    .registerNode('item-2', { parent: 'row', isFocusable: true })
+    .registerNode('item-3', { parent: 'row', isFocusable: true })</code></pre>
+<p>In the above example, if the user was focused on <code>item-3</code>, and LRUD handled an event with a direction of <code>right</code>, usually focus would remain on <code>item-3</code>. However, because the <code>row</code> is set to <code>isWrapping: true</code>, focus will actually reset to <code>item-1</code>.</p>
+<h3 id="index"><a href="#index"><code>index</code></a></h3>
+<p><code>number</code></p>
+<p>The zero-based index of the node, relative to its siblings. If no idex is given, it will be set as the <em>next</em> index under its parent.</p>
+<pre><code class="js language-js">navigation
+    .registerNode('X', { parent: 'root' })
+    .registerNode('Y', { parent: 'root' })
+    .registerNode('Z', { parent: 'root' })
+
+// ...is the same as
+
+navigation
+    .registerNode('X', { parent: 'root', index: 0 })
+    .registerNode('Y', { parent: 'root', index: 1 })
+    .registerNode('Z', { parent: 'root', index: 2 })</code></pre>
+<p><code>index</code> is used when calculating the "next" or "previous" node in a list.</p>
+<h3 id="isindexalign"><a href="#isindexalign"><code>isIndexAlign</code></a></h3>
+<p><code>boolean</code></p>
+<p>To be used in conjunction with orientation to give a node index alignment functionality.</p>
+<p>Index alignment ensures that when focus would move from one of this nodes descendants to another, LRUD will attempt to ensure that the focused node matches the index of the node that was left, e.g to make 2 lists behave as a "grid".</p>
+<p>For further details, see the <a href="./index-align.md">docs on index alignment</a>.</p>
+<h3 id="indexrange"><a href="#indexrange"><code>indexRange</code></a></h3>
+<p><code>number[]</code></p>
+<p>An array with 2 elements. Value <code>[0]</code> is the lower bound of matching indexes, <code>[1]</code> is the upper bound.</p>
+<p>Used in conjuction with <code>isIndexAlign</code> behaviour, allows a node to replicate the effects of a "column span" by assuming the role of multiple indexes relative to its siblings.</p>
+<p>For further details, see the <a href="./index-align.md">docs on index alignment</a>.</p>
+<hr />
+<p>Several functions can also be given as registration options to a node. These functions will be called at specific state change points for the node. See our <a href="./process-lifecycles.html">Process Lifecycles doc</a> for further details on the "lifecycle" of a move event in LRUD.</p>
+<h3 id="onfocus"><a href="#onfocus"><code>onFocus</code></a></h3>
+<p><code>function</code></p>
+<p>If given, the <code>onFocus</code> function will be called when the node gets focussed on.</p>
+<h3 id="onblur"><a href="#onblur"><code>onBlur</code></a></h3>
+<p><code>function</code></p>
+<p>If given, the <code>onBlur</code> function will be called when the node if the node had focus and a new node gains focus.</p>
+<h3 id="onselect"><a href="#onselect"><code>onSelect</code></a></h3>
+<p><code>function</code></p>
+<p>If given, the <code>onSelect</code> function will be called when the node is focused and a key event of "ENTER" is handled.</p>
+<h3 id="onactive"><a href="#onactive"><code>onActive</code></a></h3>
+<p><code>function</code></p>
+<p>If given, the <code>onActive</code> function will be called when the node is made active by either itself or one of its descendants gaining focus.</p>
+<h3 id="oninactive"><a href="#oninactive"><code>onInactive</code></a></h3>
+<p><code>function</code></p>
+<p>If given, the <code>onInactive</code> function will be called when the node was active and due to an updated focus, is no longer active.</p>
+<h3 id="onleave"><a href="#onleave"><code>onLeave</code></a></h3>
+<p><code>function</code></p>
+<p>If given, the <code>onLeave</code> function will be called when the node was focused and the handling of a key event means the node is no longer focused.</p>
+<h3 id="onenter"><a href="#onenter"><code>onEnter</code></a></h3>
+<p><code>function</code></p>
+<p>If given, the <code>onEnter</code> function will be called when the node was not focused and the handling of a key event means the node is now focused.</p>
+<h3 id="shouldcancelleave"><a href="#shouldcancelleave"><code>shouldCancelLeave</code></a></h3>
+<p><code>function</code></p>
+<p>If given, the <code>shouldCancelLeave</code> function will be called when a move is being processed, and the node is being <em>left</em>. If <code>shouldCancelLeave</code> returns <code>true</code>, the move will be cancelled.</p>
+<h3 id="shouldcancelenter"><a href="#shouldcancelenter"><code>shouldCancelEnter</code></a></h3>
+<p><code>function</code></p>
+<p>If given, the <code>shouldCancelEnter</code> function will be called when a move is being processed, and the node is being <em>entered</em>. If <code>shouldCancelEnter</code> returns <code>true</code>, the move will be cancelled.</p>
+<h3 id="onleavecancelled"><a href="#onleavecancelled"><code>onLeaveCancelled</code></a></h3>
+<p><code>function</code></p>
+<p>If given, the <code>onLeaveCancelled</code> function will be called if this node has a matching <code>shouldCancelLeave</code>, and when <em>that</em> function returns <code>true</code>.</p>
+<h3 id="onentercancelled"><a href="#onentercancelled"><code>onEnterCancelled</code></a></h3>
+<p><code>function</code></p>
+<p>If given, the <code>onEnterCancelled</code> function will be called if this node has a matching <code>shouldCancelEnter</code>, and when <em>that</em> function returns <code>true</code>.</p>
+<h2 id="unregistering-a-node"><a href="#unregistering-a-node">Unregistering a node</a></h2>
+<p>A node can be removed from the navigation tree by calling <code>navigation.unregisterNode()</code> with the id of the node</p>
+<p>Unregistering a node will also remove all of its children and trigger events correctly.</p>
+<p>If an unregister causes the current focused node to be removed, focus will be moved to the <em>last</em> node that could be focused. This also works when unregistering a branch.</p>
+<p>Unregistering the root node will cause the tree to become empty and also remove all overrides that have been set (see Overrides, below).</p>
+<h3 id="unregistering-options"><a href="#unregistering-options">Unregistering Options</a></h3>
+<p>A config object can be given to <code>unregisterNode(&lt;nodeId&gt;, &lt;unregisterOptions&gt;)</code> to force specific behaviour.</p>
+<ul>
+<li><code>forceRefocus:boolean</code> When <code>true</code>, the default behaviour of finding a new node to focus on if unregistering the current<br />
+focused node will continue to work as normal. This value also defaults to <code>true</code>. Pass as <code>false</code> to stop the auto-refocus<br />
+behaviour. Remember, if you are unregistering the current focused node, and passing <code>forceRefocus</code> as <code>false</code>, you need to manually call <code>assignFocus()</code> afterwards or the user will be left in limbo!</li>
+</ul>
+<h2 id="assigning-focus"><a href="#assigning-focus">Assigning Focus</a></h2>
+<p>You can give focus to a particular node by calling <code>navigation.assignFocus()</code> with the node id</p>
+<pre><code class="js language-js">navigation.assignFocus('list')</code></pre>
+<p>If the node that has been assigned focus is <strong>not</strong> focusable, LRUD will attempt to find the first active child of the node that <em>is</em> focusable, and focus on that instead.</p>
+<h2 id="handling-key-events"><a href="#handling-key-events">Handling Key Events</a></h2>
+<p>Once focus has been assigned against the LRUD instance, LRUD can begin handling key events.</p>
+<p>Every key event represents a user moving the "cursor"/"focus" in a given <em>direction</em>. The direction is based on the <code>event.keyCode</code> value - LRUD maintains an internal mapping of <code>keyCode</code> values to semantic directions.</p>
+<p>You can pass key events into LRUD using the <code>navigation.handleKeyEvent</code> function:</p>
+<pre><code class="js language-js">document.onkeydown = function (event) {
+    navigation.handleKeyEvent(event)
+  }
+}</code></pre>
+<h2 id="events"><a href="#events">Events</a></h2>
+<p>LRUD emits events in response to key events. See the <a href="http://bbc.github.io/tal/widgets/focus-management.html">TAL docs</a> for an explanation of 'focused' and 'active' nodes. Each of these callbacks is called with the node that changed state.</p>
+<ul>
+<li><code>navigation.on('focus', function)</code> - Focus was given to a node.</li>
+<li><code>navigation.on('blur', function)</code> - Focus was taken from a node.</li>
+<li><code>navigation.on('active', function)</code> - The node has become active.</li>
+<li><code>navigation.on('inactive', function)</code> - The node has become inactive.</li>
+<li><code>navigation.on('select', function)</code> - The current focused node was selected.</li>
+<li><code>navigation.on('cancelled', function)</code> - A movement has been cancelled.</li>
+</ul>
+<p>A special event of <code>move</code> is emitted after handling a key event.</p>
+<ul>
+<li><code>navigation.on('move', function)</code> - Triggered when focus is changed within a list</li>
+</ul>
+<p>The <code>move</code> event callback is called with a move event in the following shape:</p>
+<pre><code class="js language-js">{
+    leave: &lt;node&gt;       // the node that was focused that we're now leaving
+    enter: &lt;node&gt;       // the node that is now focused that we're entering
+    offset: -1 : 1      // 1 if direction was RIGHT or DOWN, -1 if direction was LEFT or UP
+}</code></pre>
+<p>Common usages for handling this move event include changing the style of a given DOM node to match a "focus" style, or to handle a DOM animation between the <code>leave</code> and <code>enter</code> nodes.</p>
+<pre><code class="js language-js">navigation.on('move', moveEvent =&gt; {
+  const focusedDomNode = document.getElementById(moveEvent.enter.id);
+  focusedDomNode.classList.add('focused');
+})</code></pre>
+<h2 id="overrides"><a href="#overrides">Overrides</a></h2>
+<p>LRUD supports an override system, for times when correct product/UX behaviour requires focus to change in a way that is not strictly in accordance with the structure of the navigation tree.</p>
+<p>New overrides can be registered with <code>navigation.registerOverride(&lt;overrideId&gt;, &lt;overrideOptions&gt;)</code>.</p>
+<p><code>navigation.overrides</code> is an object, each key representing an override object.</p>
+<p>The override object below represents that when LRUD is bubbling its key event, when it hits the <code>box-1</code> node, and direction of travel is <code>DOWN</code>, STOP the propogation of the bubble event and focus directly on <code>box-2</code>.</p>
+<pre><code class="js language-js">navigation.overrides = {
+  'override-1': {           // the name of the override
+    'id': 'box-1',          // the ID to trigger the override on
+    'direction': 'DOWN',    // the direction of travel in order for the override to trigger
+    'target': 'box-2'       // the ID of the node we want to focus on
+  }
+}</code></pre>
+<h2 id="modifying-node-focusability"><a href="#modifying-node-focusability">Modifying Node Focusability</a></h2>
+<p>Ability of a node to be focused can be modified using  <code>navigation.setNodeFocusable</code></p>
+<pre><code class="js language-js">navigation.registerNode('root', { isFocusable: true })
+navigation.setNodeFocusable('root', false)</code></pre>
+<h1 id="tree-and-partial-tree-insertion--registering"><a href="#tree-and-partial-tree-insertion--registering">Tree and Partial Tree Insertion &amp; Registering</a></h1>
+<p>LRUD supports the ability to register an entire tree at once.</p>
+<pre><code class="js language-js">const instance = new Lrud();
+const tree = {
+  root: {
+    orientation: 'horizontal',
+    children: {
+      alpha: { isFocusable: true },
+      beta: { isFocusable: true },
+      charlie: { isFocusable: true },
+    }
+  }
+}
+
+instance.registerTree(tree);
+// `instance` now has the above tree registered, and has correctly setup active children, indexes, etc. </code></pre>
+<h2 id="inserttree-and-nested-tree-registration"><a href="#inserttree-and-nested-tree-registration"><code>insertTree()</code> and nested tree registration</a></h2>
+<p>LRUD also supports the ability to register a tree/insert a tree into an already existing node branch.</p>
+<p>If no parent is given on the top level node of the passed tree, the tree will be inserted under the root node, as per standard <code>registerNode()</code> behaviour.</p>
+<p>Otherwise, if a <code>parent</code> <em>is</em> given, the tree will be inserted under that parent.</p>
+<h3 id="inserting-a-tree-under-the-root-node"><a href="#inserting-a-tree-under-the-root-node">Inserting a tree under the root node</a></h3>
+<pre><code class="js language-js">const instance = new Lrud();
+instance
+  .registerNode('root', { orientation: 'horizontal' })
+  .registerNode('alpha', { isFocusable: true })
+  .registerNode('beta', { isFocusable: true })
+
+const tree = {
+  charlie: {
+    orientation: 'vertical',
+    children: {
+      charlie_1: { isFocusable: true },
+      charlie_2: { isFocusable: true },
+    }
+  }
+}
+instance.registerTree(tree);
+/*
+the full tree of `instance` now looks like:
+{
+  root: {
+    orientation: 'horizontal',
+    children: {
+      alpha: { isFocusable: true }
+      beta: { isFocusable: true }
+      charlie: {
+        orientation: 'vertical'
+        children: {
+          charlie_1: { isFocusable: true }
+          charlie_2: { isFocusable: true }
+        }
+      }
+    }
+  }
+}
+*/</code></pre>
+<h3 id="inserting-a-tree-under-a-specified-branch"><a href="#inserting-a-tree-under-a-specified-branch">Inserting a tree under a specified branch</a></h3>
+<pre><code class="js language-js">const instance = new Lrud();
+instance
+  .registerNode('root', { orientation: 'horizontal' })
+  .registerNode('alpha', { isFocusable: true })
+  .registerNode('beta', { orientation: 'vertical' })
+
+const tree = {
+  charlie: {
+    orientation: 'vertical',
+    parent: 'beta',
+    children: {
+      charlie_1: { isFocusable: true },
+      charlie_2: { isFocusable: true },
+    }
+  }
+}
+instance.registerTree(tree);
+/*
+the full tree of `instance` now looks like:
+{
+  root: {
+    orientation: 'horizontal',
+    children: {
+      alpha: { isFocusable: true }
+      beta: {
+        orientation: 'vertical',
+        children: {
+          charlie: {
+            orientation: 'vertical'
+            children: {
+              charlie_1: { isFocusable: true }
+              charlie_2: { isFocusable: true }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+*/</code></pre>
+<h1 id="faq"><a href="#faq">F.A.Q</a></h1>
+<blockquote>
+  <p>Q: A node that should be focusabled is never receiving focus - whats happening?</p>
+</blockquote>
+<p>A: Ensure that the parent nodes, etc. have the correct orientation in order to be able to jump inbetween nodes.</p>
+<blockquote>
+  <p>Q: All my parents have orientations, everything is setup in the navigation tree, and I STILL can't focus on the node I expect.</p>
+</blockquote>
+<p>A: Ensure the node has either <code>isFocusable: true</code> or a <code>selectAction</code> registered against it. A node needs either one of these in order to be considered "focusable". <code>isFocusable</code> is prioritised over <code>selectAction</code> so a node with <code>isFocusable: false</code> will never be focusable.</p>
+<blockquote>
+  <p>Q: What is the different between <code>onBlur/onFocus</code> and <code>onLeave/onEnter</code>?</p>
+</blockquote>
+<p>A: <code>onBlur</code> and <code>onFocus</code> can/will be called at any point in time for when a node loses focus. This includes a direct call to <code>assignFocus()</code> from user land. On the other hand, <code>onLeave</code> and <code>onEnter</code> will only be called via the result of a <code>handleKeyEvent()</code></p></div></div><footer style="bottom:0;width:100%;background-color:#f5f5f5;padding:0 15px;box-sizing:border-box;min-height:25vh;position:relative" class="footer"><div style="padding:1em 0 2em 0" class="container"><div class="row"><div style="text-align:center" class="col-md-4 col-md-offset-4"><h3>What is Morty-Docs?</h3><p>Link to <a href="https://github.com/bbc/morty-docs">Morty-docs</a>.</p></div></div></div></footer></body></html>

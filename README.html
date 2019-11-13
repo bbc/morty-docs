@@ -1,0 +1,74 @@
+<html lang="en" style="min-height:100vh" data-reactroot=""><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>README.md</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/></head><body style="min-height:100vh"><div style="min-height:75vh;padding-bottom:20px"><div class="container" style="border:none;border-radius:0;background-color:#000;min-height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"><div class="row col-md-12" style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"><h3 class="col-md-4" style="text-align:left;padding-right:0px;padding-bottom:20px;color:#fff">Morty-Docs</h3></div></div><div class="container"><h1 id="lrud"><a href="#lrud">LRUD</a></h1>
+<p>A spatial navigation library for devices with input via directional controls</p>
+<h2 id="upgrading-from-v2"><a href="#upgrading-from-v2">Upgrading from V2</a></h2>
+<p><strong>v3 is a major rewrite, covering many new features. However, it unfortunately breaks some backwards compatibility.</strong></p>
+<p>We are currently in the process of writing more detailed docs for an upgrade process. However, the main things to note at the minute at;</p>
+<ul>
+<li>changes in events, which ones are emitted and what they are emitted with</li>
+<li>removal of <code>grid</code> in favour of <code>isIndexAligned</code> behaviour</li>
+</ul>
+<h2 id="getting-started"><a href="#getting-started">Getting Started</a></h2>
+<pre><code class="bash language-bash">git clone git@github.com:bbc/lrud.git lrud
+cd lrud
+npm install</code></pre>
+<p>Lrud is written in <a href="https://www.typescriptlang.org/">Typescript</a> and makes use of <a href="https://github.com/developit/mitt">mitt</a>.</p>
+<h2 id="usage"><a href="#usage">Usage</a></h2>
+<pre><code class="bash language-bash">npm install lrud</code></pre>
+<pre><code class="js language-js">const { Lrud } = require('Lrud')
+
+// create an instance, register some nodes and assign a default focus
+var navigation = new Lrud()
+navigation
+  .registerNode('root', { orientation: 'vertical' })
+  .registerNode('item-a', { parent: 'root', isFocusable: true })
+  .registerNode('item-b', { parent: 'root', isFocusable: true })
+  .assignFocus('item-a')
+
+// handle a key event
+document.addEventListener('keypress', (event) =&gt; {
+  navigation.handleKeyEvent(event)
+});
+
+// Lrud will output an event when it handles a move
+navigation.on('move', (moveEvent) =&gt; {
+  myApp.doSomethingOnNodeFocus(moveEvent.enter)
+})</code></pre>
+<p>See <a href="./docs/usage.md">usage docs</a> for details full API details.</p>
+<p>For more "full" examples, covering common use cases, check <a href="./docs/recipes.html">the recipes</a></p>
+<h2 id="running-the-tests"><a href="#running-the-tests">Running the tests</a></h2>
+<p>All code is written in Typescript, so we make use of a <code>tsconfig.json</code> and <code>jest.config.js</code> to ensure tests run correctly.</p>
+<p>Test files are split up fairly arbitrarily, aiming to have larger sets of tests broken into their own file. </p>
+<pre><code class="bash language-bash">npm test</code></pre>
+<p>To run a specific test file, use <code>npx jest</code> from the project root.</p>
+<pre><code class="bash language-bash">npx jest src/lrud.test.js</code></pre>
+<p>You can also run all the tests with verbose output. This is useful for listing out test scenarios to ensure that behaviour is covered.</p>
+<pre><code class="bash language-bash">npm run test:verbose</code></pre>
+<p>You can also run all the tests with coverage output</p>
+<pre><code class="bash language-bash">npm run test:coverage</code></pre>
+<p>Several of the tests have associated diagrams, in order to better explain what is being tested. These can be found in <code>./docs/test-diagrams</code>.</p>
+<p>We also have a specific test file (<code>src/build.test.js</code>) in order to ensure that we haven't broken the Typescript/rollup.js build.</p>
+<h2 id="versioning"><a href="#versioning">Versioning</a></h2>
+<pre><code class="bash language-bash">npm version &lt;patch:minor:major&gt;
+npm publish</code></pre>
+<h2 id="built-with"><a href="#built-with">Built with</a></h2>
+<ul>
+<li><a href="https://www.typescriptlang.org/">Typescript</a></li>
+<li><a href="https://rollupjs.org/">rollup.js</a></li>
+<li><a href="https://github.com/developit/mitt">mitt</a></li>
+</ul>
+<h2 id="inspiration"><a href="#inspiration">Inspiration</a></h2>
+<ul>
+<li><a href="http://bbc.github.io/tal/widgets/focus-management.html">BBC - TV Application Layer (TAL)</a></li>
+<li><a href="https://medium.com/netflix-techblog/pass-the-remote-user-input-on-tv-devices-923f6920c9a8">Netflix - Pass the Remote</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox_OS_for_TV/TV_remote_control_navigation">Mozilla - Implementing TV remote control navigation</a></li>
+</ul>
+<h2 id="alternatives"><a href="#alternatives">Alternatives</a></h2>
+<ul>
+<li><a href="https://github.com/bbc/tal">tal</a></li>
+<li><a href="https://github.com/react-tv/react-tv-navigation">react-tv-navigation</a></li>
+<li><a href="https://github.com/dead/react-key-navigation">react-key-navigation</a></li>
+<li><a href="https://github.com/luke-chang/js-spatial-navigation">js-spatial-navigation</a></li>
+</ul>
+<h1 id="license"><a href="#license">License</a></h1>
+<p>LRUD is part of the BBC TAL libraries, and available to everyone under the terms of the Apache 2 open source licence (Apache-2.0). Take a look at the LICENSE file in the code.</p>
+<p>Copyright (c) 2018 BBC</p></div></div><footer style="bottom:0;width:100%;background-color:#f5f5f5;padding:0 15px;box-sizing:border-box;min-height:25vh;position:relative" class="footer"><div style="padding:1em 0 2em 0" class="container"><div class="row"><div style="text-align:center" class="col-md-4 col-md-offset-4"><h3>What is Morty-Docs?</h3><p>Link to <a href="https://github.com/bbc/morty-docs">Morty-docs</a>.</p></div></div></div></footer></body></html>

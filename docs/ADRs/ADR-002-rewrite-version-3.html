@@ -1,0 +1,27 @@
+<html lang="en" style="min-height:100vh" data-reactroot=""><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>docs/ADRs/ADR-002-rewrite-version-3.md</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/></head><body style="min-height:100vh"><div style="min-height:75vh;padding-bottom:20px"><div class="container" style="border:none;border-radius:0;background-color:#000;min-height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"><div class="row col-md-12" style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"><h3 class="col-md-4" style="text-align:left;padding-right:0px;padding-bottom:20px;color:#fff">Morty-Docs</h3></div></div><div class="container"><h2 id="adr-002---adding-navigation-overrides"><a href="#adr-002---adding-navigation-overrides">ADR 002 - Adding Navigation Overrides</a></h2>
+<h3 id="context"><a href="#context">Context</a></h3>
+<p>After much usage of LRUD V2, we (Lovely Horse 🐴) have ended up with a laundry list of things we want LRUD to do that V2 doesn't support. We also have a desire for a more maintainable codebase that utilises more up-to-date terminology for the expected behaviour of LRUD.</p>
+<p>The list of desired functionality currently sits at;</p>
+<ul>
+<li>a real tree structure</li>
+<li>cleaner/easier to understand "grid" functionality</li>
+<li>supporting a concept of "column span"/"column width"</li>
+<li>real definition of which node is the “root” node</li>
+<li>all focusable nodes to maintain an "index" for easier understanding or sorting</li>
+<li>better handling of unregistering</li>
+</ul>
+<h3 id="decision"><a href="#decision">Decision</a></h3>
+<p>We have decided to re-write LRUD from the ground up, maintaining many of the concepts from V2, while addressing the list of desired functionality.</p>
+<p>This will also give us an opportunity to re-write LRUD into Typescript, further increasing the maintainability of the codebase in future.</p>
+<h3 id="status"><a href="#status">Status</a></h3>
+<p>Approved</p>
+<h3 id="consequences"><a href="#consequences">Consequences</a></h3>
+<ul>
+<li><p>user land usages of LRUD will need to update their code in order to make use of the new version. We are planning to keep breaking changes to a minimum, but some changes will be necessary.</p></li>
+<li><p>slightly increased library size, affecting response payload sizes. The increase in size is small enough (an increase of 2.6kb when minified) that we deem this acceptable. Furthermore, the changes mean that current "workaround" code in service land can be removed, reducing payload size in other areas.</p></li>
+<li><p>slightly increased runtime computation. Usage of a real tree in memory requires extra computation. Dedicated testing will take place to ensure LRUD is still performant enough on low powered devices, but initial testing of 92 test cases in 2.4s suggests this is well within limits.</p></li>
+</ul>
+<h3 id="further-reading"><a href="#further-reading">Further Reading</a></h3>
+<ul>
+<li><a href="https://paper.dropbox.com/doc/SSR-Controller-Module-LRUD-V3--Aca6ZBsM4Uv8zEN44j5o4TsvAg-y0v9YqarEOXNP7R2151RK">Paper Doc discussing what LRUD is and why we want to change some things</a></li>
+</ul></div></div><footer style="bottom:0;width:100%;background-color:#f5f5f5;padding:0 15px;box-sizing:border-box;min-height:25vh;position:relative" class="footer"><div style="padding:1em 0 2em 0" class="container"><div class="row"><div style="text-align:center" class="col-md-4 col-md-offset-4"><h3>What is Morty-Docs?</h3><p>Link to <a href="https://github.com/bbc/morty-docs">Morty-docs</a>.</p></div></div></div></footer></body></html>

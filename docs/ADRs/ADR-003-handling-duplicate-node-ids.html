@@ -1,0 +1,30 @@
+<html lang="en" style="min-height:100vh" data-reactroot=""><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>docs/ADRs/ADR-003-handling-duplicate-node-ids.md</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/></head><body style="min-height:100vh"><div style="min-height:75vh;padding-bottom:20px"><div class="container" style="border:none;border-radius:0;background-color:#000;min-height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"><div class="row col-md-12" style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"><h3 class="col-md-4" style="text-align:left;padding-right:0px;padding-bottom:20px;color:#fff">Morty-Docs</h3></div></div><div class="container"><h2 id="adr-003---handling-duplicate-node-ids"><a href="#adr-003---handling-duplicate-node-ids">ADR 003 - Handling duplicate node IDs</a></h2>
+<h3 id="context"><a href="#context">Context</a></h3>
+<p>The registration of a node requires an ID to be given.</p>
+<p>This ID is then used internally in LRUD for retrieving/manipulating the specific Node.</p>
+<p>IDs are also "surfaced" and used as part of the API, in functions such as <code>getNode(&lt;node id&gt;)</code>.</p>
+<p>Questions have been raised around whether or not LRUD should support <em>duplicate</em> IDs.</p>
+<p><strong>Is it technically feasible?</strong></p>
+<p>Yes. The actual "internal" ID of a node could be the combination of its own ID and all its parents. This means we could handle duplicate IDs as long as no 2 IDs were both duplicates <em>and</em> siblings.</p>
+<p>OR, we could make it so all IDs that are registered are actually registered as the ID concatonated with a UUID, etc.</p>
+<p>So the question is, should we?</p>
+<p><strong>Pros</strong></p>
+<ul>
+<li>the data that is used to build a navigation tree can be even dumber, in that it can allow internal IDs in itself. For example, 2 footers on the same page but under different parents would be valid, e.g</li>
+</ul>
+<pre><code class="js language-js">nav.registerNode('footer', { parent: 'left_column' })
+nav.registerNode('footer', { parent: 'right_column' })</code></pre>
+<p><strong>Cons</strong></p>
+<ul>
+<li>Implicit confusion. By allowing duplicate IDs, the tree is now filled with multiple of the same ID at different levels. This will add confusion to any process attempting to parse the tree (both human and machine process)</li>
+<li>Complicates the surface of the API. For example, the user can currently call <code>getNode(&lt;node id&gt;)</code>. If duplicate IDs exist in the tree, these methods must handle this.</li>
+<li>Complicates service-land code that makes use of LRUD. Lots of code exists in services that do something along the lines of "register a node with ID x and then later on, use the ID of X to get that node back out". This is done using calls such as <code>getNode()</code> (as explained above). This means service land will now need to start keeping track of which nodes live under which parents, etc. which immediately becomes a huge headache.</li>
+<li>Complicates the internal state and processes of LRUD. It means that the internal pathing mechanisms and state of LRUD must complicate to handle duplicate IDs across different parents.</li>
+</ul>
+<h3 id="decision"><a href="#decision">Decision</a></h3>
+<p>We have decided that until the need arrises, we will <em>not</em> allow duplicate IDs.</p>
+<p>If <code>registerNode()</code> is called with an ID that has already been registered against the navigation instance, an exception will be thrown.</p>
+<h3 id="status"><a href="#status">Status</a></h3>
+<p>Approved</p>
+<h3 id="consequences"><a href="#consequences">Consequences</a></h3>
+<p>As discussed above, it means the registration data and processes of registering must ensure that no duplicate IDs are used.</p></div></div><footer style="bottom:0;width:100%;background-color:#f5f5f5;padding:0 15px;box-sizing:border-box;min-height:25vh;position:relative" class="footer"><div style="padding:1em 0 2em 0" class="container"><div class="row"><div style="text-align:center" class="col-md-4 col-md-offset-4"><h3>What is Morty-Docs?</h3><p>Link to <a href="https://github.com/bbc/morty-docs">Morty-docs</a>.</p></div></div></div></footer></body></html>

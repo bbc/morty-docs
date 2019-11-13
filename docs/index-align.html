@@ -1,0 +1,96 @@
+<html lang="en" style="min-height:100vh" data-reactroot=""><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>docs/index-align.md</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/></head><body style="min-height:100vh"><div style="min-height:75vh;padding-bottom:20px"><div class="container" style="border:none;border-radius:0;background-color:#000;min-height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"><div class="row col-md-12" style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"><h3 class="col-md-4" style="text-align:left;padding-right:0px;padding-bottom:20px;color:#fff">Morty-Docs</h3></div></div><div class="container"><h1 id="index-alignment"><a href="#index-alignment">Index Alignment</a></h1>
+<h2 id="what"><a href="#what">What?</a></h2>
+<p>Index alignment is used to replicate the behaviour of a "grid" - consider the following scenario:</p>
+<ul>
+<li>there are 2 rows of items, each having 2 items.</li>
+<li>the user is focused on the 2nd item of the 1st row</li>
+<li>when they press "down", the typical behaviour would be to go to the 1st item of the 2nd row<ul>
+<li>This is because row 2 has never been focused before, and thus its <code>activeChild</code> is its first child.</li></ul></li>
+</ul>
+<p>In this scenario, we want the focus to <em>actually</em> go to the <strong>2nd</strong> item of the 2nd row. e.g we want the <strong>indexes to be aligned between the rows</strong>.</p>
+<h2 id="how"><a href="#how">How?</a></h2>
+<p>Registering the scenario above as an Lrud tree would look like the following:</p>
+<pre><code class="js language-js">const { Lrud } = require('lrud');
+
+const navigation = new Lrud();
+
+navigation
+  .register('root', { orientation: 'vertical' })
+  .register('row-1', { orientation: 'horizontal' })
+  .register('row-1_item-1', { isFocusable: true, parent: 'row-1' })
+  .register('row-1_item-2', { isFocusable: true, parent: 'row-1' })
+  .register('row-2', { orientation: 'horizontal' })
+  .register('row-2_item-1', { isFocusable: true, parent: 'row-2' })
+  .register('row-2_item-2', { isFocusable: true, parent: 'row-2' })</code></pre>
+<p>In order to achieve our index alignment that we desire between the 2 rows, all we need to do is tag their parent (in this case, the <code>root</code> node) as <code>isIndexAlign: true</code>.</p>
+<pre><code class="js language-js">navigation
+  .register('root', { orientation: 'vertical', isIndexAlign: true })
+  .register('row-1', { orientation: 'horizontal' })
+  .register('row-1_item-1', { isFocusable: true, parent: 'row-1' })
+  .register('row-1_item-2', { isFocusable: true, parent: 'row-1' })
+  .register('row-2', { orientation: 'horizontal' })
+  .register('row-2_item-1', { isFocusable: true, parent: 'row-2' })
+  .register('row-2_item-2', { isFocusable: true, parent: 'row-2' })</code></pre>
+<p>Now, when the user enters the 2nd row (whose active child, as its never been focused on, is its first item) they will instead focus on the node that has the same index as the node they just left.</p>
+<h2 id="column-spans"><a href="#column-spans">Column spans?</a></h2>
+<p>Lrud supports the idea of a "column span". This is useful for situations where there are rows of content with different numbers of items.</p>
+<p>Consider the following Lrud navigation:</p>
+<pre><code class="js language-js">navigation
+  .register('root', { orientation: 'vertical', isIndexAlign: true })
+  .register('row-1', { orientation: 'horizontal' })
+  .register('row-1_item-1', { isFocusable: true, parent: 'row-1' })
+  .register('row-1_item-2', { isFocusable: true, parent: 'row-1' })
+  .register('row-1_item-3', { isFocusable: true, parent: 'row-1' })
+  .register('row-1_item-4', { isFocusable: true, parent: 'row-1' })
+  .register('row-2', { orientation: 'horizontal' })
+  .register('row-2_item-1', { isFocusable: true, parent: 'row-2' })
+  .register('row-2_item-2', { isFocusable: true, parent: 'row-2' })</code></pre>
+<p>When focused on <code>row-1_item-2</code> and handling a "down" event, the naive behaviour would be to focus on <code>row-2_item-2</code>.</p>
+<p>However, perhaps <em>visually</em> each item on row 2 takes up the effective width of 2 items on row 1.</p>
+<p>In order to make Lrud understand that these indexes need to align, the following change can be made:</p>
+<pre><code class="js language-js">navigation
+  .register('root', { orientation: 'vertical', isIndexAlign: true })
+  .register('row-1', { orientation: 'horizontal' })
+  .register('row-1_item-1', { isFocusable: true, parent: 'row-1', index: 0 })
+  .register('row-1_item-2', { isFocusable: true, parent: 'row-1', index: 1 })
+  .register('row-1_item-3', { isFocusable: true, parent: 'row-1', index: 2 })
+  .register('row-1_item-4', { isFocusable: true, parent: 'row-1', index: 3 })
+  .register('row-2', { orientation: 'horizontal' })
+  .register('row-2_item-1', { isFocusable: true, parent: 'row-2', indexRange: [0, 1] })
+  .register('row-2_item-2', { isFocusable: true, parent: 'row-2', indexRange: [2, 3] })</code></pre>
+<p>Note the <code>indexRange</code> values on the 2nd row items. Every definition of an <code>indexRange</code> should be an array with 2 values - the inclusive lower and upper bound of indexes that this node is covering.</p>
+<h2 id="nested-grids"><a href="#nested-grids">Nested Grids</a></h2>
+<p>LRUD has limited support for nested grid functionality.</p>
+<p>A nested grid is where we want 2 grids, that are each behaving as grids independently, to be index aligned <em>between</em> each other.</p>
+<p>Consider the following scenario.</p>
+<pre><code class="js language-js">navigation.registerNode('root', { orientation: 'horizontal' })
+
+navigation
+  .registerNode('grid1', { parent: 'root', orientation: 'vertical', isIndexAlign: true })
+  .registerNode('grid1_row1', { parent: 'grid1', orientation: 'horizontal' })
+  .registerNode('grid1_item1', { parent: 'grid1_row1', isFocusable: true })
+  .registerNode('grid1_item2', { parent: 'grid1_row1', isFocusable: true })
+  .registerNode('grid1_item3', { parent: 'grid1_row1', isFocusable: true })
+  .registerNode('grid1_row2', { parent: 'grid1', orientation: 'horizontal' })
+  .registerNode('grid1_item4', { parent: 'grid1_row2', isFocusable: true })
+  .registerNode('grid1_item5', { parent: 'grid1_row2', isFocusable: true })
+  .registerNode('grid1_item6', { parent: 'grid1_row2', isFocusable: true })
+
+navigation
+  .registerNode('grid2', { parent: 'root', orientation: 'vertical', isIndexAlign: true })
+  .registerNode('grid2_row1', { parent: 'grid2', orientation: 'horizontal' })
+  .registerNode('grid2_item1', { parent: 'grid2_row1', isFocusable: true })
+  .registerNode('grid2_item2', { parent: 'grid2_row1', isFocusable: true })
+  .registerNode('grid2_item3', { parent: 'grid2_row1', isFocusable: true })
+  .registerNode('grid2_row2', { parent: 'grid2', orientation: 'horizontal' })
+  .registerNode('grid2_item4', { parent: 'grid2_row2', isFocusable: true })
+  .registerNode('grid2_item5', { parent: 'grid2_row2', isFocusable: true })
+  .registerNode('grid2_item6', { parent: 'grid2_row2', isFocusable: true })</code></pre>
+<p>We have 2 "grids", each with 2 rows and 3 items per row. As the <code>root</code> node is <code>orientation: 'horizontal'</code>, these 2 grids would be sat next to each other horizontally.</p>
+<p>If the user was focused on <code>grid1_item6</code> (the last item of the 2nd row of the grid on the left) and the user pressed <code>right</code>, ordinally, LRUD would then put your focus onto <code>grid2_item1</code> (the first focussable <code>activeChild</code> of the grid on the right).</p>
+<p>But what if we wanted the grids themselves to be index aligned between each other?</p>
+<p>It may make sense to <em>instead</em> have the focus land on <code>grid2_item4</code> (the <em>first</em> item of 2nd row of the grid on the right). This would be as though the users focus had "hopped over" to the 2nd grid, and landed in the "closest" place.</p>
+<p>In order to make this happen, all we have to do is add an <code>isIndexAlign: true</code> to the root node (the parent of the 2 grids).</p>
+<h3 id="nested-grid-limitations"><a href="#nested-grid-limitations">Nested Grid Limitations</a></h3>
+<p>Nested grids currently only work 1 level deep, and support for nested grids working with index ranges varies from minimal to untested.</p>
+<p>If you encounter a scenario with a nested grid that you think should work and isn't doing, feel free to open a Github issue.</p></div></div><footer style="bottom:0;width:100%;background-color:#f5f5f5;padding:0 15px;box-sizing:border-box;min-height:25vh;position:relative" class="footer"><div style="padding:1em 0 2em 0" class="container"><div class="row"><div style="text-align:center" class="col-md-4 col-md-offset-4"><h3>What is Morty-Docs?</h3><p>Link to <a href="https://github.com/bbc/morty-docs">Morty-docs</a>.</p></div></div></div></footer></body></html>

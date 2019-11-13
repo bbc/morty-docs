@@ -1,0 +1,86 @@
+<html lang="en" style="min-height:100vh" data-reactroot=""><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>docs/recipes.md</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/></head><body style="min-height:100vh"><div style="min-height:75vh;padding-bottom:20px"><div class="container" style="border:none;border-radius:0;background-color:#000;min-height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"><div class="row col-md-12" style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"><h3 class="col-md-4" style="text-align:left;padding-right:0px;padding-bottom:20px;color:#fff">Morty-Docs</h3></div></div><div class="container"><h1 id="recipes"><a href="#recipes">Recipes</a></h1>
+<p>Below you can find the Lrud setup for various common scenarios. Hopefully these should help illuminate various points of registering nodes in order to get the desired behaviour.</p>
+<h2 id="recipe-1---a-keyboard"><a href="#recipe-1---a-keyboard">Recipe 1 - A "keyboard"</a></h2>
+<p>A miniature version of a search keyboard - utilising a grid and some buttons that are wider than others.</p>
+<pre><code class="js language-js">navigation.registerNode('keyboard', { orientation: 'vertical', isIndexAlign: true })
+navigation
+  .registerNode('row-1', { orientation: 'horizontal' }) // note we don't explicitly set the parent - so Lrud assumes the root node
+  .registerNode('A', { parent: 'row-1', isFocusable: true })
+  .registerNode('B', { parent: 'row-1', isFocusable: true })
+  .registerNode('C', { parent: 'row-1', isFocusable: true })
+  .registerNode('D', { parent: 'row-1', isFocusable: true })
+  .registerNode('E', { parent: 'row-1', isFocusable: true })
+  .registerNode('F', { parent: 'row-1', isFocusable: true })
+
+navigation
+  .registerNode('row-2', { orientation: 'horizontal' })
+  .registerNode('G', { parent: 'row-2', isFocusable: true })
+  .registerNode('H', { parent: 'row-2', isFocusable: true })
+  .registerNode('I', { parent: 'row-2', isFocusable: true })
+  .registerNode('J', { parent: 'row-2', isFocusable: true })
+  .registerNode('K', { parent: 'row-2', isFocusable: true })
+  .registerNode('L', { parent: 'row-2', isFocusable: true })
+
+navigation
+  .registerNode('row-3', { orientation: 'horizontal' })
+  .registerNode('Space', { parent: 'row-3', indexRange: [1, 3], isFocusable: true })    // these buttons are wider, so are given index ranges
+  .registerNode('Delete', { parent: 'row-3', indexRange: [4, 6], isFocusable: true })   // these buttons are wider, so are given index ranges</code></pre>
+<p>##&nbsp;Recipe 2 - A series of wrapping rows</p>
+<p>Representing multiple horizontal rows of content that a user could be browsing, where navigating past the end of a row should return the user focus to the start of that row. <em>But</em>, the rows are <em>not</em> a grid, and going down from the middle of one row should put the user focus to the start of the next row.</p>
+<pre><code class="js language-js">navigation.registerNode('root', { orientation: 'vertical' })
+
+navigation
+  .registerNode('row-1', { parent: 'root', orientation: 'horizontal', isWrapping: true })
+  .registerNode('row-1-item-1', { parent: 'row-1', isFocusable: true })
+  .registerNode('row-1-item-2', { parent: 'row-1', isFocusable: true })
+
+navigation
+  .registerNode('row-2', { parent: 'root', orientation: 'horizontal', isWrapping: true })
+  .registerNode('row-2-item-1', { parent: 'row-2', isFocusable: true })
+  .registerNode('row-2-item-2', { parent: 'row-2', isFocusable: true })</code></pre>
+<h2 id="recipe-3---moving-between-nested-isindexalign-true-nodes-eg-nested-grids"><a href="#recipe-3---moving-between-nested-isindexalign-true-nodes-eg-nested-grids">Recipe 3 - Moving between nested <code>isIndexAlign: true</code> nodes e.g nested grids</a></h2>
+<p>See <code>docs/test-diagrams/fig-2.png</code> for the diagram of how this looks rendered out.</p>
+<p>We sometimes want to have 2 nodes that are affected by their parent's <code>isIndexAlign: true</code>, that are <em>themselves</em> also <code>isIndexAlign: true</code>.</p>
+<p>This could be thought of as "nested grids".</p>
+<pre><code class="js language-js">const navigation = new Lrud()
+
+navigation.registerNode('root', { orientation: 'vertical', isIndexAlign: true })
+
+navigation
+  .registerNode('grid-a', { parent: 'root', orientation: 'vertical', isIndexAlign: true })
+  .registerNode('grid-a-row-1', { parent: 'grid-a', orientation: 'horizontal' })
+  .registerNode('grid-a-row-1-col-1', { parent: 'grid-a-row-1', isFocusable: true })
+  .registerNode('grid-a-row-1-col-2', { parent: 'grid-a-row-1', isFocusable: true })
+  .registerNode('grid-a-row-2', { parent: 'grid-a', orientation: 'horizontal' })
+  .registerNode('grid-a-row-2-col-1', { parent: 'grid-a-row-2', isFocusable: true })
+  .registerNode('grid-a-row-2-col-2', { parent: 'grid-a-row-2', isFocusable: true })
+
+navigation
+  .registerNode('grid-b', { parent: 'root', orientation: 'vertical', isIndexAlign: true })
+  .registerNode('grid-b-row-1', { parent: 'grid-b', orientation: 'horizontal' })
+  .registerNode('grid-b-row-1-col-1', { parent: 'grid-b-row-1', isFocusable: true })
+  .registerNode('grid-b-row-1-col-2', { parent: 'grid-b-row-1', isFocusable: true })
+  .registerNode('grid-b-row-2', { parent: 'grid-b', orientation: 'horizontal' })
+  .registerNode('grid-b-row-2-col-1', { parent: 'grid-b-row-2', isFocusable: true })
+  .registerNode('grid-b-row-2-col-2', { parent: 'grid-b-row-2', isFocusable: true })</code></pre>
+<p>##&nbsp;Recipe 4 - Cancelling moves due to external business logic</p>
+<p>Perhaps you have a system where you only want a user to be able to navigate to a specific section of a page/app if some external logic authorizes and allows that move.</p>
+<p>Thanks to <code>shouldCancel</code> functions, we can block that movement.</p>
+<pre><code class="js language-js">const shouldCancelEnterItem = () =&gt; {
+  return !userPermissions.canSelectItem();
+}
+
+navigation.registerNode('root', { orientation: 'horizontal' })
+
+navigation
+  .registerNode('left-col', { orientation: 'vertical' })
+  .registerNode('item-1', { parent: 'left-col', isFocusable: true })
+  .registerNode('item-2', { parent: 'left-col', isFocusable: true })
+
+navigation
+  .registerNode('right-col', { orientation: 'vertical' })
+  .registerNode('item-a', { parent: 'right-col', shouldCancelEnter: shouldCancelEnterItem, isFocusable: true })
+  .registerNode('item-b', { parent: 'right-col', shouldCancelEnter: shouldCancelEnterItem, isFocusable: true })
+
+navigation.assignFocus('item-1')</code></pre>
+<p>With the setup above, if the user attempted to select <code>item-a</code>, or <code>item-b</code>, <code>shouldCancelEnterItem()</code> would be run. If this function returned <code>true</code>, that movement would be blocked, and focus would remain on <code>item-1</code>.</p></div></div><footer style="bottom:0;width:100%;background-color:#f5f5f5;padding:0 15px;box-sizing:border-box;min-height:25vh;position:relative" class="footer"><div style="padding:1em 0 2em 0" class="container"><div class="row"><div style="text-align:center" class="col-md-4 col-md-offset-4"><h3>What is Morty-Docs?</h3><p>Link to <a href="https://github.com/bbc/morty-docs">Morty-docs</a>.</p></div></div></div></footer></body></html>
