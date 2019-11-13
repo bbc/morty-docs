@@ -64,6 +64,12 @@ that is displayed on the generated index pages.
 where value for raw is either generated HTML **or** input that was passed
 through because it is not markdown e.g. images
 
+## Example Architecture
+
+Below is an example architecture diagram showing how you could integrate morty-docs with GitHub and AWS S3 to generate static websites for all of an organisation's repositories
+
+![Example Architecture Diagram for integrating Morty-Docs with GitHub](docs/morty-architecture-diagram.png)
+
 ## Known issues
 
 We are currently unaware of any issues with morty-docs - if you find an issue
