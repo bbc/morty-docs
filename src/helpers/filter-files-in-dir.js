@@ -7,7 +7,7 @@ function sortByDate (a, b) {
 function filterFilesInDir (filePaths, directory) {
   return filePaths.filter(filePath => {
     return directory // directory = '' is falsy
-      ? filePath.startsWith(directory)
+      ? filePath.startsWith(directory) && (filePath.replace(directory, '').match(/\//g) || []).length <= 1
       : !filePath.includes('/') // returns true for files in root directory
   })
 }

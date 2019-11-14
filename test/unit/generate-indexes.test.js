@@ -52,32 +52,9 @@ describe('Generate Indexes with the correct html', () => {
 
     const actual = generateIndexes(input, { repoName: 'some-repo' })
 
-    const expectedRootIndexLinks = [
-      '<a href="bar/index.html">',
-      '<a href="bar/qux/index.html">',
-      '<a href="foo.html">'
-    ]
-
-    const expectedBarIndexLinks = [
-      '<a href="baz.html">',
-      '<a href="qux/index.html">'
-    ]
-
-    const expectedQuxIndexLinks = [
-      '<a href="qar.html">'
-    ]
-
-    expectedRootIndexLinks.forEach(link => {
-      expect(actual[0].raw.toString()).toContain(link)
-    })
-
-    expectedBarIndexLinks.forEach(link => {
-      expect(actual[1].raw.toString()).toContain(link)
-    })
-
-    expectedQuxIndexLinks.forEach(link => {
-      expect(actual[2].raw.toString()).toContain(link)
-    })
+    expect(actual[0].raw.toString()).toMatchSnapshot()
+    expect(actual[1].raw.toString()).toMatchSnapshot()
+    expect(actual[2].raw.toString()).toMatchSnapshot()
   })
 
   it('to match snapshot with a content title', () => {
