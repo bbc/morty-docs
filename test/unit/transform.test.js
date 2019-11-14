@@ -1,4 +1,4 @@
-const { transform } = require('../../src/')
+const { transform } = require('../../src')
 
 describe('Transform method', () => {
   it('returns the input object unchanged when it is not an .md file', () => {
