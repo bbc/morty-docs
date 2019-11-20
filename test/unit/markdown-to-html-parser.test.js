@@ -32,21 +32,21 @@ describe('Markdown Parser', () => {
   })
 
   it('creates an html link from an md link', () => {
-    const markdown = '[here](./docs/user/publishing-your-repo.md)'
+    const markdown = '[here](./docs/user/publishing-your-repo.md)\n[here](./docs/user/publishing-another-repo.md)'
 
     const actual = parseToHtml(markdown)
 
-    const expected = '<p><a href="./docs/user/publishing-your-repo.html">here</a></p>'
+    const expected = '<p><a href="./docs/user/publishing-your-repo.html">here</a><br />\n<a href="./docs/user/publishing-another-repo.html">here</a></p>'
 
     expect(actual).toEqual(expected)
   })
 
   it('doesn\'t break absolute links', () => {
-    const markdown = '[here](https://bbc.co.uk/docs/user/publishing-your-repo.md)'
+    const markdown = '[here](https://bbc.co.uk/docs/user/publishing-your-repo.md)\n[here](https://bbc.co.uk/docs/user/publishing-another-repo.md)'
 
     const actual = parseToHtml(markdown)
 
-    const expected = '<p><a href="https://bbc.co.uk/docs/user/publishing-your-repo.md">here</a></p>'
+    const expected = '<p><a href="https://bbc.co.uk/docs/user/publishing-your-repo.md">here</a><br />\n<a href="https://bbc.co.uk/docs/user/publishing-another-repo.md">here</a></p>'
 
     expect(actual).toEqual(expected)
   })
