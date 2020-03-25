@@ -19,4 +19,21 @@ describe('Filter directories in directory', () => {
 
     expect(actual).toEqual(expected)
   })
+
+  it('something to do with nested dirs', () => {
+    const directoryPaths = [
+      'docs/arch/',
+      'services/service/docs/arch'
+    ]
+
+    const currentDirectory = 'docs'
+
+    const expected = [
+      'arch/'
+    ]
+
+    const actual = filterDirectoriesInDirectory(directoryPaths, currentDirectory)
+
+    expect(actual).toEqual(expected)
+  })
 })

@@ -40,6 +40,30 @@ describe('Generate Indexes with the correct paths', () => {
   })
 })
 
+it('for multiple directories of the same name at different levels of the repo', () => {
+  const input = [{
+    relativePath: 'docs/arch/someFile.html'
+  }, {
+    relativePath: 'services/someService/docs/arch/file.html'
+  }]
+
+  const actual = generateIndexes(input, { repoName: 'some-repo' })
+
+  const expected = [{
+    relativePath: 'docs/arch/index.html',
+    raw: expect.anything()
+  }, {
+    relativePath: 'services/someService/docs/arch/index.html',
+    raw: expect.anything()
+  }]
+  
+  console.log('first', actual[0].raw.toString('utf8'))
+  console.log('second', actual[1].raw.toString('utf8'))
+  
+  // expect(1).toEqual(1)
+  expect(actual).toEqual(expected)
+})
+
 describe('Generate Indexes with the correct html', () => {
   it('The correct links are included in the raw output', () => {
     const input = [{
