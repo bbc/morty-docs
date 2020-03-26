@@ -23,12 +23,13 @@ describe('Filter directories in directory', () => {
   it('something to do with nested dirs', () => {
     const directoryPaths = [
       'docs/arch/',
-      'services/service/docs/arch'
+      'services/service/docs/arch/'
     ]
 
     const currentDirectory = 'docs'
 
     const expected = [
+      'services/service/docs/arch/',
       'arch/'
     ]
 
