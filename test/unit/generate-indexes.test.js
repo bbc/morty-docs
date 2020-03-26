@@ -40,6 +40,26 @@ describe('Generate Indexes with the correct paths', () => {
   })
 })
 
+it('for indexes within a nested folder of the same name of the config folder', () => {
+  const input = [{
+    relativePath: 'docs/arch/foo.html'
+  }, {
+    relativePath: 'services/service/docs/arch/baz.html'
+  }]
+
+  const actual = generateIndexes(input, { repoName: 'some-repo' })
+
+  const expected = [{
+    relativePath: 'docs/arch/index.html',
+    raw: expect.anything()
+  }, {
+    relativePath: 'services/service/docs/arch/index.html',
+    raw: expect.anything()
+  }]
+
+  expect(actual).toEqual(expected)
+})
+
 describe('Generate Indexes with the correct html', () => {
   it('The correct links are included in the raw output', () => {
     const input = [{

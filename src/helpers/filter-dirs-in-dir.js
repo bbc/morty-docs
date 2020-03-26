@@ -1,30 +1,14 @@
-// module.exports = (directoryPaths, directory) => directoryPaths
-//   // if the path includes the directory AND the path is NOT identical to the directory
-//   .filter(directoryPath => directoryPath.includes(directory) && directoryPath !== directory)
-//   // if the path includes the directory AND the directory is NOT 'root'
-//   .map(directoryPath => directoryPath.includes(`${directory}/`) && directory !== ''
-//     // replace the directory WITHIN the path with ''
-//     // /foo/bar/qux/
-//     // /bar/qux/
-//     // /foo
-//     ? directoryPath.replace(`${directory}/`, '')
-//     // or return the path...?
-//     : directoryPath)
-
 const filterDirs = (directoryPaths, directory) => {
-  console.log('directory paths: ', directoryPaths)
-  console.log('directory: ', directory)
-
   const directoryArray = []
-  const test = directoryPaths.filter(directoryPath => directoryPath.includes(directory) && !directoryPath.startsWith(directory) && directoryPath !== directory)
-  if (test.length) directoryArray.push(test)
+  const nestedDirFolders = directoryPaths.filter(directoryPath => directoryPath.includes(directory) && !directoryPath.startsWith(directory) && directoryPath !== directory)
+  if (nestedDirFolders.length) directoryArray.push(nestedDirFolders)
+  // if directory path includes the config folder then return the full directory path
 
-  const start = directoryPaths.filter(directoryPath => directoryPath.startsWith(directory) && directoryPath !== directory)
-  const rootDir = start.map(directoryPath => directoryPath.startsWith(`${directory}/`) && directory !== ''
+  const rootDirFolders = directoryPaths.filter(directoryPath => directoryPath.startsWith(directory) && directoryPath !== directory)
+  const rootDir = rootDirFolders.map(directoryPath => directoryPath.startsWith(`${directory}/`) && directory !== ''
     ? directoryPath.replace(`${directory}/`, '') : directoryPath)
   if (rootDir.length) directoryArray.push(rootDir)
-
-  console.log(directoryArray.flat())
+  // if directory path starts with the config folder then remove the directory from the path
   return directoryArray.flat()
 }
 
