@@ -1,13 +1,3 @@
-// module.exports = filePaths => [...new Set(filePaths.map(path => {
-//   const lastSlashIndex = path.lastIndexOf('/')
-
-//   const split = path.split('/')
-//   console.log(split)
-//   // if the filePath contains a '/', then return just the directory
-//   // otherwise, return '' (i.e. this is the root)
-//   return lastSlashIndex !== -1 ? path.slice(0, lastSlashIndex) : ''
-// }))]
-
 const getDirectoryPaths = (filePaths) => {
   const dirPaths = filePaths.map(path => {
     // file = SomeOtherDir/AnotherDir/AnotherNestedDir/file.html
