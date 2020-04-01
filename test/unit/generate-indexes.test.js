@@ -59,6 +59,27 @@ describe('Generate Indexes with the correct paths', () => {
 
     expect(actual).toEqual(expected)
   })
+
+  it('generates indexes for every other directory in path', () => {
+    const input = [{
+      relativePath: 'default-md-files/docs/arch/someMDFile.html'
+    }]
+
+    const actual = generateIndexes(input, { repoName: 'some-repo' })
+
+    const expected = [{
+      relativePath: 'default-md-files/index.html',
+      raw: expect.anything()
+    }, {
+      relativePath: 'default-md-files/docs/index.html',
+      raw: expect.anything()
+    }, {
+      relativePath: 'default-md-files/docs/arch/index.html',
+      raw: expect.anything()
+    }]
+
+    expect(actual).toEqual(expected)
+  })
 })
 
 describe('Generate Indexes with the correct html', () => {
