@@ -5,23 +5,23 @@ const fs = require('fs')
 jest.mock('recursive-readdir')
 jest.mock('fs')
 
-readdir.mockImplementation(() => Promise.resolve(['someDirectory/some/path/tofile.md', 'someDirectory/another/path/tofile.md']))
+readdir.mockImplementation(() => Promise.resolve(['someRepo/someDirectory/some/path/tofile.md', 'someRepo/someDirectory/another/path/tofile.md']))
 fs.readFileSync.mockImplementation(() => 'some text in a file')
 
 describe('Generate transform input', () => {
   it('creates a correctly structured array of file objects from a directory ending in a slash', async () => {
     const expected = [
       {
-        relativePath: 'some/path/tofile.md',
+        relativePath: 'someRepo/someDirectory/some/path/tofile.md',
         raw: 'some text in a file'
       },
       {
-        relativePath: 'another/path/tofile.md',
+        relativePath: 'someRepo/someDirectory/another/path/tofile.md',
         raw: 'some text in a file'
       }
     ]
 
-    const actual = await generateTransformInput('someDirectory/')
+    const actual = await generateTransformInput('someRepo/someDirectory/')
 
     expect(actual).toEqual(expected)
   })
@@ -29,16 +29,16 @@ describe('Generate transform input', () => {
   it('creates a correctly structured array of file objects from a directory that does not end in a slash', async () => {
     const expected = [
       {
-        relativePath: 'some/path/tofile.md',
+        relativePath: 'someRepo/someDirectory/some/path/tofile.md',
         raw: 'some text in a file'
       },
       {
-        relativePath: 'another/path/tofile.md',
+        relativePath: 'someRepo/someDirectory/another/path/tofile.md',
         raw: 'some text in a file'
       }
     ]
 
-    const actual = await generateTransformInput('someDirectory')
+    const actual = await generateTransformInput('someRepo/someDirectory')
 
     expect(actual).toEqual(expected)
   })
