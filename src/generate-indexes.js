@@ -5,11 +5,12 @@ const filterFilesInDirectory = require('./helpers/filter-files-in-dir')
 const filterDirectoriesInDirectory = require('./helpers/filter-dirs-in-dir')
 
 const generateIndex = (htmlFilePaths, subDirPaths, contentTitle) => {
-  const subDirLinks = subDirPaths.map(dirPath => ({
+  const subDirLinks = subDirPaths.filter(dirPath => !dirPath.includes('/')).map(dirPath => ({
     link: `${dirPath}/index.html`,
     text: dirPath,
     iconClass: 'fas fa-folder-open'
-  }))
+  })
+  )
 
   const fileLinks = htmlFilePaths.map(filePath => {
     const text = path.basename(filePath)

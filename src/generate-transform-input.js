@@ -7,7 +7,7 @@ const generateTransformInput = (dir) => {
   return readdir(dir).then(files => {
     return files.map(file => {
       return {
-        relativePath: file.toString().replace(dir, ''),
+        relativePath: file.toString(),
         raw: fs.readFileSync(file)
       }
     })
