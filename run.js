@@ -1,14 +1,18 @@
 const fsExtra = require('fs-extra')
 const { transform, generateTransformInput } = require('./build/src')
 
+const path = require('path')
+
 const directoryToConvert = JSON.parse(process.env.npm_config_argv).remain[0] || 'default-md-files'
+const resolvedPath = path.resolve(directoryToConvert)
 
 const mortyDocs = async () => {
-  const inputObjs = await generateTransformInput(directoryToConvert)
+  const inputObjs = await generateTransformInput(resolvedPath)
 
   const files = transform(inputObjs, { contentTitle: 'Content Title - located in run.js' })
 
   files.forEach(file => {
+    console.log(`file.relativePath: ${JSON.stringify(file.relativePath, null, 2)}`)
     let filePath = `www/${file.relativePath}`
     fsExtra.ensureFileSync(filePath)
     fsExtra.writeFileSync(filePath, file.raw)
