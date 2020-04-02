@@ -12,7 +12,6 @@ const mortyDocs = async () => {
   const files = transform(inputObjs, { contentTitle: 'Content Title - located in run.js' })
 
   files.forEach(file => {
-    console.log(`file.relativePath: ${JSON.stringify(file.relativePath, null, 2)}`)
     let filePath = `www/${file.relativePath}`
     fsExtra.ensureFileSync(filePath)
     fsExtra.writeFileSync(filePath, file.raw)
