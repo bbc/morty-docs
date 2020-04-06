@@ -32,6 +32,12 @@ const generateIndexes = (files, options = { contentTitle: '' }) => {
 
   const directories = getDirectories(htmlFilePaths)
 
+  // If we have not got a 'root' folder, then add one.
+  // TODO: Refactor this so it is not needed (maybe?)
+  if (!directories.includes('')) {
+    directories.push('')
+  }
+
   const indexes = directories.map(directory => {
     const filesInDir = filterFilesInDirectory(htmlFilePaths, directory)
     const subDirsInDir = filterDirectoriesInDirectory(directories, directory)

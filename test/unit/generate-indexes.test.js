@@ -1,20 +1,22 @@
 const generateIndexes = require('../../src/generate-indexes.js')
 
-describe('Generate Indexes with the correct paths', () => {
-  it('for a top level index page', () => {
-    const input = [{ relativePath: 'someRootFile.html' }]
-
-    const actual = generateIndexes(input, { repoName: 'some-repo' })
-
-    const expected = [{
-      relativePath: 'index.html',
-      raw: expect.anything()
+describe('Generating indexes', () => {
+  it('returns an index page for the "root" folder', () => {
+    const input = [{
+      relativePath: 'someRootFile.html'
     }]
 
-    expect(actual).toEqual(expected)
+    const actual = generateIndexes(input, { repoName: 'some-repo' })
+    const expected = [{
+      relativePath: 'index.html',
+      raw: expect.any(Buffer)
+    }]
+
+    expect(actual).toEqual(expect.arrayContaining(expected))
+    expect(actual).toHaveLength(expected.length)
   })
 
-  it('for a "root" folder with no html files', () => {
+  it('returns an index page for the "root" folder, if the folder contains no files', () => {
     const input = [{
       relativePath: 'rfc/someRfc.html'
     }]
@@ -23,13 +25,14 @@ describe('Generate Indexes with the correct paths', () => {
 
     const expected = [{
       relativePath: 'index.html',
-      raw: expect.anything()
-    },{
+      raw: expect.any(Buffer)
+    }, {
       relativePath: 'rfc/index.html',
-      raw: expect.anything()
+      raw: expect.any(Buffer)
     }]
 
-    expect(actual).toEqual(expected)
+    expect(actual).toEqual(expect.arrayContaining(expected))
+    expect(actual).toHaveLength(expected.length)
   })
 
   it('for multiple index pages', () => {
@@ -42,61 +45,41 @@ describe('Generate Indexes with the correct paths', () => {
     }]
 
     const actual = generateIndexes(input, { repoName: 'some-repo' })
-
     const expected = [{
       relativePath: 'index.html',
-      raw: expect.anything()
+      raw: expect.any(Buffer)
     }, {
       relativePath: 'someFolder/index.html',
-      raw: expect.anything()
+      raw: expect.any(Buffer)
     }, {
       relativePath: 'someOtherFolder/index.html',
-      raw: expect.anything()
+      raw: expect.any(Buffer)
     }]
 
-    expect(actual).toEqual(expected)
-  })
-
-  it('generates indexes for every directory in path', () => {
-    const input = [{
-      relativePath: 'someFolder/someOtherFolder/docs/file.html'
-    }]
-
-    const actual = generateIndexes(input, { repoName: 'some-repo' })
-
-    const expected = [{
-      relativePath: 'someFolder/index.html',
-      raw: expect.anything()
-    }, {
-      relativePath: 'someFolder/someOtherFolder/index.html',
-      raw: expect.anything()
-    }, {
-      relativePath: 'someFolder/someOtherFolder/docs/index.html',
-      raw: expect.anything()
-    }]
-
-    expect(actual).toEqual(expected)
+    expect(actual).toEqual(expect.arrayContaining(expected))
+    expect(actual).toHaveLength(expected.length)
   })
 
   it('generates indexes for every other directory in path', () => {
     const input = [{
-      relativePath: 'default-md-files/docs/arch/someMDFile.html'
+      relativePath: 'docs/arch/someMDFile.html'
     }]
 
     const actual = generateIndexes(input, { repoName: 'some-repo' })
 
     const expected = [{
-      relativePath: 'default-md-files/index.html',
-      raw: expect.anything()
+      relativePath: 'index.html',
+      raw: expect.any(Buffer)
     }, {
-      relativePath: 'default-md-files/docs/index.html',
-      raw: expect.anything()
+      relativePath: 'docs/index.html',
+      raw: expect.any(Buffer)
     }, {
-      relativePath: 'default-md-files/docs/arch/index.html',
-      raw: expect.anything()
+      relativePath: 'docs/arch/index.html',
+      raw: expect.any(Buffer)
     }]
 
-    expect(actual).toEqual(expected)
+    expect(actual).toEqual(expect.arrayContaining(expected))
+    expect(actual).toHaveLength(expected.length)
   })
 })
 
