@@ -23,10 +23,10 @@ describe('Generate transform input', () => {
     const dir = '/tmp/someRepo/someDirectory/'
 
     const expected = [{
-      relativePath: 'someDirectory/some/path/tofile.md',
+      relativePath: 'some/path/tofile.md',
       raw: 'some text in a file'
     }, {
-      relativePath: 'someDirectory/another/path/tofile.md',
+      relativePath: 'another/path/tofile.md',
       raw: 'some text in a file'
     }]
 
@@ -39,10 +39,10 @@ describe('Generate transform input', () => {
     const dir = '/tmp/someRepo/someDirectory'
 
     const expected = [{
-      relativePath: 'someDirectory/some/path/tofile.md',
+      relativePath: 'some/path/tofile.md',
       raw: 'some text in a file'
     }, {
-      relativePath: 'someDirectory/another/path/tofile.md',
+      relativePath: 'another/path/tofile.md',
       raw: 'some text in a file'
     }]
 

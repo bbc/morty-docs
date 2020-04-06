@@ -25,12 +25,18 @@ const generateIndex = (htmlFilePaths, subDirPaths, contentTitle) => {
   return renderIndexPage([...subDirLinks, ...fileLinks], contentTitle)
 }
 
-const generateIndexes = (files, options) => {
+const generateIndexes = (files, options = { contentTitle: '' }) => {
   const htmlFilePaths = files
     .map(file => file.relativePath)
     .filter(relativePath => path.extname(relativePath) === '.html')
 
   const directories = getDirectories(htmlFilePaths)
+
+  // If we have not got a 'root' folder, then add one.
+  // TODO: Refactor this so it is not needed (maybe?)
+  if (!directories.includes('')) {
+    directories.push('')
+  }
 
   const indexes = directories.map(directory => {
     const filesInDir = filterFilesInDirectory(htmlFilePaths, directory)
