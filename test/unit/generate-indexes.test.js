@@ -14,6 +14,24 @@ describe('Generate Indexes with the correct paths', () => {
     expect(actual).toEqual(expected)
   })
 
+  it('for a "root" folder with no html files', () => {
+    const input = [{
+      relativePath: 'rfc/someRfc.html'
+    }]
+
+    const actual = generateIndexes(input, { repoName: 'some-repo' })
+
+    const expected = [{
+      relativePath: 'index.html',
+      raw: expect.anything()
+    },{
+      relativePath: 'rfc/index.html',
+      raw: expect.anything()
+    }]
+
+    expect(actual).toEqual(expected)
+  })
+
   it('for multiple index pages', () => {
     const input = [{
       relativePath: 'someRootFile.html'
