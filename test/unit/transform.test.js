@@ -1,7 +1,7 @@
 const { transform } = require('../../src')
 
-describe('Transform method', () => {
-  it('returns the input object unchanged when it is not an .md file', () => {
+describe('transform.js', () => {
+  it('returns the input object unchanged when it is not a .md file', () => {
     const notMdObj = {
       relativePath: 'simple-content.PNG',
       raw: 'Input-Raw-for-simple-content.PNG'

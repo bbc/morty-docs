@@ -25,7 +25,7 @@ const generateIndex = (htmlFilePaths, subDirPaths, contentTitle) => {
   return renderIndexPage([...subDirLinks, ...fileLinks], contentTitle)
 }
 
-const generateIndexes = (files, options) => {
+const generateIndexes = (files, options = { contentTitle: '' }) => {
   const htmlFilePaths = files
     .map(file => file.relativePath)
     .filter(relativePath => path.extname(relativePath) === '.html')
