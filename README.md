@@ -32,7 +32,7 @@ If you do want to be able to have more control over the website which is publish
 
 ### Install
 
-`npm install --save morty-docs`
+`npm install --save @bbc/morty-docs`
 
 ### Require
 
