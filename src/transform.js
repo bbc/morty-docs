@@ -16,7 +16,8 @@ const transform = (inputObjs, options) => {
   validate(inputObjs)
 
   const contentObjs = inputObjs.map(inputObj => {
-    if (path.extname(inputObj.relativePath) === '.md') {
+    const ext = path.extname(inputObj.relativePath)
+    if (ext === '.md' || ext === '.asciidoc') {
       return transformContent(inputObj, options)
     } else {
       return inputObj

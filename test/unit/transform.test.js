@@ -1,3 +1,7 @@
+const mockTransformContentOutput = { relativePath: 'transformedPath', raw: 'transformedRaw' }
+jest.mock('../../src/transform-content', () => jest.fn(() => mockTransformContentOutput))
+const mockTransformContent = require('../../src/transform-content')
+
 const { transform } = require('../../src')
 
 describe('transform.js', () => {
@@ -30,5 +34,29 @@ describe('transform.js', () => {
     expect(() => {
       transform([objWithoutRaw])
     }).toThrow('All objects in input array must have a .raw property')
+  })
+
+  it('transforms .md files', () => {
+    const mdObj = {
+      relativePath: 'simple-content.md',
+      raw: '# Some Markdown'
+    }
+
+    const result = transform([mdObj], {})
+
+    expect(result).toEqual(expect.arrayContaining([mockTransformContentOutput]))
+    expect(mockTransformContent).toHaveBeenCalledWith(mdObj, {})
+  })
+
+  it('transforms .asciidoc files', () => {
+    const asciidocObj = {
+      relativePath: 'simple-content.asciidoc',
+      raw: '== Some AsciiDoc'
+    }
+
+    const result = transform([asciidocObj], {})
+
+    expect(result).toEqual(expect.arrayContaining([mockTransformContentOutput]))
+    expect(mockTransformContent).toHaveBeenCalledWith(asciidocObj, {})
   })
 })
