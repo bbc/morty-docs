@@ -31,7 +31,7 @@ describe('Transform-content returns correct relative path', () => {
 })
 
 // TODO: ? we could extract different parts of the the html and test them separately
-describe('Transform-content returns the correct html', () => {
+describe('Transform-content returns the correct html from markdown', () => {
   it('for a line of plain text', () => {
     const inputObj = {
       relativePath: 'file-name.md',
@@ -47,6 +47,30 @@ describe('Transform-content returns the correct html', () => {
     const inputObj = {
       relativePath: 'file-name.md',
       raw: '# Title of simple-content.md \n[Link to MD in docs directory](docs/file-to-publish.md)'
+    }
+
+    const result = transformContent(inputObj, options)
+
+    expect(result.raw).toMatchSnapshot()
+  })
+})
+
+describe('Transform-content returns the correct html from AsciiDoc', () => {
+  it('for a line of plain text', () => {
+    const inputObj = {
+      relativePath: 'file-name.asciidoc',
+      raw: 'One line of plain text'
+    }
+
+    const result = transformContent(inputObj, options)
+
+    expect(result.raw).toMatchSnapshot()
+  })
+
+  it('for AsciiDoc with a title and a link', () => {
+    const inputObj = {
+      relativePath: 'file-name.asciidoc',
+      raw: '== Title of simple-content.asciidoc \nlink:docs/file-to-publish.md[Link to MD in docs directory]'
     }
 
     const result = transformContent(inputObj, options)
