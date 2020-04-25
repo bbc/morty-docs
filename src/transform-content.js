@@ -1,3 +1,6 @@
+const path = require('path')
+const asciidoctor = require('asciidoctor')()
+
 const renderMortyPage = require('./page-renderers/MortyPage')
 const parseToHtml = require('./markdown-to-html-parser')
 
@@ -5,13 +8,14 @@ const changeExtension = relPath => relPath.replace(/\.[^.]*$/, '.html') // \.[^.
 
 const transformContent = (inputObj, options) => {
   const inputRelPath = inputObj.relativePath
+  const parser = path.extname(inputRelPath) === '.asciidoc' ? asciidoctor.convert.bind(asciidoctor) : parseToHtml
 
   return {
     relativePath: changeExtension(inputRelPath),
     raw: renderMortyPage(
       inputRelPath,
 
-      parseToHtml(inputObj.raw.toString()),
+      parser(inputObj.raw.toString()),
       options)
   }
 }

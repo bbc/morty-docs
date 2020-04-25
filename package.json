@@ -36,6 +36,7 @@
   },
   "homepage": "https://github.com/bbc/morty-docs#readme",
   "dependencies": {
+    "asciidoctor": "^2.1.1",
     "fs-extra": "^7.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
