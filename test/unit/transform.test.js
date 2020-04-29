@@ -59,4 +59,28 @@ describe('transform.js', () => {
     expect(result).toEqual(expect.arrayContaining([mockTransformContentOutput]))
     expect(mockTransformContent).toHaveBeenCalledWith(asciidocObj, {})
   })
+
+  it('transforms .adoc files', () => {
+    const asciidocObj = {
+      relativePath: 'simple-content.adoc',
+      raw: '== Some AsciiDoc'
+    }
+
+    const result = transform([asciidocObj], {})
+
+    expect(result).toEqual(expect.arrayContaining([mockTransformContentOutput]))
+    expect(mockTransformContent).toHaveBeenCalledWith(asciidocObj, {})
+  })
+
+  it('transforms .asc files', () => {
+    const asciidocObj = {
+      relativePath: 'simple-content.asc',
+      raw: '== Some AsciiDoc'
+    }
+
+    const result = transform([asciidocObj], {})
+
+    expect(result).toEqual(expect.arrayContaining([mockTransformContentOutput]))
+    expect(mockTransformContent).toHaveBeenCalledWith(asciidocObj, {})
+  })
 })

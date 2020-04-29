@@ -8,7 +8,8 @@ const changeExtension = relPath => relPath.replace(/\.[^.]*$/, '.html') // \.[^.
 
 const transformContent = (inputObj, options) => {
   const inputRelPath = inputObj.relativePath
-  const parser = path.extname(inputRelPath) === '.asciidoc' ? asciidoctor.convert.bind(asciidoctor) : parseToHtml
+  const ext = path.extname(inputRelPath)
+  const parser = (ext === '.asciidoc' || ext === '.adoc' || ext === '.asc') ? asciidoctor.convert.bind(asciidoctor) : parseToHtml
 
   return {
     relativePath: changeExtension(inputRelPath),
