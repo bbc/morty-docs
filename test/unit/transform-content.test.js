@@ -67,10 +67,32 @@ describe('Transform-content returns the correct html from AsciiDoc', () => {
     expect(result.raw).toMatchSnapshot()
   })
 
-  it('for AsciiDoc with a title and a link', () => {
+  it('for .asciidoc with a title and a link', () => {
     const inputObj = {
       relativePath: 'file-name.asciidoc',
       raw: '== Title of simple-content.asciidoc \nlink:docs/file-to-publish.md[Link to MD in docs directory]'
+    }
+
+    const result = transformContent(inputObj, options)
+
+    expect(result.raw).toMatchSnapshot()
+  })
+
+  it('for .adoc with a title and a link', () => {
+    const inputObj = {
+      relativePath: 'file-name.adoc',
+      raw: '== Title of simple-content.adoc \nlink:docs/file-to-publish.md[Link to MD in docs directory]'
+    }
+
+    const result = transformContent(inputObj, options)
+
+    expect(result.raw).toMatchSnapshot()
+  })
+
+  it('for .asc with a title and a link', () => {
+    const inputObj = {
+      relativePath: 'file-name.asc',
+      raw: '== Title of simple-content.asc \nlink:docs/file-to-publish.md[Link to MD in docs directory]'
     }
 
     const result = transformContent(inputObj, options)

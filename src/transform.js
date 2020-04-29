@@ -17,7 +17,7 @@ const transform = (inputObjs, options) => {
 
   const contentObjs = inputObjs.map(inputObj => {
     const ext = path.extname(inputObj.relativePath)
-    if (ext === '.md' || ext === '.asciidoc') {
+    if (ext === '.md' || ext === '.asciidoc' || ext === '.adoc' || ext === '.asc') {
       return transformContent(inputObj, options)
     } else {
       return inputObj
