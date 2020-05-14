@@ -99,7 +99,7 @@ Thanks for wanting to improve the project!
 Before contributing back, please familiarise yourself with a few things
 we mention below.
 
-## Can I contribute?
+### Can I contribute?
 
 Yes.  Contributions are accepted based on the merit of the contribution,
 not on the basis of who they are from.
@@ -108,20 +108,11 @@ We welcome contributions from everyone.
 
 Please respect each other.
 
-## What is a contribution?
-
-The obvious answer is code.  Be it a one line typo change, a bug fix,
-feature improvement, new minor feature, major feature or complete rehaul.
-
-However, documentation, examples, videos, blogs, vlogs, podcasts, active
-examples, media, hosted versions, and testimonials of usage are all
-useful contributions.
-
-## Adding an issue
+### Adding an issue
 
 If you spot an issue or just want to raise one please use the issue template.
 
-## Contact us!
+### Contact us!
 
 It's always great to hear from people who are interested and
 using morty-docs.
@@ -131,7 +122,7 @@ feature is requested, but we can't add *right now*, will result in us
 adding a TODO label to it. We'll come back to it when we can or someone
 out there might implement it.
 
-## Incorporating Contributions
+### Incorporating Contributions
 
 We will always accept contributions. We endeavour to ensure that they
 fit with the existing code base.
@@ -144,7 +135,7 @@ Either way, that doesn't stop you using your change nor stop you releasing
 your version.  It just means it doesn't fit with the project as we see it
 at this time.
 
-## Proposing Changes
+### Proposing Changes
 
 Please open an issue.  Then fork the project.  Make your changes in your
 clone fork, and create a pull request, referencing the issue. We'll then
