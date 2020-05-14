@@ -68,6 +68,12 @@ that is displayed on the generated index pages.
 where value for raw is either generated HTML **or** input that was passed
 through because it is not markdown or asciidoc e.g. images
 
+## Releasing
+
+Releases are versioned through `npm version`, and publishing is handled by our [Travis CI Integration](./.travis.yml)
+
+`$ npm version (major|minor|patch)`
+
 ## Example Architecture
 
 Below is an example architecture diagram showing how you could integrate morty-docs with GitHub and AWS S3 to generate static websites for all of an organisation's repositories
