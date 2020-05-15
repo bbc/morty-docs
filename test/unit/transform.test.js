@@ -48,39 +48,19 @@ describe('transform.js', () => {
     expect(mockTransformContent).toHaveBeenCalledWith(mdObj, {})
   })
 
-  it('transforms .asciidoc files', () => {
-    const asciidocObj = {
-      relativePath: 'simple-content.asciidoc',
-      raw: '== Some AsciiDoc'
-    }
+  const asciidocExtensions = ['.asciidoc', '.adoc', '.asc']
 
-    const result = transform([asciidocObj], {})
+  asciidocExtensions.forEach(asciidocExtension => {
+    it(`transforms ${asciidocExtension} files`, () => {
+      const asciidocObj = {
+        relativePath: `simple-content${asciidocExtension}`,
+        raw: '== Some AsciiDoc'
+      }
 
-    expect(result).toEqual(expect.arrayContaining([mockTransformContentOutput]))
-    expect(mockTransformContent).toHaveBeenCalledWith(asciidocObj, {})
-  })
+      const result = transform([asciidocObj], {})
 
-  it('transforms .adoc files', () => {
-    const asciidocObj = {
-      relativePath: 'simple-content.adoc',
-      raw: '== Some AsciiDoc'
-    }
-
-    const result = transform([asciidocObj], {})
-
-    expect(result).toEqual(expect.arrayContaining([mockTransformContentOutput]))
-    expect(mockTransformContent).toHaveBeenCalledWith(asciidocObj, {})
-  })
-
-  it('transforms .asc files', () => {
-    const asciidocObj = {
-      relativePath: 'simple-content.asc',
-      raw: '== Some AsciiDoc'
-    }
-
-    const result = transform([asciidocObj], {})
-
-    expect(result).toEqual(expect.arrayContaining([mockTransformContentOutput]))
-    expect(mockTransformContent).toHaveBeenCalledWith(asciidocObj, {})
+      expect(result).toEqual(expect.arrayContaining([mockTransformContentOutput]))
+      expect(mockTransformContent).toHaveBeenCalledWith(asciidocObj, {})
+    })
   })
 })

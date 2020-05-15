@@ -19,19 +19,46 @@ const classMap = {
   table: 'table'
 }
 
-const bindings = Object.keys(classMap)
-  .map(key => ({
+const bindings = Object.keys(classMap).map((key) => ({
+  type: 'output',
+  regex: new RegExp(`<${key}(.*)>`, 'g'),
+  replace: `<${key} class="${classMap[key]}" $1>`
+}))
+
+const normaliseBasePath = (basePath) => {
+  const pathElements = (basePath || '').split('/')
+    .filter((entry) => Boolean(entry))
+
+  if (pathElements.length === 0) {
+    return ''
+  }
+
+  return '/' + pathElements.join('/')
+}
+
+const createParser = (options) => {
+  const basePath = normaliseBasePath(options.basePath)
+  const addBasePathToRootLinks = {
     type: 'output',
-    regex: new RegExp(`<${key}(.*)>`, 'g'),
-    replace: `<${key} class="${classMap[key]}" $1>`
-  }))
+    regex: /<a href="\/([^:\n]*)">/g, // exclude colon, so external links aren't converted
+    replace: `<a href="${basePath}/$1">`
+  }
 
-const parser = new showdown.Converter({
-  extensions: [convertMdLinksToHtmlLinks, headingExtension, ...bindings]
-})
+  const parser = new showdown.Converter({
+    extensions: [
+      convertMdLinksToHtmlLinks,
+      addBasePathToRootLinks,
+      headingExtension,
+      ...bindings
+    ]
+  })
+  parser.setFlavor('github')
+  return parser
+}
 
-parser.setFlavor('github')
-
-const parseToHTML = (markdown) => parser.makeHtml(markdown)
+const parseToHTML = (markdown, options = {}) => {
+  const parser = createParser(options)
+  return parser.makeHtml(markdown)
+}
 
 module.exports = parseToHTML

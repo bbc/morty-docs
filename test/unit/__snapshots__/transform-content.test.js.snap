@@ -319,7 +319,7 @@ exports[`Transform-content returns the correct html from AsciiDoc for a line of 
 </html>
 `;
 
-exports[`Transform-content returns the correct html from markdown for Markdown with a title and a link 1`] = `
+exports[`Transform-content returns the correct html from markdown for Markdown with a title and links 1`] = `
 <html lang="en"
       style="min-height:100vh"
       data-reactroot
@@ -364,7 +364,11 @@ exports[`Transform-content returns the correct html from markdown for Markdown w
         </h1>
         <p>
           <a href="docs/file-to-publish.html">
-            Link to MD in docs directory
+            Relative link to MD in docs directory
+          </a>
+          <br>
+          <a href="/morty-docs/some-repo/docs/file-to-publish.html">
+            Root link to MD in docs directory
           </a>
         </p>
       </div>
