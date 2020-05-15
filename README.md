@@ -45,13 +45,13 @@ const { generateTransformInput, transform } = require('@bbc/morty-docs')
 ```javascript
 const inputObjs = await generateTransformInput('a/folder/with/markdown-files')
 
-const outputObjs = transform(inputObjs,{ contentTitle: 'My Docs' })
+const outputObjs = transform(inputObjs,{ contentTitle: 'My Docs', basePath: '/path/my/docs/are/hosted/under' })
 ```
 
 - `transform()` can be used alone, but if your files are in a local
 directory the `generateTransformInput()` function is a convenience
-- the 2nd argument to transform() can *optionally* be used to provide a Title
-that is displayed on the generated index pages.
+- the 2nd argument to `transform()` can *optionally* be used to provide a Title
+that is displayed on the generated index pages and the base path below which your files will be served (this required to make markdown links starting with `/` work).
 
 - `outputObjs` will be an array of objects like this:
 

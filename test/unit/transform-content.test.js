@@ -1,6 +1,9 @@
 const transformContent = require('../../src/transform-content.js')
 
-const options = { contentTitle: 'Some Title' }
+const options = {
+  contentTitle: 'Some Title',
+  basePath: '/morty-docs/some-repo'
+}
 
 describe('Transform-content returns correct relative path', () => {
   it('for the html made from .md', () => {
@@ -43,10 +46,10 @@ describe('Transform-content returns the correct html from markdown', () => {
     expect(result.raw).toMatchSnapshot()
   })
 
-  it('for Markdown with a title and a link', () => {
+  it('for Markdown with a title and links', () => {
     const inputObj = {
       relativePath: 'file-name.md',
-      raw: '# Title of simple-content.md \n[Link to MD in docs directory](docs/file-to-publish.md)'
+      raw: '# Title of simple-content.md \n[Relative link to MD in docs directory](docs/file-to-publish.md)\n[Root link to MD in docs directory](/docs/file-to-publish.md)'
     }
 
     const result = transformContent(inputObj, options)
