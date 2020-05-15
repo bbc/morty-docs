@@ -18,14 +18,12 @@ describe('Transformed content passed to html parser is of correct type', () => {
   })
 })
 
-describe('', () => {
-  it('Passes the options to the html parser', () => {
-    const inputObj = {
-      relativePath: 'file-name.md',
-      raw: Buffer.from(`some text here`, 'utf-8')
-    }
+it('Passes the options to the html parser', () => {
+  const inputObj = {
+    relativePath: 'file-name.md',
+    raw: Buffer.from(`some text here`, 'utf-8')
+  }
 
-    transformContent(inputObj, options)
-    expect(parseToHTML).toHaveBeenCalledWith(expect.anything(), options)
-  })
+  transformContent(inputObj, options)
+  expect(parseToHTML).toHaveBeenCalledWith(expect.anything(), options)
 })
