@@ -29,7 +29,8 @@
     "morty-docs",
     "markdown"
   ],
-  "author": "",
+  "engines" : { "node" : ">=12.x" },
+  "author": "BBC",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/bbc/morty-docs/issues"
