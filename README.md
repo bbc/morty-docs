@@ -28,6 +28,24 @@ Plain simple markdown files go in, a html site comes out.
 
 If you do want to be able to have more control over the website which is published and are happy to change your files and structure you might want to pick a more complex static site generator.
 
+## Try it locally
+
+```bash
+git clone git@github.com:bbc/morty-docs.git
+cd morty-docs
+npm ci
+npm start # starts local server running Morty Docs
+```
+
+Open http://localhost:8080/ in your browser
+
+Morty Docs will generate a website listing an HTML page for each markdown file in the `/default-md-files` directory
+
+To try it with markdown files from a custom directory
+```bash
+npm start /absolute/path/to/custom/directory
+```
+
 ## Use as a library
 
 ### Install
