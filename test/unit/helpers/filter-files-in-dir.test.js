@@ -86,4 +86,35 @@ describe('Filter files in directory', () => {
 
     expect(actual).toEqual(expected)
   })
+
+  it('returns files within a given directory, with dated files sorted reverse chronologically, where non-dated files are mixed in an unexpected order', () => {
+    const filePaths = [
+      'README.html',
+      'SomeDir/2016-09-01-dated-file-1.html',
+      'SomeDir/2016-09-02-dated-file-2.html',
+      'SomeDir/2016-10-01-dated-file-3.html',
+      'SomeDir/2016070-not-a-dated-file-1.html',
+      'SomeDir/2016070-not-a-dated-file-2.html',
+      'SomeDir/2016070-not-a-dated-file-3.html',
+      'SomeDir/2017-09-01-dated-file-4.html',
+      'SomeDir/2017-09-02-dated-file-5.html'
+    ]
+
+    const currentDirectory = 'SomeDir'
+
+    const expected = [
+      'SomeDir/2017-09-02-dated-file-5.html',
+      'SomeDir/2017-09-01-dated-file-4.html',
+      'SomeDir/2016-10-01-dated-file-3.html',
+      'SomeDir/2016-09-02-dated-file-2.html',
+      'SomeDir/2016-09-01-dated-file-1.html',
+      'SomeDir/2016070-not-a-dated-file-1.html',
+      'SomeDir/2016070-not-a-dated-file-2.html',
+      'SomeDir/2016070-not-a-dated-file-3.html'
+    ]
+
+    const actual = filterFilesInDirectory(filePaths, currentDirectory)
+
+    expect(actual).toEqual(expected)
+  })
 })
