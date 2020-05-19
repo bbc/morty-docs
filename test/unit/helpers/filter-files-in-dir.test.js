@@ -65,7 +65,7 @@ describe('Filter files in directory', () => {
     const filePaths = [
       'README.html',
       'SomeDir/2016-09-01-dated-file-1.html',
-      'SomeDir/2016-09-02-dated-file-2.html',
+      'SomeDir/2016-9-02-dated-file-2.html',
       'SomeDir/2016-10-01-dated-file-3.html',
       'SomeDir/File1.html',
       'SomeOtherDir/AnotherDir/File1.html',
@@ -77,7 +77,7 @@ describe('Filter files in directory', () => {
     const expected = [
       'SomeDir/2017-09-01-dated-file-4.html',
       'SomeDir/2016-10-01-dated-file-3.html',
-      'SomeDir/2016-09-02-dated-file-2.html',
+      'SomeDir/2016-9-02-dated-file-2.html',
       'SomeDir/2016-09-01-dated-file-1.html',
       'SomeDir/File1.html'
     ]
