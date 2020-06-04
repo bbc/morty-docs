@@ -4,18 +4,11 @@ function sortByDate (a, b) {
   return a.match(dateRegex) && b.match(dateRegex) ? b.localeCompare(a) : a.localeCompare(b)
 }
 
-function isFileInCurrentDir (filePath, directory) {
-  return (filePath.replace(directory, '').match(/\//g) || []).length <= 1
-}
-
-function filterFilesInDir (filePaths, directory) {
-  return filePaths.filter(filePath => {
-    return directory // directory = '' is falsy
-      ? filePath.startsWith(directory) && isFileInCurrentDir(filePath, directory)
-      : !filePath.includes('/') // returns true for files in root directory
-  })
-}
+const directoryDepth = path => path.split('/').length
+const isInRootDirectory = filePath => directoryDepth(filePath) === 1
+const isIn = directory => filePath => filePath.startsWith(directory) && ((directoryDepth(filePath) - 1) === directoryDepth(directory))
 
 module.exports = (filePaths, directory) => {
-  return filterFilesInDir(filePaths, directory).sort(sortByDate)
+  const isInSpecifiedDirectory = directory ? isIn(directory) : isInRootDirectory
+  return filePaths.filter(isInSpecifiedDirectory).sort(sortByDate)
 }

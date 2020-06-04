@@ -5,6 +5,7 @@ describe('Filter files in directory', () => {
     const filePaths = [
       'File1.html',
       'File2.html',
+      'File2/ThisFileShouldBeExcluded.html',
       'SomeDir/File1.html',
       'SomeOtherDir/AnotherDir/File1.html'
     ]
@@ -24,8 +25,11 @@ describe('Filter files in directory', () => {
   it('returns files within a top level directory', () => {
     const filePaths = [
       'File1.html',
+      'SomeDir.html',
       'SomeDir/File1.html',
       'SomeDir/File2.html',
+      'SomeDir/File2/ThisFileShouldBeExcluded.html',
+      'SomeOtherDir/File1.html',
       'SomeOtherDir/AnotherDir/File1.html'
     ]
 
@@ -45,8 +49,11 @@ describe('Filter files in directory', () => {
     const filePaths = [
       'File1.html',
       'SomeDir/File1.html',
+      'SomeOtherDir/AnotherDir.html',
       'SomeOtherDir/AnotherDir/File1.html',
-      'SomeOtherDir/AnotherDir/File2.html'
+      'SomeOtherDir/AnotherDir/File2.html',
+      'SomeOtherDir/AnotherDir/File2/ThisFileShouldBeExcluded.html',
+      'SomeOtherDir/SomeAnotherDir/File1.html'
     ]
 
     const currentDirectory = 'SomeOtherDir/AnotherDir'
