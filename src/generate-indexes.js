@@ -16,7 +16,7 @@ const generateIndex = (htmlFilePaths, subDirPaths, contentTitle) => {
     const text = path.basename(filePath)
 
     return {
-      link: encodeURI(text),
+      link: encodeURIComponent(text),
       text,
       iconClass: 'fas fa-file-alt'
     }
