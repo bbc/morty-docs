@@ -86,6 +86,14 @@ that is displayed on the generated index pages and the base path below which you
 where value for raw is either generated HTML **or** input that was passed
 through because it is not markdown or asciidoc e.g. images
 
+## Thing to Consider
+
+### File Ordering
+
+File names are sorted lexically (0-9 < a-z>), meaning that files prefixed with dates will appear at the top of the list. 
+
+If you want your documents to be sorted reverse chronologically, use the date as a prefix to the file name in the format of YYYY-MM-DD - (19-11-2019-some-document).
+
 ## Releasing
 
 Releases are versioned through `npm version`, and publishing is handled by our [Travis CI Integration](./.travis.yml)
