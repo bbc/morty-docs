@@ -86,6 +86,20 @@ that is displayed on the generated index pages and the base path below which you
 where value for raw is either generated HTML **or** input that was passed
 through because it is not markdown or asciidoc e.g. images
 
+## Thing to Consider
+
+### File Ordering
+
+File names are sorted lexically (0-9 < a-z>), meaning that files prefixed with dates will appear at the top of the list. 
+
+If you want your documents to be sorted reverse chronologically, use the date as a prefix to the file name in the format of YYYY-MM-DD - (19-11-2019-some-document).
+
+### Links to External Resources
+
+If one of your .md files contains an image that is outside of the specified config folder, morty-docs will not upload this image, resulting in a broken link. This is because morty views the folder specified in ```morty.config.json``` as the 'root' folder, and anything a 'level up' from this will be out of scope to morty.
+
+To ensure that all required images are available within the .md files, store the images in the folder specified in the config.
+
 ## Releasing
 
 Releases are versioned through `npm version`, and publishing is handled by our [Travis CI Integration](./.travis.yml)
