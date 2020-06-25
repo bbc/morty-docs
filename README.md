@@ -86,7 +86,7 @@ that is displayed on the generated index pages and the base path below which you
 where value for raw is either generated HTML **or** input that was passed
 through because it is not markdown or asciidoc e.g. images
 
-## Thing to Consider
+## Things to Consider
 
 ### File Ordering
 
