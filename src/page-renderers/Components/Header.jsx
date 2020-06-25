@@ -13,11 +13,11 @@ const Styles = {
   }
 }
 
-const Header = () => (
+const Header = ({ basePath }) => (
   <div className='container' style={Styles.navbar}>
     <div className='row col-md-12' style={{ width: '100%', paddingTop: '10px', paddingRight: '0px', paddingLeft: '25px' }}>
       <h3 className='col-md-4' style={{ textAlign: 'left', paddingRight: '0px', paddingBottom: '20px', color: '#fff' }}>
-        Morty-Docs
+        {basePath ? <a href={'/' + basePath}><span>{basePath}</span></a> : 'Morty-Docs'}
       </h3>
     </div>
   </div>

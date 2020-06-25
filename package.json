@@ -9,6 +9,7 @@
   "scripts": {
     "start": "rm -rf www && npm run build && node run.js && npx http-server www",
     "build": "npm run build-clean && babel src --out-dir build/src --source-maps && npm run build-copy-json && npm run build-npm-install",
+    "build-watch": "npm run build-clean && babel src --out-dir build/src --source-maps --watch && npm run build-copy-json && npm run build-npm-install",
     "build-clean": "rm -rf build && mkdir build",
     "build-copy-json": "cp package.json build/package.json && cp package-lock.json build/package-lock.json",
     "build-npm-install": "cd build && npm ci && cd ..",
