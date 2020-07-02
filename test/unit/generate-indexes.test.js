@@ -124,4 +124,16 @@ describe('Generate Indexes with the correct html', () => {
 
     expect(actual[0].raw.toString()).toMatchSnapshot()
   })
+
+  it('to match snapshot with a colon in the filename', () => {
+    const input = [{
+      relativePath: 'file:foo1.html'
+    }, {
+      relativePath: 'foo2.html'
+    }]
+
+    const actual = generateIndexes(input, { })
+
+    expect(actual[0].raw.toString()).toMatchSnapshot()
+  })
 })
