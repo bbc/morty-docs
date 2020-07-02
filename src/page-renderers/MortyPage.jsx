@@ -17,22 +17,19 @@ const Styles = {
   }
 }
 
-const MortyPage = ({ pageTitle, body, options }) => {
-  const basePath = options.basePath ? options.basePath : null
-  const contentTitle = options.contentTitle
-
+const MortyPage = ({ relPath, body }) => {
   return (
     <html lang='en' style={Styles.html}>
       <head>
         <meta charSet='utf-8' />
         <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <title>{pageTitle}</title>
+        <title>{relPath}</title>
         <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossOrigin='anonymous' />
       </head>
       <body style={Styles.body}>
         <div style={Styles.wrapper}>
-          <Header basePath={basePath}/>
+          <Header relPath={relPath} />
           <div className='container' dangerouslySetInnerHTML={{ __html: body }} />
         </div>
         <Footer />
@@ -41,8 +38,8 @@ const MortyPage = ({ pageTitle, body, options }) => {
   )
 }
 
-const renderMortyPage = (pageTitle, htmlBody, options) => ReactDOMServer.renderToString(  
-  <MortyPage pageTitle={pageTitle} body={htmlBody} options={options} />
+const renderMortyPage = (relPath, htmlBody) => ReactDOMServer.renderToString(
+  <MortyPage relPath={relPath} body={htmlBody} />
 )
 
 module.exports = renderMortyPage
