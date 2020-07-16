@@ -33,13 +33,6 @@ exports[`Transform-content returns the correct html from AsciiDoc for .adoc with
           <div class="col-md-4"
                style="margin-top:5px"
           >
-            <a style="text-align:left;padding-right:3px;color:#4f8df0;font-size:20"
-               href="/file-name.adoc"
-            >
-              <span>
-                /file-name.adoc
-              </span>
-            </a>
           </div>
         </div>
       </div>
@@ -121,13 +114,6 @@ exports[`Transform-content returns the correct html from AsciiDoc for .asc with 
           <div class="col-md-4"
                style="margin-top:5px"
           >
-            <a style="text-align:left;padding-right:3px;color:#4f8df0;font-size:20"
-               href="/file-name.asc"
-            >
-              <span>
-                /file-name.asc
-              </span>
-            </a>
           </div>
         </div>
       </div>
@@ -209,13 +195,6 @@ exports[`Transform-content returns the correct html from AsciiDoc for .asciidoc 
           <div class="col-md-4"
                style="margin-top:5px"
           >
-            <a style="text-align:left;padding-right:3px;color:#4f8df0;font-size:20"
-               href="/file-name.asciidoc"
-            >
-              <span>
-                /file-name.asciidoc
-              </span>
-            </a>
           </div>
         </div>
       </div>
@@ -297,13 +276,6 @@ exports[`Transform-content returns the correct html from AsciiDoc for a line of 
           <div class="col-md-4"
                style="margin-top:5px"
           >
-            <a style="text-align:left;padding-right:3px;color:#4f8df0;font-size:20"
-               href="/file-name.asciidoc"
-            >
-              <span>
-                /file-name.asciidoc
-              </span>
-            </a>
           </div>
         </div>
       </div>

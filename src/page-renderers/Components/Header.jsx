@@ -18,13 +18,8 @@ const Styles = {
 }
 
 const Header = ({ relPath }) => {
-  let headerLinks
-  let pathParts
-
-  if (relPath) {
-    pathParts = relPath.split('/')
-    headerLinks = getHeaderLinks(relPath, pathParts)
-  }
+  const pathParts = relPath.split('/')
+  const headerLinks = getHeaderLinks(relPath)
 
   return (
     <div className='container' style={Styles.navbar}>

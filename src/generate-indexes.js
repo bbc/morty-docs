@@ -9,8 +9,7 @@ const generateIndex = (htmlFilePaths, subDirPaths, contentTitle) => {
     link: `${dirPath}/index.html`,
     text: dirPath,
     iconClass: 'fas fa-folder-open'
-  })
-  )
+  }))
 
   const fileLinks = htmlFilePaths.map(filePath => {
     const text = path.basename(filePath)
@@ -22,7 +21,7 @@ const generateIndex = (htmlFilePaths, subDirPaths, contentTitle) => {
     }
   })
 
-  return renderIndexPage([...subDirLinks, ...fileLinks], contentTitle)
+  return renderIndexPage([...subDirLinks, ...fileLinks], contentTitle, htmlFilePaths[0])
 }
 
 const generateIndexes = (files, options = { contentTitle: '' }) => {

@@ -38,9 +38,6 @@ exports[`Generate Indexes with the correct html The correct links are included i
           <div class="col-md-4"
                style="margin-top:5px"
           >
-            <h3 style="color:#fff;margin-top:5px">
-              Morty-Docs
-            </h3>
           </div>
         </div>
       </div>
@@ -152,9 +149,13 @@ exports[`Generate Indexes with the correct html The correct links are included i
           <div class="col-md-4"
                style="margin-top:5px"
           >
-            <h3 style="color:#fff;margin-top:5px">
-              Morty-Docs
-            </h3>
+            <a style="text-align:left;padding-right:3px;color:#4f8df0;font-size:20"
+               href="/folder"
+            >
+              <span>
+                /folder
+              </span>
+            </a>
           </div>
         </div>
       </div>
@@ -336,9 +337,20 @@ exports[`Generate Indexes with the correct html The correct links are included i
           <div class="col-md-4"
                style="margin-top:5px"
           >
-            <h3 style="color:#fff;margin-top:5px">
-              Morty-Docs
-            </h3>
+            <a style="text-align:left;padding-right:3px;color:#4f8df0;font-size:20"
+               href="/docs"
+            >
+              <span>
+                /docs
+              </span>
+            </a>
+            <a style="text-align:left;padding-right:3px;color:#4f8df0;font-size:20"
+               href="/docs/arch"
+            >
+              <span>
+                /arch
+              </span>
+            </a>
           </div>
         </div>
       </div>
@@ -428,9 +440,6 @@ exports[`Generate Indexes with the correct html to match snapshot with a colon i
           <div class="col-md-4"
                style="margin-top:5px"
           >
-            <h3 style="color:#fff;margin-top:5px">
-              Morty-Docs
-            </h3>
           </div>
         </div>
       </div>
@@ -531,9 +540,6 @@ exports[`Generate Indexes with the correct html to match snapshot with a content
           <div class="col-md-4"
                style="margin-top:5px"
           >
-            <h3 style="color:#fff;margin-top:5px">
-              Morty-Docs
-            </h3>
           </div>
         </div>
       </div>
@@ -641,9 +647,6 @@ exports[`Generate Indexes with the correct html to match snapshot without a cont
           <div class="col-md-4"
                style="margin-top:5px"
           >
-            <h3 style="color:#fff;margin-top:5px">
-              Morty-Docs
-            </h3>
           </div>
         </div>
       </div>
