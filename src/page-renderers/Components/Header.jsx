@@ -14,10 +14,23 @@ const Styles = {
   },
   headerLinks: {
     marginTop: '5px'
+  },
+  headerLogo: {
+    height: '65%',
+    width: 'auto'
   }
 }
 
-const Header = ({ relPath }) => {
+const OptionalHeaderLogo = ({ headerLogoUrl }) => {
+  if (!headerLogoUrl) return null
+  return (
+    <div className='col-md-4'>
+      <img style={Styles.headerLogo} src={headerLogoUrl} />
+    </div>
+  )
+}
+
+const Header = ({ relPath, headerLogoUrl }) => {
   let pathParts
   let headerPaths
   let headerLinks
@@ -39,6 +52,7 @@ const Header = ({ relPath }) => {
         <div className='col-md-4' style={Styles.headerLinks}>
           {headerLinks}
         </div>
+        <OptionalHeaderLogo headerLogoUrl={headerLogoUrl} />
       </div>
     </div>
   )

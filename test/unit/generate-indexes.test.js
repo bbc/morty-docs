@@ -136,4 +136,14 @@ describe('Generate Indexes with the correct html', () => {
 
     expect(actual[0].raw.toString()).toMatchSnapshot()
   })
+
+  it('displays a logo in the header when a url to an image is passed in', () => {
+    const input = [{
+      relativePath: 'file:foo1.html'
+    }]
+
+    const actual = generateIndexes(input, { headerLogoUrl: 'https://via.placeholder.com/150' })
+
+    expect(actual[0].raw.toString()).toMatchSnapshot()
+  })
 })

@@ -9,7 +9,7 @@ const resolvedPath = path.resolve(directoryToConvert)
 const mortyDocs = async () => {
   const inputObjs = await generateTransformInput(resolvedPath)
 
-  const files = transform(inputObjs, { contentTitle: 'some-repo', basePath: 'morty-docs/some-repo' })
+  const files = transform(inputObjs, { contentTitle: 'some-repo', basePath: 'morty-docs/some-repo', headerLogoUrl: '' })
 
   files.forEach(file => {
     let filePath = `www/${file.relativePath}`

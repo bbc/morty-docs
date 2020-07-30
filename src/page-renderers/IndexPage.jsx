@@ -36,7 +36,7 @@ const Styles = {
   }
 }
 
-const IndexPage = ({ listItems, contentTitle, relPath }) => {
+const IndexPage = ({ listItems, options, relPath }) => {
   return (
     <html lang='en' style={Styles.html}>
       <head>
@@ -50,16 +50,15 @@ const IndexPage = ({ listItems, contentTitle, relPath }) => {
       </head>
       <body style={Styles.body}>
         <div style={Styles.wrapper}>
-          <Header relPath={relPath} />
+          <Header relPath={relPath} headerLogoUrl={options.headerLogoUrl} />
           <div className='container' style={{ marginTop: '10px' }}>
-            <Title contentTitle={contentTitle} />
+            <Title contentTitle={options.contentTitle} />
             <div className='row col-md-8 col-md-offset-2'>
               <ul className='list-unstyled'>
                 {
                   (() => listItems.map((item, index) => <IndexListItem key={index} {...item} />))()
                 }
               </ul>
-
             </div>
           </div>
         </div>
@@ -69,6 +68,6 @@ const IndexPage = ({ listItems, contentTitle, relPath }) => {
   )
 }
 
-const renderIndexPage = (listItems, contentTitle, htmlFilePaths) => ReactDOMServer.renderToString(<IndexPage listItems={listItems} contentTitle={contentTitle} relPath={htmlFilePaths} />)
+const renderIndexPage = (listItems, options, htmlFilePaths) => ReactDOMServer.renderToString(<IndexPage listItems={listItems} options={options} relPath={htmlFilePaths} />)
 
 module.exports = renderIndexPage
