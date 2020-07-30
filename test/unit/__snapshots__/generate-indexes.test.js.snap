@@ -30,16 +30,15 @@ exports[`Generate Indexes with the correct html The correct links are included i
   <body style="min-height:100vh">
     <div style="min-height:75vh;padding-bottom:20px">
       <div class="container"
-           style="border:none;border-radius:0;background-color:#000;min-height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
+           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
       >
         <div class="row col-md-12"
              style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"
         >
-          <h3 class="col-md-4"
-              style="text-align:left;padding-right:0px;padding-bottom:20px;color:#fff"
+          <div class="col-md-4"
+               style="margin-top:5px"
           >
-            Morty-Docs
-          </h3>
+          </div>
         </div>
       </div>
       <div class="container"
@@ -142,16 +141,22 @@ exports[`Generate Indexes with the correct html The correct links are included i
   <body style="min-height:100vh">
     <div style="min-height:75vh;padding-bottom:20px">
       <div class="container"
-           style="border:none;border-radius:0;background-color:#000;min-height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
+           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
       >
         <div class="row col-md-12"
              style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"
         >
-          <h3 class="col-md-4"
-              style="text-align:left;padding-right:0px;padding-bottom:20px;color:#fff"
+          <div class="col-md-4"
+               style="margin-top:5px"
           >
-            Morty-Docs
-          </h3>
+            <a style="text-align:left;padding-right:3px;color:#4f8df0;font-size:20"
+               href="/folder"
+            >
+              <span>
+                /folder
+              </span>
+            </a>
+          </div>
         </div>
       </div>
       <div class="container"
@@ -232,16 +237,18 @@ exports[`Generate Indexes with the correct html The correct links are included i
   <body style="min-height:100vh">
     <div style="min-height:75vh;padding-bottom:20px">
       <div class="container"
-           style="border:none;border-radius:0;background-color:#000;min-height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
+           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
       >
         <div class="row col-md-12"
              style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"
         >
-          <h3 class="col-md-4"
-              style="text-align:left;padding-right:0px;padding-bottom:20px;color:#fff"
+          <div class="col-md-4"
+               style="margin-top:5px"
           >
-            Morty-Docs
-          </h3>
+            <h3 style="color:#fff;margin-top:5px">
+              Morty-Docs
+            </h3>
+          </div>
         </div>
       </div>
       <div class="container"
@@ -322,16 +329,29 @@ exports[`Generate Indexes with the correct html The correct links are included i
   <body style="min-height:100vh">
     <div style="min-height:75vh;padding-bottom:20px">
       <div class="container"
-           style="border:none;border-radius:0;background-color:#000;min-height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
+           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
       >
         <div class="row col-md-12"
              style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"
         >
-          <h3 class="col-md-4"
-              style="text-align:left;padding-right:0px;padding-bottom:20px;color:#fff"
+          <div class="col-md-4"
+               style="margin-top:5px"
           >
-            Morty-Docs
-          </h3>
+            <a style="text-align:left;padding-right:3px;color:#4f8df0;font-size:20"
+               href="/docs"
+            >
+              <span>
+                /docs
+              </span>
+            </a>
+            <a style="text-align:left;padding-right:3px;color:#4f8df0;font-size:20"
+               href="/docs/arch"
+            >
+              <span>
+                /arch
+              </span>
+            </a>
+          </div>
         </div>
       </div>
       <div class="container"
@@ -412,16 +432,15 @@ exports[`Generate Indexes with the correct html to match snapshot with a colon i
   <body style="min-height:100vh">
     <div style="min-height:75vh;padding-bottom:20px">
       <div class="container"
-           style="border:none;border-radius:0;background-color:#000;min-height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
+           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
       >
         <div class="row col-md-12"
              style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"
         >
-          <h3 class="col-md-4"
-              style="text-align:left;padding-right:0px;padding-bottom:20px;color:#fff"
+          <div class="col-md-4"
+               style="margin-top:5px"
           >
-            Morty-Docs
-          </h3>
+          </div>
         </div>
       </div>
       <div class="container"
@@ -513,16 +532,15 @@ exports[`Generate Indexes with the correct html to match snapshot with a content
   <body style="min-height:100vh">
     <div style="min-height:75vh;padding-bottom:20px">
       <div class="container"
-           style="border:none;border-radius:0;background-color:#000;min-height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
+           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
       >
         <div class="row col-md-12"
              style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"
         >
-          <h3 class="col-md-4"
-              style="text-align:left;padding-right:0px;padding-bottom:20px;color:#fff"
+          <div class="col-md-4"
+               style="margin-top:5px"
           >
-            Morty-Docs
-          </h3>
+          </div>
         </div>
       </div>
       <div class="container"
@@ -621,16 +639,15 @@ exports[`Generate Indexes with the correct html to match snapshot without a cont
   <body style="min-height:100vh">
     <div style="min-height:75vh;padding-bottom:20px">
       <div class="container"
-           style="border:none;border-radius:0;background-color:#000;min-height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
+           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
       >
         <div class="row col-md-12"
              style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"
         >
-          <h3 class="col-md-4"
-              style="text-align:left;padding-right:0px;padding-bottom:20px;color:#fff"
+          <div class="col-md-4"
+               style="margin-top:5px"
           >
-            Morty-Docs
-          </h3>
+          </div>
         </div>
       </div>
       <div class="container"

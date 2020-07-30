@@ -20,12 +20,10 @@ const convertToHtml = ({ relativePath, raw }, options) => {
 const transformContent = (inputObj, options) => {
   const inputRelPath = inputObj.relativePath
   const html = convertToHtml(inputObj, options)
+
   return {
     relativePath: changeExtension(inputRelPath),
-    raw: renderMortyPage(
-      inputRelPath,
-      html,
-      options)
+    raw: renderMortyPage(inputRelPath, html)
   }
 }
 
