@@ -10,7 +10,7 @@
     "prebuild": "[ -d node_modules ] || npm install",
     "preversion": "npm run test",
     "start": "rm -rf www && npm run build -- --source-maps && node run.js && npx http-server www",
-    "build": "rm -rf build && mkdir build && babel src --out-dir build/src",
+    "build": "rm -rf build && mkdir build && babel src --out-dir build",
     "build-watch": "npm run build -- --source-maps --watch",
     "test": "jest --runInBand --outputFile test-results.json --json && npm run lint",
     "coverage": "jest --coverage --runInBand && open coverage/lcov-report/index.html",
