@@ -17,7 +17,7 @@ const Styles = {
   }
 }
 
-const Header = ({ relPath }) => {
+const Header = ({ relPath, basePath }) => {
   let pathParts
   let headerPaths
   let headerLinks
@@ -26,8 +26,10 @@ const Header = ({ relPath }) => {
     pathParts = relPath.split('/')
     headerPaths = getHeaderPaths(relPath)
 
+    const base = basePath ? '/' + basePath : ''
+
     headerLinks = headerPaths.map((dir, index) => {
-      return <a style={{ textAlign: 'left', paddingRight: '3px', color: '#4f8df0', fontSize: '20' }} href={'/' + dir} key={index}><span>{'/' + pathParts[index]}</span></a>
+      return <a style={{ textAlign: 'left', paddingRight: '3px', color: '#4f8df0', fontSize: '20' }} href={base + '/' + dir} key={index}><span>{'/' + pathParts[index]}</span></a>
     })
   } else {
     headerLinks = <h3 style={{ color: '#fff', marginTop: '5px' }}>Morty-Docs</h3>

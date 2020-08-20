@@ -23,7 +23,7 @@ const transformContent = (inputObj, options) => {
 
   return {
     relativePath: changeExtension(inputRelPath),
-    raw: renderMortyPage(inputRelPath, html)
+    raw: renderMortyPage(inputRelPath, html, options)
   }
 }
 

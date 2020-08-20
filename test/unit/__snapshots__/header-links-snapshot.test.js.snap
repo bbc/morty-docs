@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The header is rendered with the correct breadcrumb links  When a basepath is not passed through 1`] = `
+<div
+  className="container"
+  style={
+    Object {
+      "backgroundColor": "#000",
+      "border": "none",
+      "borderRadius": "0",
+      "height": "60px",
+      "marginBottom": "0",
+      "paddingLeft": "5px",
+      "paddingRight": "5px",
+      "width": "100%",
+    }
+  }
+>
+  <div
+    className="row col-md-12"
+    style={
+      Object {
+        "paddingLeft": "25px",
+        "paddingRight": "0px",
+        "paddingTop": "10px",
+        "width": "100%",
+      }
+    }
+  >
+    <div
+      className="col-md-4"
+      style={
+        Object {
+          "marginTop": "5px",
+        }
+      }
+    >
+      <a
+        href="/folder"
+        style={
+          Object {
+            "color": "#4f8df0",
+            "fontSize": "20",
+            "paddingRight": "3px",
+            "textAlign": "left",
+          }
+        }
+      >
+        <span>
+          /folder
+        </span>
+      </a>
+      <a
+        href="/folder/nestedFolder"
+        style={
+          Object {
+            "color": "#4f8df0",
+            "fontSize": "20",
+            "paddingRight": "3px",
+            "textAlign": "left",
+          }
+        }
+      >
+        <span>
+          /nestedFolder
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`The header is rendered with the correct breadcrumb links  When a basepath is passed through 1`] = `
+<div
+  className="container"
+  style={
+    Object {
+      "backgroundColor": "#000",
+      "border": "none",
+      "borderRadius": "0",
+      "height": "60px",
+      "marginBottom": "0",
+      "paddingLeft": "5px",
+      "paddingRight": "5px",
+      "width": "100%",
+    }
+  }
+>
+  <div
+    className="row col-md-12"
+    style={
+      Object {
+        "paddingLeft": "25px",
+        "paddingRight": "0px",
+        "paddingTop": "10px",
+        "width": "100%",
+      }
+    }
+  >
+    <div
+      className="col-md-4"
+      style={
+        Object {
+          "marginTop": "5px",
+        }
+      }
+    >
+      <a
+        href="/morty-docs/some-repo/folder"
+        style={
+          Object {
+            "color": "#4f8df0",
+            "fontSize": "20",
+            "paddingRight": "3px",
+            "textAlign": "left",
+          }
+        }
+      >
+        <span>
+          /folder
+        </span>
+      </a>
+      <a
+        href="/morty-docs/some-repo/folder/nestedFolder"
+        style={
+          Object {
+            "color": "#4f8df0",
+            "fontSize": "20",
+            "paddingRight": "3px",
+            "textAlign": "left",
+          }
+        }
+      >
+        <span>
+          /nestedFolder
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+`;
