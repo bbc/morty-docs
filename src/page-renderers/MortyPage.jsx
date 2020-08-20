@@ -17,7 +17,7 @@ const Styles = {
   }
 }
 
-const MortyPage = ({ relPath, body }) => {
+const MortyPage = ({ relPath, body, options }) => {
   return (
     <html lang='en' style={Styles.html}>
       <head>
@@ -29,7 +29,7 @@ const MortyPage = ({ relPath, body }) => {
       </head>
       <body style={Styles.body}>
         <div style={Styles.wrapper}>
-          <Header relPath={relPath} />
+          <Header relPath={relPath} basePath={options.basePath} />
           <div className='container' dangerouslySetInnerHTML={{ __html: body }} />
         </div>
         <Footer />
@@ -38,8 +38,8 @@ const MortyPage = ({ relPath, body }) => {
   )
 }
 
-const renderMortyPage = (relPath, htmlBody) => ReactDOMServer.renderToString(
-  <MortyPage relPath={relPath} body={htmlBody} />
+const renderMortyPage = (relPath, htmlBody, options) => ReactDOMServer.renderToString(
+  <MortyPage relPath={relPath} body={htmlBody} options={options} />
 )
 
 module.exports = renderMortyPage
