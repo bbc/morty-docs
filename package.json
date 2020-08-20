@@ -2,26 +2,25 @@
   "name": "@bbc/morty-docs",
   "version": "1.5.0",
   "description": "To generate a static website from markdown documentation, to allow users to consume content in an easily accessible format",
-  "main": "dist/index.js",
+  "main": "build/index.js",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "start": "rm -rf www && npm run build && node run.js && npx http-server www",
-    "build": "npm run build-clean && babel src --out-dir build/src --source-maps && npm run build-copy-json && npm run build-npm-install",
-    "build-watch": "npm run build-clean && babel src --out-dir build/src --source-maps --watch && npm run build-copy-json && npm run build-npm-install",
-    "build-clean": "rm -rf build && mkdir build",
-    "build-copy-json": "cp package.json build/package.json && cp package-lock.json build/package-lock.json",
-    "build-npm-install": "cd build && npm ci && cd ..",
-    "test": "jest --runInBand --outputFile test-results.json --json && npm run lint",
-    "coverage": "jest  --coverage --runInBand && open coverage/lcov-report/index.html",
-    "lint": "standard",
-    "make-package": "npm run package-clean && babel src --out-dir package/dist && npm run package-add-root-files",
-    "package-clean": "rm -rf package && mkdir package",
-    "package-add-root-files": "cp package.json package/package.json && cp README.md package/README.md && cp LICENCE.md package/LICENCE.md",
+    "prebuild": "[ -d node_modules ] || npm install",
     "preversion": "npm run test",
+    "start": "rm -rf www && npm run build -- --source-maps && node run.js && npx http-server www",
+    "build": "rm -rf build && mkdir build && babel src --out-dir build",
+    "build-watch": "npm run build -- --source-maps --watch",
+    "test": "jest --runInBand --outputFile test-results.json --json && npm run lint",
+    "coverage": "jest --coverage --runInBand && open coverage/lcov-report/index.html",
+    "lint": "standard",
+    "prepare": "npm run build",
     "postversion": "git push origin master && git push --tags origin master"
   },
+  "files": [
+    "build/"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bbc/morty-docs.git"

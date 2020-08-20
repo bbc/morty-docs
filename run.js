@@ -1,5 +1,5 @@
 const fsExtra = require('fs-extra')
-const { transform, generateTransformInput } = require('./build/src')
+const { transform, generateTransformInput } = require('./build')
 
 const path = require('path')
 
