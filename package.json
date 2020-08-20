@@ -44,6 +44,7 @@
     "fs-extra": "^7.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-test-renderer": "^16.13.1",
     "recursive-readdir": "^2.2.2",
     "showdown": "^1.9.0"
   },
