@@ -25,16 +25,15 @@ exports[`Transform-content returns the correct html from AsciiDoc for .adoc with
   <body style="min-height:100vh">
     <div style="min-height:75vh;padding-bottom:20px">
       <div class="container"
-           style="border:none;border-radius:0;background-color:#000;min-height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
+           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
       >
         <div class="row col-md-12"
              style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"
         >
-          <h3 class="col-md-4"
-              style="text-align:left;padding-right:0px;padding-bottom:20px;color:#fff"
+          <div class="col-md-4"
+               style="margin-top:5px"
           >
-            Morty-Docs
-          </h3>
+          </div>
         </div>
       </div>
       <div class="container">
@@ -107,16 +106,15 @@ exports[`Transform-content returns the correct html from AsciiDoc for .asc with 
   <body style="min-height:100vh">
     <div style="min-height:75vh;padding-bottom:20px">
       <div class="container"
-           style="border:none;border-radius:0;background-color:#000;min-height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
+           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
       >
         <div class="row col-md-12"
              style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"
         >
-          <h3 class="col-md-4"
-              style="text-align:left;padding-right:0px;padding-bottom:20px;color:#fff"
+          <div class="col-md-4"
+               style="margin-top:5px"
           >
-            Morty-Docs
-          </h3>
+          </div>
         </div>
       </div>
       <div class="container">
@@ -189,16 +187,15 @@ exports[`Transform-content returns the correct html from AsciiDoc for .asciidoc 
   <body style="min-height:100vh">
     <div style="min-height:75vh;padding-bottom:20px">
       <div class="container"
-           style="border:none;border-radius:0;background-color:#000;min-height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
+           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
       >
         <div class="row col-md-12"
              style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"
         >
-          <h3 class="col-md-4"
-              style="text-align:left;padding-right:0px;padding-bottom:20px;color:#fff"
+          <div class="col-md-4"
+               style="margin-top:5px"
           >
-            Morty-Docs
-          </h3>
+          </div>
         </div>
       </div>
       <div class="container">
@@ -271,16 +268,15 @@ exports[`Transform-content returns the correct html from AsciiDoc for a line of 
   <body style="min-height:100vh">
     <div style="min-height:75vh;padding-bottom:20px">
       <div class="container"
-           style="border:none;border-radius:0;background-color:#000;min-height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
+           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
       >
         <div class="row col-md-12"
              style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"
         >
-          <h3 class="col-md-4"
-              style="text-align:left;padding-right:0px;padding-bottom:20px;color:#fff"
+          <div class="col-md-4"
+               style="margin-top:5px"
           >
-            Morty-Docs
-          </h3>
+          </div>
         </div>
       </div>
       <div class="container">
@@ -344,16 +340,15 @@ exports[`Transform-content returns the correct html from markdown for Markdown w
   <body style="min-height:100vh">
     <div style="min-height:75vh;padding-bottom:20px">
       <div class="container"
-           style="border:none;border-radius:0;background-color:#000;min-height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
+           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
       >
         <div class="row col-md-12"
              style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"
         >
-          <h3 class="col-md-4"
-              style="text-align:left;padding-right:0px;padding-bottom:20px;color:#fff"
+          <div class="col-md-4"
+               style="margin-top:5px"
           >
-            Morty-Docs
-          </h3>
+          </div>
         </div>
       </div>
       <div class="container">
@@ -426,16 +421,15 @@ exports[`Transform-content returns the correct html from markdown for a line of 
   <body style="min-height:100vh">
     <div style="min-height:75vh;padding-bottom:20px">
       <div class="container"
-           style="border:none;border-radius:0;background-color:#000;min-height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
+           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
       >
         <div class="row col-md-12"
              style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"
         >
-          <h3 class="col-md-4"
-              style="text-align:left;padding-right:0px;padding-bottom:20px;color:#fff"
+          <div class="col-md-4"
+               style="margin-top:5px"
           >
-            Morty-Docs
-          </h3>
+          </div>
         </div>
       </div>
       <div class="container">

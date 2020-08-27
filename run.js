@@ -1,5 +1,5 @@
 const fsExtra = require('fs-extra')
-const { transform, generateTransformInput } = require('./build/src')
+const { transform, generateTransformInput } = require('./build')
 
 const path = require('path')
 
@@ -9,7 +9,7 @@ const resolvedPath = path.resolve(directoryToConvert)
 const mortyDocs = async () => {
   const inputObjs = await generateTransformInput(resolvedPath)
 
-  const files = transform(inputObjs, { contentTitle: 'Content Title - located in run.js' })
+  const files = transform(inputObjs, { contentTitle: 'some-repo', basePath: 'morty-docs/some-repo' })
 
   files.forEach(file => {
     let filePath = `www/${file.relativePath}`

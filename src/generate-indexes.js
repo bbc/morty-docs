@@ -4,13 +4,12 @@ const getDirectories = require('./helpers/get-directory-paths')
 const filterFilesInDirectory = require('./helpers/filter-files-in-dir')
 const filterDirectoriesInDirectory = require('./helpers/filter-dirs-in-dir')
 
-const generateIndex = (htmlFilePaths, subDirPaths, contentTitle) => {
+const generateIndex = (htmlFilePaths, subDirPaths, options) => {
   const subDirLinks = subDirPaths.filter(dirPath => !dirPath.includes('/')).map(dirPath => ({
     link: `${dirPath}/index.html`,
     text: dirPath,
     iconClass: 'fas fa-folder-open'
-  })
-  )
+  }))
 
   const fileLinks = htmlFilePaths.map(filePath => {
     const text = path.basename(filePath)
@@ -22,7 +21,7 @@ const generateIndex = (htmlFilePaths, subDirPaths, contentTitle) => {
     }
   })
 
-  return renderIndexPage([...subDirLinks, ...fileLinks], contentTitle)
+  return renderIndexPage([...subDirLinks, ...fileLinks], options, htmlFilePaths[0])
 }
 
 const generateIndexes = (files, options = { contentTitle: '' }) => {
@@ -45,7 +44,7 @@ const generateIndexes = (files, options = { contentTitle: '' }) => {
 
     return {
       relativePath: indexPath,
-      raw: Buffer.from(generateIndex(filesInDir, subDirsInDir, options.contentTitle))
+      raw: Buffer.from(generateIndex(filesInDir, subDirsInDir, options))
     }
   })
 
