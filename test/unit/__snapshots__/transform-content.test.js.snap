@@ -25,16 +25,48 @@ exports[`Transform-content returns the correct html from AsciiDoc for .adoc with
   <body style="min-height:100vh">
     <div style="min-height:75vh;padding-bottom:20px">
       <div class="container"
-           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
+           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding:1.142rem"
       >
-        <div class="row col-md-12"
-             style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"
-        >
-          <div class="col-md-4"
-               style="margin-top:5px"
-          >
-          </div>
-        </div>
+        <nav>
+          <ol style="padding:0;list-style:none;display:flex;height:100%;align-items:center">
+            <li>
+              <span aria-hidden="true"
+                    style="margin:0 0.28rem;color:#ebebeb"
+              >
+                /
+              </span>
+              <a style="text-align:left;color:lightblue;font-size:2rem"
+                 href="/morty-docs"
+              >
+                morty-docs
+              </a>
+            </li>
+            <li>
+              <span aria-hidden="true"
+                    style="margin:0 0.28rem;color:#ebebeb"
+              >
+                /
+              </span>
+              <a style="text-align:left;color:lightblue;font-size:2rem"
+                 href="/morty-docs/some-repo"
+              >
+                some-repo
+              </a>
+            </li>
+            <li>
+              <span aria-hidden="true"
+                    style="margin:0 0.28rem;color:#ebebeb"
+              >
+                /
+              </span>
+              <a style="text-align:left;color:lightblue;font-size:2rem"
+                 href="/morty-docs/some-repo/file-name.adoc"
+              >
+                file-name.adoc
+              </a>
+            </li>
+          </ol>
+        </nav>
       </div>
       <div class="container">
         <div class="sect1">
@@ -106,16 +138,48 @@ exports[`Transform-content returns the correct html from AsciiDoc for .asc with 
   <body style="min-height:100vh">
     <div style="min-height:75vh;padding-bottom:20px">
       <div class="container"
-           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
+           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding:1.142rem"
       >
-        <div class="row col-md-12"
-             style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"
-        >
-          <div class="col-md-4"
-               style="margin-top:5px"
-          >
-          </div>
-        </div>
+        <nav>
+          <ol style="padding:0;list-style:none;display:flex;height:100%;align-items:center">
+            <li>
+              <span aria-hidden="true"
+                    style="margin:0 0.28rem;color:#ebebeb"
+              >
+                /
+              </span>
+              <a style="text-align:left;color:lightblue;font-size:2rem"
+                 href="/morty-docs"
+              >
+                morty-docs
+              </a>
+            </li>
+            <li>
+              <span aria-hidden="true"
+                    style="margin:0 0.28rem;color:#ebebeb"
+              >
+                /
+              </span>
+              <a style="text-align:left;color:lightblue;font-size:2rem"
+                 href="/morty-docs/some-repo"
+              >
+                some-repo
+              </a>
+            </li>
+            <li>
+              <span aria-hidden="true"
+                    style="margin:0 0.28rem;color:#ebebeb"
+              >
+                /
+              </span>
+              <a style="text-align:left;color:lightblue;font-size:2rem"
+                 href="/morty-docs/some-repo/file-name.asc"
+              >
+                file-name.asc
+              </a>
+            </li>
+          </ol>
+        </nav>
       </div>
       <div class="container">
         <div class="sect1">
@@ -187,16 +251,48 @@ exports[`Transform-content returns the correct html from AsciiDoc for .asciidoc 
   <body style="min-height:100vh">
     <div style="min-height:75vh;padding-bottom:20px">
       <div class="container"
-           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
+           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding:1.142rem"
       >
-        <div class="row col-md-12"
-             style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"
-        >
-          <div class="col-md-4"
-               style="margin-top:5px"
-          >
-          </div>
-        </div>
+        <nav>
+          <ol style="padding:0;list-style:none;display:flex;height:100%;align-items:center">
+            <li>
+              <span aria-hidden="true"
+                    style="margin:0 0.28rem;color:#ebebeb"
+              >
+                /
+              </span>
+              <a style="text-align:left;color:lightblue;font-size:2rem"
+                 href="/morty-docs"
+              >
+                morty-docs
+              </a>
+            </li>
+            <li>
+              <span aria-hidden="true"
+                    style="margin:0 0.28rem;color:#ebebeb"
+              >
+                /
+              </span>
+              <a style="text-align:left;color:lightblue;font-size:2rem"
+                 href="/morty-docs/some-repo"
+              >
+                some-repo
+              </a>
+            </li>
+            <li>
+              <span aria-hidden="true"
+                    style="margin:0 0.28rem;color:#ebebeb"
+              >
+                /
+              </span>
+              <a style="text-align:left;color:lightblue;font-size:2rem"
+                 href="/morty-docs/some-repo/file-name.asciidoc"
+              >
+                file-name.asciidoc
+              </a>
+            </li>
+          </ol>
+        </nav>
       </div>
       <div class="container">
         <div class="sect1">
@@ -268,16 +364,48 @@ exports[`Transform-content returns the correct html from AsciiDoc for a line of 
   <body style="min-height:100vh">
     <div style="min-height:75vh;padding-bottom:20px">
       <div class="container"
-           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
+           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding:1.142rem"
       >
-        <div class="row col-md-12"
-             style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"
-        >
-          <div class="col-md-4"
-               style="margin-top:5px"
-          >
-          </div>
-        </div>
+        <nav>
+          <ol style="padding:0;list-style:none;display:flex;height:100%;align-items:center">
+            <li>
+              <span aria-hidden="true"
+                    style="margin:0 0.28rem;color:#ebebeb"
+              >
+                /
+              </span>
+              <a style="text-align:left;color:lightblue;font-size:2rem"
+                 href="/morty-docs"
+              >
+                morty-docs
+              </a>
+            </li>
+            <li>
+              <span aria-hidden="true"
+                    style="margin:0 0.28rem;color:#ebebeb"
+              >
+                /
+              </span>
+              <a style="text-align:left;color:lightblue;font-size:2rem"
+                 href="/morty-docs/some-repo"
+              >
+                some-repo
+              </a>
+            </li>
+            <li>
+              <span aria-hidden="true"
+                    style="margin:0 0.28rem;color:#ebebeb"
+              >
+                /
+              </span>
+              <a style="text-align:left;color:lightblue;font-size:2rem"
+                 href="/morty-docs/some-repo/file-name.asciidoc"
+              >
+                file-name.asciidoc
+              </a>
+            </li>
+          </ol>
+        </nav>
       </div>
       <div class="container">
         <div class="paragraph">
@@ -340,16 +468,36 @@ exports[`Transform-content returns the correct html from markdown for Markdown w
   <body style="min-height:100vh">
     <div style="min-height:75vh;padding-bottom:20px">
       <div class="container"
-           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
+           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding:1.142rem"
       >
-        <div class="row col-md-12"
-             style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"
-        >
-          <div class="col-md-4"
-               style="margin-top:5px"
-          >
-          </div>
-        </div>
+        <nav>
+          <ol style="padding:0;list-style:none;display:flex;height:100%;align-items:center">
+            <li>
+              <span aria-hidden="true"
+                    style="margin:0 0.28rem;color:#ebebeb"
+              >
+                /
+              </span>
+              <a style="text-align:left;color:lightblue;font-size:2rem"
+                 href="/morty-docs"
+              >
+                morty-docs
+              </a>
+            </li>
+            <li>
+              <span aria-hidden="true"
+                    style="margin:0 0.28rem;color:#ebebeb"
+              >
+                /
+              </span>
+              <a style="text-align:left;color:lightblue;font-size:2rem"
+                 href="/morty-docs/some-repo"
+              >
+                some-repo
+              </a>
+            </li>
+          </ol>
+        </nav>
       </div>
       <div class="container">
         <h1 id="title-of-simple-contentmd">
@@ -421,16 +569,36 @@ exports[`Transform-content returns the correct html from markdown for a line of 
   <body style="min-height:100vh">
     <div style="min-height:75vh;padding-bottom:20px">
       <div class="container"
-           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding-right:5px;padding-left:5px"
+           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding:1.142rem"
       >
-        <div class="row col-md-12"
-             style="width:100%;padding-top:10px;padding-right:0px;padding-left:25px"
-        >
-          <div class="col-md-4"
-               style="margin-top:5px"
-          >
-          </div>
-        </div>
+        <nav>
+          <ol style="padding:0;list-style:none;display:flex;height:100%;align-items:center">
+            <li>
+              <span aria-hidden="true"
+                    style="margin:0 0.28rem;color:#ebebeb"
+              >
+                /
+              </span>
+              <a style="text-align:left;color:lightblue;font-size:2rem"
+                 href="/morty-docs"
+              >
+                morty-docs
+              </a>
+            </li>
+            <li>
+              <span aria-hidden="true"
+                    style="margin:0 0.28rem;color:#ebebeb"
+              >
+                /
+              </span>
+              <a style="text-align:left;color:lightblue;font-size:2rem"
+                 href="/morty-docs/some-repo"
+              >
+                some-repo
+              </a>
+            </li>
+          </ol>
+        </nav>
       </div>
       <div class="container">
         <p>
