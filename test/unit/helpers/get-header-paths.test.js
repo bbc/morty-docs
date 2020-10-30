@@ -3,7 +3,7 @@ const getHeaderPaths = require('../../../src/helpers/get-header-paths')
 describe('Get header paths', () => {
   it('returns an array of every possible path', () => {
     const basePath = 'morty-docs/some-repo'
-    const relPath = 'folder/subFolder/nestedSubFolder/file.md'
+    const relPath = 'folder/subFolder/nestedSubFolder/file.html'
     const expected = [
       {
         text: 'morty-docs',
@@ -50,11 +50,19 @@ describe('Get header paths', () => {
     expect(actual).toEqual(expected)
   })
 
-  it('filters out any .html files', () => {
+  it('filters out any .html', () => {
     const basePath = 'morty-docs/some-repo'
     const relPath = 'folder/subFolder/nestedSubFolder/file.html'
     const headerLinks = getHeaderPaths(basePath, relPath)
 
     expect(headerLinks).toEqual(expect.not.arrayContaining(['file.html']))
+  })
+
+  it('filters out any .md', () => {
+    const basePath = 'morty-docs/some-repo'
+    const relPath = 'folder/subFolder/nestedSubFolder/file.md'
+    const headerLinks = getHeaderPaths(basePath, relPath)
+
+    expect(headerLinks).toEqual(expect.not.arrayContaining(['file.md']))
   })
 })
