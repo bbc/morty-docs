@@ -310,6 +310,18 @@ exports[`Generate Indexes with the correct html The correct links are included i
                 some-repo
               </a>
             </li>
+            <li>
+              <span aria-hidden="true"
+                    style="margin:0 0.28rem;color:#ebebeb"
+              >
+                /
+              </span>
+              <a style="text-align:left;color:lightblue;font-size:2rem"
+                 href="/morty-docs/some-repo/docs"
+              >
+                docs
+              </a>
+            </li>
           </ol>
         </nav>
       </div>
