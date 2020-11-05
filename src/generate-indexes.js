@@ -4,7 +4,7 @@ const getDirectories = require('./helpers/get-directory-paths')
 const filterFilesInDirectory = require('./helpers/filter-files-in-dir')
 const filterDirectoriesInDirectory = require('./helpers/filter-dirs-in-dir')
 
-const generateIndex = (htmlFilePaths, subDirPaths, options) => {
+const generateIndex = (directory, htmlFilePaths, subDirPaths, options) => {
   const subDirLinks = subDirPaths.filter(dirPath => !dirPath.includes('/')).map(dirPath => ({
     link: `${dirPath}/index.html`,
     text: dirPath,
@@ -21,7 +21,7 @@ const generateIndex = (htmlFilePaths, subDirPaths, options) => {
     }
   })
 
-  return renderIndexPage([...subDirLinks, ...fileLinks], options, htmlFilePaths[0])
+  return renderIndexPage([...subDirLinks, ...fileLinks], options, directory)
 }
 
 const generateIndexes = (files, options = { contentTitle: '' }) => {
@@ -30,7 +30,6 @@ const generateIndexes = (files, options = { contentTitle: '' }) => {
     .filter(relativePath => path.extname(relativePath) === '.html')
 
   const directories = getDirectories(htmlFilePaths)
-
   // If we have not got a 'root' folder, then add one.
   // TODO: Refactor this so it is not needed (maybe?)
   if (!directories.includes('')) {
@@ -44,7 +43,7 @@ const generateIndexes = (files, options = { contentTitle: '' }) => {
 
     return {
       relativePath: indexPath,
-      raw: Buffer.from(generateIndex(filesInDir, subDirsInDir, options))
+      raw: Buffer.from(generateIndex(directory, filesInDir, subDirsInDir, options))
     }
   })
 
