@@ -6,7 +6,7 @@ describe('Generating indexes', () => {
       relativePath: 'someRootFile.html'
     }]
 
-    const actual = generateIndexes(input, { repoName: 'some-repo' })
+    const actual = generateIndexes(input, { repoName: 'some-repo', basePath: 'morty-docs/some-repo' })
     const expected = [{
       relativePath: 'index.html',
       raw: expect.any(Buffer)
@@ -21,7 +21,7 @@ describe('Generating indexes', () => {
       relativePath: 'rfc/someRfc.html'
     }]
 
-    const actual = generateIndexes(input, { repoName: 'some-repo' })
+    const actual = generateIndexes(input, { repoName: 'some-repo', basePath: 'morty-docs/some-repo' })
 
     const expected = [{
       relativePath: 'index.html',
@@ -44,7 +44,7 @@ describe('Generating indexes', () => {
       relativePath: 'someOtherFolder/file.html'
     }]
 
-    const actual = generateIndexes(input, { repoName: 'some-repo' })
+    const actual = generateIndexes(input, { repoName: 'some-repo', basePath: 'morty-docs/some-repo' })
     const expected = [{
       relativePath: 'index.html',
       raw: expect.any(Buffer)
@@ -65,7 +65,7 @@ describe('Generating indexes', () => {
       relativePath: 'docs/arch/someMDFile.html'
     }]
 
-    const actual = generateIndexes(input, { repoName: 'some-repo' })
+    const actual = generateIndexes(input, { repoName: 'some-repo', basePath: 'morty-docs/some-repo' })
 
     const expected = [{
       relativePath: 'index.html',
@@ -93,7 +93,7 @@ describe('Generate Indexes with the correct html', () => {
       relativePath: 'docs/arch/furtherNestedFile.html'
     }]
 
-    const actual = generateIndexes(input, { repoName: 'some-repo' })
+    const actual = generateIndexes(input, { repoName: 'some-repo', basePath: 'morty-docs/some-repo' })
 
     expect(actual[0].raw.toString()).toMatchSnapshot()
     expect(actual[1].raw.toString()).toMatchSnapshot()
@@ -108,7 +108,7 @@ describe('Generate Indexes with the correct html', () => {
       relativePath: 'foo2.html'
     }]
 
-    const actual = generateIndexes(input, { contentTitle: 'some-repo' })
+    const actual = generateIndexes(input, { contentTitle: 'some-repo', basePath: 'morty-docs/some-repo' })
 
     expect(actual[0].raw.toString()).toMatchSnapshot()
   })
@@ -120,7 +120,7 @@ describe('Generate Indexes with the correct html', () => {
       relativePath: 'foo2.html'
     }]
 
-    const actual = generateIndexes(input, { })
+    const actual = generateIndexes(input, { basePath: 'morty-docs/some-repo' })
 
     expect(actual[0].raw.toString()).toMatchSnapshot()
   })
@@ -132,7 +132,7 @@ describe('Generate Indexes with the correct html', () => {
       relativePath: 'foo2.html'
     }]
 
-    const actual = generateIndexes(input, { })
+    const actual = generateIndexes(input, { basePath: 'morty-docs/some-repo' })
 
     expect(actual[0].raw.toString()).toMatchSnapshot()
   })
