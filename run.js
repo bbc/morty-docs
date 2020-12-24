@@ -7,12 +7,13 @@ const directoryToConvert = JSON.parse(process.env.npm_config_argv).remain[0] || 
 const resolvedPath = path.resolve(directoryToConvert)
 
 const mortyDocs = async () => {
+  const basePath = 'morty-docs/some-repo'
   const inputObjs = await generateTransformInput(resolvedPath)
 
-  const files = transform(inputObjs, { contentTitle: 'some-repo', basePath: 'morty-docs/some-repo' })
+  const files = transform(inputObjs, { contentTitle: 'some-repo', basePath })
 
   files.forEach(file => {
-    let filePath = `www/${file.relativePath}`
+    let filePath = `www/${basePath}/${file.relativePath}`
     fsExtra.ensureFileSync(filePath)
     fsExtra.writeFileSync(filePath, file.raw)
   })

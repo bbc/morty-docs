@@ -10,63 +10,77 @@ exports[`The header is rendered with the correct breadcrumb links  When a basepa
       "borderRadius": "0",
       "height": "60px",
       "marginBottom": "0",
-      "paddingLeft": "5px",
-      "paddingRight": "5px",
+      "padding": "1.142rem",
       "width": "100%",
     }
   }
 >
-  <div
-    className="row col-md-12"
-    style={
-      Object {
-        "paddingLeft": "25px",
-        "paddingRight": "0px",
-        "paddingTop": "10px",
-        "width": "100%",
-      }
-    }
+  <nav
+    style={Object {}}
   >
-    <div
-      className="col-md-4"
+    <ol
       style={
         Object {
-          "marginTop": "5px",
+          "alignItems": "center",
+          "display": "flex",
+          "height": "100%",
+          "listStyle": "none",
+          "padding": "0",
         }
       }
     >
-      <a
-        href="/folder"
-        style={
-          Object {
-            "color": "#4f8df0",
-            "fontSize": "20",
-            "paddingRight": "3px",
-            "textAlign": "left",
+      <li>
+        <span
+          aria-hidden={true}
+          style={
+            Object {
+              "color": "#ebebeb",
+              "margin": "0 0.28rem",
+            }
           }
-        }
-      >
-        <span>
-          /folder
+        >
+          /
         </span>
-      </a>
-      <a
-        href="/folder/nestedFolder"
-        style={
-          Object {
-            "color": "#4f8df0",
-            "fontSize": "20",
-            "paddingRight": "3px",
-            "textAlign": "left",
+        <a
+          href="/folder"
+          style={
+            Object {
+              "color": "lightblue",
+              "fontSize": "2rem",
+              "textAlign": "left",
+            }
           }
-        }
-      >
-        <span>
-          /nestedFolder
+        >
+          folder
+        </a>
+      </li>
+      <li>
+        <span
+          aria-hidden={true}
+          style={
+            Object {
+              "color": "#ebebeb",
+              "margin": "0 0.28rem",
+            }
+          }
+        >
+          /
         </span>
-      </a>
-    </div>
-  </div>
+        <a
+          href="/folder/nestedFolder"
+          style={
+            Object {
+              "color": "lightblue",
+              "fontSize": "2rem",
+              "textAlign": "left",
+            }
+          }
+        >
+          nestedFolder
+        </a>
+      </li>
+    </ol>
+  </nav>
 </div>
 `;
 
@@ -80,62 +94,126 @@ exports[`The header is rendered with the correct breadcrumb links  When a basepa
       "borderRadius": "0",
       "height": "60px",
       "marginBottom": "0",
-      "paddingLeft": "5px",
-      "paddingRight": "5px",
+      "padding": "1.142rem",
       "width": "100%",
     }
   }
 >
-  <div
-    className="row col-md-12"
-    style={
-      Object {
-        "paddingLeft": "25px",
-        "paddingRight": "0px",
-        "paddingTop": "10px",
-        "width": "100%",
-      }
-    }
+  <nav
+    style={Object {}}
   >
-    <div
-      className="col-md-4"
+    <ol
       style={
         Object {
-          "marginTop": "5px",
+          "alignItems": "center",
+          "display": "flex",
+          "height": "100%",
+          "listStyle": "none",
+          "padding": "0",
         }
       }
     >
-      <a
-        href="/morty-docs/some-repo/folder"
-        style={
-          Object {
-            "color": "#4f8df0",
-            "fontSize": "20",
-            "paddingRight": "3px",
-            "textAlign": "left",
+      <li>
+        <span
+          aria-hidden={true}
+          style={
+            Object {
+              "color": "#ebebeb",
+              "margin": "0 0.28rem",
+            }
           }
-        }
-      >
-        <span>
-          /folder
+        >
+          /
         </span>
-      </a>
-      <a
-        href="/morty-docs/some-repo/folder/nestedFolder"
-        style={
-          Object {
-            "color": "#4f8df0",
-            "fontSize": "20",
-            "paddingRight": "3px",
-            "textAlign": "left",
+        <a
+          href="/morty-docs"
+          style={
+            Object {
+              "color": "lightblue",
+              "fontSize": "2rem",
+              "textAlign": "left",
+            }
           }
-        }
-      >
-        <span>
-          /nestedFolder
+        >
+          morty-docs
+        </a>
+      </li>
+      <li>
+        <span
+          aria-hidden={true}
+          style={
+            Object {
+              "color": "#ebebeb",
+              "margin": "0 0.28rem",
+            }
+          }
+        >
+          /
         </span>
-      </a>
-    </div>
-  </div>
+        <a
+          href="/morty-docs/some-repo"
+          style={
+            Object {
+              "color": "lightblue",
+              "fontSize": "2rem",
+              "textAlign": "left",
+            }
+          }
+        >
+          some-repo
+        </a>
+      </li>
+      <li>
+        <span
+          aria-hidden={true}
+          style={
+            Object {
+              "color": "#ebebeb",
+              "margin": "0 0.28rem",
+            }
+          }
+        >
+          /
+        </span>
+        <a
+          href="/morty-docs/some-repo/folder"
+          style={
+            Object {
+              "color": "lightblue",
+              "fontSize": "2rem",
+              "textAlign": "left",
+            }
+          }
+        >
+          folder
+        </a>
+      </li>
+      <li>
+        <span
+          aria-hidden={true}
+          style={
+            Object {
+              "color": "#ebebeb",
+              "margin": "0 0.28rem",
+            }
+          }
+        >
+          /
+        </span>
+        <a
+          href="/morty-docs/some-repo/folder/nestedFolder"
+          style={
+            Object {
+              "color": "lightblue",
+              "fontSize": "2rem",
+              "textAlign": "left",
+            }
+          }
+        >
+          nestedFolder
+        </a>
+      </li>
+    </ol>
+  </nav>
 </div>
 `;

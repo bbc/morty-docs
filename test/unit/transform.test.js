@@ -11,7 +11,7 @@ describe('transform.js', () => {
       raw: 'Input-Raw-for-simple-content.PNG'
     }
 
-    const result = transform([notMdObj])
+    const result = transform([notMdObj], { basePath: 'morty-docs/some-repo' })
 
     expect(result).toEqual(expect.arrayContaining([notMdObj]))
   })
@@ -42,10 +42,10 @@ describe('transform.js', () => {
       raw: '# Some Markdown'
     }
 
-    const result = transform([mdObj], {})
+    const result = transform([mdObj], { basePath: 'morty-docs/some-repo' })
 
     expect(result).toEqual(expect.arrayContaining([mockTransformContentOutput]))
-    expect(mockTransformContent).toHaveBeenCalledWith(mdObj, {})
+    expect(mockTransformContent).toHaveBeenCalledWith(mdObj, { basePath: 'morty-docs/some-repo' })
   })
 
   const asciidocExtensions = ['.asciidoc', '.adoc', '.asc']
@@ -57,10 +57,10 @@ describe('transform.js', () => {
         raw: '== Some AsciiDoc'
       }
 
-      const result = transform([asciidocObj], {})
+      const result = transform([asciidocObj], { basePath: 'morty-docs/some-repo' })
 
       expect(result).toEqual(expect.arrayContaining([mockTransformContentOutput]))
-      expect(mockTransformContent).toHaveBeenCalledWith(asciidocObj, {})
+      expect(mockTransformContent).toHaveBeenCalledWith(asciidocObj, { basePath: 'morty-docs/some-repo' })
     })
   })
 })
