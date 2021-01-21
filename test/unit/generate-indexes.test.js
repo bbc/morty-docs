@@ -136,4 +136,16 @@ describe('Generate Indexes with the correct html', () => {
 
     expect(actual[0].raw.toString()).toMatchSnapshot()
   })
+
+  it('to match snapshot with a pdf file', () => {
+    const input = [{
+      relativePath: 'foo1.html'
+    }, {
+      relativePath: 'foo2.pdf'
+    }]
+
+    const actual = generateIndexes(input, { basePath: 'morty-docs/some-repo' })
+
+    expect(actual[0].raw.toString()).toMatchSnapshot()
+  })
 })
