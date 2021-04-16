@@ -1,3 +1,5 @@
+const fs = require('fs')
+const path = require('path')
 const showdown = require('showdown')
 
 // there may be an option to enable this, but since we haven't found it here is a reg-ex
@@ -36,6 +38,16 @@ const normaliseBasePath = (basePath) => {
   return '/' + pathElements.join('/')
 }
 
+const embedSVGExtension = options => ({
+  type: 'lang',
+  regex: new RegExp('!\\[.+\\]\\((.*.svg)\\)'),
+  replace: (...[, svgLink]) => {
+    console.log('a', svgLink)
+    console.log(options)
+    return fs.readFileSync(path.resolve(options.absoluteDirectoryPath, svgLink))
+  }
+})
+
 const createParser = (options) => {
   const basePath = normaliseBasePath(options.basePath)
   const addBasePathToRootLinks = {
@@ -46,6 +58,7 @@ const createParser = (options) => {
 
   const parser = new showdown.Converter({
     extensions: [
+      embedSVGExtension(options),
       convertMdLinksToHtmlLinks,
       addBasePathToRootLinks,
       headingExtension,

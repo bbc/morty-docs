@@ -6,7 +6,7 @@ const parseToHtml = require('./markdown-to-html-parser')
 
 const changeExtension = relPath => relPath.replace(/\.[^.]*$/, '.html') // \.[^.]*$  selects everything from end of string to first '.' character including the '.'
 
-const convertToHtml = ({ relativePath, raw }, options) => {
+const convertToHtml = ({ absoluteDirectoryPath, relativePath, raw }, options) => {
   const textString = raw.toString()
   const ext = path.extname(relativePath)
 
@@ -14,7 +14,10 @@ const convertToHtml = ({ relativePath, raw }, options) => {
     return asciidoctor.convert(textString)
   }
 
-  return parseToHtml(textString, options)
+  return parseToHtml(textString, {
+    ...options,
+    absoluteDirectoryPath
+  })
 }
 
 const transformContent = (inputObj, options) => {
