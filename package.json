@@ -16,7 +16,7 @@
     "coverage": "jest --coverage --runInBand && open coverage/lcov-report/index.html",
     "lint": "standard",
     "prepare": "npm run build",
-    "postversion": "git push origin master && git push --tags origin master"
+    "postversion": "git push origin main && git push --tags origin main"
   },
   "files": [
     "build/"
