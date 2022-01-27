@@ -1,3 +1,5 @@
+const { sortArrayByDate } = require('../../src/helpers/sort-array-by-date')
+
 const filterDirs = (directoryPaths, directory) => {
   const directoryArray = []
   const nestedDirFolders = directoryPaths.filter(directoryPath => directoryPath.includes(directory) && !directoryPath.startsWith(directory) && directoryPath !== directory)
@@ -9,7 +11,12 @@ const filterDirs = (directoryPaths, directory) => {
     ? directoryPath.replace(`${directory}/`, '') : directoryPath)
   if (rootDir.length) directoryArray.push(rootDir)
   // if directory path starts with the config folder then remove the directory from the path
-  return directoryArray.flat()
+  // sort array here
+  let sortedDirectoryArray = directoryArray
+  if (sortedDirectoryArray.length) {
+    sortedDirectoryArray.map((arr) => sortArrayByDate(arr))
+  }
+  return sortedDirectoryArray.flat()
 }
 
 module.exports = filterDirs
