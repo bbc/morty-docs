@@ -69,22 +69,22 @@ exports[`Generate Indexes with the correct html The correct links are included i
             <li class="index-list"
                 style="font-size:1.6em;border-bottom:solid black 1px;margin-bottom:10px"
             >
-              <a href="folder/index.html">
+              <a href="docs/index.html">
                 <i class="fas fa-folder-open">
                 </i>
                 <span style="margin-left:5px">
-                  folder
+                  docs
                 </span>
               </a>
             </li>
             <li class="index-list"
                 style="font-size:1.6em;border-bottom:solid black 1px;margin-bottom:10px"
             >
-              <a href="docs/index.html">
+              <a href="folder/index.html">
                 <i class="fas fa-folder-open">
                 </i>
                 <span style="margin-left:5px">
-                  docs
+                  folder
                 </span>
               </a>
             </li>
