@@ -1,6 +1,6 @@
 {
   "name": "@bbc/morty-docs",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "To generate a static website from markdown documentation, to allow users to consume content in an easily accessible format",
   "main": "build/index.js",
   "publishConfig": {
