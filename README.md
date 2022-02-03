@@ -88,17 +88,12 @@ through because it is not markdown or asciidoc e.g. images
 
 ## Things to Consider
 
-### File Ordering
+### File & Directory Ordering
 
-File names are sorted lexically (0-9 < a-z>), meaning that files prefixed with dates will appear at the top of the list. 
+These are sorted lexically (0-9 < a-z>).
 
-If you want your documents to be sorted reverse chronologically, use the date as a prefix to the file name in the format of YYYY-MM-DD - (19-11-2019-some-document).
-
-## Releasing
-
-Releases are versioned through `npm version`, and publishing is handled by our [Travis CI Integration](./.travis.yml)
-
-`$ npm version (major|minor|patch)`
+There is an additional sort.
+If you want your documents to be sorted reverse chronologically, use the date as a prefix to the file name in the format YYYY-MM-DD e.g. `19-11-2019-some-document`. These will then be placed first above the regular sort.
 
 ## Example Architecture
 
@@ -133,6 +128,29 @@ not on the basis of who they are from.
 We welcome contributions from everyone.
 
 Please respect each other.
+
+## How to contribute
+
+Steps:
+
+- fork the repo
+- implement your fix or feature - with test coverage :-)
+- raise a [PR](https://github.com/bbc/morty-docs/pulls)
+- this repo now uses github actions for automated Pull Request checking & Publishing
+  - n.b. first-time contributors require approval to run github actions
+  (so your PR checker should fail to run initially)
+- use ['Pull Request Checks' github action](https://github.com/bbc/morty-docs/actions/workflows/pull-requests.yml) to
+see if the PR checker is passing
+
+### Maintainers only
+
+- merge PR (or suggest changes)
+- after merge
+  - use `npm version (major|minor|patch)`
+  - the tag created above causes
+  ['Node.js Package' github action](https://github.com/bbc/morty-docs/actions/workflows/npm-publish.yml) to run.
+  Wait for this to complete.
+  - verify the new version on [NPM](https://www.npmjs.com/package/@bbc/morty-docs)
 
 ### Adding an issue
 
