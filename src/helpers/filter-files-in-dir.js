@@ -1,4 +1,4 @@
-const { sortArrayByDate } = require('../../src/helpers/sort-array-by-date')
+const { sortArrayByDate } = require('./sort-array-by-date')
 
 const directoryDepth = path => path.split('/').length
 const isInRootDirectory = filePath => directoryDepth(filePath) === 1
