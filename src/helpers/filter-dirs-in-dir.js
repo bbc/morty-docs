@@ -1,4 +1,4 @@
-const { sortArrayByDate } = require('../../src/helpers/sort-array-by-date')
+const { sortArrayByDate } = require('./sort-array-by-date')
 
 const filterDirs = (directoryPaths, directory) => {
   const directoryArray = []
