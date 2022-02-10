@@ -39,7 +39,7 @@
   },
   "homepage": "https://github.com/bbc/morty-docs#readme",
   "dependencies": {
-    "asciidoctor": "^2.1.1",
+    "asciidoctor": "^2.2.6",
     "fs-extra": "^7.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -48,7 +48,7 @@
     "showdown": "^1.9.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
+    "@babel/cli": "^7.17.0",
     "@babel/core": "^7.9.0",
     "@babel/node": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
