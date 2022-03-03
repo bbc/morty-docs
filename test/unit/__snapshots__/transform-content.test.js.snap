@@ -95,13 +95,9 @@ exports[`Transform-content returns the correct html from AsciiDoc for .adoc with
           <div style="text-align:center"
                class="col-md-4 col-md-offset-4"
           >
-            <h3>
-              What is Morty-Docs?
-            </h3>
             <p>
-              Link to
               <a href="https://github.com/bbc/morty-docs">
-                Morty-docs
+                Morty-Docs on github
               </a>
               .
             </p>
@@ -208,13 +204,9 @@ exports[`Transform-content returns the correct html from AsciiDoc for .asc with 
           <div style="text-align:center"
                class="col-md-4 col-md-offset-4"
           >
-            <h3>
-              What is Morty-Docs?
-            </h3>
             <p>
-              Link to
               <a href="https://github.com/bbc/morty-docs">
-                Morty-docs
+                Morty-Docs on github
               </a>
               .
             </p>
@@ -321,13 +313,9 @@ exports[`Transform-content returns the correct html from AsciiDoc for .asciidoc 
           <div style="text-align:center"
                class="col-md-4 col-md-offset-4"
           >
-            <h3>
-              What is Morty-Docs?
-            </h3>
             <p>
-              Link to
               <a href="https://github.com/bbc/morty-docs">
-                Morty-docs
+                Morty-Docs on github
               </a>
               .
             </p>
@@ -425,13 +413,9 @@ exports[`Transform-content returns the correct html from AsciiDoc for a line of 
           <div style="text-align:center"
                class="col-md-4 col-md-offset-4"
           >
-            <h3>
-              What is Morty-Docs?
-            </h3>
             <p>
-              Link to
               <a href="https://github.com/bbc/morty-docs">
-                Morty-docs
+                Morty-Docs on github
               </a>
               .
             </p>
@@ -526,13 +510,9 @@ exports[`Transform-content returns the correct html from markdown for Markdown w
           <div style="text-align:center"
                class="col-md-4 col-md-offset-4"
           >
-            <h3>
-              What is Morty-Docs?
-            </h3>
             <p>
-              Link to
               <a href="https://github.com/bbc/morty-docs">
-                Morty-docs
+                Morty-Docs on github
               </a>
               .
             </p>
@@ -616,13 +596,9 @@ exports[`Transform-content returns the correct html from markdown for a line of 
           <div style="text-align:center"
                class="col-md-4 col-md-offset-4"
           >
-            <h3>
-              What is Morty-Docs?
-            </h3>
             <p>
-              Link to
               <a href="https://github.com/bbc/morty-docs">
-                Morty-docs
+                Morty-Docs on github
               </a>
               .
             </p>

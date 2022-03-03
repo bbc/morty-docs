@@ -113,13 +113,9 @@ exports[`Generate Indexes with the correct html The correct links are included i
           <div style="text-align:center"
                class="col-md-4 col-md-offset-4"
           >
-            <h3>
-              What is Morty-Docs?
-            </h3>
             <p>
-              Link to
               <a href="https://github.com/bbc/morty-docs">
-                Morty-docs
+                Morty-Docs on github
               </a>
               .
             </p>
@@ -234,13 +230,9 @@ exports[`Generate Indexes with the correct html The correct links are included i
           <div style="text-align:center"
                class="col-md-4 col-md-offset-4"
           >
-            <h3>
-              What is Morty-Docs?
-            </h3>
             <p>
-              Link to
               <a href="https://github.com/bbc/morty-docs">
-                Morty-docs
+                Morty-Docs on github
               </a>
               .
             </p>
@@ -355,13 +347,9 @@ exports[`Generate Indexes with the correct html The correct links are included i
           <div style="text-align:center"
                class="col-md-4 col-md-offset-4"
           >
-            <h3>
-              What is Morty-Docs?
-            </h3>
             <p>
-              Link to
               <a href="https://github.com/bbc/morty-docs">
-                Morty-docs
+                Morty-Docs on github
               </a>
               .
             </p>
@@ -488,13 +476,9 @@ exports[`Generate Indexes with the correct html The correct links are included i
           <div style="text-align:center"
                class="col-md-4 col-md-offset-4"
           >
-            <h3>
-              What is Morty-Docs?
-            </h3>
             <p>
-              Link to
               <a href="https://github.com/bbc/morty-docs">
-                Morty-docs
+                Morty-Docs on github
               </a>
               .
             </p>
@@ -608,13 +592,9 @@ exports[`Generate Indexes with the correct html to match snapshot with a colon i
           <div style="text-align:center"
                class="col-md-4 col-md-offset-4"
           >
-            <h3>
-              What is Morty-Docs?
-            </h3>
             <p>
-              Link to
               <a href="https://github.com/bbc/morty-docs">
-                Morty-docs
+                Morty-Docs on github
               </a>
               .
             </p>
@@ -735,13 +715,9 @@ exports[`Generate Indexes with the correct html to match snapshot with a content
           <div style="text-align:center"
                class="col-md-4 col-md-offset-4"
           >
-            <h3>
-              What is Morty-Docs?
-            </h3>
             <p>
-              Link to
               <a href="https://github.com/bbc/morty-docs">
-                Morty-docs
+                Morty-Docs on github
               </a>
               .
             </p>
@@ -855,13 +831,9 @@ exports[`Generate Indexes with the correct html to match snapshot with a pdf fil
           <div style="text-align:center"
                class="col-md-4 col-md-offset-4"
           >
-            <h3>
-              What is Morty-Docs?
-            </h3>
             <p>
-              Link to
               <a href="https://github.com/bbc/morty-docs">
-                Morty-docs
+                Morty-Docs on github
               </a>
               .
             </p>
@@ -975,13 +947,9 @@ exports[`Generate Indexes with the correct html to match snapshot without a cont
           <div style="text-align:center"
                class="col-md-4 col-md-offset-4"
           >
-            <h3>
-              What is Morty-Docs?
-            </h3>
             <p>
-              Link to
               <a href="https://github.com/bbc/morty-docs">
-                Morty-docs
+                Morty-Docs on github
               </a>
               .
             </p>
