@@ -25,11 +25,8 @@ const Footer = () => {
       <div style={Styles.footerContainer} className='container'>
         <div className='row'>
           <div style={Styles.footerContent} className='col-md-4 col-md-offset-4'>
-            <h3>
-              What is Morty-Docs?
-            </h3>
-            <p >
-              Link to <a href='https://github.com/bbc/morty-docs'>Morty-docs</a>.
+            <p>
+              <a href='https://github.com/bbc/morty-docs'>Morty-Docs on github</a>.
             </p>
           </div>
         </div>
