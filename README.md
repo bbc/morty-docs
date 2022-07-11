@@ -43,7 +43,7 @@ Morty Docs will generate a website listing an HTML page for each markdown file i
 
 To try it with markdown files from a custom directory
 ```bash
-npm start /absolute/path/to/custom/directory
+mortyPath=/absolute/path/to/custom/directory npm start
 ```
 
 ## Use as a library
