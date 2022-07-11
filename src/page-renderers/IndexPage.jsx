@@ -25,19 +25,28 @@ const Styles = {
   mortyLogo: {
     maxWidth: '45%'
   },
+
   wrapper: {
     minHeight: '75vh',
     paddingBottom: '20px'
   },
+
   html: {
     minHeight: '100vh',
     fontSize: '16px'
   },
+
   body: {
     minHeight: '100vh',
     fontFamily: '"Helvetica Neue",Helvetica,Arial,sans-serif',
     color: '#333',
     backgroundColor: '#fff'
+  },
+
+  listContainer: {
+    marginTop: '10px', 
+    maxWidth: '600px',
+    margin: 'auto'
   }
 }
 
@@ -58,7 +67,7 @@ const IndexPage = ({ listItems, options, relPath }) => {
           <Header relPath={relPath} basePath={options.basePath} />
           <div  style={{ marginTop: '10px' }}>
             <Title contentTitle={options.contentTitle} />
-            <div >
+            <div style={Styles.listContainer}>
               <ul >
                 {
                   (() => listItems.map((item, index) => <IndexListItem key={index} {...item} />))()
