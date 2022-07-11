@@ -3,7 +3,7 @@ const { transform, generateTransformInput } = require('./build')
 
 const path = require('path')
 
-const directoryToConvert = JSON.parse(process.env.npm_config_argv).remain[0] || 'default-md-files'
+const directoryToConvert = process.env.mortyPath || 'default-md-files'
 const resolvedPath = path.resolve(directoryToConvert)
 
 const mortyDocs = async () => {
