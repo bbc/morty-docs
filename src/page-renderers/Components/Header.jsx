@@ -6,24 +6,22 @@ const Styles = {
     border: 'none',
     borderRadius: '0',
     backgroundColor: '#000',
-    height: '60px',
     marginBottom: '0',
     width: '100%',
-    padding: '1.142rem'
   },
   headerNav: {
   },
   headerLinks: {
-    padding: '0',
+    padding: '1rem',
     listStyle: 'none',
     display: 'flex',
-    height: '100%',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   headerLink: {
     textAlign: 'left',
     color: 'lightblue',
-    fontSize: '2rem'
+    fontSize: '1.5rem',
+    textDecoration: 'none'
   },
   separator: {
     margin: '0 0.28rem',
