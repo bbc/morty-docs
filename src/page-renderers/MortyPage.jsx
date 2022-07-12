@@ -88,6 +88,28 @@ const contentStyles = `
   font-weight: 700;
 }
 
+.content em {
+  font-style: italic;
+}
+
+.content blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 17.5px;
+    border-left: 5px solid #eee;
+}
+
+.content blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+.content hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #949494;
+}
+
 .content pre {
   display: block;
   padding: 9.5px;
