@@ -7,7 +7,7 @@ const Styles = {
     borderRadius: '0',
     backgroundColor: '#000',
     marginBottom: '0',
-    width: '100%',
+    width: '100%'
   },
   headerNav: {
   },
@@ -15,7 +15,7 @@ const Styles = {
     padding: '1rem',
     listStyle: 'none',
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   headerLink: {
     textAlign: 'left',
@@ -37,7 +37,7 @@ const HeaderLinks = ({ paths }) => paths.map(({ text, path }, index) => {
 })
 
 const Header = ({ relPath, basePath }) => (
-  <div className='container' style={Styles.navbar}>
+  <div className='header' style={Styles.navbar}>
     <nav style={Styles.headerNav}>
       <ol style={Styles.headerLinks}>
         <HeaderLinks paths={getHeaderPaths(basePath, relPath)} />

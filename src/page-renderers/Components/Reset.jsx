@@ -1,6 +1,6 @@
 const React = require('react')
 
-const resetString = `/* http://meyerweb.com/eric/tools/css/reset/ 
+const resetStyles = `/* http://meyerweb.com/eric/tools/css/reset/ 
 v2.0 | 20110126
 License: none (public domain)
 */
@@ -48,9 +48,8 @@ table {
  border-collapse: collapse;
  border-spacing: 0;
 }
-
 `
 
-const Reset = () => (<style>{resetString}</style>)
+const Reset = () => <style dangerouslySetInnerHTML={{ __html: resetStyles }}/>
 
 module.exports = Reset
