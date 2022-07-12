@@ -37,7 +37,7 @@ const HeaderLinks = ({ paths }) => paths.map(({ text, path }, index) => {
 })
 
 const Header = ({ relPath, basePath }) => (
-  <div className='header' style={Styles.navbar}>
+  <div style={Styles.navbar}>
     <nav style={Styles.headerNav}>
       <ol style={Styles.headerLinks}>
         <HeaderLinks paths={getHeaderPaths(basePath, relPath)} />

@@ -2,7 +2,7 @@
 
 exports[`Generate Indexes with the correct html The correct links are included in the raw output 1`] = `
 <html lang="en"
-      style="min-height:100vh"
+      style="min-height:100vh;font-size:16px"
       data-reactroot
 >
   <head>
@@ -16,31 +16,69 @@ exports[`Generate Indexes with the correct html The correct links are included i
     <title>
       Morty Docs
     </title>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous"
-    >
-    <link rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-          crossorigin="anonymous"
-    >
+    <style>
+      /* http://meyerweb.com/eric/tools/css/reset/ 
+v2.0 | 20110126
+License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+ margin: 0;
+ padding: 0;
+ border: 0;
+ font-size: 100%;
+ font: inherit;
+ vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+ display: block;
+}
+body {
+ line-height: 1;
+}
+ol, ul {
+ list-style: none;
+}
+blockquote, q {
+ quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+ content: '';
+ content: none;
+}
+table {
+ border-collapse: collapse;
+ border-spacing: 0;
+}
+    </style>
   </head>
-  <body style="min-height:100vh">
+  <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
-      <div class="container"
-           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding:1.142rem"
-      >
+      <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
         <nav>
-          <ol style="padding:0;list-style:none;display:flex;height:100%;align-items:center">
+          <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
                     style="margin:0 0.28rem;color:#ebebeb"
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs"
               >
                 morty-docs
@@ -52,7 +90,7 @@ exports[`Generate Indexes with the correct html The correct links are included i
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs/some-repo"
               >
                 some-repo
@@ -61,40 +99,65 @@ exports[`Generate Indexes with the correct html The correct links are included i
           </ol>
         </nav>
       </div>
-      <div class="container"
-           style="margin-top:10px"
-      >
-        <div class="row col-md-8 col-md-offset-2">
-          <ul class="list-unstyled">
-            <li class="index-list"
-                style="font-size:1.6em;border-bottom:solid black 1px;margin-bottom:10px"
-            >
-              <a href="docs/index.html">
-                <i class="fas fa-folder-open">
-                </i>
-                <span style="margin-left:5px">
+      <div style="margin-top:10px">
+        <div style="margin-top:10px;max-width:600px;margin:auto">
+          <ul>
+            <li style="font-size:1.5rem;border-bottom:solid black 1px;margin-bottom:1rem;padding-bottom:0.5rem">
+              <a href="docs/index.html"
+                 style="text-decoration:none;color:#337ab7"
+              >
+                <span style="display:inline-block;width:1em">
+                  <svg aria-hidden="true"
+                       style="fill:#337ab7;height:1em;vertical-align:middle"
+                       xmlns="http://www.w3.org/2000/svg"
+                       viewbox="0 0 576 512"
+                  >
+                    &lt;!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --&gt;
+                    <path d="M147.8 192H480V144C480 117.5 458.5 96 432 96h-160l-64-64h-160C21.49 32 0 53.49 0 80v328.4l90.54-181.1C101.4 205.6 123.4 192 147.8 192zM543.1 224H147.8C135.7 224 124.6 230.8 119.2 241.7L0 480h447.1c12.12 0 23.2-6.852 28.62-17.69l96-192C583.2 249 567.7 224 543.1 224z">
+                    </path>
+                  </svg>
+                </span>
+                <span style="margin-left:1rem">
                   docs
                 </span>
               </a>
             </li>
-            <li class="index-list"
-                style="font-size:1.6em;border-bottom:solid black 1px;margin-bottom:10px"
-            >
-              <a href="folder/index.html">
-                <i class="fas fa-folder-open">
-                </i>
-                <span style="margin-left:5px">
+            <li style="font-size:1.5rem;border-bottom:solid black 1px;margin-bottom:1rem;padding-bottom:0.5rem">
+              <a href="folder/index.html"
+                 style="text-decoration:none;color:#337ab7"
+              >
+                <span style="display:inline-block;width:1em">
+                  <svg aria-hidden="true"
+                       style="fill:#337ab7;height:1em;vertical-align:middle"
+                       xmlns="http://www.w3.org/2000/svg"
+                       viewbox="0 0 576 512"
+                  >
+                    &lt;!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --&gt;
+                    <path d="M147.8 192H480V144C480 117.5 458.5 96 432 96h-160l-64-64h-160C21.49 32 0 53.49 0 80v328.4l90.54-181.1C101.4 205.6 123.4 192 147.8 192zM543.1 224H147.8C135.7 224 124.6 230.8 119.2 241.7L0 480h447.1c12.12 0 23.2-6.852 28.62-17.69l96-192C583.2 249 567.7 224 543.1 224z">
+                    </path>
+                  </svg>
+                </span>
+                <span style="margin-left:1rem">
                   folder
                 </span>
               </a>
             </li>
-            <li class="index-list"
-                style="font-size:1.6em;border-bottom:solid black 1px;margin-bottom:10px"
-            >
-              <a href="rootFile.html">
-                <i class="fas fa-file-alt">
-                </i>
-                <span style="margin-left:5px">
+            <li style="font-size:1.5rem;border-bottom:solid black 1px;margin-bottom:1rem;padding-bottom:0.5rem">
+              <a href="rootFile.html"
+                 style="text-decoration:none;color:#337ab7"
+              >
+                <span style="display:inline-block;width:1em">
+                  <svg aria-hidden="true"
+                       style="fill:#337ab7;height:1em;vertical-align:middle"
+                       xmlns="http://www.w3.org/2000/svg"
+                       viewbox="0 0 384 512"
+                  >
+                    &lt;!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --&gt;
+                    <path d="M256 0v128h128L256 0zM224 128L224 0H48C21.49 0 0 21.49 0 48v416C0 490.5 21.49 512 48 512h288c26.51 0 48-21.49 48-48V160h-127.1C238.3 160 224 145.7 224 128zM272 416h-160C103.2 416 96 408.8 96 400C96 391.2 103.2 384 112 384h160c8.836 0 16 7.162 16 16C288 408.8 280.8 416 272 416zM272 352h-160C103.2 352 96 344.8 96 336C96 327.2 103.2 320 112 320h160c8.836 0 16 7.162 16 16C288 344.8 280.8 352 272 352zM288 272C288 280.8 280.8 288 272 288h-160C103.2 288 96 280.8 96 272C96 263.2 103.2 256 112 256h160C280.8 256 288 263.2 288 272z">
+                    </path>
+                  </svg>
+                </span>
+                <span style="margin-left:1rem">
                   rootFile.html
                 </span>
               </a>
@@ -103,25 +166,12 @@ exports[`Generate Indexes with the correct html The correct links are included i
         </div>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;padding:0 15px;box-sizing:border-box;min-height:25vh;position:relative"
-            class="footer"
-    >
-      <div style="padding:1em 0 2em 0"
-           class="container"
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+      <a href="https://github.com/bbc/morty-docs"
+         style="color:#337ab7"
       >
-        <div class="row">
-          <div style="text-align:center"
-               class="col-md-4 col-md-offset-4"
-          >
-            <p>
-              <a href="https://github.com/bbc/morty-docs">
-                Morty-Docs on github
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-      </div>
+        Morty-Docs on github
+      </a>
     </footer>
   </body>
 </html>
@@ -129,7 +179,7 @@ exports[`Generate Indexes with the correct html The correct links are included i
 
 exports[`Generate Indexes with the correct html The correct links are included in the raw output 2`] = `
 <html lang="en"
-      style="min-height:100vh"
+      style="min-height:100vh;font-size:16px"
       data-reactroot
 >
   <head>
@@ -143,31 +193,69 @@ exports[`Generate Indexes with the correct html The correct links are included i
     <title>
       Morty Docs
     </title>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous"
-    >
-    <link rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-          crossorigin="anonymous"
-    >
+    <style>
+      /* http://meyerweb.com/eric/tools/css/reset/ 
+v2.0 | 20110126
+License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+ margin: 0;
+ padding: 0;
+ border: 0;
+ font-size: 100%;
+ font: inherit;
+ vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+ display: block;
+}
+body {
+ line-height: 1;
+}
+ol, ul {
+ list-style: none;
+}
+blockquote, q {
+ quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+ content: '';
+ content: none;
+}
+table {
+ border-collapse: collapse;
+ border-spacing: 0;
+}
+    </style>
   </head>
-  <body style="min-height:100vh">
+  <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
-      <div class="container"
-           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding:1.142rem"
-      >
+      <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
         <nav>
-          <ol style="padding:0;list-style:none;display:flex;height:100%;align-items:center">
+          <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
                     style="margin:0 0.28rem;color:#ebebeb"
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs"
               >
                 morty-docs
@@ -179,7 +267,7 @@ exports[`Generate Indexes with the correct html The correct links are included i
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs/some-repo"
               >
                 some-repo
@@ -191,7 +279,7 @@ exports[`Generate Indexes with the correct html The correct links are included i
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs/some-repo/folder"
               >
                 folder
@@ -200,18 +288,25 @@ exports[`Generate Indexes with the correct html The correct links are included i
           </ol>
         </nav>
       </div>
-      <div class="container"
-           style="margin-top:10px"
-      >
-        <div class="row col-md-8 col-md-offset-2">
-          <ul class="list-unstyled">
-            <li class="index-list"
-                style="font-size:1.6em;border-bottom:solid black 1px;margin-bottom:10px"
-            >
-              <a href="nestedFile.html">
-                <i class="fas fa-file-alt">
-                </i>
-                <span style="margin-left:5px">
+      <div style="margin-top:10px">
+        <div style="margin-top:10px;max-width:600px;margin:auto">
+          <ul>
+            <li style="font-size:1.5rem;border-bottom:solid black 1px;margin-bottom:1rem;padding-bottom:0.5rem">
+              <a href="nestedFile.html"
+                 style="text-decoration:none;color:#337ab7"
+              >
+                <span style="display:inline-block;width:1em">
+                  <svg aria-hidden="true"
+                       style="fill:#337ab7;height:1em;vertical-align:middle"
+                       xmlns="http://www.w3.org/2000/svg"
+                       viewbox="0 0 384 512"
+                  >
+                    &lt;!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --&gt;
+                    <path d="M256 0v128h128L256 0zM224 128L224 0H48C21.49 0 0 21.49 0 48v416C0 490.5 21.49 512 48 512h288c26.51 0 48-21.49 48-48V160h-127.1C238.3 160 224 145.7 224 128zM272 416h-160C103.2 416 96 408.8 96 400C96 391.2 103.2 384 112 384h160c8.836 0 16 7.162 16 16C288 408.8 280.8 416 272 416zM272 352h-160C103.2 352 96 344.8 96 336C96 327.2 103.2 320 112 320h160c8.836 0 16 7.162 16 16C288 344.8 280.8 352 272 352zM288 272C288 280.8 280.8 288 272 288h-160C103.2 288 96 280.8 96 272C96 263.2 103.2 256 112 256h160C280.8 256 288 263.2 288 272z">
+                    </path>
+                  </svg>
+                </span>
+                <span style="margin-left:1rem">
                   nestedFile.html
                 </span>
               </a>
@@ -220,25 +315,12 @@ exports[`Generate Indexes with the correct html The correct links are included i
         </div>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;padding:0 15px;box-sizing:border-box;min-height:25vh;position:relative"
-            class="footer"
-    >
-      <div style="padding:1em 0 2em 0"
-           class="container"
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+      <a href="https://github.com/bbc/morty-docs"
+         style="color:#337ab7"
       >
-        <div class="row">
-          <div style="text-align:center"
-               class="col-md-4 col-md-offset-4"
-          >
-            <p>
-              <a href="https://github.com/bbc/morty-docs">
-                Morty-Docs on github
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-      </div>
+        Morty-Docs on github
+      </a>
     </footer>
   </body>
 </html>
@@ -246,7 +328,7 @@ exports[`Generate Indexes with the correct html The correct links are included i
 
 exports[`Generate Indexes with the correct html The correct links are included in the raw output 3`] = `
 <html lang="en"
-      style="min-height:100vh"
+      style="min-height:100vh;font-size:16px"
       data-reactroot
 >
   <head>
@@ -260,31 +342,69 @@ exports[`Generate Indexes with the correct html The correct links are included i
     <title>
       Morty Docs
     </title>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous"
-    >
-    <link rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-          crossorigin="anonymous"
-    >
+    <style>
+      /* http://meyerweb.com/eric/tools/css/reset/ 
+v2.0 | 20110126
+License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+ margin: 0;
+ padding: 0;
+ border: 0;
+ font-size: 100%;
+ font: inherit;
+ vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+ display: block;
+}
+body {
+ line-height: 1;
+}
+ol, ul {
+ list-style: none;
+}
+blockquote, q {
+ quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+ content: '';
+ content: none;
+}
+table {
+ border-collapse: collapse;
+ border-spacing: 0;
+}
+    </style>
   </head>
-  <body style="min-height:100vh">
+  <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
-      <div class="container"
-           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding:1.142rem"
-      >
+      <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
         <nav>
-          <ol style="padding:0;list-style:none;display:flex;height:100%;align-items:center">
+          <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
                     style="margin:0 0.28rem;color:#ebebeb"
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs"
               >
                 morty-docs
@@ -296,7 +416,7 @@ exports[`Generate Indexes with the correct html The correct links are included i
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs/some-repo"
               >
                 some-repo
@@ -308,7 +428,7 @@ exports[`Generate Indexes with the correct html The correct links are included i
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs/some-repo/docs"
               >
                 docs
@@ -317,18 +437,25 @@ exports[`Generate Indexes with the correct html The correct links are included i
           </ol>
         </nav>
       </div>
-      <div class="container"
-           style="margin-top:10px"
-      >
-        <div class="row col-md-8 col-md-offset-2">
-          <ul class="list-unstyled">
-            <li class="index-list"
-                style="font-size:1.6em;border-bottom:solid black 1px;margin-bottom:10px"
-            >
-              <a href="arch/index.html">
-                <i class="fas fa-folder-open">
-                </i>
-                <span style="margin-left:5px">
+      <div style="margin-top:10px">
+        <div style="margin-top:10px;max-width:600px;margin:auto">
+          <ul>
+            <li style="font-size:1.5rem;border-bottom:solid black 1px;margin-bottom:1rem;padding-bottom:0.5rem">
+              <a href="arch/index.html"
+                 style="text-decoration:none;color:#337ab7"
+              >
+                <span style="display:inline-block;width:1em">
+                  <svg aria-hidden="true"
+                       style="fill:#337ab7;height:1em;vertical-align:middle"
+                       xmlns="http://www.w3.org/2000/svg"
+                       viewbox="0 0 576 512"
+                  >
+                    &lt;!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --&gt;
+                    <path d="M147.8 192H480V144C480 117.5 458.5 96 432 96h-160l-64-64h-160C21.49 32 0 53.49 0 80v328.4l90.54-181.1C101.4 205.6 123.4 192 147.8 192zM543.1 224H147.8C135.7 224 124.6 230.8 119.2 241.7L0 480h447.1c12.12 0 23.2-6.852 28.62-17.69l96-192C583.2 249 567.7 224 543.1 224z">
+                    </path>
+                  </svg>
+                </span>
+                <span style="margin-left:1rem">
                   arch
                 </span>
               </a>
@@ -337,25 +464,12 @@ exports[`Generate Indexes with the correct html The correct links are included i
         </div>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;padding:0 15px;box-sizing:border-box;min-height:25vh;position:relative"
-            class="footer"
-    >
-      <div style="padding:1em 0 2em 0"
-           class="container"
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+      <a href="https://github.com/bbc/morty-docs"
+         style="color:#337ab7"
       >
-        <div class="row">
-          <div style="text-align:center"
-               class="col-md-4 col-md-offset-4"
-          >
-            <p>
-              <a href="https://github.com/bbc/morty-docs">
-                Morty-Docs on github
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-      </div>
+        Morty-Docs on github
+      </a>
     </footer>
   </body>
 </html>
@@ -363,7 +477,7 @@ exports[`Generate Indexes with the correct html The correct links are included i
 
 exports[`Generate Indexes with the correct html The correct links are included in the raw output 4`] = `
 <html lang="en"
-      style="min-height:100vh"
+      style="min-height:100vh;font-size:16px"
       data-reactroot
 >
   <head>
@@ -377,31 +491,69 @@ exports[`Generate Indexes with the correct html The correct links are included i
     <title>
       Morty Docs
     </title>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous"
-    >
-    <link rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-          crossorigin="anonymous"
-    >
+    <style>
+      /* http://meyerweb.com/eric/tools/css/reset/ 
+v2.0 | 20110126
+License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+ margin: 0;
+ padding: 0;
+ border: 0;
+ font-size: 100%;
+ font: inherit;
+ vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+ display: block;
+}
+body {
+ line-height: 1;
+}
+ol, ul {
+ list-style: none;
+}
+blockquote, q {
+ quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+ content: '';
+ content: none;
+}
+table {
+ border-collapse: collapse;
+ border-spacing: 0;
+}
+    </style>
   </head>
-  <body style="min-height:100vh">
+  <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
-      <div class="container"
-           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding:1.142rem"
-      >
+      <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
         <nav>
-          <ol style="padding:0;list-style:none;display:flex;height:100%;align-items:center">
+          <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
                     style="margin:0 0.28rem;color:#ebebeb"
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs"
               >
                 morty-docs
@@ -413,7 +565,7 @@ exports[`Generate Indexes with the correct html The correct links are included i
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs/some-repo"
               >
                 some-repo
@@ -425,7 +577,7 @@ exports[`Generate Indexes with the correct html The correct links are included i
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs/some-repo/docs"
               >
                 docs
@@ -437,7 +589,7 @@ exports[`Generate Indexes with the correct html The correct links are included i
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs/some-repo/docs/arch"
               >
                 arch
@@ -446,18 +598,25 @@ exports[`Generate Indexes with the correct html The correct links are included i
           </ol>
         </nav>
       </div>
-      <div class="container"
-           style="margin-top:10px"
-      >
-        <div class="row col-md-8 col-md-offset-2">
-          <ul class="list-unstyled">
-            <li class="index-list"
-                style="font-size:1.6em;border-bottom:solid black 1px;margin-bottom:10px"
-            >
-              <a href="furtherNestedFile.html">
-                <i class="fas fa-file-alt">
-                </i>
-                <span style="margin-left:5px">
+      <div style="margin-top:10px">
+        <div style="margin-top:10px;max-width:600px;margin:auto">
+          <ul>
+            <li style="font-size:1.5rem;border-bottom:solid black 1px;margin-bottom:1rem;padding-bottom:0.5rem">
+              <a href="furtherNestedFile.html"
+                 style="text-decoration:none;color:#337ab7"
+              >
+                <span style="display:inline-block;width:1em">
+                  <svg aria-hidden="true"
+                       style="fill:#337ab7;height:1em;vertical-align:middle"
+                       xmlns="http://www.w3.org/2000/svg"
+                       viewbox="0 0 384 512"
+                  >
+                    &lt;!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --&gt;
+                    <path d="M256 0v128h128L256 0zM224 128L224 0H48C21.49 0 0 21.49 0 48v416C0 490.5 21.49 512 48 512h288c26.51 0 48-21.49 48-48V160h-127.1C238.3 160 224 145.7 224 128zM272 416h-160C103.2 416 96 408.8 96 400C96 391.2 103.2 384 112 384h160c8.836 0 16 7.162 16 16C288 408.8 280.8 416 272 416zM272 352h-160C103.2 352 96 344.8 96 336C96 327.2 103.2 320 112 320h160c8.836 0 16 7.162 16 16C288 344.8 280.8 352 272 352zM288 272C288 280.8 280.8 288 272 288h-160C103.2 288 96 280.8 96 272C96 263.2 103.2 256 112 256h160C280.8 256 288 263.2 288 272z">
+                    </path>
+                  </svg>
+                </span>
+                <span style="margin-left:1rem">
                   furtherNestedFile.html
                 </span>
               </a>
@@ -466,25 +625,12 @@ exports[`Generate Indexes with the correct html The correct links are included i
         </div>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;padding:0 15px;box-sizing:border-box;min-height:25vh;position:relative"
-            class="footer"
-    >
-      <div style="padding:1em 0 2em 0"
-           class="container"
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+      <a href="https://github.com/bbc/morty-docs"
+         style="color:#337ab7"
       >
-        <div class="row">
-          <div style="text-align:center"
-               class="col-md-4 col-md-offset-4"
-          >
-            <p>
-              <a href="https://github.com/bbc/morty-docs">
-                Morty-Docs on github
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-      </div>
+        Morty-Docs on github
+      </a>
     </footer>
   </body>
 </html>
@@ -492,7 +638,7 @@ exports[`Generate Indexes with the correct html The correct links are included i
 
 exports[`Generate Indexes with the correct html to match snapshot with a colon in the filename 1`] = `
 <html lang="en"
-      style="min-height:100vh"
+      style="min-height:100vh;font-size:16px"
       data-reactroot
 >
   <head>
@@ -506,31 +652,69 @@ exports[`Generate Indexes with the correct html to match snapshot with a colon i
     <title>
       Morty Docs
     </title>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous"
-    >
-    <link rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-          crossorigin="anonymous"
-    >
+    <style>
+      /* http://meyerweb.com/eric/tools/css/reset/ 
+v2.0 | 20110126
+License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+ margin: 0;
+ padding: 0;
+ border: 0;
+ font-size: 100%;
+ font: inherit;
+ vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+ display: block;
+}
+body {
+ line-height: 1;
+}
+ol, ul {
+ list-style: none;
+}
+blockquote, q {
+ quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+ content: '';
+ content: none;
+}
+table {
+ border-collapse: collapse;
+ border-spacing: 0;
+}
+    </style>
   </head>
-  <body style="min-height:100vh">
+  <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
-      <div class="container"
-           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding:1.142rem"
-      >
+      <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
         <nav>
-          <ol style="padding:0;list-style:none;display:flex;height:100%;align-items:center">
+          <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
                     style="margin:0 0.28rem;color:#ebebeb"
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs"
               >
                 morty-docs
@@ -542,7 +726,7 @@ exports[`Generate Indexes with the correct html to match snapshot with a colon i
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs/some-repo"
               >
                 some-repo
@@ -551,29 +735,45 @@ exports[`Generate Indexes with the correct html to match snapshot with a colon i
           </ol>
         </nav>
       </div>
-      <div class="container"
-           style="margin-top:10px"
-      >
-        <div class="row col-md-8 col-md-offset-2">
-          <ul class="list-unstyled">
-            <li class="index-list"
-                style="font-size:1.6em;border-bottom:solid black 1px;margin-bottom:10px"
-            >
-              <a href="file%3Afoo1.html">
-                <i class="fas fa-file-alt">
-                </i>
-                <span style="margin-left:5px">
+      <div style="margin-top:10px">
+        <div style="margin-top:10px;max-width:600px;margin:auto">
+          <ul>
+            <li style="font-size:1.5rem;border-bottom:solid black 1px;margin-bottom:1rem;padding-bottom:0.5rem">
+              <a href="file%3Afoo1.html"
+                 style="text-decoration:none;color:#337ab7"
+              >
+                <span style="display:inline-block;width:1em">
+                  <svg aria-hidden="true"
+                       style="fill:#337ab7;height:1em;vertical-align:middle"
+                       xmlns="http://www.w3.org/2000/svg"
+                       viewbox="0 0 384 512"
+                  >
+                    &lt;!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --&gt;
+                    <path d="M256 0v128h128L256 0zM224 128L224 0H48C21.49 0 0 21.49 0 48v416C0 490.5 21.49 512 48 512h288c26.51 0 48-21.49 48-48V160h-127.1C238.3 160 224 145.7 224 128zM272 416h-160C103.2 416 96 408.8 96 400C96 391.2 103.2 384 112 384h160c8.836 0 16 7.162 16 16C288 408.8 280.8 416 272 416zM272 352h-160C103.2 352 96 344.8 96 336C96 327.2 103.2 320 112 320h160c8.836 0 16 7.162 16 16C288 344.8 280.8 352 272 352zM288 272C288 280.8 280.8 288 272 288h-160C103.2 288 96 280.8 96 272C96 263.2 103.2 256 112 256h160C280.8 256 288 263.2 288 272z">
+                    </path>
+                  </svg>
+                </span>
+                <span style="margin-left:1rem">
                   file:foo1.html
                 </span>
               </a>
             </li>
-            <li class="index-list"
-                style="font-size:1.6em;border-bottom:solid black 1px;margin-bottom:10px"
-            >
-              <a href="foo2.html">
-                <i class="fas fa-file-alt">
-                </i>
-                <span style="margin-left:5px">
+            <li style="font-size:1.5rem;border-bottom:solid black 1px;margin-bottom:1rem;padding-bottom:0.5rem">
+              <a href="foo2.html"
+                 style="text-decoration:none;color:#337ab7"
+              >
+                <span style="display:inline-block;width:1em">
+                  <svg aria-hidden="true"
+                       style="fill:#337ab7;height:1em;vertical-align:middle"
+                       xmlns="http://www.w3.org/2000/svg"
+                       viewbox="0 0 384 512"
+                  >
+                    &lt;!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --&gt;
+                    <path d="M256 0v128h128L256 0zM224 128L224 0H48C21.49 0 0 21.49 0 48v416C0 490.5 21.49 512 48 512h288c26.51 0 48-21.49 48-48V160h-127.1C238.3 160 224 145.7 224 128zM272 416h-160C103.2 416 96 408.8 96 400C96 391.2 103.2 384 112 384h160c8.836 0 16 7.162 16 16C288 408.8 280.8 416 272 416zM272 352h-160C103.2 352 96 344.8 96 336C96 327.2 103.2 320 112 320h160c8.836 0 16 7.162 16 16C288 344.8 280.8 352 272 352zM288 272C288 280.8 280.8 288 272 288h-160C103.2 288 96 280.8 96 272C96 263.2 103.2 256 112 256h160C280.8 256 288 263.2 288 272z">
+                    </path>
+                  </svg>
+                </span>
+                <span style="margin-left:1rem">
                   foo2.html
                 </span>
               </a>
@@ -582,25 +782,12 @@ exports[`Generate Indexes with the correct html to match snapshot with a colon i
         </div>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;padding:0 15px;box-sizing:border-box;min-height:25vh;position:relative"
-            class="footer"
-    >
-      <div style="padding:1em 0 2em 0"
-           class="container"
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+      <a href="https://github.com/bbc/morty-docs"
+         style="color:#337ab7"
       >
-        <div class="row">
-          <div style="text-align:center"
-               class="col-md-4 col-md-offset-4"
-          >
-            <p>
-              <a href="https://github.com/bbc/morty-docs">
-                Morty-Docs on github
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-      </div>
+        Morty-Docs on github
+      </a>
     </footer>
   </body>
 </html>
@@ -608,7 +795,7 @@ exports[`Generate Indexes with the correct html to match snapshot with a colon i
 
 exports[`Generate Indexes with the correct html to match snapshot with a content title 1`] = `
 <html lang="en"
-      style="min-height:100vh"
+      style="min-height:100vh;font-size:16px"
       data-reactroot
 >
   <head>
@@ -622,31 +809,69 @@ exports[`Generate Indexes with the correct html to match snapshot with a content
     <title>
       Morty Docs
     </title>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous"
-    >
-    <link rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-          crossorigin="anonymous"
-    >
+    <style>
+      /* http://meyerweb.com/eric/tools/css/reset/ 
+v2.0 | 20110126
+License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+ margin: 0;
+ padding: 0;
+ border: 0;
+ font-size: 100%;
+ font: inherit;
+ vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+ display: block;
+}
+body {
+ line-height: 1;
+}
+ol, ul {
+ list-style: none;
+}
+blockquote, q {
+ quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+ content: '';
+ content: none;
+}
+table {
+ border-collapse: collapse;
+ border-spacing: 0;
+}
+    </style>
   </head>
-  <body style="min-height:100vh">
+  <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
-      <div class="container"
-           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding:1.142rem"
-      >
+      <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
         <nav>
-          <ol style="padding:0;list-style:none;display:flex;height:100%;align-items:center">
+          <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
                     style="margin:0 0.28rem;color:#ebebeb"
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs"
               >
                 morty-docs
@@ -658,7 +883,7 @@ exports[`Generate Indexes with the correct html to match snapshot with a content
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs/some-repo"
               >
                 some-repo
@@ -667,36 +892,50 @@ exports[`Generate Indexes with the correct html to match snapshot with a content
           </ol>
         </nav>
       </div>
-      <div class="container"
-           style="margin-top:10px"
-      >
-        <div class="row col-md-6 col-md-offset-3"
-             style="text-align:center;margin-bottom:20px"
-        >
-          <h1 style="font-size:32px">
+      <div style="margin-top:10px">
+        <div style="text-align:center;margin-bottom:20px;margin-top:32px">
+          <h1 style="font-size:2rem;font-weight:500">
             some-repo
           </h1>
         </div>
-        <div class="row col-md-8 col-md-offset-2">
-          <ul class="list-unstyled">
-            <li class="index-list"
-                style="font-size:1.6em;border-bottom:solid black 1px;margin-bottom:10px"
-            >
-              <a href="foo1.html">
-                <i class="fas fa-file-alt">
-                </i>
-                <span style="margin-left:5px">
+        <div style="margin-top:10px;max-width:600px;margin:auto">
+          <ul>
+            <li style="font-size:1.5rem;border-bottom:solid black 1px;margin-bottom:1rem;padding-bottom:0.5rem">
+              <a href="foo1.html"
+                 style="text-decoration:none;color:#337ab7"
+              >
+                <span style="display:inline-block;width:1em">
+                  <svg aria-hidden="true"
+                       style="fill:#337ab7;height:1em;vertical-align:middle"
+                       xmlns="http://www.w3.org/2000/svg"
+                       viewbox="0 0 384 512"
+                  >
+                    &lt;!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --&gt;
+                    <path d="M256 0v128h128L256 0zM224 128L224 0H48C21.49 0 0 21.49 0 48v416C0 490.5 21.49 512 48 512h288c26.51 0 48-21.49 48-48V160h-127.1C238.3 160 224 145.7 224 128zM272 416h-160C103.2 416 96 408.8 96 400C96 391.2 103.2 384 112 384h160c8.836 0 16 7.162 16 16C288 408.8 280.8 416 272 416zM272 352h-160C103.2 352 96 344.8 96 336C96 327.2 103.2 320 112 320h160c8.836 0 16 7.162 16 16C288 344.8 280.8 352 272 352zM288 272C288 280.8 280.8 288 272 288h-160C103.2 288 96 280.8 96 272C96 263.2 103.2 256 112 256h160C280.8 256 288 263.2 288 272z">
+                    </path>
+                  </svg>
+                </span>
+                <span style="margin-left:1rem">
                   foo1.html
                 </span>
               </a>
             </li>
-            <li class="index-list"
-                style="font-size:1.6em;border-bottom:solid black 1px;margin-bottom:10px"
-            >
-              <a href="foo2.html">
-                <i class="fas fa-file-alt">
-                </i>
-                <span style="margin-left:5px">
+            <li style="font-size:1.5rem;border-bottom:solid black 1px;margin-bottom:1rem;padding-bottom:0.5rem">
+              <a href="foo2.html"
+                 style="text-decoration:none;color:#337ab7"
+              >
+                <span style="display:inline-block;width:1em">
+                  <svg aria-hidden="true"
+                       style="fill:#337ab7;height:1em;vertical-align:middle"
+                       xmlns="http://www.w3.org/2000/svg"
+                       viewbox="0 0 384 512"
+                  >
+                    &lt;!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --&gt;
+                    <path d="M256 0v128h128L256 0zM224 128L224 0H48C21.49 0 0 21.49 0 48v416C0 490.5 21.49 512 48 512h288c26.51 0 48-21.49 48-48V160h-127.1C238.3 160 224 145.7 224 128zM272 416h-160C103.2 416 96 408.8 96 400C96 391.2 103.2 384 112 384h160c8.836 0 16 7.162 16 16C288 408.8 280.8 416 272 416zM272 352h-160C103.2 352 96 344.8 96 336C96 327.2 103.2 320 112 320h160c8.836 0 16 7.162 16 16C288 344.8 280.8 352 272 352zM288 272C288 280.8 280.8 288 272 288h-160C103.2 288 96 280.8 96 272C96 263.2 103.2 256 112 256h160C280.8 256 288 263.2 288 272z">
+                    </path>
+                  </svg>
+                </span>
+                <span style="margin-left:1rem">
                   foo2.html
                 </span>
               </a>
@@ -705,25 +944,12 @@ exports[`Generate Indexes with the correct html to match snapshot with a content
         </div>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;padding:0 15px;box-sizing:border-box;min-height:25vh;position:relative"
-            class="footer"
-    >
-      <div style="padding:1em 0 2em 0"
-           class="container"
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+      <a href="https://github.com/bbc/morty-docs"
+         style="color:#337ab7"
       >
-        <div class="row">
-          <div style="text-align:center"
-               class="col-md-4 col-md-offset-4"
-          >
-            <p>
-              <a href="https://github.com/bbc/morty-docs">
-                Morty-Docs on github
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-      </div>
+        Morty-Docs on github
+      </a>
     </footer>
   </body>
 </html>
@@ -731,7 +957,7 @@ exports[`Generate Indexes with the correct html to match snapshot with a content
 
 exports[`Generate Indexes with the correct html to match snapshot with a pdf file 1`] = `
 <html lang="en"
-      style="min-height:100vh"
+      style="min-height:100vh;font-size:16px"
       data-reactroot
 >
   <head>
@@ -745,31 +971,69 @@ exports[`Generate Indexes with the correct html to match snapshot with a pdf fil
     <title>
       Morty Docs
     </title>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous"
-    >
-    <link rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-          crossorigin="anonymous"
-    >
+    <style>
+      /* http://meyerweb.com/eric/tools/css/reset/ 
+v2.0 | 20110126
+License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+ margin: 0;
+ padding: 0;
+ border: 0;
+ font-size: 100%;
+ font: inherit;
+ vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+ display: block;
+}
+body {
+ line-height: 1;
+}
+ol, ul {
+ list-style: none;
+}
+blockquote, q {
+ quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+ content: '';
+ content: none;
+}
+table {
+ border-collapse: collapse;
+ border-spacing: 0;
+}
+    </style>
   </head>
-  <body style="min-height:100vh">
+  <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
-      <div class="container"
-           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding:1.142rem"
-      >
+      <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
         <nav>
-          <ol style="padding:0;list-style:none;display:flex;height:100%;align-items:center">
+          <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
                     style="margin:0 0.28rem;color:#ebebeb"
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs"
               >
                 morty-docs
@@ -781,7 +1045,7 @@ exports[`Generate Indexes with the correct html to match snapshot with a pdf fil
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs/some-repo"
               >
                 some-repo
@@ -790,29 +1054,45 @@ exports[`Generate Indexes with the correct html to match snapshot with a pdf fil
           </ol>
         </nav>
       </div>
-      <div class="container"
-           style="margin-top:10px"
-      >
-        <div class="row col-md-8 col-md-offset-2">
-          <ul class="list-unstyled">
-            <li class="index-list"
-                style="font-size:1.6em;border-bottom:solid black 1px;margin-bottom:10px"
-            >
-              <a href="foo1.html">
-                <i class="fas fa-file-alt">
-                </i>
-                <span style="margin-left:5px">
+      <div style="margin-top:10px">
+        <div style="margin-top:10px;max-width:600px;margin:auto">
+          <ul>
+            <li style="font-size:1.5rem;border-bottom:solid black 1px;margin-bottom:1rem;padding-bottom:0.5rem">
+              <a href="foo1.html"
+                 style="text-decoration:none;color:#337ab7"
+              >
+                <span style="display:inline-block;width:1em">
+                  <svg aria-hidden="true"
+                       style="fill:#337ab7;height:1em;vertical-align:middle"
+                       xmlns="http://www.w3.org/2000/svg"
+                       viewbox="0 0 384 512"
+                  >
+                    &lt;!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --&gt;
+                    <path d="M256 0v128h128L256 0zM224 128L224 0H48C21.49 0 0 21.49 0 48v416C0 490.5 21.49 512 48 512h288c26.51 0 48-21.49 48-48V160h-127.1C238.3 160 224 145.7 224 128zM272 416h-160C103.2 416 96 408.8 96 400C96 391.2 103.2 384 112 384h160c8.836 0 16 7.162 16 16C288 408.8 280.8 416 272 416zM272 352h-160C103.2 352 96 344.8 96 336C96 327.2 103.2 320 112 320h160c8.836 0 16 7.162 16 16C288 344.8 280.8 352 272 352zM288 272C288 280.8 280.8 288 272 288h-160C103.2 288 96 280.8 96 272C96 263.2 103.2 256 112 256h160C280.8 256 288 263.2 288 272z">
+                    </path>
+                  </svg>
+                </span>
+                <span style="margin-left:1rem">
                   foo1.html
                 </span>
               </a>
             </li>
-            <li class="index-list"
-                style="font-size:1.6em;border-bottom:solid black 1px;margin-bottom:10px"
-            >
-              <a href="foo2.pdf">
-                <i class="fas fa-file-alt">
-                </i>
-                <span style="margin-left:5px">
+            <li style="font-size:1.5rem;border-bottom:solid black 1px;margin-bottom:1rem;padding-bottom:0.5rem">
+              <a href="foo2.pdf"
+                 style="text-decoration:none;color:#337ab7"
+              >
+                <span style="display:inline-block;width:1em">
+                  <svg aria-hidden="true"
+                       style="fill:#337ab7;height:1em;vertical-align:middle"
+                       xmlns="http://www.w3.org/2000/svg"
+                       viewbox="0 0 384 512"
+                  >
+                    &lt;!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --&gt;
+                    <path d="M256 0v128h128L256 0zM224 128L224 0H48C21.49 0 0 21.49 0 48v416C0 490.5 21.49 512 48 512h288c26.51 0 48-21.49 48-48V160h-127.1C238.3 160 224 145.7 224 128zM272 416h-160C103.2 416 96 408.8 96 400C96 391.2 103.2 384 112 384h160c8.836 0 16 7.162 16 16C288 408.8 280.8 416 272 416zM272 352h-160C103.2 352 96 344.8 96 336C96 327.2 103.2 320 112 320h160c8.836 0 16 7.162 16 16C288 344.8 280.8 352 272 352zM288 272C288 280.8 280.8 288 272 288h-160C103.2 288 96 280.8 96 272C96 263.2 103.2 256 112 256h160C280.8 256 288 263.2 288 272z">
+                    </path>
+                  </svg>
+                </span>
+                <span style="margin-left:1rem">
                   foo2.pdf
                 </span>
               </a>
@@ -821,25 +1101,12 @@ exports[`Generate Indexes with the correct html to match snapshot with a pdf fil
         </div>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;padding:0 15px;box-sizing:border-box;min-height:25vh;position:relative"
-            class="footer"
-    >
-      <div style="padding:1em 0 2em 0"
-           class="container"
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+      <a href="https://github.com/bbc/morty-docs"
+         style="color:#337ab7"
       >
-        <div class="row">
-          <div style="text-align:center"
-               class="col-md-4 col-md-offset-4"
-          >
-            <p>
-              <a href="https://github.com/bbc/morty-docs">
-                Morty-Docs on github
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-      </div>
+        Morty-Docs on github
+      </a>
     </footer>
   </body>
 </html>
@@ -847,7 +1114,7 @@ exports[`Generate Indexes with the correct html to match snapshot with a pdf fil
 
 exports[`Generate Indexes with the correct html to match snapshot without a content title 1`] = `
 <html lang="en"
-      style="min-height:100vh"
+      style="min-height:100vh;font-size:16px"
       data-reactroot
 >
   <head>
@@ -861,31 +1128,69 @@ exports[`Generate Indexes with the correct html to match snapshot without a cont
     <title>
       Morty Docs
     </title>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous"
-    >
-    <link rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-          crossorigin="anonymous"
-    >
+    <style>
+      /* http://meyerweb.com/eric/tools/css/reset/ 
+v2.0 | 20110126
+License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+ margin: 0;
+ padding: 0;
+ border: 0;
+ font-size: 100%;
+ font: inherit;
+ vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+ display: block;
+}
+body {
+ line-height: 1;
+}
+ol, ul {
+ list-style: none;
+}
+blockquote, q {
+ quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+ content: '';
+ content: none;
+}
+table {
+ border-collapse: collapse;
+ border-spacing: 0;
+}
+    </style>
   </head>
-  <body style="min-height:100vh">
+  <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
-      <div class="container"
-           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding:1.142rem"
-      >
+      <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
         <nav>
-          <ol style="padding:0;list-style:none;display:flex;height:100%;align-items:center">
+          <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
                     style="margin:0 0.28rem;color:#ebebeb"
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs"
               >
                 morty-docs
@@ -897,7 +1202,7 @@ exports[`Generate Indexes with the correct html to match snapshot without a cont
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs/some-repo"
               >
                 some-repo
@@ -906,29 +1211,45 @@ exports[`Generate Indexes with the correct html to match snapshot without a cont
           </ol>
         </nav>
       </div>
-      <div class="container"
-           style="margin-top:10px"
-      >
-        <div class="row col-md-8 col-md-offset-2">
-          <ul class="list-unstyled">
-            <li class="index-list"
-                style="font-size:1.6em;border-bottom:solid black 1px;margin-bottom:10px"
-            >
-              <a href="foo1.html">
-                <i class="fas fa-file-alt">
-                </i>
-                <span style="margin-left:5px">
+      <div style="margin-top:10px">
+        <div style="margin-top:10px;max-width:600px;margin:auto">
+          <ul>
+            <li style="font-size:1.5rem;border-bottom:solid black 1px;margin-bottom:1rem;padding-bottom:0.5rem">
+              <a href="foo1.html"
+                 style="text-decoration:none;color:#337ab7"
+              >
+                <span style="display:inline-block;width:1em">
+                  <svg aria-hidden="true"
+                       style="fill:#337ab7;height:1em;vertical-align:middle"
+                       xmlns="http://www.w3.org/2000/svg"
+                       viewbox="0 0 384 512"
+                  >
+                    &lt;!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --&gt;
+                    <path d="M256 0v128h128L256 0zM224 128L224 0H48C21.49 0 0 21.49 0 48v416C0 490.5 21.49 512 48 512h288c26.51 0 48-21.49 48-48V160h-127.1C238.3 160 224 145.7 224 128zM272 416h-160C103.2 416 96 408.8 96 400C96 391.2 103.2 384 112 384h160c8.836 0 16 7.162 16 16C288 408.8 280.8 416 272 416zM272 352h-160C103.2 352 96 344.8 96 336C96 327.2 103.2 320 112 320h160c8.836 0 16 7.162 16 16C288 344.8 280.8 352 272 352zM288 272C288 280.8 280.8 288 272 288h-160C103.2 288 96 280.8 96 272C96 263.2 103.2 256 112 256h160C280.8 256 288 263.2 288 272z">
+                    </path>
+                  </svg>
+                </span>
+                <span style="margin-left:1rem">
                   foo1.html
                 </span>
               </a>
             </li>
-            <li class="index-list"
-                style="font-size:1.6em;border-bottom:solid black 1px;margin-bottom:10px"
-            >
-              <a href="foo2.html">
-                <i class="fas fa-file-alt">
-                </i>
-                <span style="margin-left:5px">
+            <li style="font-size:1.5rem;border-bottom:solid black 1px;margin-bottom:1rem;padding-bottom:0.5rem">
+              <a href="foo2.html"
+                 style="text-decoration:none;color:#337ab7"
+              >
+                <span style="display:inline-block;width:1em">
+                  <svg aria-hidden="true"
+                       style="fill:#337ab7;height:1em;vertical-align:middle"
+                       xmlns="http://www.w3.org/2000/svg"
+                       viewbox="0 0 384 512"
+                  >
+                    &lt;!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --&gt;
+                    <path d="M256 0v128h128L256 0zM224 128L224 0H48C21.49 0 0 21.49 0 48v416C0 490.5 21.49 512 48 512h288c26.51 0 48-21.49 48-48V160h-127.1C238.3 160 224 145.7 224 128zM272 416h-160C103.2 416 96 408.8 96 400C96 391.2 103.2 384 112 384h160c8.836 0 16 7.162 16 16C288 408.8 280.8 416 272 416zM272 352h-160C103.2 352 96 344.8 96 336C96 327.2 103.2 320 112 320h160c8.836 0 16 7.162 16 16C288 344.8 280.8 352 272 352zM288 272C288 280.8 280.8 288 272 288h-160C103.2 288 96 280.8 96 272C96 263.2 103.2 256 112 256h160C280.8 256 288 263.2 288 272z">
+                    </path>
+                  </svg>
+                </span>
+                <span style="margin-left:1rem">
                   foo2.html
                 </span>
               </a>
@@ -937,25 +1258,12 @@ exports[`Generate Indexes with the correct html to match snapshot without a cont
         </div>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;padding:0 15px;box-sizing:border-box;min-height:25vh;position:relative"
-            class="footer"
-    >
-      <div style="padding:1em 0 2em 0"
-           class="container"
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+      <a href="https://github.com/bbc/morty-docs"
+         style="color:#337ab7"
       >
-        <div class="row">
-          <div style="text-align:center"
-               class="col-md-4 col-md-offset-4"
-          >
-            <p>
-              <a href="https://github.com/bbc/morty-docs">
-                Morty-Docs on github
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-      </div>
+        Morty-Docs on github
+      </a>
     </footer>
   </body>
 </html>

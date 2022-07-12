@@ -26,7 +26,8 @@ const contentStyles = `
 .content {
   padding: 20px 96px;
   line-height: 1.42857143;
-
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 .content a {
@@ -148,19 +149,6 @@ const contentStyles = `
   border-top: 1px solid #ddd;
 }
 
-@media screen and (min-width: 1200px)
-.content {
-    width: 1170px;
-}
-
-@media screen and  (min-width: 992px)
-.content {
-    width: 970px;
-}
-@media screen and  (min-width: 768px)
-.content {
-    width: 750px;
-}
 `
 
 const MortyPage = ({ relPath, body, options }) => {

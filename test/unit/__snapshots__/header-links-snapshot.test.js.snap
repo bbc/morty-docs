@@ -2,15 +2,12 @@
 
 exports[`The header is rendered with the correct breadcrumb links  When a basepath is not passed through 1`] = `
 <div
-  className="container"
   style={
     Object {
       "backgroundColor": "#000",
       "border": "none",
       "borderRadius": "0",
-      "height": "60px",
       "marginBottom": "0",
-      "padding": "1.142rem",
       "width": "100%",
     }
   }
@@ -23,9 +20,8 @@ exports[`The header is rendered with the correct breadcrumb links  When a basepa
         Object {
           "alignItems": "center",
           "display": "flex",
-          "height": "100%",
           "listStyle": "none",
-          "padding": "0",
+          "padding": "1rem",
         }
       }
     >
@@ -46,8 +42,9 @@ exports[`The header is rendered with the correct breadcrumb links  When a basepa
           style={
             Object {
               "color": "lightblue",
-              "fontSize": "2rem",
+              "fontSize": "1.5rem",
               "textAlign": "left",
+              "textDecoration": "none",
             }
           }
         >
@@ -71,8 +68,9 @@ exports[`The header is rendered with the correct breadcrumb links  When a basepa
           style={
             Object {
               "color": "lightblue",
-              "fontSize": "2rem",
+              "fontSize": "1.5rem",
               "textAlign": "left",
+              "textDecoration": "none",
             }
           }
         >
@@ -86,15 +84,12 @@ exports[`The header is rendered with the correct breadcrumb links  When a basepa
 
 exports[`The header is rendered with the correct breadcrumb links  When a basepath is passed through 1`] = `
 <div
-  className="container"
   style={
     Object {
       "backgroundColor": "#000",
       "border": "none",
       "borderRadius": "0",
-      "height": "60px",
       "marginBottom": "0",
-      "padding": "1.142rem",
       "width": "100%",
     }
   }
@@ -107,9 +102,8 @@ exports[`The header is rendered with the correct breadcrumb links  When a basepa
         Object {
           "alignItems": "center",
           "display": "flex",
-          "height": "100%",
           "listStyle": "none",
-          "padding": "0",
+          "padding": "1rem",
         }
       }
     >
@@ -130,8 +124,9 @@ exports[`The header is rendered with the correct breadcrumb links  When a basepa
           style={
             Object {
               "color": "lightblue",
-              "fontSize": "2rem",
+              "fontSize": "1.5rem",
               "textAlign": "left",
+              "textDecoration": "none",
             }
           }
         >
@@ -155,8 +150,9 @@ exports[`The header is rendered with the correct breadcrumb links  When a basepa
           style={
             Object {
               "color": "lightblue",
-              "fontSize": "2rem",
+              "fontSize": "1.5rem",
               "textAlign": "left",
+              "textDecoration": "none",
             }
           }
         >
@@ -180,8 +176,9 @@ exports[`The header is rendered with the correct breadcrumb links  When a basepa
           style={
             Object {
               "color": "lightblue",
-              "fontSize": "2rem",
+              "fontSize": "1.5rem",
               "textAlign": "left",
+              "textDecoration": "none",
             }
           }
         >
@@ -205,8 +202,9 @@ exports[`The header is rendered with the correct breadcrumb links  When a basepa
           style={
             Object {
               "color": "lightblue",
-              "fontSize": "2rem",
+              "fontSize": "1.5rem",
               "textAlign": "left",
+              "textDecoration": "none",
             }
           }
         >
