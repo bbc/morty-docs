@@ -22,16 +22,11 @@ const Styles = {
   }
 }
 
-// empty 'a' block allows h1 block to work
-
-// .content a {
-  
-// }
-
 const contentStyles = `
 .content {
   padding: 20px 96px;
   line-height: 1.42857143;
+
 }
 
 .content a {
@@ -66,9 +61,11 @@ const contentStyles = `
   margin-block-start: 1em;
   margin-block-end: 1em;
   padding-inline-start: 40px;
+  margin-bottom: 10px;
 }
 
 .content ol {
+  list-style-type: decimal;
   display: block;
   margin-block-start: 1em;
   margin-block-end: 1em;
@@ -117,6 +114,13 @@ const contentStyles = `
   border-radius: 0;
 }
 
+.content p code {
+  padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+}
 
 .content table {
   background-color: transparent;
@@ -144,6 +148,19 @@ const contentStyles = `
   border-top: 1px solid #ddd;
 }
 
+@media screen and (min-width: 1200px)
+.content {
+    width: 1170px;
+}
+
+@media screen and  (min-width: 992px)
+.content {
+    width: 970px;
+}
+@media screen and  (min-width: 768px)
+.content {
+    width: 750px;
+}
 `
 
 const MortyPage = ({ relPath, body, options }) => {
