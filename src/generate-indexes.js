@@ -8,7 +8,7 @@ const generateIndex = (directory, filePaths, subDirPaths, options) => {
   const subDirLinks = subDirPaths.filter(dirPath => !dirPath.includes('/')).map(dirPath => ({
     link: `${dirPath}/index.html`,
     text: dirPath,
-    iconClass: 'fas fa-folder-open'
+    iconName: 'folder'
   }))
 
   const fileLinks = filePaths.map(filePath => {
@@ -17,7 +17,7 @@ const generateIndex = (directory, filePaths, subDirPaths, options) => {
     return {
       link: encodeURIComponent(text),
       text,
-      iconClass: 'fas fa-file-alt'
+      iconName: 'file'
     }
   })
 

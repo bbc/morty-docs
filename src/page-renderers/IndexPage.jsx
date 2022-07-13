@@ -5,22 +5,20 @@ const Header = require('./Components/Header')
 const Title = require('./Components/Title')
 const Footer = require('./Components/Footer')
 const IndexListItem = require('./Components/IndexListItem')
+const Reset = require('./Components/Reset')
 
 const Styles = {
   headingContainer: {
     padding: '40px 15px',
     textAlign: 'center'
   },
-
   subtitle: {
     fontSize: '1.9em',
     marginTop: '0.5em'
   },
-
   logo: {
     maxWidth: '100%'
   },
-
   mortyLogo: {
     maxWidth: '45%'
   },
@@ -29,10 +27,19 @@ const Styles = {
     paddingBottom: '20px'
   },
   html: {
-    minHeight: '100vh'
+    minHeight: '100vh',
+    fontSize: '16px'
   },
   body: {
-    minHeight: '100vh'
+    minHeight: '100vh',
+    fontFamily: '"Helvetica Neue",Helvetica,Arial,sans-serif',
+    color: '#333',
+    backgroundColor: '#fff'
+  },
+  listContainer: {
+    marginTop: '10px',
+    maxWidth: '600px',
+    margin: 'auto'
   }
 }
 
@@ -45,16 +52,15 @@ const IndexPage = ({ listItems, options, relPath }) => {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
 
         <title>{`Morty Docs`}</title>
-        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossOrigin='anonymous' />
-        <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.1/css/all.css' integrity='sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf' crossOrigin='anonymous' />
+        <Reset />
       </head>
       <body style={Styles.body}>
         <div style={Styles.wrapper}>
           <Header relPath={relPath} basePath={options.basePath} />
-          <div className='container' style={{ marginTop: '10px' }}>
+          <div style={{ marginTop: '10px' }}>
             <Title contentTitle={options.contentTitle} />
-            <div className='row col-md-8 col-md-offset-2'>
-              <ul className='list-unstyled'>
+            <div style={Styles.listContainer}>
+              <ul >
                 {
                   (() => listItems.map((item, index) => <IndexListItem key={index} {...item} />))()
                 }

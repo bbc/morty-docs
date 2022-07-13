@@ -2,7 +2,7 @@
 
 exports[`Transform-content returns the correct html from AsciiDoc for .adoc with a title and a link 1`] = `
 <html lang="en"
-      style="min-height:100vh"
+      style="min-height:100vh;font-size:16px"
       data-reactroot
 >
   <head>
@@ -16,26 +16,218 @@ exports[`Transform-content returns the correct html from AsciiDoc for .adoc with
     <title>
       file-name.adoc
     </title>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous"
-    >
+    <style>
+      /* http://meyerweb.com/eric/tools/css/reset/ 
+v2.0 | 20110126
+License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+ margin: 0;
+ padding: 0;
+ border: 0;
+ font-size: 100%;
+ font: inherit;
+ vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+ display: block;
+}
+body {
+ line-height: 1;
+}
+ol, ul {
+ list-style: none;
+}
+blockquote, q {
+ quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+ content: '';
+ content: none;
+}
+table {
+ border-collapse: collapse;
+ border-spacing: 0;
+}
+    </style>
+    <style>
+      .content {
+  padding: 20px 96px;
+  line-height: 1.42857143;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.content a {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+.content h1 {
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.content h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.content h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.content ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding-inline-start: 40px;
+  margin-bottom: 10px;
+}
+
+.content ol {
+  list-style-type: decimal;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding-inline-start: 40px;
+}
+
+.content p {
+  margin-bottom: 10px;
+}
+
+.content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.content strong {
+  font-weight: 700;
+}
+
+.content em {
+  font-style: italic;
+}
+
+.content blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 17.5px;
+    border-left: 5px solid #eee;
+}
+
+.content blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+.content hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #949494;
+}
+
+.content pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: #333;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.content code {
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+}
+
+.content pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  white-space: pre-wrap;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.content p code {
+  padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+}
+
+.content table {
+  background-color: transparent;
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.content th {
+  text-align: left;
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 8px;
+  line-height: 1.42857143;
+}
+
+.content td {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+    </style>
   </head>
-  <body style="min-height:100vh">
+  <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
-      <div class="container"
-           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding:1.142rem"
-      >
+      <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
         <nav>
-          <ol style="padding:0;list-style:none;display:flex;height:100%;align-items:center">
+          <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
                     style="margin:0 0.28rem;color:#ebebeb"
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs"
               >
                 morty-docs
@@ -47,7 +239,7 @@ exports[`Transform-content returns the correct html from AsciiDoc for .adoc with
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs/some-repo"
               >
                 some-repo
@@ -59,7 +251,7 @@ exports[`Transform-content returns the correct html from AsciiDoc for .adoc with
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs/some-repo/file-name.adoc"
               >
                 file-name.adoc
@@ -68,7 +260,7 @@ exports[`Transform-content returns the correct html from AsciiDoc for .adoc with
           </ol>
         </nav>
       </div>
-      <div class="container">
+      <div class="content">
         <div class="sect1">
           <h2 id="_title_of_simple_content_adoc">
             Title of simple-content.adoc
@@ -85,25 +277,12 @@ exports[`Transform-content returns the correct html from AsciiDoc for .adoc with
         </div>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;padding:0 15px;box-sizing:border-box;min-height:25vh;position:relative"
-            class="footer"
-    >
-      <div style="padding:1em 0 2em 0"
-           class="container"
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+      <a href="https://github.com/bbc/morty-docs"
+         style="color:#337ab7"
       >
-        <div class="row">
-          <div style="text-align:center"
-               class="col-md-4 col-md-offset-4"
-          >
-            <p>
-              <a href="https://github.com/bbc/morty-docs">
-                Morty-Docs on github
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-      </div>
+        Morty-Docs on github
+      </a>
     </footer>
   </body>
 </html>
@@ -111,7 +290,7 @@ exports[`Transform-content returns the correct html from AsciiDoc for .adoc with
 
 exports[`Transform-content returns the correct html from AsciiDoc for .asc with a title and a link 1`] = `
 <html lang="en"
-      style="min-height:100vh"
+      style="min-height:100vh;font-size:16px"
       data-reactroot
 >
   <head>
@@ -125,26 +304,218 @@ exports[`Transform-content returns the correct html from AsciiDoc for .asc with 
     <title>
       file-name.asc
     </title>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous"
-    >
+    <style>
+      /* http://meyerweb.com/eric/tools/css/reset/ 
+v2.0 | 20110126
+License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+ margin: 0;
+ padding: 0;
+ border: 0;
+ font-size: 100%;
+ font: inherit;
+ vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+ display: block;
+}
+body {
+ line-height: 1;
+}
+ol, ul {
+ list-style: none;
+}
+blockquote, q {
+ quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+ content: '';
+ content: none;
+}
+table {
+ border-collapse: collapse;
+ border-spacing: 0;
+}
+    </style>
+    <style>
+      .content {
+  padding: 20px 96px;
+  line-height: 1.42857143;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.content a {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+.content h1 {
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.content h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.content h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.content ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding-inline-start: 40px;
+  margin-bottom: 10px;
+}
+
+.content ol {
+  list-style-type: decimal;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding-inline-start: 40px;
+}
+
+.content p {
+  margin-bottom: 10px;
+}
+
+.content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.content strong {
+  font-weight: 700;
+}
+
+.content em {
+  font-style: italic;
+}
+
+.content blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 17.5px;
+    border-left: 5px solid #eee;
+}
+
+.content blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+.content hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #949494;
+}
+
+.content pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: #333;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.content code {
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+}
+
+.content pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  white-space: pre-wrap;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.content p code {
+  padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+}
+
+.content table {
+  background-color: transparent;
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.content th {
+  text-align: left;
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 8px;
+  line-height: 1.42857143;
+}
+
+.content td {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+    </style>
   </head>
-  <body style="min-height:100vh">
+  <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
-      <div class="container"
-           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding:1.142rem"
-      >
+      <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
         <nav>
-          <ol style="padding:0;list-style:none;display:flex;height:100%;align-items:center">
+          <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
                     style="margin:0 0.28rem;color:#ebebeb"
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs"
               >
                 morty-docs
@@ -156,7 +527,7 @@ exports[`Transform-content returns the correct html from AsciiDoc for .asc with 
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs/some-repo"
               >
                 some-repo
@@ -168,7 +539,7 @@ exports[`Transform-content returns the correct html from AsciiDoc for .asc with 
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs/some-repo/file-name.asc"
               >
                 file-name.asc
@@ -177,7 +548,7 @@ exports[`Transform-content returns the correct html from AsciiDoc for .asc with 
           </ol>
         </nav>
       </div>
-      <div class="container">
+      <div class="content">
         <div class="sect1">
           <h2 id="_title_of_simple_content_asc">
             Title of simple-content.asc
@@ -194,25 +565,12 @@ exports[`Transform-content returns the correct html from AsciiDoc for .asc with 
         </div>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;padding:0 15px;box-sizing:border-box;min-height:25vh;position:relative"
-            class="footer"
-    >
-      <div style="padding:1em 0 2em 0"
-           class="container"
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+      <a href="https://github.com/bbc/morty-docs"
+         style="color:#337ab7"
       >
-        <div class="row">
-          <div style="text-align:center"
-               class="col-md-4 col-md-offset-4"
-          >
-            <p>
-              <a href="https://github.com/bbc/morty-docs">
-                Morty-Docs on github
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-      </div>
+        Morty-Docs on github
+      </a>
     </footer>
   </body>
 </html>
@@ -220,7 +578,7 @@ exports[`Transform-content returns the correct html from AsciiDoc for .asc with 
 
 exports[`Transform-content returns the correct html from AsciiDoc for .asciidoc with a title and a link 1`] = `
 <html lang="en"
-      style="min-height:100vh"
+      style="min-height:100vh;font-size:16px"
       data-reactroot
 >
   <head>
@@ -234,26 +592,218 @@ exports[`Transform-content returns the correct html from AsciiDoc for .asciidoc 
     <title>
       file-name.asciidoc
     </title>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous"
-    >
+    <style>
+      /* http://meyerweb.com/eric/tools/css/reset/ 
+v2.0 | 20110126
+License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+ margin: 0;
+ padding: 0;
+ border: 0;
+ font-size: 100%;
+ font: inherit;
+ vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+ display: block;
+}
+body {
+ line-height: 1;
+}
+ol, ul {
+ list-style: none;
+}
+blockquote, q {
+ quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+ content: '';
+ content: none;
+}
+table {
+ border-collapse: collapse;
+ border-spacing: 0;
+}
+    </style>
+    <style>
+      .content {
+  padding: 20px 96px;
+  line-height: 1.42857143;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.content a {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+.content h1 {
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.content h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.content h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.content ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding-inline-start: 40px;
+  margin-bottom: 10px;
+}
+
+.content ol {
+  list-style-type: decimal;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding-inline-start: 40px;
+}
+
+.content p {
+  margin-bottom: 10px;
+}
+
+.content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.content strong {
+  font-weight: 700;
+}
+
+.content em {
+  font-style: italic;
+}
+
+.content blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 17.5px;
+    border-left: 5px solid #eee;
+}
+
+.content blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+.content hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #949494;
+}
+
+.content pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: #333;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.content code {
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+}
+
+.content pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  white-space: pre-wrap;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.content p code {
+  padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+}
+
+.content table {
+  background-color: transparent;
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.content th {
+  text-align: left;
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 8px;
+  line-height: 1.42857143;
+}
+
+.content td {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+    </style>
   </head>
-  <body style="min-height:100vh">
+  <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
-      <div class="container"
-           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding:1.142rem"
-      >
+      <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
         <nav>
-          <ol style="padding:0;list-style:none;display:flex;height:100%;align-items:center">
+          <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
                     style="margin:0 0.28rem;color:#ebebeb"
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs"
               >
                 morty-docs
@@ -265,7 +815,7 @@ exports[`Transform-content returns the correct html from AsciiDoc for .asciidoc 
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs/some-repo"
               >
                 some-repo
@@ -277,7 +827,7 @@ exports[`Transform-content returns the correct html from AsciiDoc for .asciidoc 
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs/some-repo/file-name.asciidoc"
               >
                 file-name.asciidoc
@@ -286,7 +836,7 @@ exports[`Transform-content returns the correct html from AsciiDoc for .asciidoc 
           </ol>
         </nav>
       </div>
-      <div class="container">
+      <div class="content">
         <div class="sect1">
           <h2 id="_title_of_simple_content_asciidoc">
             Title of simple-content.asciidoc
@@ -303,25 +853,12 @@ exports[`Transform-content returns the correct html from AsciiDoc for .asciidoc 
         </div>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;padding:0 15px;box-sizing:border-box;min-height:25vh;position:relative"
-            class="footer"
-    >
-      <div style="padding:1em 0 2em 0"
-           class="container"
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+      <a href="https://github.com/bbc/morty-docs"
+         style="color:#337ab7"
       >
-        <div class="row">
-          <div style="text-align:center"
-               class="col-md-4 col-md-offset-4"
-          >
-            <p>
-              <a href="https://github.com/bbc/morty-docs">
-                Morty-Docs on github
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-      </div>
+        Morty-Docs on github
+      </a>
     </footer>
   </body>
 </html>
@@ -329,7 +866,7 @@ exports[`Transform-content returns the correct html from AsciiDoc for .asciidoc 
 
 exports[`Transform-content returns the correct html from AsciiDoc for a line of plain text 1`] = `
 <html lang="en"
-      style="min-height:100vh"
+      style="min-height:100vh;font-size:16px"
       data-reactroot
 >
   <head>
@@ -343,26 +880,218 @@ exports[`Transform-content returns the correct html from AsciiDoc for a line of 
     <title>
       file-name.asciidoc
     </title>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous"
-    >
+    <style>
+      /* http://meyerweb.com/eric/tools/css/reset/ 
+v2.0 | 20110126
+License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+ margin: 0;
+ padding: 0;
+ border: 0;
+ font-size: 100%;
+ font: inherit;
+ vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+ display: block;
+}
+body {
+ line-height: 1;
+}
+ol, ul {
+ list-style: none;
+}
+blockquote, q {
+ quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+ content: '';
+ content: none;
+}
+table {
+ border-collapse: collapse;
+ border-spacing: 0;
+}
+    </style>
+    <style>
+      .content {
+  padding: 20px 96px;
+  line-height: 1.42857143;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.content a {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+.content h1 {
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.content h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.content h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.content ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding-inline-start: 40px;
+  margin-bottom: 10px;
+}
+
+.content ol {
+  list-style-type: decimal;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding-inline-start: 40px;
+}
+
+.content p {
+  margin-bottom: 10px;
+}
+
+.content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.content strong {
+  font-weight: 700;
+}
+
+.content em {
+  font-style: italic;
+}
+
+.content blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 17.5px;
+    border-left: 5px solid #eee;
+}
+
+.content blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+.content hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #949494;
+}
+
+.content pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: #333;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.content code {
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+}
+
+.content pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  white-space: pre-wrap;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.content p code {
+  padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+}
+
+.content table {
+  background-color: transparent;
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.content th {
+  text-align: left;
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 8px;
+  line-height: 1.42857143;
+}
+
+.content td {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+    </style>
   </head>
-  <body style="min-height:100vh">
+  <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
-      <div class="container"
-           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding:1.142rem"
-      >
+      <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
         <nav>
-          <ol style="padding:0;list-style:none;display:flex;height:100%;align-items:center">
+          <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
                     style="margin:0 0.28rem;color:#ebebeb"
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs"
               >
                 morty-docs
@@ -374,7 +1103,7 @@ exports[`Transform-content returns the correct html from AsciiDoc for a line of 
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs/some-repo"
               >
                 some-repo
@@ -386,7 +1115,7 @@ exports[`Transform-content returns the correct html from AsciiDoc for a line of 
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs/some-repo/file-name.asciidoc"
               >
                 file-name.asciidoc
@@ -395,7 +1124,7 @@ exports[`Transform-content returns the correct html from AsciiDoc for a line of 
           </ol>
         </nav>
       </div>
-      <div class="container">
+      <div class="content">
         <div class="paragraph">
           <p>
             One line of plain text
@@ -403,25 +1132,12 @@ exports[`Transform-content returns the correct html from AsciiDoc for a line of 
         </div>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;padding:0 15px;box-sizing:border-box;min-height:25vh;position:relative"
-            class="footer"
-    >
-      <div style="padding:1em 0 2em 0"
-           class="container"
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+      <a href="https://github.com/bbc/morty-docs"
+         style="color:#337ab7"
       >
-        <div class="row">
-          <div style="text-align:center"
-               class="col-md-4 col-md-offset-4"
-          >
-            <p>
-              <a href="https://github.com/bbc/morty-docs">
-                Morty-Docs on github
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-      </div>
+        Morty-Docs on github
+      </a>
     </footer>
   </body>
 </html>
@@ -429,7 +1145,7 @@ exports[`Transform-content returns the correct html from AsciiDoc for a line of 
 
 exports[`Transform-content returns the correct html from markdown for Markdown with a title and links 1`] = `
 <html lang="en"
-      style="min-height:100vh"
+      style="min-height:100vh;font-size:16px"
       data-reactroot
 >
   <head>
@@ -443,26 +1159,218 @@ exports[`Transform-content returns the correct html from markdown for Markdown w
     <title>
       file-name.md
     </title>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous"
-    >
+    <style>
+      /* http://meyerweb.com/eric/tools/css/reset/ 
+v2.0 | 20110126
+License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+ margin: 0;
+ padding: 0;
+ border: 0;
+ font-size: 100%;
+ font: inherit;
+ vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+ display: block;
+}
+body {
+ line-height: 1;
+}
+ol, ul {
+ list-style: none;
+}
+blockquote, q {
+ quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+ content: '';
+ content: none;
+}
+table {
+ border-collapse: collapse;
+ border-spacing: 0;
+}
+    </style>
+    <style>
+      .content {
+  padding: 20px 96px;
+  line-height: 1.42857143;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.content a {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+.content h1 {
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.content h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.content h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.content ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding-inline-start: 40px;
+  margin-bottom: 10px;
+}
+
+.content ol {
+  list-style-type: decimal;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding-inline-start: 40px;
+}
+
+.content p {
+  margin-bottom: 10px;
+}
+
+.content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.content strong {
+  font-weight: 700;
+}
+
+.content em {
+  font-style: italic;
+}
+
+.content blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 17.5px;
+    border-left: 5px solid #eee;
+}
+
+.content blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+.content hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #949494;
+}
+
+.content pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: #333;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.content code {
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+}
+
+.content pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  white-space: pre-wrap;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.content p code {
+  padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+}
+
+.content table {
+  background-color: transparent;
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.content th {
+  text-align: left;
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 8px;
+  line-height: 1.42857143;
+}
+
+.content td {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+    </style>
   </head>
-  <body style="min-height:100vh">
+  <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
-      <div class="container"
-           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding:1.142rem"
-      >
+      <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
         <nav>
-          <ol style="padding:0;list-style:none;display:flex;height:100%;align-items:center">
+          <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
                     style="margin:0 0.28rem;color:#ebebeb"
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs"
               >
                 morty-docs
@@ -474,7 +1382,7 @@ exports[`Transform-content returns the correct html from markdown for Markdown w
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs/some-repo"
               >
                 some-repo
@@ -483,7 +1391,7 @@ exports[`Transform-content returns the correct html from markdown for Markdown w
           </ol>
         </nav>
       </div>
-      <div class="container">
+      <div class="content">
         <h1 id="title-of-simple-contentmd">
           <a href="#title-of-simple-contentmd">
             Title of simple-content.md
@@ -500,25 +1408,12 @@ exports[`Transform-content returns the correct html from markdown for Markdown w
         </p>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;padding:0 15px;box-sizing:border-box;min-height:25vh;position:relative"
-            class="footer"
-    >
-      <div style="padding:1em 0 2em 0"
-           class="container"
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+      <a href="https://github.com/bbc/morty-docs"
+         style="color:#337ab7"
       >
-        <div class="row">
-          <div style="text-align:center"
-               class="col-md-4 col-md-offset-4"
-          >
-            <p>
-              <a href="https://github.com/bbc/morty-docs">
-                Morty-Docs on github
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-      </div>
+        Morty-Docs on github
+      </a>
     </footer>
   </body>
 </html>
@@ -526,7 +1421,7 @@ exports[`Transform-content returns the correct html from markdown for Markdown w
 
 exports[`Transform-content returns the correct html from markdown for a line of plain text 1`] = `
 <html lang="en"
-      style="min-height:100vh"
+      style="min-height:100vh;font-size:16px"
       data-reactroot
 >
   <head>
@@ -540,26 +1435,218 @@ exports[`Transform-content returns the correct html from markdown for a line of 
     <title>
       file-name.md
     </title>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous"
-    >
+    <style>
+      /* http://meyerweb.com/eric/tools/css/reset/ 
+v2.0 | 20110126
+License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+ margin: 0;
+ padding: 0;
+ border: 0;
+ font-size: 100%;
+ font: inherit;
+ vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+ display: block;
+}
+body {
+ line-height: 1;
+}
+ol, ul {
+ list-style: none;
+}
+blockquote, q {
+ quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+ content: '';
+ content: none;
+}
+table {
+ border-collapse: collapse;
+ border-spacing: 0;
+}
+    </style>
+    <style>
+      .content {
+  padding: 20px 96px;
+  line-height: 1.42857143;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.content a {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+.content h1 {
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.content h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.content h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.content ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding-inline-start: 40px;
+  margin-bottom: 10px;
+}
+
+.content ol {
+  list-style-type: decimal;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding-inline-start: 40px;
+}
+
+.content p {
+  margin-bottom: 10px;
+}
+
+.content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.content strong {
+  font-weight: 700;
+}
+
+.content em {
+  font-style: italic;
+}
+
+.content blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 17.5px;
+    border-left: 5px solid #eee;
+}
+
+.content blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+.content hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #949494;
+}
+
+.content pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: #333;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.content code {
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+}
+
+.content pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  white-space: pre-wrap;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.content p code {
+  padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+}
+
+.content table {
+  background-color: transparent;
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.content th {
+  text-align: left;
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 8px;
+  line-height: 1.42857143;
+}
+
+.content td {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+}
+    </style>
   </head>
-  <body style="min-height:100vh">
+  <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
-      <div class="container"
-           style="border:none;border-radius:0;background-color:#000;height:60px;margin-bottom:0;width:100%;padding:1.142rem"
-      >
+      <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
         <nav>
-          <ol style="padding:0;list-style:none;display:flex;height:100%;align-items:center">
+          <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
                     style="margin:0 0.28rem;color:#ebebeb"
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs"
               >
                 morty-docs
@@ -571,7 +1658,7 @@ exports[`Transform-content returns the correct html from markdown for a line of 
               >
                 /
               </span>
-              <a style="text-align:left;color:lightblue;font-size:2rem"
+              <a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none"
                  href="/morty-docs/some-repo"
               >
                 some-repo
@@ -580,31 +1667,18 @@ exports[`Transform-content returns the correct html from markdown for a line of 
           </ol>
         </nav>
       </div>
-      <div class="container">
+      <div class="content">
         <p>
           One line of plain text
         </p>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;padding:0 15px;box-sizing:border-box;min-height:25vh;position:relative"
-            class="footer"
-    >
-      <div style="padding:1em 0 2em 0"
-           class="container"
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+      <a href="https://github.com/bbc/morty-docs"
+         style="color:#337ab7"
       >
-        <div class="row">
-          <div style="text-align:center"
-               class="col-md-4 col-md-offset-4"
-          >
-            <p>
-              <a href="https://github.com/bbc/morty-docs">
-                Morty-Docs on github
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-      </div>
+        Morty-Docs on github
+      </a>
     </footer>
   </body>
 </html>
