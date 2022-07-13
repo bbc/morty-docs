@@ -182,7 +182,7 @@ const MortyPage = ({ relPath, body, options }) => {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <title>{relPath}</title>
         <Reset />
-        <style dangerouslySetInnerHTML={{ __html: contentStyles }}/>
+        <style dangerouslySetInnerHTML={{ __html: contentStyles }} />
       </head>
       <body style={Styles.body}>
         <div style={Styles.wrapper}>

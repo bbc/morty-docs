@@ -32,15 +32,14 @@ const Styles = {
 
 const Icon = ({ iconName }) => {
   if (iconName === 'folder') {
-    return <IconFolderOpen style={Styles.icon}/>
+    return <IconFolderOpen style={Styles.icon} />
   }
-  return <IconFileLines style={Styles.icon}/>
+  return <IconFileLines style={Styles.icon} />
 }
 
 const IndexListItem = ({ link, text, iconName }) => {
-
   return <li style={Styles.indexListItem}>
-    <a href={link} style={Styles.linkAnchor}><span style={Styles.iconWrap}><Icon iconName={iconName}/></span><span style={Styles.linkText}>{text}</span></a>
+    <a href={link} style={Styles.linkAnchor}><span style={Styles.iconWrap}><Icon iconName={iconName} /></span><span style={Styles.linkText}>{text}</span></a>
   </li>
 }
 

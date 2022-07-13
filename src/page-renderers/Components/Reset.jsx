@@ -50,6 +50,6 @@ table {
 }
 `
 
-const Reset = () => <style dangerouslySetInnerHTML={{ __html: resetStyles }}/>
+const Reset = () => <style dangerouslySetInnerHTML={{ __html: resetStyles }} />
 
 module.exports = Reset
