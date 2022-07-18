@@ -65,6 +65,11 @@ table {
  border-collapse: collapse;
  border-spacing: 0;
 }
+sup {
+  vertical-align: super;
+  font-size: smaller;
+  padding-right: 0.2rem;
+}
     </style>
     <style>
       .content {
@@ -219,7 +224,7 @@ table {
   <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
       <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
-        <nav>
+        <nav style="display:flex;justify-content:space-between">
           <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
@@ -258,6 +263,15 @@ table {
               </a>
             </li>
           </ol>
+          <span style="color:white;display:flex;align-items:center;padding-right:6px;font-size:0.85rem">
+            Page generated on
+            18
+            <sup>
+              th
+            </sup>
+            July
+            2022
+          </span>
         </nav>
       </div>
       <div class="content">
@@ -353,6 +367,11 @@ table {
  border-collapse: collapse;
  border-spacing: 0;
 }
+sup {
+  vertical-align: super;
+  font-size: smaller;
+  padding-right: 0.2rem;
+}
     </style>
     <style>
       .content {
@@ -507,7 +526,7 @@ table {
   <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
       <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
-        <nav>
+        <nav style="display:flex;justify-content:space-between">
           <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
@@ -546,6 +565,15 @@ table {
               </a>
             </li>
           </ol>
+          <span style="color:white;display:flex;align-items:center;padding-right:6px;font-size:0.85rem">
+            Page generated on
+            18
+            <sup>
+              th
+            </sup>
+            July
+            2022
+          </span>
         </nav>
       </div>
       <div class="content">
@@ -641,6 +669,11 @@ table {
  border-collapse: collapse;
  border-spacing: 0;
 }
+sup {
+  vertical-align: super;
+  font-size: smaller;
+  padding-right: 0.2rem;
+}
     </style>
     <style>
       .content {
@@ -795,7 +828,7 @@ table {
   <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
       <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
-        <nav>
+        <nav style="display:flex;justify-content:space-between">
           <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
@@ -834,6 +867,15 @@ table {
               </a>
             </li>
           </ol>
+          <span style="color:white;display:flex;align-items:center;padding-right:6px;font-size:0.85rem">
+            Page generated on
+            18
+            <sup>
+              th
+            </sup>
+            July
+            2022
+          </span>
         </nav>
       </div>
       <div class="content">
@@ -929,6 +971,11 @@ table {
  border-collapse: collapse;
  border-spacing: 0;
 }
+sup {
+  vertical-align: super;
+  font-size: smaller;
+  padding-right: 0.2rem;
+}
     </style>
     <style>
       .content {
@@ -1083,7 +1130,7 @@ table {
   <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
       <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
-        <nav>
+        <nav style="display:flex;justify-content:space-between">
           <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
@@ -1122,6 +1169,15 @@ table {
               </a>
             </li>
           </ol>
+          <span style="color:white;display:flex;align-items:center;padding-right:6px;font-size:0.85rem">
+            Page generated on
+            18
+            <sup>
+              th
+            </sup>
+            July
+            2022
+          </span>
         </nav>
       </div>
       <div class="content">
@@ -1208,6 +1264,11 @@ table {
  border-collapse: collapse;
  border-spacing: 0;
 }
+sup {
+  vertical-align: super;
+  font-size: smaller;
+  padding-right: 0.2rem;
+}
     </style>
     <style>
       .content {
@@ -1362,7 +1423,7 @@ table {
   <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
       <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
-        <nav>
+        <nav style="display:flex;justify-content:space-between">
           <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
@@ -1389,6 +1450,15 @@ table {
               </a>
             </li>
           </ol>
+          <span style="color:white;display:flex;align-items:center;padding-right:6px;font-size:0.85rem">
+            Page generated on
+            18
+            <sup>
+              th
+            </sup>
+            July
+            2022
+          </span>
         </nav>
       </div>
       <div class="content">
@@ -1484,6 +1554,11 @@ table {
  border-collapse: collapse;
  border-spacing: 0;
 }
+sup {
+  vertical-align: super;
+  font-size: smaller;
+  padding-right: 0.2rem;
+}
     </style>
     <style>
       .content {
@@ -1638,7 +1713,7 @@ table {
   <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
       <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
-        <nav>
+        <nav style="display:flex;justify-content:space-between">
           <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
@@ -1665,6 +1740,15 @@ table {
               </a>
             </li>
           </ol>
+          <span style="color:white;display:flex;align-items:center;padding-right:6px;font-size:0.85rem">
+            Page generated on
+            18
+            <sup>
+              th
+            </sup>
+            July
+            2022
+          </span>
         </nav>
       </div>
       <div class="content">

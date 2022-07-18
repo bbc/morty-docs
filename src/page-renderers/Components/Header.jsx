@@ -1,5 +1,6 @@
 const React = require('react')
 const getHeaderPaths = require('../../helpers/get-header-paths')
+const { prettyDate } = require('./PrettyDate')
 
 const Styles = {
   navbar: {
@@ -10,6 +11,8 @@ const Styles = {
     width: '100%'
   },
   headerNav: {
+    display: 'flex',
+    justifyContent: 'space-between'
   },
   headerLinks: {
     padding: '1rem',
@@ -26,6 +29,13 @@ const Styles = {
   separator: {
     margin: '0 0.28rem',
     color: '#ebebeb'
+  },
+  genTimestamp: {
+    color: 'white',
+    display: 'flex',
+    alignItems: 'center',
+    paddingRight: '6px',
+    fontSize: '0.85rem'
   }
 }
 
@@ -36,14 +46,17 @@ const HeaderLinks = ({ paths }) => paths.map(({ text, path }, index) => {
   </li>
 })
 
-const Header = ({ relPath, basePath }) => (
-  <div style={Styles.navbar}>
-    <nav style={Styles.headerNav}>
-      <ol style={Styles.headerLinks}>
-        <HeaderLinks paths={getHeaderPaths(basePath, relPath)} />
-      </ol>
-    </nav>
-  </div>
-)
+const Header = ({ relPath, basePath }) => {
+  return (
+    <div style={Styles.navbar}>
+      <nav style={Styles.headerNav}>
+        <ol style={Styles.headerLinks}>
+          <HeaderLinks paths={getHeaderPaths(basePath, relPath)} />
+        </ol>
+        <span style={Styles.genTimestamp}>Page generated on {prettyDate(new Date())}</span>
+      </nav>
+    </div>
+  )
+}
 
 module.exports = Header
