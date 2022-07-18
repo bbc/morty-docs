@@ -13,12 +13,7 @@ exports[`The header is rendered with the correct breadcrumb links  When a basepa
   }
 >
   <nav
-    style={
-      Object {
-        "display": "flex",
-        "justifyContent": "space-between",
-      }
-    }
+    style={Object {}}
   >
     <ol
       style={
@@ -83,27 +78,6 @@ exports[`The header is rendered with the correct breadcrumb links  When a basepa
         </a>
       </li>
     </ol>
-    <span
-      style={
-        Object {
-          "alignItems": "center",
-          "color": "white",
-          "display": "flex",
-          "fontSize": "0.85rem",
-          "paddingRight": "6px",
-        }
-      }
-    >
-      Page generated on 
-      18
-      <sup>
-        th
-      </sup>
-       
-      July
-       
-      2022
-    </span>
   </nav>
 </div>
 `;
@@ -121,12 +95,7 @@ exports[`The header is rendered with the correct breadcrumb links  When a basepa
   }
 >
   <nav
-    style={
-      Object {
-        "display": "flex",
-        "justifyContent": "space-between",
-      }
-    }
+    style={Object {}}
   >
     <ol
       style={
@@ -243,27 +212,6 @@ exports[`The header is rendered with the correct breadcrumb links  When a basepa
         </a>
       </li>
     </ol>
-    <span
-      style={
-        Object {
-          "alignItems": "center",
-          "color": "white",
-          "display": "flex",
-          "fontSize": "0.85rem",
-          "paddingRight": "6px",
-        }
-      }
-    >
-      Page generated on 
-      18
-      <sup>
-        th
-      </sup>
-       
-      July
-       
-      2022
-    </span>
   </nav>
 </div>
 `;

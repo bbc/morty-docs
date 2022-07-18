@@ -224,7 +224,7 @@ sup {
   <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
       <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
-        <nav style="display:flex;justify-content:space-between">
+        <nav>
           <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
@@ -263,15 +263,6 @@ sup {
               </a>
             </li>
           </ol>
-          <span style="color:white;display:flex;align-items:center;padding-right:6px;font-size:0.85rem">
-            Page generated on
-            18
-            <sup>
-              th
-            </sup>
-            July
-            2022
-          </span>
         </nav>
       </div>
       <div class="content">
@@ -291,12 +282,20 @@ sup {
         </div>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0;line-height:1.5rem">
       <a href="https://github.com/bbc/morty-docs"
          style="color:#337ab7"
       >
         Morty-Docs on github
       </a>
+      <br>
+      Page generated on
+      18
+      <sup>
+        th
+      </sup>
+      July
+      2022
     </footer>
   </body>
 </html>
@@ -526,7 +525,7 @@ sup {
   <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
       <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
-        <nav style="display:flex;justify-content:space-between">
+        <nav>
           <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
@@ -565,15 +564,6 @@ sup {
               </a>
             </li>
           </ol>
-          <span style="color:white;display:flex;align-items:center;padding-right:6px;font-size:0.85rem">
-            Page generated on
-            18
-            <sup>
-              th
-            </sup>
-            July
-            2022
-          </span>
         </nav>
       </div>
       <div class="content">
@@ -593,12 +583,20 @@ sup {
         </div>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0;line-height:1.5rem">
       <a href="https://github.com/bbc/morty-docs"
          style="color:#337ab7"
       >
         Morty-Docs on github
       </a>
+      <br>
+      Page generated on
+      18
+      <sup>
+        th
+      </sup>
+      July
+      2022
     </footer>
   </body>
 </html>
@@ -828,7 +826,7 @@ sup {
   <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
       <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
-        <nav style="display:flex;justify-content:space-between">
+        <nav>
           <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
@@ -867,15 +865,6 @@ sup {
               </a>
             </li>
           </ol>
-          <span style="color:white;display:flex;align-items:center;padding-right:6px;font-size:0.85rem">
-            Page generated on
-            18
-            <sup>
-              th
-            </sup>
-            July
-            2022
-          </span>
         </nav>
       </div>
       <div class="content">
@@ -895,12 +884,20 @@ sup {
         </div>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0;line-height:1.5rem">
       <a href="https://github.com/bbc/morty-docs"
          style="color:#337ab7"
       >
         Morty-Docs on github
       </a>
+      <br>
+      Page generated on
+      18
+      <sup>
+        th
+      </sup>
+      July
+      2022
     </footer>
   </body>
 </html>
@@ -1130,7 +1127,7 @@ sup {
   <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
       <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
-        <nav style="display:flex;justify-content:space-between">
+        <nav>
           <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
@@ -1169,15 +1166,6 @@ sup {
               </a>
             </li>
           </ol>
-          <span style="color:white;display:flex;align-items:center;padding-right:6px;font-size:0.85rem">
-            Page generated on
-            18
-            <sup>
-              th
-            </sup>
-            July
-            2022
-          </span>
         </nav>
       </div>
       <div class="content">
@@ -1188,12 +1176,20 @@ sup {
         </div>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0;line-height:1.5rem">
       <a href="https://github.com/bbc/morty-docs"
          style="color:#337ab7"
       >
         Morty-Docs on github
       </a>
+      <br>
+      Page generated on
+      18
+      <sup>
+        th
+      </sup>
+      July
+      2022
     </footer>
   </body>
 </html>
@@ -1423,7 +1419,7 @@ sup {
   <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
       <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
-        <nav style="display:flex;justify-content:space-between">
+        <nav>
           <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
@@ -1450,15 +1446,6 @@ sup {
               </a>
             </li>
           </ol>
-          <span style="color:white;display:flex;align-items:center;padding-right:6px;font-size:0.85rem">
-            Page generated on
-            18
-            <sup>
-              th
-            </sup>
-            July
-            2022
-          </span>
         </nav>
       </div>
       <div class="content">
@@ -1478,12 +1465,20 @@ sup {
         </p>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0;line-height:1.5rem">
       <a href="https://github.com/bbc/morty-docs"
          style="color:#337ab7"
       >
         Morty-Docs on github
       </a>
+      <br>
+      Page generated on
+      18
+      <sup>
+        th
+      </sup>
+      July
+      2022
     </footer>
   </body>
 </html>
@@ -1713,7 +1708,7 @@ sup {
   <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
     <div style="min-height:75vh;padding-bottom:20px">
       <div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%">
-        <nav style="display:flex;justify-content:space-between">
+        <nav>
           <ol style="padding:1rem;list-style:none;display:flex;align-items:center">
             <li>
               <span aria-hidden="true"
@@ -1740,15 +1735,6 @@ sup {
               </a>
             </li>
           </ol>
-          <span style="color:white;display:flex;align-items:center;padding-right:6px;font-size:0.85rem">
-            Page generated on
-            18
-            <sup>
-              th
-            </sup>
-            July
-            2022
-          </span>
         </nav>
       </div>
       <div class="content">
@@ -1757,12 +1743,20 @@ sup {
         </p>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0;line-height:1.5rem">
       <a href="https://github.com/bbc/morty-docs"
          style="color:#337ab7"
       >
         Morty-Docs on github
       </a>
+      <br>
+      Page generated on
+      18
+      <sup>
+        th
+      </sup>
+      July
+      2022
     </footer>
   </body>
 </html>
