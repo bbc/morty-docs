@@ -48,6 +48,11 @@ table {
  border-collapse: collapse;
  border-spacing: 0;
 }
+sup {
+  vertical-align: super;
+  font-size: smaller;
+  padding-right: 0.2rem;
+}
 `
 
 const Reset = () => <style dangerouslySetInnerHTML={{ __html: resetStyles }} />

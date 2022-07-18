@@ -65,6 +65,11 @@ table {
  border-collapse: collapse;
  border-spacing: 0;
 }
+sup {
+  vertical-align: super;
+  font-size: smaller;
+  padding-right: 0.2rem;
+}
     </style>
   </head>
   <body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff">
@@ -166,12 +171,20 @@ table {
         </div>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0;line-height:1.5rem">
       <a href="https://github.com/bbc/morty-docs"
          style="color:#337ab7"
       >
         Morty-Docs on github
       </a>
+      <br>
+      Page generated on
+      18
+      <sup>
+        th
+      </sup>
+      July
+      2022
     </footer>
   </body>
 </html>
@@ -241,6 +254,11 @@ q:before, q:after {
 table {
  border-collapse: collapse;
  border-spacing: 0;
+}
+sup {
+  vertical-align: super;
+  font-size: smaller;
+  padding-right: 0.2rem;
 }
     </style>
   </head>
@@ -315,12 +333,20 @@ table {
         </div>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0;line-height:1.5rem">
       <a href="https://github.com/bbc/morty-docs"
          style="color:#337ab7"
       >
         Morty-Docs on github
       </a>
+      <br>
+      Page generated on
+      18
+      <sup>
+        th
+      </sup>
+      July
+      2022
     </footer>
   </body>
 </html>
@@ -390,6 +416,11 @@ q:before, q:after {
 table {
  border-collapse: collapse;
  border-spacing: 0;
+}
+sup {
+  vertical-align: super;
+  font-size: smaller;
+  padding-right: 0.2rem;
 }
     </style>
   </head>
@@ -464,12 +495,20 @@ table {
         </div>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0;line-height:1.5rem">
       <a href="https://github.com/bbc/morty-docs"
          style="color:#337ab7"
       >
         Morty-Docs on github
       </a>
+      <br>
+      Page generated on
+      18
+      <sup>
+        th
+      </sup>
+      July
+      2022
     </footer>
   </body>
 </html>
@@ -539,6 +578,11 @@ q:before, q:after {
 table {
  border-collapse: collapse;
  border-spacing: 0;
+}
+sup {
+  vertical-align: super;
+  font-size: smaller;
+  padding-right: 0.2rem;
 }
     </style>
   </head>
@@ -625,12 +669,20 @@ table {
         </div>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0;line-height:1.5rem">
       <a href="https://github.com/bbc/morty-docs"
          style="color:#337ab7"
       >
         Morty-Docs on github
       </a>
+      <br>
+      Page generated on
+      18
+      <sup>
+        th
+      </sup>
+      July
+      2022
     </footer>
   </body>
 </html>
@@ -700,6 +752,11 @@ q:before, q:after {
 table {
  border-collapse: collapse;
  border-spacing: 0;
+}
+sup {
+  vertical-align: super;
+  font-size: smaller;
+  padding-right: 0.2rem;
 }
     </style>
   </head>
@@ -782,12 +839,20 @@ table {
         </div>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0;line-height:1.5rem">
       <a href="https://github.com/bbc/morty-docs"
          style="color:#337ab7"
       >
         Morty-Docs on github
       </a>
+      <br>
+      Page generated on
+      18
+      <sup>
+        th
+      </sup>
+      July
+      2022
     </footer>
   </body>
 </html>
@@ -857,6 +922,11 @@ q:before, q:after {
 table {
  border-collapse: collapse;
  border-spacing: 0;
+}
+sup {
+  vertical-align: super;
+  font-size: smaller;
+  padding-right: 0.2rem;
 }
     </style>
   </head>
@@ -944,12 +1014,20 @@ table {
         </div>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0;line-height:1.5rem">
       <a href="https://github.com/bbc/morty-docs"
          style="color:#337ab7"
       >
         Morty-Docs on github
       </a>
+      <br>
+      Page generated on
+      18
+      <sup>
+        th
+      </sup>
+      July
+      2022
     </footer>
   </body>
 </html>
@@ -1019,6 +1097,11 @@ q:before, q:after {
 table {
  border-collapse: collapse;
  border-spacing: 0;
+}
+sup {
+  vertical-align: super;
+  font-size: smaller;
+  padding-right: 0.2rem;
 }
     </style>
   </head>
@@ -1101,12 +1184,20 @@ table {
         </div>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0;line-height:1.5rem">
       <a href="https://github.com/bbc/morty-docs"
          style="color:#337ab7"
       >
         Morty-Docs on github
       </a>
+      <br>
+      Page generated on
+      18
+      <sup>
+        th
+      </sup>
+      July
+      2022
     </footer>
   </body>
 </html>
@@ -1176,6 +1267,11 @@ q:before, q:after {
 table {
  border-collapse: collapse;
  border-spacing: 0;
+}
+sup {
+  vertical-align: super;
+  font-size: smaller;
+  padding-right: 0.2rem;
 }
     </style>
   </head>
@@ -1258,12 +1354,20 @@ table {
         </div>
       </div>
     </div>
-    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0">
+    <footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0;line-height:1.5rem">
       <a href="https://github.com/bbc/morty-docs"
          style="color:#337ab7"
       >
         Morty-Docs on github
       </a>
+      <br>
+      Page generated on
+      18
+      <sup>
+        th
+      </sup>
+      July
+      2022
     </footer>
   </body>
 </html>

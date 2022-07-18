@@ -36,14 +36,16 @@ const HeaderLinks = ({ paths }) => paths.map(({ text, path }, index) => {
   </li>
 })
 
-const Header = ({ relPath, basePath }) => (
-  <div style={Styles.navbar}>
-    <nav style={Styles.headerNav}>
-      <ol style={Styles.headerLinks}>
-        <HeaderLinks paths={getHeaderPaths(basePath, relPath)} />
-      </ol>
-    </nav>
-  </div>
-)
+const Header = ({ relPath, basePath }) => {
+  return (
+    <div style={Styles.navbar}>
+      <nav style={Styles.headerNav}>
+        <ol style={Styles.headerLinks}>
+          <HeaderLinks paths={getHeaderPaths(basePath, relPath)} />
+        </ol>
+      </nav>
+    </div>
+  )
+}
 
 module.exports = Header
