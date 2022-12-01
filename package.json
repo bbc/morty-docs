@@ -12,9 +12,10 @@
     "start": "rm -rf www && npm run build -- --source-maps && node run.js && npx http-server www",
     "build": "rm -rf build && mkdir build && babel src --out-dir build",
     "build-watch": "npm run build -- --source-maps --watch",
-    "test": "jest --runInBand --outputFile test-results.json --json && npm run lint",
+    "test": "jest --runInBand --outputFile test-results.json --json",
     "coverage": "jest --coverage --runInBand && open coverage/lcov-report/index.html",
     "lint": "standard",
+    "posttest": "npm run lint",
     "prepare": "npm run build",
     "postversion": "git push origin main && git push --tags origin main"
   },

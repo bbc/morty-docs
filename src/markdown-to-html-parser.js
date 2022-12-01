@@ -9,7 +9,7 @@ const convertMdLinksToHtmlLinks = {
 }
 // Due to the converter the global replace on links is broken so if you have multiple links per line we need multiple matchers or they don't get replaced.
 const maxLinksPerLine = 10
-const convertMultipleMdLinksToHtmlLinks =  new Array(maxLinksPerLine).fill().map(x => convertMdLinksToHtmlLinks);
+const convertMultipleMdLinksToHtmlLinks = new Array(maxLinksPerLine).fill().map(x => convertMdLinksToHtmlLinks)
 
 const headingExtension = {
   type: 'output',

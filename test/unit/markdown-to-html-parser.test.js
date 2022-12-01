@@ -55,7 +55,7 @@ describe('Markdown Parser', () => {
 
     const actual = parseToHtml(markdown)
 
-    const expected = '<p><a href=\"./publishing-your-repo.html\">here</a><a href=\"./publishing-your-repo.html\">here</a><a href=\"./publishing-your-repo.html\">here</a></p>'
+    const expected = '<p><a href="./publishing-your-repo.html">here</a><a href="./publishing-your-repo.html">here</a><a href="./publishing-your-repo.html">here</a></p>'
 
     expect(actual).toEqual(expected)
   })
