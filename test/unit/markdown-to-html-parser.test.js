@@ -50,4 +50,13 @@ describe('Markdown Parser', () => {
 
     expect(actual).toEqual(expected)
   })
+  it('should replace multiple relative links per line', () => {
+    const markdown = '[here](./publishing-your-repo.md)[here](./publishing-your-repo.md)[here](./publishing-your-repo.md)'
+
+    const actual = parseToHtml(markdown)
+
+    const expected = '<p><a href=\"./publishing-your-repo.html\">here</a><a href=\"./publishing-your-repo.html\">here</a><a href=\"./publishing-your-repo.html\">here</a></p>'
+
+    expect(actual).toEqual(expected)
+  })
 })
