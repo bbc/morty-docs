@@ -4,7 +4,7 @@ const showdown = require('showdown')
 // to convert links within a file from *.md to *.html
 const convertMdLinksToHtmlLinks = {
   type: 'output',
-  regex: /<a href="([^:]*?).md">/g,
+  regex: /<a href="([^:\n]*?).md">/g,
   // exclude colon, so external links aren't converted
   replace: '<a href="$1.html">'
 }
