@@ -1,5 +1,14 @@
 const transformContent = require('../../src/transform-content.js')
 
+beforeAll(() => {
+  jest.useFakeTimers('modern')
+  jest.setSystemTime(new Date(2020, 3, 1))
+})
+
+afterAll(() => {
+  jest.useRealTimers()
+})
+
 const options = {
   contentTitle: 'Some Title',
   basePath: '/morty-docs/some-repo'

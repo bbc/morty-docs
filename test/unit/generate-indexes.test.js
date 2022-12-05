@@ -1,5 +1,14 @@
 const generateIndexes = require('../../src/generate-indexes.js')
 
+beforeAll(() => {
+  jest.useFakeTimers('modern')
+  jest.setSystemTime(new Date(2020, 3, 1))
+})
+
+afterAll(() => {
+  jest.useRealTimers()
+})
+
 describe('Generating indexes', () => {
   it('returns an index page for the "root" folder', () => {
     const input = [{
