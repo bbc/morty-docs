@@ -4,12 +4,10 @@ const showdown = require('showdown')
 // to convert links within a file from *.md to *.html
 const convertMdLinksToHtmlLinks = {
   type: 'output',
-  regex: /<a href="([^:\n]*).md">/g, // exclude colon, so external links aren't converted
-  replace: '<a href="$1.html">'
+  regex: /href="([^:\n]*?).md"/g,
+  // exclude colon, so external links aren't converted
+  replace: 'href="$1.html"'
 }
-// Due to the converter the global replace on links is broken so if you have multiple links per line we need multiple matchers or they don't get replaced.
-const maxLinksPerLine = 10
-const convertMultipleMdLinksToHtmlLinks = new Array(maxLinksPerLine).fill().map(x => convertMdLinksToHtmlLinks)
 
 const headingExtension = {
   type: 'output',
@@ -49,7 +47,7 @@ const createParser = (options) => {
 
   const parser = new showdown.Converter({
     extensions: [
-      convertMultipleMdLinksToHtmlLinks,
+      convertMdLinksToHtmlLinks,
       addBasePathToRootLinks,
       headingExtension,
       ...bindings
