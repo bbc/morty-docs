@@ -9,6 +9,14 @@ const convertMdLinksToHtmlLinks = {
   replace: '<a href="$1.html">'
 }
 
+// Replace hash links with .html e.g. page.md#Title becomes page.html#Title.
+const convertMdHashLinksToHtmlLinks = {
+  type: 'output',
+  regex: /<a href="([^:\n]*?).md#(.*?)">/g,
+  // exclude colon, so external links aren't converted
+  replace: '<a href="$1.html#$2">'
+}
+
 const headingExtension = {
   type: 'output',
   regex: /<(h[123456]) id="(.*)">(.*)<\/\1>/g,
@@ -48,6 +56,7 @@ const createParser = (options) => {
   const parser = new showdown.Converter({
     extensions: [
       convertMdLinksToHtmlLinks,
+      convertMdHashLinksToHtmlLinks,
       addBasePathToRootLinks,
       headingExtension,
       ...bindings
