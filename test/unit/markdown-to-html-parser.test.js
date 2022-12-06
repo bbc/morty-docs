@@ -59,7 +59,7 @@ describe('Markdown Parser', () => {
 
     expect(actual).toEqual(expected)
   })
-  
+
   it('should replace multiple hash links per line', () => {
     const markdown = '[here](./link1.md#Section1)[here](./link2.md#Section2)[here](./link3.md#Section3)'
 
