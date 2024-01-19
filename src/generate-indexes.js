@@ -36,10 +36,14 @@ const generateIndexes = (files, options = { contentTitle: '' }) => {
     directories.push('')
   }
 
-  const indexes = directories.map(directory => {
+  const indexes = directories.flatMap(directory => {
     const filesInDir = filterFilesInDirectory(supportedFilePaths, directory)
     const subDirsInDir = filterDirectoriesInDirectory(directories, directory)
-    const indexPath = directory ? `${directory}/index.html` : 'index.html'
+    const indexPath = path.join(directory, 'index.html')
+
+    if (filesInDir.includes(indexPath)) {
+      return []
+    }
 
     return {
       relativePath: indexPath,
