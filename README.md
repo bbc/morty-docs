@@ -88,6 +88,14 @@ through because it is not markdown or asciidoc e.g. images
 
 ## Things to Consider
 
+### Index file generation
+
+Morty will automatically generate an `index.html` file for any directory that
+contains markdown or asciidoc files (or has descendants that contain these
+files). This file contains links to any documentation files or subdirectories
+the directory contains. The generation will be skipped for any directory that
+already contains an `index.md`, `index.asciidoc`, `index.adoc` or `index.asc` file.
+
 ### File & Directory Ordering
 
 These are sorted lexically (0-9 < a-z>).
