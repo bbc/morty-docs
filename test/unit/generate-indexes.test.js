@@ -69,6 +69,42 @@ describe('Generating indexes', () => {
     expect(actual).toHaveLength(expected.length)
   })
 
+  it('does not override an existing index.html file in the root', () => {
+    const input = [{
+      relativePath: 'someRootFile.html'
+    }, {
+      relativePath: 'index.html'
+    }]
+
+    const actual = generateIndexes(input, { repoName: 'some-repo', basePath: 'morty-docs/some-repo' })
+    const expectedAbsent = [{
+      relativePath: 'index.html',
+      raw: expect.any(Buffer)
+    }]
+
+    expect(actual).not.toEqual(expect.arrayContaining(expectedAbsent))
+    expect(actual).toHaveLength(0)
+  })
+
+  it('does not override an existing index.html file in a subdirectory', () => {
+    const input = [{
+      relativePath: 'someRootFile.html'
+    }, {
+      relativePath: 'somePath/someNestedFile.html'
+    }, {
+      relativePath: 'somePath/index.html'
+    }]
+
+    const actual = generateIndexes(input, { repoName: 'some-repo', basePath: 'morty-docs/some-repo' })
+    const expectedAbsent = [{
+      relativePath: 'somePath/index.html',
+      raw: expect.any(Buffer)
+    }]
+
+    expect(actual).not.toEqual(expect.arrayContaining(expectedAbsent))
+    expect(actual).toHaveLength(1)
+  })
+
   it('generates indexes for every other directory in path', () => {
     const input = [{
       relativePath: 'docs/arch/someMDFile.html'
