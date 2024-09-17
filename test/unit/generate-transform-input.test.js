@@ -1,53 +1,70 @@
 const generateTransformInput = require('../../src/generate-transform-input')
-const readdir = require('recursive-readdir')
+
 const fs = require('fs')
+const { Dirent, constants } = require('fs') // used for mocking return values of readdirSync
 
-jest.mock('recursive-readdir')
-jest.mock('fs')
+const readdirSyncMock = jest.spyOn(fs, 'readdirSync')
+const readFileSyncMock = jest.spyOn(fs, 'readFileSync')
+const existsSyncMock = jest.spyOn(fs, 'existsSync') // only used for checking symlinks
 
-describe('Generate transform input', () => {
-  beforeEach(() => {
-    readdir.mockImplementation(() => Promise.resolve([
-      '/tmp/someRepo/someDirectory/some/path/tofile.md',
-      '/tmp/someRepo/someDirectory/another/path/tofile.md'
-    ]))
-    fs.readFileSync.mockImplementation(() => 'some text in a file')
+describe('Test outputs for different returns from readdirSync', () => {
+  describe('When readdirSync returns just an empty directory', () => {
+    it('it returns an empty array because it drops all directories', async () => {
+      const directory = new Dirent('directory', constants.UV_DIRENT_DIR)
+      directory.parentPath = '/anything'
+      readdirSyncMock.mockReturnValue([directory])
+
+      const actual = await generateTransformInput('/any')
+      expect(actual).toEqual([])
+    })
+  })
+
+  describe('When readdirSync returns just a single file', () => {
+    it('it returns expected object for this file', async () => {
+      const file = new Dirent('file.md', constants.UV_DIRENT_FILE)
+      file.parentPath = '/path'
+      readdirSyncMock.mockReturnValue([file])
+      readFileSyncMock.mockReturnValue('file-contents')
+
+      const actual = await generateTransformInput('/any')
+      const expected = [{
+        relativePath: '/path/file.md',
+        raw: 'file-contents'
+      }]
+      expect(actual).toEqual(expected)
+    })
+  })
+
+  describe('When readdirSync returns a file and a good symlink', () => {
+    it('it returns expected objects for both', async () => {
+      const file = new Dirent('file.md', constants.UV_DIRENT_FILE)
+      file.parentPath = '/path1'
+
+      const symlink = new Dirent('symlink', constants.UV_DIRENT_LINK)
+      symlink.parentPath = '/path2'
+
+      readdirSyncMock.mockReturnValue([file, symlink])
+
+      readFileSyncMock.mockReturnValue('file-contents') // for both
+      existsSyncMock.mockReturnValue(true)
+
+      const actual = await generateTransformInput('/any')
+
+      const expected = [{
+        relativePath: '/path1/file.md',
+        raw: 'file-contents'
+      },
+      {
+        relativePath: '/path2/symlink',
+        raw: 'file-contents'
+      }]
+      expect(actual).toEqual(expected)
+    })
   })
 
   afterEach(() => {
-    readdir.mockRestore()
-    fs.readFileSync.mockRestore()
-  })
-
-  it('creates a correctly structured array of file objects from a directory ending in a slash', async () => {
-    const dir = '/tmp/someRepo/someDirectory/'
-
-    const expected = [{
-      relativePath: 'some/path/tofile.md',
-      raw: 'some text in a file'
-    }, {
-      relativePath: 'another/path/tofile.md',
-      raw: 'some text in a file'
-    }]
-
-    const actual = await generateTransformInput(dir)
-
-    expect(actual).toEqual(expected)
-  })
-
-  it('creates a correctly structured array of file objects from a directory that does not end in a slash', async () => {
-    const dir = '/tmp/someRepo/someDirectory'
-
-    const expected = [{
-      relativePath: 'some/path/tofile.md',
-      raw: 'some text in a file'
-    }, {
-      relativePath: 'another/path/tofile.md',
-      raw: 'some text in a file'
-    }]
-
-    const actual = await generateTransformInput(dir)
-
-    expect(actual).toEqual(expected)
+    readdirSyncMock.mockReset()
+    readFileSyncMock.mockReset()
+    existsSyncMock.mockReset()
   })
 })
