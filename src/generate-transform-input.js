@@ -6,44 +6,37 @@ const generateTransformInput = (dir) => {
   dir = path.format(path.parse(dir))
 
   const list = []
-  try {
-    const files = fs.readdirSync(dir, { recursive: true, withFileTypes: true })
-    // recursive option available from node 18+
-    // when options.withFileTypes set to true, the returned array will contain <fs.Dirent> objects.
-    for (const dirent of files) {
-      console.log('------')
-      console.log(`dirent: ${JSON.stringify(dirent, null, 2)}`)
 
-      // Node API for Dirent is unstable
-      const dirPath = dirent.path || dirent.parentPath // path is DEPRECATED! But parentPath does not work in 18.17
+  const files = fs.readdirSync(dir, { recursive: true, withFileTypes: true })
+  // recursive option available from node 18+
+  // when options.withFileTypes set to true, the returned array will contain <fs.Dirent> objects.
+  for (const dirent of files) {
+    // console.log(`dirent: ${JSON.stringify(dirent, null, 2)}`)
 
-      const fullPath = path.join(dirPath, dirent.name)
-      console.log('fullPath = ', fullPath)
+    // Node API for Dirent is unstable
+    const dirPath = dirent.path || dirent.parentPath // path is DEPRECATED! But parentPath does not work in 18.17
 
-      if (dirent.isDirectory()) {
-        console.log('directory... continue')
-        continue
-      }
+    const fullPath = path.join(dirPath, dirent.name)
+    // console.log('fullPath = ', fullPath)
 
-      if (dirent.isFile()) {
-        list.push(makeInputObject(fullPath, dir))
-        continue
-      }
-
-      if (dirent.isSymbolicLink) {
-        if (fs.existsSync(fullPath)) { // fs.exists() is deprecated, but fs.existsSync() is not.
-          console.log('Good symlink')
-          list.push(makeInputObject(fullPath, dir)) // symlinks become copies
-        } else {
-          console.log(`Broken symlink at: ${fullPath}`)
-        }
-        continue
-      }
+    if (dirent.isDirectory()) {
+      console.log('directory... continue')
+      continue
     }
-  } catch (err) {
-    console.error('Error in generateTransformInput', err)
+    if (dirent.isFile()) {
+      list.push(makeInputObject(fullPath, dir))
+      continue
+    }
+    if (dirent.isSymbolicLink) {
+      if (fs.existsSync(fullPath)) { // fs.exists() is deprecated, but fs.existsSync() is not.
+        console.log('Good symlink')
+        list.push(makeInputObject(fullPath, dir)) // symlinks become copies
+      } else {
+        console.log(`Broken symlink at: ${fullPath}`)
+      }
+      continue
+    }
   }
-
   return list
 }
 
