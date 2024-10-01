@@ -1,3 +1,4 @@
+const fs = require('fs')
 const generateTransformInput = require('../../src/generate-transform-input')
 
 beforeAll(() => {
@@ -5,6 +6,9 @@ beforeAll(() => {
 })
 describe('Test outputs for different returns from readdirSync', () => {
   it('it returns an empty array because folder `empty` does not exist', () => {
+    // pre-setup an empty folder
+    if (!fs.existsSync('test/files/empty')) fs.mkdirSync('test/files/empty')
+
     const actual = generateTransformInput('test/files/empty')
     expect(actual).toEqual([])
   })

@@ -6,7 +6,6 @@ const generateTransformInput = (dir) => {
   dir = path.format(path.parse(dir))
 
   let list = []
-  console.info("dir test", dir)
   const files = fs.readdirSync(dir, { recursive: true, withFileTypes: true })
   // recursive option available from node 18+
   // when options.withFileTypes set to true, the returned array will contain <fs.Dirent> objects.
