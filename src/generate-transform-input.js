@@ -1,4 +1,3 @@
-// const { readdir } = require('node:fs/promises')
 const fs = require('fs')
 const path = require('path')
 
@@ -10,8 +9,6 @@ const generateTransformInput = (dir) => {
   // recursive option available from node 18+
   // when options.withFileTypes set to true, the returned array will contain <fs.Dirent> objects.
   for (const dirent of files) {
-    // console.log(`dirent: ${JSON.stringify(dirent, null, 2)}`)
-
     // Node API for Dirent is unstable
     const dirPath = dirent.path || dirent.parentPath // path is DEPRECATED! But parentPath does not work in 18.17
 
