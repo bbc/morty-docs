@@ -3,6 +3,8 @@ const { transform, generateTransformInput } = require('./build')
 
 const path = require('path')
 
+console.log('process.env.mortyPath = ', process.env.mortyPath)
+
 const directoryToConvert = process.env.mortyPath || 'default-md-files'
 const resolvedPath = path.resolve(directoryToConvert)
 

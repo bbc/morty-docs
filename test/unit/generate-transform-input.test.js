@@ -1,53 +1,70 @@
-const generateTransformInput = require('../../src/generate-transform-input')
-const readdir = require('recursive-readdir')
 const fs = require('fs')
+const generateTransformInput = require('../../src/generate-transform-input')
 
-jest.mock('recursive-readdir')
-jest.mock('fs')
+beforeAll(() => {
+  jest.spyOn(console, 'log').mockImplementation(() => {})
+})
+describe('Test outputs for different returns from readdirSync', () => {
+  it('it returns an empty array because folder `empty` does not exist', () => {
+    // pre-setup an empty folder
+    if (!fs.existsSync('test/files/empty')) fs.mkdirSync('test/files/empty')
 
-describe('Generate transform input', () => {
-  beforeEach(() => {
-    readdir.mockImplementation(() => Promise.resolve([
-      '/tmp/someRepo/someDirectory/some/path/tofile.md',
-      '/tmp/someRepo/someDirectory/another/path/tofile.md'
-    ]))
-    fs.readFileSync.mockImplementation(() => 'some text in a file')
+    const actual = generateTransformInput('test/files/empty')
+    expect(actual).toEqual([])
   })
 
-  afterEach(() => {
-    readdir.mockRestore()
-    fs.readFileSync.mockRestore()
+  it('it returns all files in 1 directory', () => {
+    const actual = generateTransformInput('test/files/test1')
+    expect(actual).toEqual([{ raw: 'Test 1', relativePath: 'test1.txt' }])
   })
 
-  it('creates a correctly structured array of file objects from a directory ending in a slash', async () => {
-    const dir = '/tmp/someRepo/someDirectory/'
-
-    const expected = [{
-      relativePath: 'some/path/tofile.md',
-      raw: 'some text in a file'
-    }, {
-      relativePath: 'another/path/tofile.md',
-      raw: 'some text in a file'
-    }]
-
-    const actual = await generateTransformInput(dir)
-
-    expect(actual).toEqual(expected)
+  it('it returns all files in multiple directories', () => {
+    const actual = generateTransformInput('test/files/test2')
+    expect(actual).toEqual([
+      { raw: 'Dir 1 Test 1', relativePath: 'dir1/test1.txt' },
+      { raw: 'Dir 2 Test 1', relativePath: 'dir2/test1.txt' }
+    ])
   })
 
-  it('creates a correctly structured array of file objects from a directory that does not end in a slash', async () => {
-    const dir = '/tmp/someRepo/someDirectory'
+  it('it returns all files with sub directories', () => {
+    const actual = generateTransformInput('test/files/test3')
+    expect(actual).toEqual([
+      { raw: 'Dir 1 Test 1', relativePath: 'dir1/test1.txt' },
+      { raw: 'Dir 1 Sub 1 Test 1', relativePath: 'dir1/sub1/test1.txt' },
+      { raw: 'Dir 1 Sub 2 Test 1', relativePath: 'dir1/sub1/sub2/test1.txt' }
+    ])
+  })
 
-    const expected = [{
-      relativePath: 'some/path/tofile.md',
-      raw: 'some text in a file'
-    }, {
-      relativePath: 'another/path/tofile.md',
-      raw: 'some text in a file'
-    }]
+  it('should fail when directory doesnt exist', () => {
+    expect.assertions(1)
+    try {
+      generateTransformInput('test/files/doesntexist')
+    } catch (e) {
+      expect(e.message).toEqual("ENOENT: no such file or directory, scandir 'test/files/doesntexist'")
+    }
+  })
+})
 
-    const actual = await generateTransformInput(dir)
+describe('Symbolic links', () => {
+  it('has a good symlink to a directory, so include all files in the list', () => {
+    const actual = generateTransformInput('test/files/test4/dir1')
+    expect(actual).toEqual([
+      { raw: 'Symlink Text', relativePath: 'symlink.txt' },
+      { raw: 'Dir 1 Test 1', relativePath: 'test1.txt' }
+    ])
+    // cd test/files/test4/dir1
+    // ln -s ../good-symlink symlink     - copy contents of symlink folder and put in dir1
+  })
 
-    expect(actual).toEqual(expected)
+  it('has a good symlink to a file, so include it in the file list', () => {
+    const actual = generateTransformInput('test/files/test5')
+    expect(actual).toEqual([
+      { raw: 'Symlink Text', relativePath: 'symlink.txt' }
+    ])
+  })
+
+  it('has a bad symlink, ignore these files in the output', () => {
+    const actual = generateTransformInput('test/files/test6')
+    expect(actual).toEqual([])
   })
 })
