@@ -31,7 +31,8 @@
     "markdown"
   ],
   "engines": {
-    "node": ">=12.x"
+    "node": ">=18.x",
+    "npm": ">=8.x"
   },
   "author": "BBC",
   "license": "Apache-2.0",
