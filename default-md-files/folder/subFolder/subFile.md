@@ -2,4 +2,4 @@
 
 Look at my great image
 
-![Morty Image](./morty.png)
+![Morty Image](./test.jpg)
