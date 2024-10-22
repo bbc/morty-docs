@@ -53,11 +53,18 @@ const createParser = (options) => {
     replace: `<a href="${basePath}/$1">`
   }
 
+  const addBasePathToLinkHrefs = {
+    type: 'output',
+    regex: /<link(.+)href="\/([^:\n]*)"(.*)\/>/g, // exclude colon, so external links aren't converted
+    replace: `<link$1href="${basePath}/$2"$3/>`
+  }
+
   const parser = new showdown.Converter({
     extensions: [
       convertMdLinksToHtmlLinks,
       convertMdHashLinksToHtmlLinks,
       addBasePathToRootLinks,
+      addBasePathToLinkHrefs,
       headingExtension,
       ...bindings
     ]
