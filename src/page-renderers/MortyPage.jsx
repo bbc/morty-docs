@@ -137,12 +137,12 @@ const contentStyles = `
   border-radius: 0;
 }
 
-.content p code {
+.content :not(pre) code {
   padding: 2px 4px;
-    font-size: 90%;
-    color: #c7254e;
-    background-color: #f9f2f4;
-    border-radius: 4px;
+  font-size: 90%;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  border-radius: 4px;
 }
 
 .content table {
