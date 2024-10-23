@@ -31,6 +31,16 @@ describe('Markdown Parser', () => {
     expect(actual.includes(expected)).toBe(true)
   })
 
+  it('creates anchor link for headings even with nested HTML content', () => {
+    const markdown = '# Heading <em id="123">with style!</em>'
+
+    const actual = parseToHtml(markdown)
+
+    const expected = '<h1 id="heading-em-id123with-styleem"><a href="#heading-em-id123with-styleem">Heading <em id="123">with style!</em></a></h1>'
+
+    expect(actual).toMatch(expected)
+  })
+
   it('creates an html link from an md link', () => {
     const markdown =
       '[here](./docs/user/publishing-your-repo.md)\n[here](./docs/user/publishing-another-repo.md)'

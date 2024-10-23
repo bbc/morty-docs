@@ -19,7 +19,7 @@ const convertMdHashLinksToHtmlLinks = {
 
 const headingExtension = {
   type: 'output',
-  regex: /<(h[123456]) id="(.*)">(.*)<\/\1>/g,
+  regex: /<(h[123456]) id="([^"]+)">(.*)<\/\1>/g,
   replace: '<$1 id="$2"><a href="#$2">$3</a></$1>'
 }
 
