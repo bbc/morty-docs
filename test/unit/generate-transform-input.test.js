@@ -68,3 +68,25 @@ describe('Symbolic links', () => {
     expect(actual).toEqual([])
   })
 })
+
+describe('Snapshot Test', () => {
+  it('should match test1 snapshot', () => {
+    const actual = generateTransformInput('test/files/test1')
+    expect(actual).toMatchSnapshot()
+  })
+})
+describe('Snapshot Test', () => {
+  const cases = [
+    ['test1'],
+    ['test2'],
+    ['test3'],
+    ['test4'],
+    ['test5'],
+    ['test6']
+  ]
+
+  test.each(cases)('Files in folder `%s`, should match snapshot', async (folderName) => {
+    const actual = generateTransformInput(`test/files/${folderName}`)
+    expect(actual).toMatchSnapshot()
+  })
+})
