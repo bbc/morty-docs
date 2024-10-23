@@ -47,7 +47,7 @@ const generateTransformInput = (dir) => {
 const makeInputObject = (fullPath, rootPath) => {
   return {
     relativePath: fullPath.replace(`${rootPath}/`, ''),
-    raw: fs.readFileSync(fullPath, 'utf-8')
+    raw: fs.readFileSync(fullPath)
   }
 }
 
