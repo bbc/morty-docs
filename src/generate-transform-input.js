@@ -41,7 +41,6 @@ const generateTransformInput = (dir) => {
       continue
     }
   }
-  console.log(list)
   return list
 }
 
