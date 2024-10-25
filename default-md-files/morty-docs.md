@@ -30,9 +30,12 @@ Do images still work?
 
 > [!NOTE]  
 > Highlights information that users should take into account, even when skimming.
+> More text note
+> Even more text note
 
 > [!TIP]
 > Optional information to help a user be more successful.
+> more text tip
 
 > [!IMPORTANT]  
 > Crucial information necessary for users to succeed.
