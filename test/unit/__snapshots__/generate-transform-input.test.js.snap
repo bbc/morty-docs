@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Snapshot Test Files in folder \`test1\`, should match snapshot 1`] = `
+exports[`Snapshot Test Files in folder \`test1\`, should match snapshot with \`1\` files 1`] = `
 Array [
   Object {
     "raw": Object {
@@ -19,7 +19,7 @@ Array [
 ]
 `;
 
-exports[`Snapshot Test Files in folder \`test2\`, should match snapshot 1`] = `
+exports[`Snapshot Test Files in folder \`test2\`, should match snapshot with \`2\` files 1`] = `
 Array [
   Object {
     "raw": Object {
@@ -64,7 +64,7 @@ Array [
 ]
 `;
 
-exports[`Snapshot Test Files in folder \`test3\`, should match snapshot 1`] = `
+exports[`Snapshot Test Files in folder \`test3\`, should match snapshot with \`3\` files 1`] = `
 Array [
   Object {
     "raw": Object {
@@ -141,7 +141,7 @@ Array [
 ]
 `;
 
-exports[`Snapshot Test Files in folder \`test4\`, should match snapshot 1`] = `
+exports[`Snapshot Test Files in folder \`test4\`, should match snapshot with \`3\` files 1`] = `
 Array [
   Object {
     "raw": Object {
@@ -6342,7 +6342,7 @@ Array [
 ]
 `;
 
-exports[`Snapshot Test Files in folder \`test5\`, should match snapshot 1`] = `
+exports[`Snapshot Test Files in folder \`test5\`, should match snapshot with \`1\` files 1`] = `
 Array [
   Object {
     "raw": Object {
@@ -6367,7 +6367,7 @@ Array [
 ]
 `;
 
-exports[`Snapshot Test Files in folder \`test6\`, should match snapshot 1`] = `Array []`;
+exports[`Snapshot Test Files in folder \`test6\`, should match snapshot with \`0\` files 1`] = `Array []`;
 
 exports[`Snapshot Test should match test1 snapshot 1`] = `
 Array [

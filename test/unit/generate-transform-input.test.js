@@ -77,16 +77,17 @@ describe('Snapshot Test', () => {
 })
 describe('Snapshot Test', () => {
   const cases = [
-    ['test1'],
-    ['test2'],
-    ['test3'],
-    ['test4'],
-    ['test5'],
-    ['test6']
+    ['test1', 1],
+    ['test2', 2],
+    ['test3', 3],
+    ['test4', 3],
+    ['test5', 1],
+    ['test6', 0]
   ]
 
-  test.each(cases)('Files in folder `%s`, should match snapshot', async (folderName) => {
+  test.each(cases)('Files in folder `%s`, should match snapshot with `%s` files', async (folderName, totalFiles) => {
     const actual = generateTransformInput(`test/files/${folderName}`)
     expect(actual).toMatchSnapshot()
+    expect(actual.length).toEqual(totalFiles)
   })
 })
