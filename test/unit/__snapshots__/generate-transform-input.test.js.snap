@@ -1,0 +1,233 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot Test Files in folder \`test1\`, should match snapshot with \`1\` files 1`] = `
+Array [
+  Object {
+    "raw": Object {
+      "data": Array [
+        84,
+        101,
+        115,
+        116,
+        32,
+        49,
+      ],
+      "type": "Buffer",
+    },
+    "relativePath": "test1.txt",
+  },
+]
+`;
+
+exports[`Snapshot Test Files in folder \`test2\`, should match snapshot with \`2\` files 1`] = `
+Array [
+  Object {
+    "raw": Object {
+      "data": Array [
+        68,
+        105,
+        114,
+        32,
+        49,
+        32,
+        84,
+        101,
+        115,
+        116,
+        32,
+        49,
+      ],
+      "type": "Buffer",
+    },
+    "relativePath": "dir1/test1.txt",
+  },
+  Object {
+    "raw": Object {
+      "data": Array [
+        68,
+        105,
+        114,
+        32,
+        50,
+        32,
+        84,
+        101,
+        115,
+        116,
+        32,
+        49,
+      ],
+      "type": "Buffer",
+    },
+    "relativePath": "dir2/test1.txt",
+  },
+]
+`;
+
+exports[`Snapshot Test Files in folder \`test3\`, should match snapshot with \`3\` files 1`] = `
+Array [
+  Object {
+    "raw": Object {
+      "data": Array [
+        68,
+        105,
+        114,
+        32,
+        49,
+        32,
+        84,
+        101,
+        115,
+        116,
+        32,
+        49,
+      ],
+      "type": "Buffer",
+    },
+    "relativePath": "dir1/test1.txt",
+  },
+  Object {
+    "raw": Object {
+      "data": Array [
+        68,
+        105,
+        114,
+        32,
+        49,
+        32,
+        83,
+        117,
+        98,
+        32,
+        49,
+        32,
+        84,
+        101,
+        115,
+        116,
+        32,
+        49,
+      ],
+      "type": "Buffer",
+    },
+    "relativePath": "dir1/sub1/test1.txt",
+  },
+  Object {
+    "raw": Object {
+      "data": Array [
+        68,
+        105,
+        114,
+        32,
+        49,
+        32,
+        83,
+        117,
+        98,
+        32,
+        50,
+        32,
+        84,
+        101,
+        115,
+        116,
+        32,
+        49,
+      ],
+      "type": "Buffer",
+    },
+    "relativePath": "dir1/sub1/sub2/test1.txt",
+  },
+]
+`;
+
+exports[`Snapshot Test Files in folder \`test4\`, should match snapshot with \`2\` files 1`] = `
+Array [
+  Object {
+    "raw": Object {
+      "data": Array [
+        83,
+        121,
+        109,
+        108,
+        105,
+        110,
+        107,
+        32,
+        84,
+        101,
+        120,
+        116,
+      ],
+      "type": "Buffer",
+    },
+    "relativePath": "symlink.txt",
+  },
+  Object {
+    "raw": Object {
+      "data": Array [
+        68,
+        105,
+        114,
+        32,
+        49,
+        32,
+        84,
+        101,
+        115,
+        116,
+        32,
+        49,
+      ],
+      "type": "Buffer",
+    },
+    "relativePath": "dir1/test1.txt",
+  },
+]
+`;
+
+exports[`Snapshot Test Files in folder \`test5\`, should match snapshot with \`1\` files 1`] = `
+Array [
+  Object {
+    "raw": Object {
+      "data": Array [
+        83,
+        121,
+        109,
+        108,
+        105,
+        110,
+        107,
+        32,
+        84,
+        101,
+        120,
+        116,
+      ],
+      "type": "Buffer",
+    },
+    "relativePath": "symlink.txt",
+  },
+]
+`;
+
+exports[`Snapshot Test Files in folder \`test6\`, should match snapshot with \`0\` files 1`] = `Array []`;
+
+exports[`Snapshot Test should match test1 snapshot 1`] = `
+Array [
+  Object {
+    "raw": Object {
+      "data": Array [
+        84,
+        101,
+        115,
+        116,
+        32,
+        49,
+      ],
+      "type": "Buffer",
+    },
+    "relativePath": "test1.txt",
+  },
+]
+`;

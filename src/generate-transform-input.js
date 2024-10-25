@@ -26,11 +26,12 @@ const generateTransformInput = (dir) => {
     if (dirent.isSymbolicLink) {
       if (fs.existsSync(fullPath)) { // fs.exists() is deprecated, but fs.existsSync() is not.
         const stats = fs.statSync(fullPath)
-        console.log('Good symlink')
+        console.log('Good symlink', fullPath)
         if (stats.isFile()) {
           // get file details
           list.push(makeInputObject(fullPath, dir)) // symlinks become copies
         } else {
+          console.log('directory... continue')
           // recursive call to get all files in the symlinked directory
           const newlist = generateTransformInput(fullPath)
           list = list.concat(newlist)
@@ -41,13 +42,14 @@ const generateTransformInput = (dir) => {
       continue
     }
   }
+  console.log(list)
   return list
 }
 
 const makeInputObject = (fullPath, rootPath) => {
   return {
     relativePath: fullPath.replace(`${rootPath}/`, ''),
-    raw: fs.readFileSync(fullPath, 'utf-8')
+    raw: fs.readFileSync(fullPath)
   }
 }
 
