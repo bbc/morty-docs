@@ -1,8 +1,5 @@
 # Morty Docs
 
-[![Build Status](https://travis-ci.com/bbc/morty-docs.svg?branch=master)](https://travis-ci.com/bbc/morty-docs)
-[![Maintainability](https://api.codeclimate.com/v1/badges/99927fb03004d8d44134/maintainability)](https://codeclimate.com/github/bbc/morty-docs/maintainability)
-
 ## Overview
 
 Morty Docs is a library to enable documentation to be generated as a static
