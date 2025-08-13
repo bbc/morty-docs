@@ -211,6 +211,11 @@ const contentStyles = `
   margin-bottom: 0.25rem;
 }
 
+.markdown-alert-title svg {
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+}
+
 .markdown-alert-note {
   border-color: #0969da;
   --alert-bg: #ddf4ff;
