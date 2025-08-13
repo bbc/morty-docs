@@ -171,6 +171,10 @@ const contentStyles = `
   border-top: 1px solid #ddd;
 }
 
+.diff-block {
+  line-height: normal !Important;
+}
+
 .diff-block .diff-add {
   background-color: #e6ffed;
   display: block;
