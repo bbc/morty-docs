@@ -45,6 +45,24 @@ const normaliseBasePath = (basePath) => {
   return '/' + pathElements.join('/')
 }
 
+// ✅ NEW: GitHub-style diff block extension
+const diffBlockExtension = {
+  type: 'output',
+  regex: /<pre><code class="[^"]*(language-[^"]*diff|diff[^"]*language-[^"]*)[^"]*">([\s\S]*?)<\/code><\/pre>/g,
+  replace: function(_, className, code) {
+    const lines = code.split('\n').map(line => {
+      if (line.startsWith('+')) {
+        return `<span class="diff-add">${line}</span>`;
+      } else if (line.startsWith('-')) {
+        return `<span class="diff-remove">${line}</span>`;
+      } else {
+        return `<span class="diff-neutral">${line}</span>`;
+      }
+    }).join('\n');
+    return `<pre class="diff-block"><code>${lines}</code></pre>`;
+  }
+};
+
 const createParser = (options) => {
   const basePath = normaliseBasePath(options.basePath)
   const addBasePathToRootLinks = {
@@ -66,6 +84,7 @@ const createParser = (options) => {
       addBasePathToRootLinks,
       addBasePathToLinkHrefs,
       headingExtension,
+      diffBlockExtension,
       ...bindings
     ]
   })

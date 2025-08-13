@@ -28,6 +28,8 @@ Do images still work?
 
 ## Github Alerts
 
+**Do these work? (not fully implemented)**
+
 > [!NOTE]  
 > Highlights information that users should take into account, even when skimming.
 > More text note
@@ -45,3 +47,26 @@ Do images still work?
 
 > [!CAUTION]
 > Negative potential consequences of an action.
+
+**Codeblock rendering**
+
+```yaml
+#Some yaml
+```
+
+**Do diff code blocks to correctly render?**
+
+```diff
+jobs:
+  build:
+    # these labels target the ephemeral runners created by this solution
+    runs-on:
+      - self-hosted 
+      - AWS
+      - ${{ github.run_id }}_${{ github.run_attempt }}
+    container:
+      image: 010438485535.dkr.ecr.eu-west-1.amazonaws.com/mobile-ci-android:jdk-17_abt-35
+-     volumes: nada
++     volumes:
++       - /bbc-certs:/bbc-certs     
+```

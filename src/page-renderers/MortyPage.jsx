@@ -171,6 +171,22 @@ const contentStyles = `
   border-top: 1px solid #ddd;
 }
 
+.diff-block .diff-add {
+  background-color: #e6ffed;
+  display: block;
+  white-space: pre;
+}
+
+.diff-block .diff-remove {
+  background-color: #ffeef0;
+  display: block;
+  white-space: pre;
+}
+
+.diff-block .diff-neutral {
+  display: block;
+  white-space: pre;
+}
 `
 
 const MortyPage = ({ relPath, body, options }) => {
