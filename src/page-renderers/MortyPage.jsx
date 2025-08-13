@@ -209,6 +209,7 @@ const contentStyles = `
   display: flex;
   align-items: center;
   margin-bottom: 0.25rem;
+  color: normal !important;
 }
 
 .markdown-alert-title svg {
@@ -248,6 +249,22 @@ const contentStyles = `
   .markdown-alert-important { --alert-bg: #0d1117; border-color: #a371f7; }
   .markdown-alert-warning { --alert-bg: #0d1117; border-color: #d29922; }
   .markdown-alert-caution { --alert-bg: #0d1117; border-color: #f85149; }
+}
+
+/* Light mode colors for alerts */
+.markdown-alert-note    { color: #0969da; }
+.markdown-alert-tip     { color: #1a7f37; }
+.markdown-alert-important { color: #8250df; }
+.markdown-alert-warning { color: #9a6700; }
+.markdown-alert-caution { color: #d1242f; }
+
+/* Dark mode colors */
+@media (prefers-color-scheme: dark) {
+  .markdown-alert-note    { color: #79c0ff; }
+  .markdown-alert-tip     { color: #56d364; }
+  .markdown-alert-important { color: #d2a8ff; }
+  .markdown-alert-warning { color: #e3b341; }
+  .markdown-alert-caution { color: #ff7b72; }
 }
 
 `
