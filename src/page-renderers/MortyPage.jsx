@@ -115,7 +115,7 @@ const contentStyles = `
   padding: 9.5px;
   margin: 0 0 10px;
   font-size: 13px;
-  line-height: 1.42857143;
+  line-height: 1; 
   color: #333;
   word-break: break-all;
   word-wrap: break-word;
@@ -171,9 +171,6 @@ const contentStyles = `
   border-top: 1px solid #ddd;
 }
 
-.diff-block {
-  line-height: normal !Important;
-}
 
 .diff-block .diff-add {
   background-color: #e6ffed;
@@ -243,13 +240,13 @@ const contentStyles = `
 }
 
 /* Optional change colors for dark mode */
-@media (prefers-color-scheme: dark) {
-  .markdown-alert-note { --alert-bg: #0d1117; border-color: #58a6ff; }
-  .markdown-alert-tip { --alert-bg: #0d1117; border-color: #3fb950; }
-  .markdown-alert-important { --alert-bg: #0d1117; border-color: #a371f7; }
-  .markdown-alert-warning { --alert-bg: #0d1117; border-color: #d29922; }
-  .markdown-alert-caution { --alert-bg: #0d1117; border-color: #f85149; }
-}
+// @media (prefers-color-scheme: dark) {
+//   .markdown-alert-note { --alert-bg: #0d1117; border-color: #58a6ff; }
+//   .markdown-alert-tip { --alert-bg: #0d1117; border-color: #3fb950; }
+//   .markdown-alert-important { --alert-bg: #0d1117; border-color: #a371f7; }
+//   .markdown-alert-warning { --alert-bg: #0d1117; border-color: #d29922; }
+//   .markdown-alert-caution { --alert-bg: #0d1117; border-color: #f85149; }
+// }
 
 /* Light mode colors for alerts */
 .markdown-alert-note    { color: #0969da; }
@@ -259,13 +256,13 @@ const contentStyles = `
 .markdown-alert-caution { color: #d1242f; }
 
 /* Dark mode colors */
-@media (prefers-color-scheme: dark) {
-  .markdown-alert-note    { color: #79c0ff; }
-  .markdown-alert-tip     { color: #56d364; }
-  .markdown-alert-important { color: #d2a8ff; }
-  .markdown-alert-warning { color: #e3b341; }
-  .markdown-alert-caution { color: #ff7b72; }
-}
+// @media (prefers-color-scheme: dark) {
+//   .markdown-alert-note    { color: #79c0ff; }
+//   .markdown-alert-tip     { color: #56d364; }
+//   .markdown-alert-important { color: #d2a8ff; }
+//   .markdown-alert-warning { color: #e3b341; }
+//   .markdown-alert-caution { color: #ff7b72; }
+// }
 
 `
 

@@ -24,7 +24,7 @@ lorem ipsum [this is a normal link](https://github.com/bbc) lorem ipsum<br>
 ## Images
 Do images still work?
 
-![Image 1](./folder/subFolder/test.jpg)
+![Image 1](./images/test.jpg)
 
 ## Github Alerts
 
@@ -48,13 +48,13 @@ Do images still work?
 > [!CAUTION]
 > Negative potential consequences of an action.
 
-**Codeblock rendering**
+## Code blocks
 
 ```yaml
 #Some yaml
 ```
 
-**Do diff code blocks to correctly render?**
+## Diff code blocks
 
 ```diff
 jobs:
@@ -70,3 +70,14 @@ jobs:
 +     volumes:
 +       - /bbc-certs:/bbc-certs     
 ```
+
+
+## Tables
+
+_With the Correct Format (https://www.w3schools.io/file/markdown-table/), They will render_
+
+| Pet Type | Are Like | 
+| --- | --- | 
+| ![cat](./images/test.jpg) | **Cats are:** keen on food. |  
+| ![dog](./images/test.jpg) | **Dogs are:** excitable. | 
+| ![dino](./images/test.jpg) | **Dinos are Firey:** watch out for those flames. | 
