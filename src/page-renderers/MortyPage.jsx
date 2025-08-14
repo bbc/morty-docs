@@ -239,15 +239,6 @@ const contentStyles = `
   --alert-bg: #ffebe9;
 }
 
-/* Optional change colors for dark mode */
-// @media (prefers-color-scheme: dark) {
-//   .markdown-alert-note { --alert-bg: #0d1117; border-color: #58a6ff; }
-//   .markdown-alert-tip { --alert-bg: #0d1117; border-color: #3fb950; }
-//   .markdown-alert-important { --alert-bg: #0d1117; border-color: #a371f7; }
-//   .markdown-alert-warning { --alert-bg: #0d1117; border-color: #d29922; }
-//   .markdown-alert-caution { --alert-bg: #0d1117; border-color: #f85149; }
-// }
-
 /* Light mode colors for alerts */
 .markdown-alert-note    { color: #0969da; }
 .markdown-alert-tip     { color: #1a7f37; }
@@ -255,14 +246,34 @@ const contentStyles = `
 .markdown-alert-warning { color: #9a6700; }
 .markdown-alert-caution { color: #d1242f; }
 
-/* Dark mode colors */
-// @media (prefers-color-scheme: dark) {
-//   .markdown-alert-note    { color: #79c0ff; }
-//   .markdown-alert-tip     { color: #56d364; }
-//   .markdown-alert-important { color: #d2a8ff; }
-//   .markdown-alert-warning { color: #e3b341; }
-//   .markdown-alert-caution { color: #ff7b72; }
-// }
+.heading-anchor {
+  position: relative;
+}
+
+/* Position the icon absolutely so it doesn't push text */
+.heading-anchor .anchor-link {
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+  color: #000; /* force black */
+  text-decoration: none;
+}
+
+.anchor-icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* Show icon only when hovering over the heading */
+.heading-anchor:hover .anchor-link {
+  opacity: 1;
+}
+
 
 `
 

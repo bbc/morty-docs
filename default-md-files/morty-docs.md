@@ -28,8 +28,6 @@ Do images still work?
 
 ## Github Alerts
 
-**Do these work? (not fully implemented)**
-
 > [!NOTE]  
 > Highlights information that users should take into account, even when skimming.
 > More text note
@@ -71,13 +69,12 @@ jobs:
 +       - /bbc-certs:/bbc-certs     
 ```
 
-
 ## Tables
 
 _With the Correct Format (https://www.w3schools.io/file/markdown-table/), They will render_
 
 | Pet Type | Are Like | 
 | --- | --- | 
-| ![cat](./images/test.jpg) | **Cats are:** keen on food. |  
-| ![dog](./images/test.jpg) | **Dogs are:** excitable. | 
-| ![dino](./images/test.jpg) | **Dinos are Firey:** watch out for those flames. | 
+| ![cat](./images/cat.png) | **Cats are:** keen on food. |  
+| ![dog](./images/dog.png) | **Dogs are:** excitable. | 
+| ![dino](./images/dino.png) | **Dinos are Firey:** watch out for those flames. | 
