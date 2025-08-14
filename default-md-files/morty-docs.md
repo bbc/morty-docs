@@ -24,7 +24,7 @@ lorem ipsum [this is a normal link](https://github.com/bbc) lorem ipsum<br>
 ## Images
 Do images still work?
 
-![Image 1](./folder/subFolder/test.jpg)
+![Image 1](./images/test.jpg)
 
 ## Github Alerts
 
@@ -45,3 +45,36 @@ Do images still work?
 
 > [!CAUTION]
 > Negative potential consequences of an action.
+
+## Code blocks
+
+```yaml
+#Some yaml
+```
+
+## Diff code blocks
+
+```diff
+jobs:
+  build:
+    # these labels target the ephemeral runners created by this solution
+    runs-on:
+      - self-hosted 
+      - AWS
+      - ${{ github.run_id }}_${{ github.run_attempt }}
+    container:
+      image: 123456789.dkr.ecr.some-region.amazonaws.com/something
+-     volumes: nada
++     volumes:
++       - /bbc-123:/bbc-123     
+```
+
+## Tables
+
+_With the Correct Format (https://www.w3schools.io/file/markdown-table/), They will render_
+
+| Pet Type | Are Like | 
+| --- | --- | 
+| ![cat](./images/cat.png) | **Cats are:** keen on food. |  
+| ![dog](./images/dog.png) | **Dogs are:** excitable. | 
+| ![dino](./images/dino.png) | **Dinos are Firey:** watch out for those flames. | 

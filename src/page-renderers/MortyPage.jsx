@@ -115,7 +115,7 @@ const contentStyles = `
   padding: 9.5px;
   margin: 0 0 10px;
   font-size: 13px;
-  line-height: 1.42857143;
+  line-height: 1; 
   color: #333;
   word-break: break-all;
   word-wrap: break-word;
@@ -170,6 +170,110 @@ const contentStyles = `
   vertical-align: top;
   border-top: 1px solid #ddd;
 }
+
+
+.diff-block .diff-add {
+  background-color: #e6ffed;
+  display: block;
+  white-space: pre;
+}
+
+.diff-block .diff-remove {
+  background-color: #ffeef0;
+  display: block;
+  white-space: pre;
+}
+
+.diff-block .diff-neutral {
+  display: block;
+  white-space: pre;
+}
+
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  border-left: 0.25em solid;
+  border-radius: 6px;
+  background-color: var(--alert-bg, #f6f8fa);
+}
+
+.markdown-alert p {
+  margin: 0.5em 0;
+}
+
+.markdown-alert-title {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.25rem;
+  color: normal !important;
+}
+
+.markdown-alert-title svg {
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+}
+
+.markdown-alert-note {
+  border-color: #0969da;
+  --alert-bg: #ddf4ff;
+}
+
+.markdown-alert-tip {
+  border-color: #1a7f37;
+  --alert-bg: #dafbe1;
+}
+
+.markdown-alert-important {
+  border-color: #8250df;
+  --alert-bg: #fbefff;
+}
+
+.markdown-alert-warning {
+  border-color: #9a6700;
+  --alert-bg: #fff8c5;
+}
+
+.markdown-alert-caution {
+  border-color: #cf222e;
+  --alert-bg: #ffebe9;
+}
+
+/* Light mode colors for alerts */
+.markdown-alert-note    { color: #0969da; }
+.markdown-alert-tip     { color: #1a7f37; }
+.markdown-alert-important { color: #8250df; }
+.markdown-alert-warning { color: #9a6700; }
+.markdown-alert-caution { color: #d1242f; }
+
+.heading-anchor {
+  position: relative;
+}
+
+/* Position the icon absolutely so it doesn't push text */
+.heading-anchor .anchor-link {
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+  color: #000; /* force black */
+  text-decoration: none;
+}
+
+.anchor-icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* Show icon only when hovering over the heading */
+.heading-anchor:hover .anchor-link {
+  opacity: 1;
+}
+
 
 `
 
