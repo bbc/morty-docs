@@ -55,18 +55,12 @@ Do images still work?
 ## Diff code blocks
 
 ```diff
-jobs:
-  build:
-    # these labels target the ephemeral runners created by this solution
-    runs-on:
-      - self-hosted 
-      - AWS
-      - ${{ github.run_id }}_${{ github.run_attempt }}
-    container:
-      image: 123456789.dkr.ecr.some-region.amazonaws.com/something
--     volumes: nada
-+     volumes:
-+       - /bbc-123:/bbc-123     
+{
+     name: "cats are pets",
+-    description: "Cats are better than dogs.",
++    description: "Some people prefer cats more than dogs.",
+     website: "cats-are-pets.com"
+}
 ```
 
 ## Tables
