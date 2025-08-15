@@ -46,6 +46,21 @@ const headingExtension = {
   }
 };
 
+const codeBlockExtension = {
+  type: 'output',
+  regex: /<pre><code class="language-([^"]+)">([\s\S]*?)<\/code><\/pre>/g,
+  replace: (match, lang, code) => {
+    const langs = lang.split(/\s+/); // split "diff yaml" into ["diff","yaml"]
+    const primaryLang = langs.find(l => l !== 'diff') || langs[0];
+    const isDiff = langs.includes('diff');
+
+    // GitHub-compatible final class
+    const finalLangClass = isDiff ? `diff-${primaryLang}` : primaryLang;
+
+    return `<pre><code class="language-${finalLangClass}">${code}</code></pre>`;
+  }
+};
+
 const classMap = {
   img: 'img-responsive',
   table: 'table'
@@ -68,21 +83,38 @@ const normaliseBasePath = (basePath) => {
   return '/' + pathElements.join('/')
 }
 
-// ✅ NEW: GitHub-style diff block extension
-const diffBlockExtension = {
+// 1) MD pre-pass: make the fence parsable by Showdown
+const diffFencePre = {
+  type: 'lang',
+  // ```diff yaml   ->   ```yaml-diff
+  // allow extra spaces, be case-insensitive
+  regex: /^```[ \t]*diff[ \t]+([A-Za-z0-9_+-]+)[ \t]*$/gmi,
+  replace: (m, sublang) => '```' + sublang + '-diff'
+};
+
+// 2) HTML post-pass: convert language-<lang>-diff into diff-block + wrappers
+const diffBlockPost = {
   type: 'output',
-  regex: /<pre><code class="[^"]*(language-[^"]*diff|diff[^"]*language-[^"]*)[^"]*">([\s\S]*?)<\/code><\/pre>/g,
-  replace: function(_, className, code) {
-    const lines = code.split('\n').map(line => {
-      if (line.startsWith('+')) {
-        return `<span class="diff-add">${line}</span>`;
-      } else if (line.startsWith('-')) {
-        return `<span class="diff-remove">${line}</span>`;
-      } else {
-        return `<span class="diff-neutral">${line}</span>`;
-      }
+  regex: /<pre><code class="([^"]*)">([\s\S]*?)<\/code><\/pre>/g,
+  replace: (_, classes, raw) => {
+    let isDiff = /-diff\b/.test(classes) || /\blanguage-diff\b/.test(classes);
+    if (!isDiff) return `<pre><code class="${classes}">${raw}</code></pre>`;
+
+    // determine primary language
+    let langMatch = classes.match(/([a-z0-9_+-]+)-diff\b/i);
+    const lang = langMatch ? langMatch[1] : 'diff';
+
+    // normalize classes: keep other classes but remove '-diff'
+    const finalClasses = classes.replace(/-diff\b/, '');
+
+    // wrap each line
+    const wrapped = raw.split(/\r?\n/).map(line => {
+      if (line.startsWith('+')) return `<span class="diff-add">${line}</span>`;
+      if (line.startsWith('-')) return `<span class="diff-remove">${line}</span>`;
+      return `<span class="diff-neutral">${line}</span>`;
     }).join('\n');
-    return `<pre class="diff-block"><code>${lines}</code></pre>`;
+
+    return `<pre class="diff-block"><code class="${finalClasses}">${wrapped}</code></pre>`;
   }
 };
 
@@ -123,13 +155,15 @@ const createParser = (options) => {
   }
 
   const parser = new showdown.Converter({
+    sanitize: true,
     extensions: [
+      diffFencePre,
       convertMdLinksToHtmlLinks,
       convertMdHashLinksToHtmlLinks,
       addBasePathToRootLinks,
       addBasePathToLinkHrefs,
       headingExtension,
-      diffBlockExtension,
+      diffBlockPost,
       alertExtension,
       ...bindings
     ]
@@ -138,9 +172,10 @@ const createParser = (options) => {
   return parser
 }
 
+
 const parseToHTML = (markdown, options = {}) => {
-  const parser = createParser(options)
-  return parser.makeHtml(markdown)
-}
+  const parser = createParser(options);
+  return parser.makeHtml(markdown);
+};
 
 module.exports = parseToHTML
