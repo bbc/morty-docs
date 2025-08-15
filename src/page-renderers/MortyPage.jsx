@@ -1,10 +1,13 @@
+// Core React modules for server-side rendering
 const React = require('react')
 const ReactDOMServer = require('react-dom/server')
 
+// Page components
 const Header = require('./Components/Header')
 const Footer = require('./Components/Footer')
 const Reset = require('./Components/Reset')
 
+// Inline styles for key layout elements
 const Styles = {
   wrapper: {
     minHeight: '75vh',
@@ -22,6 +25,7 @@ const Styles = {
   }
 }
 
+// CSS for the main content area (typography, links, code blocks, tables, etc.)
 const contentStyles = `
 .content {
   padding: 20px 96px;
@@ -157,38 +161,39 @@ const contentStyles = `
 .heading-anchor:hover .anchor-link { opacity: 1; }
 `
 
+// HTML document component
 const MortyPage = ({ relPath, body, options }) => {
   return (
     <html lang="en" style={Styles.html}>
       <head>
+        {/* Meta tags and title */}
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{relPath}</title>
 
+        {/* Reset styles and content CSS */}
         <Reset />
         <style dangerouslySetInnerHTML={{ __html: contentStyles }} />
 
-        {/* GitHub light theme */}
+        {/* Highlight.js theme and core script */}
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/styles/github.min.css"
         />
-
-        {/* Highlight.js core (common langs only) */}
         <script
           defer
           src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/highlight.min.js"
         ></script>
 
-        {/* Dynamic language loader + highlighter */}
+        {/* Script to load extra languages and apply syntax highlighting */}
         <script
           defer
           dangerouslySetInnerHTML={{
             __html: `
 (function () {
   function normalizeLanguageClasses(el) {
-    // for example this will turn "fortran" into "language-fortran"
+    // Ensure all code blocks have a "language-..." class
     for (const cls of Array.from(el.classList)) {
       if (!cls.startsWith('language-') && /^[a-z0-9_+-]+$/i.test(cls)) {
         el.classList.add('language-' + cls.toLowerCase());
@@ -197,6 +202,7 @@ const MortyPage = ({ relPath, body, options }) => {
   }
 
   function collectRequestedLanguages() {
+    // Gather unique languages used in the document
     const set = new Set();
     document.querySelectorAll('pre code').forEach(function (el) {
       normalizeLanguageClasses(el);
@@ -204,19 +210,15 @@ const MortyPage = ({ relPath, body, options }) => {
       const langClass = classes.find(c => c.startsWith('language-'));
       if (!langClass) return;
       let name = langClass.replace(/^language-/, '').toLowerCase();
-
-      // handle "yaml-diff", "diff-yaml" etc. -> "yaml"
       name = name.replace(/-diff$/, '').replace(/^diff-/, '');
-
-      // skip "diff" itself (we render custom diff UI)
       if (name && name !== 'diff') set.add(name);
     });
     return Array.from(set);
   }
 
   function loadLanguage(name) {
-    return new Promise(function (resolve, reject) {
-      // Already registered?
+    // Dynamically load a highlight.js language pack
+    return new Promise(function (resolve) {
       if (window.hljs && window.hljs.getLanguage && window.hljs.getLanguage(name)) {
         return resolve();
       }
@@ -224,14 +226,14 @@ const MortyPage = ({ relPath, body, options }) => {
       script.src = 'https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/languages/' + name + '.min.js';
       script.async = true;
       script.onload = function () { resolve(); };
-      script.onerror = function () { /* ignore missing packs */ resolve(); };
+      script.onerror = function () { resolve(); };
       document.head.appendChild(script);
     });
   }
 
   function highlightAll() {
+    // Apply syntax highlighting to all code blocks
     if (!window.hljs) return;
-    // safer for pre-escaped markdown HTML
     if (window.hljs.configure) {
       window.hljs.configure({ ignoreUnescapedHTML: true });
     }
@@ -242,12 +244,8 @@ const MortyPage = ({ relPath, body, options }) => {
 
   window.addEventListener('DOMContentLoaded', function () {
     if (!window.hljs) return;
-
     const langs = collectRequestedLanguages();
-    // Always ensure requested language if present in the doc (covers your case)
-    const promises = langs.map(loadLanguage);
-
-    Promise.all(promises).then(highlightAll);
+    Promise.all(langs.map(loadLanguage)).then(highlightAll);
   });
 })();
             `
@@ -257,6 +255,7 @@ const MortyPage = ({ relPath, body, options }) => {
       <body style={Styles.body}>
         <div style={Styles.wrapper}>
           <Header relPath={relPath} basePath={options.basePath} />
+          {/* Render markdown HTML – ensure it is sanitised if untrusted */}
           <div className="content" dangerouslySetInnerHTML={{ __html: body }} />
         </div>
         <Footer />
@@ -265,6 +264,7 @@ const MortyPage = ({ relPath, body, options }) => {
   )
 }
 
+// Render to a full HTML string
 const renderMortyPage = (relPath, htmlBody, options) =>
   ReactDOMServer.renderToString(
     <MortyPage relPath={relPath} body={htmlBody} options={options} />
