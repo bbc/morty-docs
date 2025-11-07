@@ -1,52 +1,55 @@
 const fs = require('fs')
 const path = require('path')
 
-const generateTransformInput = (dir) => {
-  dir = path.format(path.parse(dir))
+const generateTransformInput = (dir, root = dir) => {
+  // Normalise once
+  dir = path.resolve(dir)
+  root = path.resolve(root)
 
   let list = []
-  const files = fs.readdirSync(dir, { recursive: true, withFileTypes: true })
-  // recursive option available from node 18+
-  // when options.withFileTypes set to true, the returned array will contain <fs.Dirent> objects.
-  for (const dirent of files) {
-    // Node API for Dirent is unstable
-    const dirPath = dirent.path || dirent.parentPath // path is DEPRECATED! But parentPath does not work in 18.17
 
-    const fullPath = path.join(dirPath, dirent.name)
-    // console.log('fullPath = ', fullPath)
+  const files = fs.readdirSync(dir, { withFileTypes: true })
+
+  for (const dirent of files) {
+    const fullPath = path.join(dir, dirent.name)
 
     if (dirent.isDirectory()) {
-      console.log('directory... continue')
+      // recurse into real directories
+      list = list.concat(generateTransformInput(fullPath, root))
       continue
     }
+
     if (dirent.isFile()) {
-      list.push(makeInputObject(fullPath, dir))
+      list.push(makeInputObject(fullPath, root))
       continue
     }
-    if (dirent.isSymbolicLink) {
-      if (fs.existsSync(fullPath)) { // fs.exists() is deprecated, but fs.existsSync() is not.
-        const stats = fs.statSync(fullPath)
-        console.log('Good symlink')
-        if (stats.isFile()) {
-          // get file details
-          list.push(makeInputObject(fullPath, dir)) // symlinks become copies
-        } else {
-          // recursive call to get all files in the symlinked directory
-          const newlist = generateTransformInput(fullPath)
-          list = list.concat(newlist)
-        }
-      } else {
+
+    if (dirent.isSymbolicLink()) {            // 👈 using `isSymbolicLink()`
+      if (!fs.existsSync(fullPath)) {
         console.log(`Broken symlink at: ${fullPath}`)
+        continue
       }
+
+      const stats = fs.statSync(fullPath)
+      if (stats.isFile()) {
+        list.push(makeInputObject(fullPath, root))
+      } else if (stats.isDirectory()) {
+        list = list.concat(generateTransformInput(fullPath, root))
+      }
+
       continue
     }
   }
+
   return list
 }
 
 const makeInputObject = (fullPath, rootPath) => {
+  const root = path.resolve(rootPath)
+  const rel = path.relative(root, fullPath)
+
   return {
-    relativePath: fullPath.replace(`${rootPath}/`, ''),
+    relativePath: rel,
     raw: fs.readFileSync(fullPath)
   }
 }
