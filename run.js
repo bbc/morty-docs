@@ -15,7 +15,7 @@ const mortyDocs = async () => {
   const files = transform(inputObjs, { contentTitle: 'some-repo', basePath })
 
   files.forEach(file => {
-    let filePath = `www/${basePath}/${file.relativePath}`
+    const filePath = `www/${basePath}/${file.relativePath}`
     fsExtra.ensureFileSync(filePath)
     fsExtra.writeFileSync(filePath, file.raw)
   })

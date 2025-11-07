@@ -41,29 +41,27 @@
   },
   "homepage": "https://github.com/bbc/morty-docs#readme",
   "dependencies": {
-    "asciidoctor": "^2.2.6",
-    "fs-extra": "^7.0.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-test-renderer": "^16.13.1",
+    "asciidoctor": "^2.2.8",
+    "fs-extra": "^11.3.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-test-renderer": "^16.14.0",
     "recursive-readdir": "^2.2.2",
-    "showdown": "^1.9.0"
+    "showdown": "^2.1.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.17.0",
-    "@babel/core": "^7.9.0",
-    "@babel/node": "^7.4.5",
-    "@babel/preset-react": "^7.0.0",
-    "babel-eslint": "^10.0.3",
+    "@babel/cli": "^7.28.3",
+    "@babel/core": "^7.28.3",
+    "@babel/node": "^7.28.0",
+    "@babel/preset-react": "^7.27.1",
     "http-server": "^14.1.1",
     "jest": "^29.7.0",
-    "jest-serializer-html": "^7.0.0",
-    "standard": "^12.0.1"
+    "jest-serializer-html": "^7.1.0",
+    "standard": "^17.1.2"
   },
   "standard": {
     "env": [
       "jest"
-    ],
-    "parser": "babel-eslint"
+    ]
   }
 }

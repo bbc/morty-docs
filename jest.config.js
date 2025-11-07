@@ -1,6 +1,6 @@
 module.exports = {
-  'snapshotSerializers': ['jest-serializer-html'],
-  'snapshotFormat': {
-    'printBasicPrototype': true
+  snapshotSerializers: ['jest-serializer-html'],
+  snapshotFormat: {
+    printBasicPrototype: true
   }
 }

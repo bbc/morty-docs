@@ -38,9 +38,11 @@ const Icon = ({ iconName }) => {
 }
 
 const IndexListItem = ({ link, text, iconName }) => {
-  return <li style={Styles.indexListItem}>
-    <a href={link} style={Styles.linkAnchor}><span style={Styles.iconWrap}><Icon iconName={iconName} /></span><span style={Styles.linkText}>{text}</span></a>
-  </li>
+  return (
+    <li style={Styles.indexListItem}>
+      <a href={link} style={Styles.linkAnchor}><span style={Styles.iconWrap}><Icon iconName={iconName} /></span><span style={Styles.linkText}>{text}</span></a>
+    </li>
+  )
 }
 
 module.exports = IndexListItem

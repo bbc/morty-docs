@@ -30,10 +30,12 @@ const Styles = {
 }
 
 const HeaderLinks = ({ paths }) => paths.map(({ text, path }, index) => {
-  return <li key={index}>
-    { index !== paths.length ? <span aria-hidden style={Styles.separator}>/</span> : undefined }
-    <a style={Styles.headerLink} href={path}>{text}</a>
-  </li>
+  return (
+    <li key={index}>
+      {index !== paths.length ? <span aria-hidden style={Styles.separator}>/</span> : undefined}
+      <a style={Styles.headerLink} href={path}>{text}</a>
+    </li>
+  )
 })
 
 const Header = ({ relPath, basePath }) => {
