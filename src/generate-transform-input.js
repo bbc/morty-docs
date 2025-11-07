@@ -16,7 +16,7 @@ const path = require('path')
  * - When directory does not exist, throws ENOENT with the *relative* path as in tests
  */
 const generateTransformInput = (dir, rootDir) => {
-  const originalDir = dir               // keep as-passed for error message
+  const originalDir = dir // keep as-passed for error message
   const resolvedDir = path.resolve(dir)
   const resolvedRoot = rootDir ? path.resolve(rootDir) : resolvedDir
 

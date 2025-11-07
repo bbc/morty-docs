@@ -2,43 +2,42 @@ const parseToHtml = require('../../src/markdown-to-html-parser')
 
 describe('Markdown Parser', () => {
   it('gives all images the "img-responsive" class', () => {
-    const markdown = `![A delightful image](./some-image.png)`
+    const markdown = '![A delightful image](./some-image.png)'
 
     const actual = parseToHtml(markdown)
 
-    const expected = `img class="img-responsive"`
+    const expected = 'img class="img-responsive"'
 
     expect(actual.includes(expected)).toBe(true)
   })
 
   it('gives all tables the "table" class', () => {
-    const markdown = `| Column1 | Column2 |\n| --- | --- |\n| Some value | Some other value |`
+    const markdown = '| Column1 | Column2 |\n| --- | --- |\n| Some value | Some other value |'
 
     const actual = parseToHtml(markdown)
 
-    const expected = `table class="table"`
+    const expected = 'table class="table"'
 
     expect(actual.includes(expected)).toBe(true)
   })
 
   it('creates anchor link for headings', () => {
-    const markdown = '# Heading';
-    const actual = parseToHtml(markdown);
+    const markdown = '# Heading'
+    const actual = parseToHtml(markdown)
 
     expect(actual).toMatch(
       /<h1[^>]*id="heading"[^>]*>[\s\S]*<a[^>]*href="#heading"[^>]*>[\s\S]*<\/a>[\s\S]*Heading[\s\S]*<\/h1>/i
-    );
-  });
+    )
+  })
 
   it('creates anchor link for headings even with nested HTML content', () => {
-    const markdown = '# Heading with style!';
-    const actual = parseToHtml(markdown);
+    const markdown = '# Heading with style!'
+    const actual = parseToHtml(markdown)
 
     expect(actual).toMatch(
       /<h1[^>]*id="heading-with-style"[^>]*>[\s\S]*<a[^>]*href="#heading-with-style"[^>]*>[\s\S]*<\/a>[\s\S]*Heading with style![\s\S]*<\/h1>/i
-    );
-  });
-
+    )
+  })
 
   it('creates an html link from an md link', () => {
     const markdown =

@@ -38,28 +38,28 @@ const headingExtension = {
            -.018 1.042.751.751 0 0 1-1.042.018
            1.998 1.998 0 0 0-2.83 0l-2.5 2.5
            a1.998 1.998 0 0 0 0 2.83Z"></path>
-</svg>`;
+</svg>`
     return `<${tag} id="${id}" class="heading-anchor">
       <a href="#${id}" class="anchor-link" aria-label="Permalink">${iconSvg}</a>
       ${text}
-    </${tag}>`;
+    </${tag}>`
   }
-};
+}
 
-const codeBlockExtension = {
-  type: 'output',
-  regex: /<pre><code class="language-([^"]+)">([\s\S]*?)<\/code><\/pre>/g,
-  replace: (match, lang, code) => {
-    const langs = lang.split(/\s+/); // split "diff yaml" into ["diff","yaml"]
-    const primaryLang = langs.find(l => l !== 'diff') || langs[0];
-    const isDiff = langs.includes('diff');
+// const codeBlockExtension = {
+//   type: 'output',
+//   regex: /<pre><code class="language-([^"]+)">([\s\S]*?)<\/code><\/pre>/g,
+//   replace: (match, lang, code) => {
+//     const langs = lang.split(/\s+/) // split "diff yaml" into ["diff","yaml"]
+//     const primaryLang = langs.find(l => l !== 'diff') || langs[0]
+//     const isDiff = langs.includes('diff')
 
-    // GitHub-compatible final class
-    const finalLangClass = isDiff ? `diff-${primaryLang}` : primaryLang;
+//     // GitHub-compatible final class
+//     const finalLangClass = isDiff ? `diff-${primaryLang}` : primaryLang
 
-    return `<pre><code class="language-${finalLangClass}">${code}</code></pre>`;
-  }
-};
+//     return `<pre><code class="language-${finalLangClass}">${code}</code></pre>`
+//   }
+// }
 
 const classMap = {
   img: 'img-responsive',
@@ -90,55 +90,53 @@ const diffFencePre = {
   // allow extra spaces, be case-insensitive
   regex: /^```[ \t]*diff[ \t]+([A-Za-z0-9_+-]+)[ \t]*$/gmi,
   replace: (m, sublang) => '```' + sublang + '-diff'
-};
+}
 
 // 2) HTML post-pass: convert language-<lang>-diff into diff-block + wrappers
 const diffBlockPost = {
   type: 'output',
   regex: /<pre><code class="([^"]*)">([\s\S]*?)<\/code><\/pre>/g,
   replace: (_, classes, raw) => {
-    let isDiff = /-diff\b/.test(classes) || /\blanguage-diff\b/.test(classes);
-    if (!isDiff) return `<pre><code class="${classes}">${raw}</code></pre>`;
+    const isDiff = /-diff\b/.test(classes) || /\blanguage-diff\b/.test(classes)
+    if (!isDiff) return `<pre><code class="${classes}">${raw}</code></pre>`
 
     // determine primary language
-    let langMatch = classes.match(/([a-z0-9_+-]+)-diff\b/i);
-    const lang = langMatch ? langMatch[1] : 'diff';
+    // const langMatch = classes.match(/([a-z0-9_+-]+)-diff\b/i)
+    // const lang = langMatch ? langMatch[1] : 'diff'
 
     // normalize classes: keep other classes but remove '-diff'
-    const finalClasses = classes.replace(/-diff\b/, '');
+    const finalClasses = classes.replace(/-diff\b/, '')
 
     // wrap each line
     const wrapped = raw.split(/\r?\n/).map(line => {
-      if (line.startsWith('+')) return `<span class="diff-add">${line}</span>`;
-      if (line.startsWith('-')) return `<span class="diff-remove">${line}</span>`;
-      return `<span class="diff-neutral">${line}</span>`;
-    }).join('\n');
+      if (line.startsWith('+')) return `<span class="diff-add">${line}</span>`
+      if (line.startsWith('-')) return `<span class="diff-remove">${line}</span>`
+      return `<span class="diff-neutral">${line}</span>`
+    }).join('\n')
 
-    return `<pre class="diff-block"><code class="${finalClasses}">${wrapped}</code></pre>`;
+    return `<pre class="diff-block"><code class="${finalClasses}">${wrapped}</code></pre>`
   }
-};
-
+}
 
 // Github alerts output type extension
 const alertExtension = {
   type: 'output',
   regex: /<blockquote>\s*<p>\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\](.*?)<\/p>\s*<\/blockquote>/gis,
   replace: function (_, type, innerHtml) {
-    const cleanContent = innerHtml.replace(/^\s*<br\s*\/?>\s*/i, '').trim();
+    const cleanContent = innerHtml.replace(/^\s*<br\s*\/?>\s*/i, '').trim()
     const paragraphs = cleanContent
       .split(/<br\s*\/?>/i)
       .map(p => `<p dir="auto">${p.trim()}</p>`)
-      .join('');
-    const icon = alertIcons[type.toLowerCase()] || '';
+      .join('')
+    const icon = alertIcons[type.toLowerCase()] || ''
     return `<div class="markdown-alert markdown-alert-${type.toLowerCase()}" dir="auto">
       <p class="markdown-alert-title" dir="auto">
         ${icon}${type.charAt(0) + type.slice(1).toLowerCase()}
       </p>
       ${paragraphs}
-    </div>`;
+    </div>`
   }
-};
-
+}
 
 const createParser = (options) => {
   const basePath = normaliseBasePath(options.basePath)
@@ -172,10 +170,9 @@ const createParser = (options) => {
   return parser
 }
 
-
 const parseToHTML = (markdown, options = {}) => {
-  const parser = createParser(options);
-  return parser.makeHtml(markdown);
-};
+  const parser = createParser(options)
+  return parser.makeHtml(markdown)
+}
 
 module.exports = parseToHTML

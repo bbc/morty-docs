@@ -64,7 +64,7 @@ const alertIcons = {
            4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 
            0 2Z"></path>
 </svg>`
-};
+}
 
 // Export using CommonJS syntax
-module.exports = alertIcons;
+module.exports = alertIcons

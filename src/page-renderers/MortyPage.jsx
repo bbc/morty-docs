@@ -164,12 +164,12 @@ const contentStyles = `
 // HTML document component
 const MortyPage = ({ relPath, body, options }) => {
   return (
-    <html lang="en" style={Styles.html}>
+    <html lang='en' style={Styles.html}>
       <head>
         {/* Meta tags and title */}
-        <meta charSet="utf-8" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet='utf-8' />
+        <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
         <title>{relPath}</title>
 
         {/* Reset styles and content CSS */}
@@ -178,13 +178,13 @@ const MortyPage = ({ relPath, body, options }) => {
 
         {/* Highlight.js theme and core script */}
         <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/styles/github.min.css"
+          rel='stylesheet'
+          href='https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/styles/github.min.css'
         />
         <script
           defer
-          src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/highlight.min.js"
-        ></script>
+          src='https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/highlight.min.js'
+        />
 
         {/* Script to load extra languages and apply syntax highlighting */}
         <script
@@ -256,7 +256,7 @@ const MortyPage = ({ relPath, body, options }) => {
         <div style={Styles.wrapper}>
           <Header relPath={relPath} basePath={options.basePath} />
           {/* Render markdown HTML – ensure it is sanitised if untrusted */}
-          <div className="content" dangerouslySetInnerHTML={{ __html: body }} />
+          <div className='content' dangerouslySetInnerHTML={{ __html: body }} />
         </div>
         <Footer />
       </body>
