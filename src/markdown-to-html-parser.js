@@ -46,21 +46,6 @@ const headingExtension = {
   }
 }
 
-// const codeBlockExtension = {
-//   type: 'output',
-//   regex: /<pre><code class="language-([^"]+)">([\s\S]*?)<\/code><\/pre>/g,
-//   replace: (match, lang, code) => {
-//     const langs = lang.split(/\s+/) // split "diff yaml" into ["diff","yaml"]
-//     const primaryLang = langs.find(l => l !== 'diff') || langs[0]
-//     const isDiff = langs.includes('diff')
-
-//     // GitHub-compatible final class
-//     const finalLangClass = isDiff ? `diff-${primaryLang}` : primaryLang
-
-//     return `<pre><code class="language-${finalLangClass}">${code}</code></pre>`
-//   }
-// }
-
 const classMap = {
   img: 'img-responsive',
   table: 'table'
@@ -99,10 +84,6 @@ const diffBlockPost = {
   replace: (_, classes, raw) => {
     const isDiff = /-diff\b/.test(classes) || /\blanguage-diff\b/.test(classes)
     if (!isDiff) return `<pre><code class="${classes}">${raw}</code></pre>`
-
-    // determine primary language
-    // const langMatch = classes.match(/([a-z0-9_+-]+)-diff\b/i)
-    // const lang = langMatch ? langMatch[1] : 'diff'
 
     // normalize classes: keep other classes but remove '-diff'
     const finalClasses = classes.replace(/-diff\b/, '')
