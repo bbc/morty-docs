@@ -73,6 +73,10 @@ const contentStyles = `
   padding-inline-start: 40px;
 }
 
+.content ul li.task-list-item {
+  list-style-type: none;
+}
+
 .content p {
   margin-bottom: 10px;
 }
