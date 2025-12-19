@@ -6,7 +6,7 @@ const generateIndexes = require('./generate-indexes')
 const validate = (inputObjs) => {
   if (!Array.isArray(inputObjs)) throw new Error('First arg to transform() must be an array')
 
-  inputObjs.map(inputObj => {
+  inputObjs.forEach(inputObj => {
     if (typeof inputObj.raw === 'undefined') throw new Error('All objects in input array must have a .raw property')
     if (typeof inputObj.relativePath === 'undefined') throw new Error('All objects in input array must have a .relativePath property')
   })
@@ -17,7 +17,7 @@ const transform = (inputObjs, options) => {
 
   const contentObjs = inputObjs.map(inputObj => {
     const ext = path.extname(inputObj.relativePath)
-    if (ext === '.md' || ext === '.asciidoc' || ext === '.adoc' || ext === '.asc') {
+    if (ext === '.md') { //  || ext === '.asciidoc' || ext === '.adoc' || ext === '.asc'
       return transformContent(inputObj, options)
     } else {
       return inputObj
