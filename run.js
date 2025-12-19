@@ -1,5 +1,5 @@
 const { transform, generateTransformInput } = require('./build')
-
+const fs = require('fs')
 const path = require('path')
 
 console.log('process.env.mortyPath = ', process.env.mortyPath)
