@@ -1,4 +1,3 @@
-const fsExtra = require('fs-extra')
 const { transform, generateTransformInput } = require('./build')
 
 const path = require('path')
@@ -15,9 +14,9 @@ const mortyDocs = async () => {
   const files = transform(inputObjs, { contentTitle: 'some-repo', basePath })
 
   files.forEach(file => {
-    let filePath = `www/${basePath}/${file.relativePath}`
-    fsExtra.ensureFileSync(filePath)
-    fsExtra.writeFileSync(filePath, file.raw)
+    const filePath = `www/${basePath}/${file.relativePath}`
+    fs.mkdirSync(path.dirname(filePath), { recursive: true }) // Ensure parent directory exists
+    fs.writeFileSync(filePath, file.raw)
   })
 
   return 'Creating html files in www directory'
