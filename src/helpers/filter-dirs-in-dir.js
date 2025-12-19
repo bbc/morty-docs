@@ -8,11 +8,12 @@ const filterDirs = (directoryPaths, directory) => {
 
   const rootDirFolders = directoryPaths.filter(directoryPath => directoryPath.startsWith(directory) && directoryPath !== directory)
   const rootDir = rootDirFolders.map(directoryPath => directoryPath.startsWith(`${directory}/`) && directory !== ''
-    ? directoryPath.replace(`${directory}/`, '') : directoryPath)
+    ? directoryPath.replace(`${directory}/`, '')
+    : directoryPath)
   if (rootDir.length) directoryArray.push(rootDir)
   // if directory path starts with the config folder then remove the directory from the path
   // sort array here
-  let sortedDirectoryArray = directoryArray
+  const sortedDirectoryArray = directoryArray
   if (sortedDirectoryArray.length) {
     sortedDirectoryArray.map((arr) => sortArrayByDate(arr))
   }

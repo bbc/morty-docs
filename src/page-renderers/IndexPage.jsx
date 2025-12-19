@@ -51,7 +51,7 @@ const IndexPage = ({ listItems, options, relPath }) => {
         <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
 
-        <title>{`Morty Docs`}</title>
+        <title>Morty Docs</title>
         <Reset />
       </head>
       <body style={Styles.body}>
@@ -60,7 +60,7 @@ const IndexPage = ({ listItems, options, relPath }) => {
           <div style={{ marginTop: '10px' }}>
             <Title contentTitle={options.contentTitle} />
             <div style={Styles.listContainer}>
-              <ul >
+              <ul>
                 {
                   (() => listItems.map((item, index) => <IndexListItem key={index} {...item} />))()
                 }

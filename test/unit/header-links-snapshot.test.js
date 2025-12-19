@@ -1,23 +1,19 @@
 const React = require('react')
 const Header = require('../../src/page-renderers/Components/Header')
-const renderer = require('react-test-renderer')
+const { render } = require('@testing-library/react')
 
 describe('The header is rendered with the correct breadcrumb links ', () => {
   it('When a basepath is passed through', () => {
-    const component = renderer.create(
-      <Header relPath={'folder/nestedFolder/someFile.html'} basePath={'morty-docs/some-repo'} />
+    const { asFragment } = render(
+      <Header relPath='folder/nestedFolder/someFile.html' basePath='morty-docs/some-repo' />
     )
-
-    let tree = component.toJSON()
-    expect(tree).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 
   it('When a basepath is not passed through', () => {
-    const component = renderer.create(
-      <Header relPath={'folder/nestedFolder/someFile.html'} basePath={''} />
+    const { asFragment } = render(
+      <Header relPath='folder/nestedFolder/someFile.html' basePath='' />
     )
-
-    let tree = component.toJSON()
-    expect(tree).toMatchSnapshot()
+    expect(asFragment()).toMatchSnapshot()
   })
 })
