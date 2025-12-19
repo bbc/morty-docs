@@ -2,9 +2,16 @@
 
 ### Dev checklist
 
-- [ ] Prefix with a type (feat, fix, docs, style, refactor, test, chore) added to the PR title
-- [x] All PR checks are passing
-- [ ] The change is tested and verified that it works in dev/stage (manually, automated tests passing)
-- [ ] Any documentation added or updated (if applicable)
-- [ ] PR has been reviewed by testers (if applicable)
-- [ ] Suffix added, eg. SR-124
+- [ ] Checklist item 1 - unchecked
+- [x] Checklist item 2 - checked
+- [ ] Checklist item 3 - unchecked
+
+### Ignore Formatting
+
+Let's rename \*our-new-project\* to \*our-old-project\*
+
+### Nested Bullets
+
+100. First list item
+  - First nested list item
+    - Second nested list item
