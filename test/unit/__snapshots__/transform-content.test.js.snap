@@ -105,6 +105,10 @@ sup {
   padding-inline-start: 40px;
 }
 
+.content ul li.task-list-item {
+  list-style-type: none;
+}
+
 .content p {
   margin-bottom: 10px;
 }
@@ -130,6 +134,18 @@ sup {
     font-size: 17.5px;
     border-left: 5px solid #eee;
 }
+.content blockquote.markdown-alert-note{ border-left: 5px solid #0A67D8; }
+.content blockquote.markdown-alert-warning{ border-left: 5px solid #9D6800; }
+.content blockquote.markdown-alert-important{ border-left: 5px solid #7F50DD; }
+.content blockquote.markdown-alert-tip{ border-left: 5px solid #187E32; }
+.content blockquote.markdown-alert-caution{ border-left: 5px solid #CE2228; }
+
+.content blockquote.markdown-alert-note p:first-child strong { color: #0A67D8; }
+.content blockquote.markdown-alert-warning p:first-child strong { color: #9D6800; }
+.content blockquote.markdown-alert-important p:first-child strong { color: #7F50DD; }
+.content blockquote.markdown-alert-tip p:first-child strong { color: #187E32; }
+.content blockquote.markdown-alert-caution p:first-child strong { color: #CE2228; }
+
 
 .content blockquote p:last-child {
     margin-bottom: 0;
@@ -203,9 +219,7 @@ sup {
   border-top: 1px solid #ddd;
 }
 
-</style></head><body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff"><div style="min-height:75vh;padding-bottom:20px"><div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%"><nav><ol style="padding:1rem;list-style:none;display:flex;align-items:center"><li><span aria-hidden="true" style="margin:0 0.28rem;color:#ebebeb">/</span><a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none" href="/morty-docs">morty-docs</a></li><li><span aria-hidden="true" style="margin:0 0.28rem;color:#ebebeb">/</span><a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none" href="/morty-docs/some-repo">some-repo</a></li></ol></nav></div><div class="content"><h1 id="title-of-simple-contentmd"><a href="#title-of-simple-contentmd">Title of simple-content.md</a></h1>
-<p><a href="docs/file-to-publish.html">Relative link to MD in docs directory</a><br />
-<a href="/morty-docs/some-repo/docs/file-to-publish.html">Root link to MD in docs directory</a></p></div></div><footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0;line-height:1.5rem"><a href="https://github.com/bbc/morty-docs" style="color:#337ab7">Morty-Docs on github</a><br/>Page generated on <!-- -->1<sup>st</sup> <!-- -->April<!-- --> <!-- -->2020</footer></body></html>"
+</style></head><body style="min-height:100vh;font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;color:#333;background-color:#fff"><div style="min-height:75vh;padding-bottom:20px"><div style="border:none;border-radius:0;background-color:#000;margin-bottom:0;width:100%"><nav><ol style="padding:1rem;list-style:none;display:flex;align-items:center"><li><span aria-hidden="true" style="margin:0 0.28rem;color:#ebebeb">/</span><a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none" href="/morty-docs">morty-docs</a></li><li><span aria-hidden="true" style="margin:0 0.28rem;color:#ebebeb">/</span><a style="text-align:left;color:lightblue;font-size:1.5rem;text-decoration:none" href="/morty-docs/some-repo">some-repo</a></li></ol></nav></div><div class="content"><h1 id="title-of-simple-contentmd"><a href="#title-of-simple-contentmd">Title of simple-content.md</a></h1><p><a href="docs/file-to-publish.html">Relative link to MD in docs directory</a><br><a href="/morty-docs/some-repo/docs/file-to-publish.html">Root link to MD in docs directory</a></p></div></div><footer style="bottom:0;width:100%;background-color:#f5f5f5;box-sizing:border-box;min-height:25vh;position:relative;text-align:center;padding:1em 0 2em 0;line-height:1.5rem"><a href="https://github.com/bbc/morty-docs" style="color:#337ab7">Morty-Docs on github</a><br/>Page generated on <!-- -->1<sup>st</sup> <!-- -->April<!-- --> <!-- -->2020</footer></body></html>"
 `;
 
 exports[`Transform-content returns the correct html from markdown for a line of plain text 1`] = `
@@ -313,6 +327,10 @@ sup {
   padding-inline-start: 40px;
 }
 
+.content ul li.task-list-item {
+  list-style-type: none;
+}
+
 .content p {
   margin-bottom: 10px;
 }
@@ -338,6 +356,18 @@ sup {
     font-size: 17.5px;
     border-left: 5px solid #eee;
 }
+.content blockquote.markdown-alert-note{ border-left: 5px solid #0A67D8; }
+.content blockquote.markdown-alert-warning{ border-left: 5px solid #9D6800; }
+.content blockquote.markdown-alert-important{ border-left: 5px solid #7F50DD; }
+.content blockquote.markdown-alert-tip{ border-left: 5px solid #187E32; }
+.content blockquote.markdown-alert-caution{ border-left: 5px solid #CE2228; }
+
+.content blockquote.markdown-alert-note p:first-child strong { color: #0A67D8; }
+.content blockquote.markdown-alert-warning p:first-child strong { color: #9D6800; }
+.content blockquote.markdown-alert-important p:first-child strong { color: #7F50DD; }
+.content blockquote.markdown-alert-tip p:first-child strong { color: #187E32; }
+.content blockquote.markdown-alert-caution p:first-child strong { color: #CE2228; }
+
 
 .content blockquote p:last-child {
     margin-bottom: 0;

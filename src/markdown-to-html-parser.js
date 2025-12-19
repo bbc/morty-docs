@@ -18,7 +18,7 @@ const parseToHTML = (markdown, options = {}) => {
   // return parser.makeHtml(markdown)
   const basePath = normaliseBasePath(options.basePath)
 
-  function flattenHeading(text) {
+  function flattenHeading (text) {
     // To match showdown behaviour
     return text
       .replace(/<(\w+)([^>]*)>/g, (match, tag, attrs) => {
@@ -34,13 +34,13 @@ const parseToHTML = (markdown, options = {}) => {
   }
 
   const renderer = {
-    heading({ tokens, depth }) {
+    heading ({ tokens, depth }) {
       const text = this.parser.parseInline(tokens)
       const escapedText = flattenHeading(text.toLowerCase())
 
       return `<h${depth} id="${escapedText}">${text}</h${depth}>`
     },
-    blockquote({ tokens }) {
+    blockquote ({ tokens }) {
       const textString = this.parser.parseInline(tokens[0].tokens)
       const alertMatch = textString.match(/\[!(NOTE|TIP|WARNING|IMPORTANT|CAUTION)\]/i)
 

@@ -93,7 +93,6 @@ describe('Markdown Parser', () => {
       const actual = parseToHtml(markdown)
       // this removes annoying whitespace from the output
       expect(actual.replace(/\s+/g, '')).toBe(expected.replace(/\s+/g, ''))
-
     })
   })
 
