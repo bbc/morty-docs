@@ -1,5 +1,6 @@
 // const showdown = require('showdown')
 const { marked } = require('marked')
+const emoji = require('node-emoji')
 
 const normaliseBasePath = (basePath) => {
   const pathElements = (basePath || '').split('/')
@@ -66,7 +67,9 @@ const parseToHTML = (markdown, options = {}) => {
   html = html.replace(/<a href="\/([^:\n]*)">/g, `<a href="${basePath}/$1">`) // addBasePathToRootLinks
   html = html.replace(/<link(.+)href="\/([^:\n]*)"(.*)\/>/g, `<link$1href="${basePath}/$2"$3/>`) // addBasePathToLinkHrefs
 
-  return html
+  const withEmoji = emoji.emojify(html) // convert emoji shortcodes to unicode e.g. :warning:
+
+  return withEmoji
 }
 
 module.exports = parseToHTML
