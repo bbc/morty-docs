@@ -102,6 +102,18 @@ const contentStyles = `
     font-size: 17.5px;
     border-left: 5px solid #eee;
 }
+.content blockquote.markdown-alert-note{ border-left: 5px solid #0A67D8; }
+.content blockquote.markdown-alert-warning{ border-left: 5px solid #9D6800; }
+.content blockquote.markdown-alert-important{ border-left: 5px solid #7F50DD; }
+.content blockquote.markdown-alert-tip{ border-left: 5px solid #187E32; }
+.content blockquote.markdown-alert-caution{ border-left: 5px solid #CE2228; }
+
+.content blockquote.markdown-alert-note p:first-child strong { color: #0A67D8; }
+.content blockquote.markdown-alert-warning p:first-child strong { color: #9D6800; }
+.content blockquote.markdown-alert-important p:first-child strong { color: #7F50DD; }
+.content blockquote.markdown-alert-tip p:first-child strong { color: #187E32; }
+.content blockquote.markdown-alert-caution p:first-child strong { color: #CE2228; }
+
 
 .content blockquote p:last-child {
     margin-bottom: 0;
