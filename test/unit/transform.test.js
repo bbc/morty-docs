@@ -48,6 +48,7 @@ describe('transform.js', () => {
     expect(mockTransformContent).toHaveBeenCalledWith(mdObj, { basePath: 'morty-docs/some-repo' })
   })
 
+  /*
   const asciidocExtensions = ['.asciidoc', '.adoc', '.asc']
 
   asciidocExtensions.forEach(asciidocExtension => {
@@ -63,4 +64,5 @@ describe('transform.js', () => {
       expect(mockTransformContent).toHaveBeenCalledWith(asciidocObj, { basePath: 'morty-docs/some-repo' })
     })
   })
+  */
 })

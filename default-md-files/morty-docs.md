@@ -26,7 +26,14 @@ Do images still work?
 
 ![Image 1](./folder/subFolder/test.jpg)
 
-## Github Alerts
+## :warning: Icons, highlights and bullet points
+
+- `warning` - typically used as an early warning system. May not require any action and will not be
+  actioned by 247/Ops.
+- `critical` - an alarm that 247/Ops should act on indicating direct audience impact. Ops will
+  consult your product runbook and perform the required escalation actions listed there.
+
+## ⚠️ Github Alerts
 
 > [!NOTE]  
 > Highlights information that users should take into account, even when skimming.

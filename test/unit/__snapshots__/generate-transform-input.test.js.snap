@@ -1,10 +1,10 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Snapshot Test Files in folder \`test1\`, should match snapshot with \`1\` files 1`] = `
-Array [
-  Object {
-    "raw": Object {
-      "data": Array [
+[
+  {
+    "raw": {
+      "data": [
         84,
         101,
         115,
@@ -20,10 +20,10 @@ Array [
 `;
 
 exports[`Snapshot Test Files in folder \`test2\`, should match snapshot with \`2\` files 1`] = `
-Array [
-  Object {
-    "raw": Object {
-      "data": Array [
+[
+  {
+    "raw": {
+      "data": [
         68,
         105,
         114,
@@ -41,9 +41,9 @@ Array [
     },
     "relativePath": "dir1/test1.txt",
   },
-  Object {
-    "raw": Object {
-      "data": Array [
+  {
+    "raw": {
+      "data": [
         68,
         105,
         114,
@@ -65,10 +65,10 @@ Array [
 `;
 
 exports[`Snapshot Test Files in folder \`test3\`, should match snapshot with \`3\` files 1`] = `
-Array [
-  Object {
-    "raw": Object {
-      "data": Array [
+[
+  {
+    "raw": {
+      "data": [
         68,
         105,
         114,
@@ -86,9 +86,9 @@ Array [
     },
     "relativePath": "dir1/test1.txt",
   },
-  Object {
-    "raw": Object {
-      "data": Array [
+  {
+    "raw": {
+      "data": [
         68,
         105,
         114,
@@ -112,9 +112,9 @@ Array [
     },
     "relativePath": "dir1/sub1/test1.txt",
   },
-  Object {
-    "raw": Object {
-      "data": Array [
+  {
+    "raw": {
+      "data": [
         68,
         105,
         114,
@@ -142,10 +142,10 @@ Array [
 `;
 
 exports[`Snapshot Test Files in folder \`test4\`, should match snapshot with \`2\` files 1`] = `
-Array [
-  Object {
-    "raw": Object {
-      "data": Array [
+[
+  {
+    "raw": {
+      "data": [
         83,
         121,
         109,
@@ -163,9 +163,9 @@ Array [
     },
     "relativePath": "symlink.txt",
   },
-  Object {
-    "raw": Object {
-      "data": Array [
+  {
+    "raw": {
+      "data": [
         68,
         105,
         114,
@@ -187,10 +187,10 @@ Array [
 `;
 
 exports[`Snapshot Test Files in folder \`test5\`, should match snapshot with \`1\` files 1`] = `
-Array [
-  Object {
-    "raw": Object {
-      "data": Array [
+[
+  {
+    "raw": {
+      "data": [
         83,
         121,
         109,
@@ -211,13 +211,13 @@ Array [
 ]
 `;
 
-exports[`Snapshot Test Files in folder \`test6\`, should match snapshot with \`0\` files 1`] = `Array []`;
+exports[`Snapshot Test Files in folder \`test6\`, should match snapshot with \`0\` files 1`] = `[]`;
 
 exports[`Snapshot Test should match test1 snapshot 1`] = `
-Array [
-  Object {
-    "raw": Object {
-      "data": Array [
+[
+  {
+    "raw": {
+      "data": [
         84,
         101,
         115,

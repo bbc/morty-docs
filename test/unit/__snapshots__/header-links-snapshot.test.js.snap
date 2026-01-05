@@ -1,217 +1,115 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`The header is rendered with the correct breadcrumb links  When a basepath is not passed through 1`] = `
-<div
-  style={
-    Object {
-      "backgroundColor": "#000",
-      "border": "none",
-      "borderRadius": "0",
-      "marginBottom": "0",
-      "width": "100%",
-    }
-  }
->
-  <nav
-    style={Object {}}
+<DocumentFragment>
+  <div
+    style="border: none none; border-radius: 0px; background-color: #000; margin-bottom: 0px; width: 100%;"
   >
-    <ol
-      style={
-        Object {
-          "alignItems": "center",
-          "display": "flex",
-          "listStyle": "none",
-          "padding": "1rem",
-        }
-      }
-    >
-      <li>
-        <span
-          aria-hidden={true}
-          style={
-            Object {
-              "color": "#ebebeb",
-              "margin": "0 0.28rem",
-            }
-          }
-        >
-          /
-        </span>
-        <a
-          href="/folder"
-          style={
-            Object {
-              "color": "lightblue",
-              "fontSize": "1.5rem",
-              "textAlign": "left",
-              "textDecoration": "none",
-            }
-          }
-        >
-          folder
-        </a>
-      </li>
-      <li>
-        <span
-          aria-hidden={true}
-          style={
-            Object {
-              "color": "#ebebeb",
-              "margin": "0 0.28rem",
-            }
-          }
-        >
-          /
-        </span>
-        <a
-          href="/folder/nestedFolder"
-          style={
-            Object {
-              "color": "lightblue",
-              "fontSize": "1.5rem",
-              "textAlign": "left",
-              "textDecoration": "none",
-            }
-          }
-        >
-          nestedFolder
-        </a>
-      </li>
-    </ol>
-  </nav>
-</div>
+    <nav>
+      <ol
+        style="padding: 1rem; list-style: none; display: flex; align-items: center;"
+      >
+        <li>
+          <span
+            aria-hidden="true"
+            style="margin: 0px 0.28rem; color: #ebebeb;"
+          >
+            /
+          </span>
+          <a
+            href="/folder"
+            style="text-align: left; color: lightblue; font-size: 1.5rem; text-decoration: none;"
+          >
+            folder
+          </a>
+        </li>
+        <li>
+          <span
+            aria-hidden="true"
+            style="margin: 0px 0.28rem; color: #ebebeb;"
+          >
+            /
+          </span>
+          <a
+            href="/folder/nestedFolder"
+            style="text-align: left; color: lightblue; font-size: 1.5rem; text-decoration: none;"
+          >
+            nestedFolder
+          </a>
+        </li>
+      </ol>
+    </nav>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`The header is rendered with the correct breadcrumb links  When a basepath is passed through 1`] = `
-<div
-  style={
-    Object {
-      "backgroundColor": "#000",
-      "border": "none",
-      "borderRadius": "0",
-      "marginBottom": "0",
-      "width": "100%",
-    }
-  }
->
-  <nav
-    style={Object {}}
+<DocumentFragment>
+  <div
+    style="border: none none; border-radius: 0px; background-color: #000; margin-bottom: 0px; width: 100%;"
   >
-    <ol
-      style={
-        Object {
-          "alignItems": "center",
-          "display": "flex",
-          "listStyle": "none",
-          "padding": "1rem",
-        }
-      }
-    >
-      <li>
-        <span
-          aria-hidden={true}
-          style={
-            Object {
-              "color": "#ebebeb",
-              "margin": "0 0.28rem",
-            }
-          }
-        >
-          /
-        </span>
-        <a
-          href="/morty-docs"
-          style={
-            Object {
-              "color": "lightblue",
-              "fontSize": "1.5rem",
-              "textAlign": "left",
-              "textDecoration": "none",
-            }
-          }
-        >
-          morty-docs
-        </a>
-      </li>
-      <li>
-        <span
-          aria-hidden={true}
-          style={
-            Object {
-              "color": "#ebebeb",
-              "margin": "0 0.28rem",
-            }
-          }
-        >
-          /
-        </span>
-        <a
-          href="/morty-docs/some-repo"
-          style={
-            Object {
-              "color": "lightblue",
-              "fontSize": "1.5rem",
-              "textAlign": "left",
-              "textDecoration": "none",
-            }
-          }
-        >
-          some-repo
-        </a>
-      </li>
-      <li>
-        <span
-          aria-hidden={true}
-          style={
-            Object {
-              "color": "#ebebeb",
-              "margin": "0 0.28rem",
-            }
-          }
-        >
-          /
-        </span>
-        <a
-          href="/morty-docs/some-repo/folder"
-          style={
-            Object {
-              "color": "lightblue",
-              "fontSize": "1.5rem",
-              "textAlign": "left",
-              "textDecoration": "none",
-            }
-          }
-        >
-          folder
-        </a>
-      </li>
-      <li>
-        <span
-          aria-hidden={true}
-          style={
-            Object {
-              "color": "#ebebeb",
-              "margin": "0 0.28rem",
-            }
-          }
-        >
-          /
-        </span>
-        <a
-          href="/morty-docs/some-repo/folder/nestedFolder"
-          style={
-            Object {
-              "color": "lightblue",
-              "fontSize": "1.5rem",
-              "textAlign": "left",
-              "textDecoration": "none",
-            }
-          }
-        >
-          nestedFolder
-        </a>
-      </li>
-    </ol>
-  </nav>
-</div>
+    <nav>
+      <ol
+        style="padding: 1rem; list-style: none; display: flex; align-items: center;"
+      >
+        <li>
+          <span
+            aria-hidden="true"
+            style="margin: 0px 0.28rem; color: #ebebeb;"
+          >
+            /
+          </span>
+          <a
+            href="/morty-docs"
+            style="text-align: left; color: lightblue; font-size: 1.5rem; text-decoration: none;"
+          >
+            morty-docs
+          </a>
+        </li>
+        <li>
+          <span
+            aria-hidden="true"
+            style="margin: 0px 0.28rem; color: #ebebeb;"
+          >
+            /
+          </span>
+          <a
+            href="/morty-docs/some-repo"
+            style="text-align: left; color: lightblue; font-size: 1.5rem; text-decoration: none;"
+          >
+            some-repo
+          </a>
+        </li>
+        <li>
+          <span
+            aria-hidden="true"
+            style="margin: 0px 0.28rem; color: #ebebeb;"
+          >
+            /
+          </span>
+          <a
+            href="/morty-docs/some-repo/folder"
+            style="text-align: left; color: lightblue; font-size: 1.5rem; text-decoration: none;"
+          >
+            folder
+          </a>
+        </li>
+        <li>
+          <span
+            aria-hidden="true"
+            style="margin: 0px 0.28rem; color: #ebebeb;"
+          >
+            /
+          </span>
+          <a
+            href="/morty-docs/some-repo/folder/nestedFolder"
+            style="text-align: left; color: lightblue; font-size: 1.5rem; text-decoration: none;"
+          >
+            nestedFolder
+          </a>
+        </li>
+      </ol>
+    </nav>
+  </div>
+</DocumentFragment>
 `;

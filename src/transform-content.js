@@ -1,5 +1,5 @@
-const path = require('path')
-const asciidoctor = require('asciidoctor')()
+// const path = require('path')
+// const asciidoctor = require('asciidoctor')() // "asciidoctor": "^2.2.6" from package.json
 
 const renderMortyPage = require('./page-renderers/MortyPage')
 const parseToHtml = require('./markdown-to-html-parser')
@@ -8,11 +8,10 @@ const changeExtension = relPath => relPath.replace(/\.[^.]*$/, '.html') // \.[^.
 
 const convertToHtml = ({ relativePath, raw }, options) => {
   const textString = raw.toString()
-  const ext = path.extname(relativePath)
-
-  if (ext === '.asciidoc' || ext === '.adoc' || ext === '.asc') {
-    return asciidoctor.convert(textString)
-  }
+  // const ext = path.extname(relativePath)
+  // if (ext === '.asciidoc' || ext === '.adoc' || ext === '.asc') {
+  //   return asciidoctor.convert(textString)
+  // }
 
   return parseToHtml(textString, options)
 }

@@ -16,6 +16,7 @@ node_modules/
 build/
 
 # Test results
+coverage
 test-results.json
 
 # Local dev

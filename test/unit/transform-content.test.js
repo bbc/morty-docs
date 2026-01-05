@@ -67,6 +67,7 @@ describe('Transform-content returns the correct html from markdown', () => {
   })
 })
 
+/*
 describe('Transform-content returns the correct html from AsciiDoc', () => {
   it('for a line of plain text', () => {
     const inputObj = {
@@ -112,3 +113,4 @@ describe('Transform-content returns the correct html from AsciiDoc', () => {
     expect(result.raw).toMatchSnapshot()
   })
 })
+*/
