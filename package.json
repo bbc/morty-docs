@@ -39,6 +39,7 @@
   },
   "homepage": "https://github.com/bbc/morty-docs#readme",
   "dependencies": {
+    "@mermaid-js/mermaid-cli": "^11.12.0",
     "marked": "^15.0.12",
     "node-emoji": "^2.2.0",
     "react": "^19.2.1",
