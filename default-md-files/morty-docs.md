@@ -52,3 +52,37 @@ Do images still work?
 
 > [!CAUTION]
 > Negative potential consequences of an action.
+
+## Mermaid Image Conversion
+
+```text
+sequenceDiagram
+Alice->>John: Hello John, how are you?
+loop HealthCheck
+    John->>John: Fight against hypochondria
+end
+Note right of John: Rational thoughts!
+John-->>Alice: Great!
+John->>Bob: How about you?
+Bob-->>John: Jolly good!
+```
+
+converted image below.....hopefully
+
+```mermaid
+sequenceDiagram
+Alice->>John: Hello John, how are you?
+loop HealthCheck
+    John->>John: Fight against hypochondria
+end
+Note right of John: Rational thoughts!
+John-->>Alice: Great!
+John->>Bob: How about you?
+Bob-->>John: Jolly good!
+```
+
+```mermaid
+sequenceDiagram
+Alice->>John: Hello John, how are you?
+John->>Alice: Jolly good Thanks!
+```
