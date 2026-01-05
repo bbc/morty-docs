@@ -11,7 +11,7 @@ const mortyDocs = async () => {
   const basePath = 'morty-docs/some-repo'
   const inputObjs = await generateTransformInput(resolvedPath)
 
-  const files = transform(inputObjs, { contentTitle: 'some-repo', basePath })
+  const files = transform(inputObjs, { contentTitle: 'some-repo', basePath, rootPath: resolvedPath })
 
   files.forEach(file => {
     const filePath = `www/${basePath}/${file.relativePath}`

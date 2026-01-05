@@ -1,6 +1,7 @@
 const path = require('path')
 
 const transformContent = require('./transform-content')
+const generateMermaidContent = require('./generate-mermaid-content')
 const generateIndexes = require('./generate-indexes')
 
 const validate = (inputObjs) => {
@@ -15,10 +16,15 @@ const validate = (inputObjs) => {
 const transform = (inputObjs, options) => {
   validate(inputObjs)
 
+  const mermaidImages = []
+
   const contentObjs = inputObjs.map(inputObj => {
     const ext = path.extname(inputObj.relativePath)
     if (ext === '.md') { //  || ext === '.asciidoc' || ext === '.adoc' || ext === '.asc'
-      return transformContent(inputObj, options)
+      // Create mermaid images and transform markdown
+      const mermaidContent = generateMermaidContent(inputObj, options.rootPath)
+      mermaidImages.push(...mermaidContent.images)
+      return transformContent(mermaidContent.inputObj, options)
     } else {
       return inputObj
     }
@@ -26,7 +32,7 @@ const transform = (inputObjs, options) => {
 
   const indexObjs = generateIndexes(contentObjs, options)
 
-  return [...contentObjs, ...indexObjs]
+  return [...contentObjs, ...indexObjs, ...mermaidImages]
 }
 
 module.exports = transform
