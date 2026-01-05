@@ -15,9 +15,3 @@ Let's rename \*our-new-project\* to \*our-old-project\*
 100. First list item
   - First nested list item
     - Second nested list item
-
-```mermaid
-sequenceDiagram
-Bob->>John: Hello John, how are you?
-John->>Bob: Jolly good Thanks!
-```
