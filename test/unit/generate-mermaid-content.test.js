@@ -13,7 +13,7 @@ describe('generateMermaidContent', () => {
     fs.writeFileSync.mockImplementation(() => {})
     fs.readFileSync.mockReturnValue(Buffer.from('<svg>diagram</svg>'))
     fs.unlinkSync.mockImplementation(() => {})
-    childProcess.execSync.mockImplementation(() => {})
+    childProcess.execFileSync.mockImplementation(() => {})
   })
 
   it('should replace mermaid code blocks with image links and generate images', () => {
@@ -26,7 +26,7 @@ describe('generateMermaidContent', () => {
 
     expect(fs.mkdirSync).toHaveBeenCalled()
     expect(fs.writeFileSync).toHaveBeenCalled()
-    expect(childProcess.execSync).toHaveBeenCalled()
+    expect(childProcess.execFileSync).toHaveBeenCalled()
     expect(fs.readFileSync).toHaveBeenCalled()
     expect(fs.unlinkSync).toHaveBeenCalled()
     expect(result.inputObj.raw).toContain('![Mermaid diagram]')
@@ -44,7 +44,7 @@ describe('generateMermaidContent', () => {
     const rootPath = '/project'
     generateMermaidContent(inputObj, rootPath)
     expect(fs.writeFileSync).not.toHaveBeenCalled()
-    expect(childProcess.execSync).not.toHaveBeenCalled()
+    expect(childProcess.execFileSync).not.toHaveBeenCalled()
   })
 
   it('should handle files with no mermaid code blocks', () => {

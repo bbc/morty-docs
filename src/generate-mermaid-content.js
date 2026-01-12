@@ -1,6 +1,6 @@
 const path = require('path')
 const fs = require('fs')
-const { execSync } = require('child_process')
+const { execFileSync } = require('child_process')
 
 const generateMermaidContent = (inputObj, rootPath) => {
   const imageDir = path.dirname(`${rootPath}/${inputObj.relativePath}`)
@@ -15,7 +15,7 @@ const generateMermaidContent = (inputObj, rootPath) => {
     if (!fs.existsSync(imgPath)) {
       const tmpFile = path.join(imageDir, `${hash}.mmd`)
       fs.writeFileSync(tmpFile, mermaidCode)
-      execSync(`npx mmdc -i "${tmpFile}" -o "${imgPath}"`)
+      execFileSync('npx', ['mmdc', '-i', tmpFile, '-o', imgPath])
       fs.unlinkSync(tmpFile)
       const afterLastSlash = inputObj.relativePath.match(/[^/]+$/)[0]
       images.push({
