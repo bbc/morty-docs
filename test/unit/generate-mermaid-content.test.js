@@ -1,5 +1,5 @@
 const fs = require('fs')
-const child_process = require('child_process')
+const childProcess = require('child_process')
 const generateMermaidContent = require('../../src/generate-mermaid-content.js')
 
 jest.mock('fs')
@@ -13,7 +13,7 @@ describe('generateMermaidContent', () => {
     fs.writeFileSync.mockImplementation(() => {})
     fs.readFileSync.mockReturnValue(Buffer.from('<svg>diagram</svg>'))
     fs.unlinkSync.mockImplementation(() => {})
-    child_process.execSync.mockImplementation(() => {})
+    childProcess.execSync.mockImplementation(() => {})
   })
 
   it('should replace mermaid code blocks with image links and generate images', () => {
@@ -26,7 +26,7 @@ describe('generateMermaidContent', () => {
 
     expect(fs.mkdirSync).toHaveBeenCalled()
     expect(fs.writeFileSync).toHaveBeenCalled()
-    expect(child_process.execSync).toHaveBeenCalled()
+    expect(childProcess.execSync).toHaveBeenCalled()
     expect(fs.readFileSync).toHaveBeenCalled()
     expect(fs.unlinkSync).toHaveBeenCalled()
     expect(result.inputObj.raw).toContain('![Mermaid diagram]')
@@ -44,7 +44,7 @@ describe('generateMermaidContent', () => {
     const rootPath = '/project'
     generateMermaidContent(inputObj, rootPath)
     expect(fs.writeFileSync).not.toHaveBeenCalled()
-    expect(child_process.execSync).not.toHaveBeenCalled()
+    expect(childProcess.execSync).not.toHaveBeenCalled()
   })
 
   it('should handle files with no mermaid code blocks', () => {

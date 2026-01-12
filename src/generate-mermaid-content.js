@@ -1,6 +1,6 @@
-const path = require("path")
-const fs = require("fs")
-const {execSync} = require("child_process")
+const path = require('path')
+const fs = require('fs')
+const { execSync } = require('child_process')
 
 const generateMermaidContent = (inputObj, rootPath) => {
   const imageDir = path.dirname(`${rootPath}/${inputObj.relativePath}`)
@@ -20,7 +20,7 @@ const generateMermaidContent = (inputObj, rootPath) => {
       const afterLastSlash = inputObj.relativePath.match(/[^/]+$/)[0]
       images.push({
         raw: fs.readFileSync(imgPath),
-        relativePath: inputObj.relativePath.replace(afterLastSlash,`${hash}.svg`)
+        relativePath: inputObj.relativePath.replace(afterLastSlash, `${hash}.svg`)
       })
     }
 
