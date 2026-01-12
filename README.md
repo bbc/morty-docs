@@ -59,8 +59,8 @@ const { generateTransformInput, transform } = require('@bbc/morty-docs')
 
 ```javascript
 const inputObjs = await generateTransformInput('a/folder/with/markdown-files')
-
-const outputObjs = transform(inputObjs,{ contentTitle: 'My Docs', basePath: '/path/my/docs/are/hosted/under' })
+const resolvedPath = path.resolve('path/to/your/docs/folder')
+const outputObjs = transform(inputObjs, { contentTitle: 'My Docs', basePath: '/path/my/docs/are/hosted/under', rootPath: resolvedPath })
 ```
 
 - `transform()` can be used alone, but if your files are in a local
