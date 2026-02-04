@@ -41,10 +41,19 @@ const parseToHTML = (markdown, options = {}) => {
       return `<h${depth} id="${escapedText}">${text}</h${depth}>`
     },
     blockquote ({ tokens }) {
-      const textString = this.parser.parseInline(tokens[0].tokens)
-      const alertMatch = textString.match(/\[!(NOTE|TIP|WARNING|IMPORTANT|CAUTION)\]/i)
+      let textString = ''
+      tokens.forEach(token => {
+        if (token.tokens) {
+          textString += this.parser.parseInline(token.tokens)
+        } else if (token.type === 'space') {
+          textString += this.parser.parseInline([{ type: 'br', text: token.text, raw: token.raw }])
+        } else {
+          textString += this.parser.parseInline(tokens)
+        }
+      })
 
-      if (!alertMatch) return `<blockquote>${textString}</blockquote>`
+      const alertMatch = textString.match(/\[!(NOTE|TIP|WARNING|IMPORTANT|CAUTION)\]/i)
+      if (!alertMatch) return marked.Renderer.prototype.blockquote.call(this, { tokens }) // default behavior
 
       const type = alertMatch[1].toLowerCase()
       let content = textString.replace(/\[![A-Z]+\]/i, '')
@@ -60,7 +69,7 @@ const parseToHTML = (markdown, options = {}) => {
   // Custom replacements
   html = html.replace(/<a href="([^:\n]*?).md">/g, '<a href="$1.html">') // convertMdLinksToHtmlLinks
   html = html.replace(/<a href="([^:\n]*?).md#(.*?)">/g, '<a href="$1.html#$2">') // convertMdHashLinksToHtmlLinks
-  html = html.replace(/<(h[123456]) id="([^"]+)">(.*)<\/\1>/g, '<$1 id="$2"><a href="#$2">$3</a></$1>') // headingExtension
+  html = html.replace(/<(h[123456]) id="([^"]+)">([\s\S]*?)<\/\1>/g, '<$1 id="$2"><a href="#$2">$3</a></$1>') // headingExtension
   html = html.replace(/<table(.*)>/g, '<table class="table" $1>') // add class to table tags
   html = html.replace(/<img(.*)>/g, '<img class="img-responsive" $1 />') // add class to image tags
   html = html.replace(/<li>(<input.*)<\/li>/g, '<li class="task-list-item">$1</li>') // add class for list items (must have input at beginning)
