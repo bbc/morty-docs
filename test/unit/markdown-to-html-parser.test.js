@@ -81,7 +81,7 @@ describe('Markdown Parser', () => {
       },
       {
         markdown: '> Normal quote text',
-        expected: '<blockquote>Normal quote text</blockquote>'
+        expected: '<blockquote><p>Normal quote text</p></blockquote>'
       },
       {
         markdown: '> [!TIP]\n> Multi-line\n> Multi-line\n> Multi-line',
