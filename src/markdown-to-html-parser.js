@@ -47,6 +47,8 @@ const parseToHTML = (markdown, options = {}) => {
           textString += this.parser.parseInline(token.tokens)
         } else if (token.type === 'space') {
           textString += this.parser.parseInline([{ type: 'br', text: token.text, raw: token.raw }])
+        } else if (token.type === 'list') {
+          textString += marked.Renderer.prototype.list.call(this, token)
         } else {
           textString += this.parser.parseInline(tokens)
         }
