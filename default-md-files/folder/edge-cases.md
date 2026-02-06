@@ -1,4 +1,4 @@
-## This is a file in a folder
+## Edge Cases that break the build
 
 Bug fix from bbc/web repo. Code block in a NOTE blockquote.
 
@@ -20,3 +20,29 @@ Bug fix from bbc/web repo. Code block in a NOTE blockquote.
 >   }
 > `;
 > ```
+
+
+> **bold text
+> Blockquotes with Unclosed Markdown Syntax. **This text is actually bold**
+
+
+> Emoji shortcuts
+> :warning: Be careful!
+
+
+> Tables in blockquotes
+> ---
+> | Header | Value |
+> |--------|-------|
+> | a      | b     |
+
+
+>
+>
+> Some text with blank spaces above
+
+
+> Nested lists in blockquotes
+> 1. Item one
+     >    - Subitem
+> 2. Item two
