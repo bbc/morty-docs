@@ -49,6 +49,8 @@ const parseToHTML = (markdown, options = {}) => {
           textString += this.parser.parseInline([{ type: 'br', text: token.text, raw: token.raw }])
         } else if (token.type === 'list') {
           textString += marked.Renderer.prototype.list.call(this, token)
+        } else if (token.type === 'code') {
+          textString += marked.Renderer.prototype.code.call(this, token)
         } else {
           textString += this.parser.parseInline(tokens)
         }

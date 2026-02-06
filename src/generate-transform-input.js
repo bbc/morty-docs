@@ -16,7 +16,7 @@ const generateTransformInput = (dir) => {
     // console.log('fullPath = ', fullPath)
 
     if (dirent.isDirectory()) {
-      console.log('directory... continue')
+      // console.log('directory... continue')
       continue
     }
     if (dirent.isFile()) {
