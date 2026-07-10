@@ -1,54 +1,60 @@
 const fs = require('fs')
 const path = require('path')
 
-const generateTransformInput = (dir) => {
-  dir = path.format(path.parse(dir))
+const makeInputObject = (fullPath, relativePath) => ({
+  relativePath,
+  raw: fs.readFileSync(fullPath)
+})
 
+const walkDirectory = (directory, outputDirectory, activeDirectories) => {
+  const realDirectory = fs.realpathSync(directory)
+  if (activeDirectories.has(realDirectory)) return []
+
+  activeDirectories.add(realDirectory)
+  const entries = fs.readdirSync(directory, { withFileTypes: true })
+    .filter(entry => !entry.name.startsWith('.'))
   let list = []
-  const files = fs.readdirSync(dir, { recursive: true, withFileTypes: true })
-  // recursive option available from node 18+
-  // when options.withFileTypes set to true, the returned array will contain <fs.Dirent> objects.
-  for (const dirent of files) {
-    // Node API for Dirent is unstable
-    const dirPath = dirent.path || dirent.parentPath // path is DEPRECATED! But parentPath does not work in 18.17
 
-    const fullPath = path.join(dirPath, dirent.name)
-    // console.log('fullPath = ', fullPath)
+  // Keep files before real subdirectories to retain the existing output order.
+  entries.forEach(entry => {
+    const fullPath = path.join(directory, entry.name)
+    const relativePath = path.join(outputDirectory, entry.name)
 
-    if (dirent.isDirectory()) {
-      // console.log('directory... continue')
-      continue
+    if (entry.isFile()) {
+      list.push(makeInputObject(fullPath, relativePath))
+      return
     }
-    if (dirent.isFile()) {
-      list.push(makeInputObject(fullPath, dir))
-      continue
+
+    if (!entry.isSymbolicLink() || !fs.existsSync(fullPath)) return
+
+    const stats = fs.statSync(fullPath)
+    if (stats.isFile()) {
+      list.push(makeInputObject(fullPath, relativePath))
+    } else if (stats.isDirectory()) {
+      // Treat a linked directory as though its contents were copied here.
+      list = list.concat(walkDirectory(fullPath, '', activeDirectories))
     }
-    if (dirent.isSymbolicLink) {
-      if (fs.existsSync(fullPath)) { // fs.exists() is deprecated, but fs.existsSync() is not.
-        const stats = fs.statSync(fullPath)
-        console.log('Good symlink')
-        if (stats.isFile()) {
-          // get file details
-          list.push(makeInputObject(fullPath, dir)) // symlinks become copies
-        } else {
-          // recursive call to get all files in the symlinked directory
-          const newlist = generateTransformInput(fullPath)
-          list = list.concat(newlist)
-        }
-      } else {
-        console.log(`Broken symlink at: ${fullPath}`)
-      }
-      continue
-    }
-  }
+  })
+
+  entries.forEach(entry => {
+    if (!entry.isDirectory()) return
+
+    const fullPath = path.join(directory, entry.name)
+    const relativePath = path.join(outputDirectory, entry.name)
+    list = list.concat(walkDirectory(fullPath, relativePath, activeDirectories))
+  })
+
+  activeDirectories.delete(realDirectory)
   return list
 }
 
-const makeInputObject = (fullPath, rootPath) => {
-  return {
-    relativePath: fullPath.replace(`${rootPath}/`, ''),
-    raw: fs.readFileSync(fullPath)
+const generateTransformInput = (directory) => {
+  const normalisedDirectory = path.format(path.parse(directory))
+  if (!fs.existsSync(normalisedDirectory)) {
+    throw new Error(`ENOENT: no such file or directory, scandir '${directory}'`)
   }
+
+  return walkDirectory(normalisedDirectory, '', new Set())
 }
 
 module.exports = generateTransformInput

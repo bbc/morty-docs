@@ -68,6 +68,35 @@ directory the `generateTransformInput()` function is a convenience
 - the 2nd argument to `transform()` can *optionally* be used to provide a Title
 that is displayed on the generated index pages and the base path below which your files will be served (this required to make markdown links starting with `/` work).
 
+### Markdown styles
+
+Generated Markdown pages use Morty Docs' original styling by default. Set
+`markdownStyle` to `github` to opt into GitHub-style heading permalinks, alert
+icons, syntax highlighting, and diff highlighting:
+
+```javascript
+const outputObjs = transform(inputObjs, {
+  contentTitle: 'My Docs',
+  basePath: '/path/my/docs/are/hosted/under',
+  rootPath: resolvedPath,
+  markdownStyle: 'github'
+})
+```
+
+Use `markdownStyle: 'original'`, or omit the option, to retain the original
+styling. The GitHub style loads Highlight.js 11.9.0 from jsDelivr when a
+generated page is opened, so the deployed site's content security policy and
+network access must allow that CDN.
+
+Language-specific diffs can identify the language after `diff`:
+
+````markdown
+```diff yaml
+-enabled: false
++enabled: true
+```
+````
+
 - `outputObjs` will be an array of objects like this:
 
 ``` javascript

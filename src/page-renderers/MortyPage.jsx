@@ -4,6 +4,7 @@ const ReactDOMServer = require('react-dom/server')
 const Header = require('./Components/Header')
 const Footer = require('./Components/Footer')
 const Reset = require('./Components/Reset')
+const usesGithubMarkdownStyle = require('../helpers/uses-github-markdown-style')
 
 const Styles = {
   wrapper: {
@@ -211,7 +212,142 @@ const contentStyles = `
 
 `
 
+const githubContentStyles = `
+.content-github pre {
+  line-height: 1.4;
+  overflow-x: auto;
+  tab-size: 2;
+  white-space: pre;
+  word-break: normal;
+  word-wrap: normal;
+}
+
+.content-github pre code {
+  display: block;
+  white-space: pre;
+}
+
+.content-github :not(pre) code {
+  color: #24292f;
+  background-color: #eff1f3;
+}
+
+.content-github a code {
+  color: #337ab7;
+}
+
+.content-github .diff-line {
+  display: block;
+  min-height: 1.4em;
+  margin: 0 -9.5px;
+  padding: 0 9.5px;
+  white-space: pre;
+}
+
+.content-github .diff-add {
+  background-color: #dafbe1;
+}
+
+.content-github .diff-remove {
+  background-color: #ffebe9;
+}
+
+.content-github blockquote.markdown-alert {
+  padding: 8px 16px;
+  font-size: inherit;
+  color: inherit;
+  background-color: var(--alert-background);
+  border-left: 4px solid var(--alert-colour);
+}
+
+.content-github .markdown-alert-title {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 4px;
+  font-weight: 600;
+  color: var(--alert-colour);
+}
+
+.content-github .markdown-alert-title svg {
+  flex-shrink: 0;
+}
+
+.content-github .markdown-alert-note { --alert-colour: #0969da; --alert-background: #ddf4ff; }
+.content-github .markdown-alert-tip { --alert-colour: #1a7f37; --alert-background: #dafbe1; }
+.content-github .markdown-alert-important { --alert-colour: #8250df; --alert-background: #fbefff; }
+.content-github .markdown-alert-warning { --alert-colour: #9a6700; --alert-background: #fff8c5; }
+.content-github .markdown-alert-caution { --alert-colour: #cf222e; --alert-background: #ffebe9; }
+
+.content-github .heading-anchor {
+  position: relative;
+}
+
+.content-github .anchor-link {
+  position: absolute;
+  top: 50%;
+  left: -24px;
+  color: inherit;
+  opacity: 0;
+  transform: translateY(-50%);
+}
+
+.content-github .heading-anchor:hover .anchor-link,
+.content-github .anchor-link:focus {
+  opacity: 1;
+}
+
+.content-github .anchor-icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+@media (max-width: 720px) {
+  .content-github {
+    padding-right: 32px;
+    padding-left: 32px;
+  }
+}
+`
+
+const highlightScript = `
+(function () {
+  function languageFor(code) {
+    var className = Array.from(code.classList).find(function (name) {
+      return name.indexOf('language-') === 0;
+    });
+    return className ? className.replace('language-', '') : '';
+  }
+
+  window.addEventListener('DOMContentLoaded', function () {
+    if (!window.hljs) return;
+
+    document.querySelectorAll('.content-github pre:not(.diff-block) code[class*="language-"]').forEach(function (code) {
+      window.hljs.highlightElement(code);
+    });
+
+    document.querySelectorAll('.content-github .diff-block code').forEach(function (code) {
+      var language = languageFor(code);
+      code.querySelectorAll('.diff-line').forEach(function (line) {
+        var source = line.textContent;
+        var prefix = /^[+-]/.test(source) ? source.charAt(0) : '';
+        var value = prefix ? source.slice(1) : source;
+
+        if (language && language !== 'diff' && window.hljs.getLanguage(language)) {
+          value = window.hljs.highlight(value, { language: language, ignoreIllegals: true }).value;
+          line.innerHTML = prefix + value;
+        }
+      });
+    });
+  });
+})();
+`
+
 const MortyPage = ({ relPath, body, options }) => {
+  const useGithubStyle = usesGithubMarkdownStyle(options)
+
   return (
     <html lang='en' style={Styles.html}>
       <head>
@@ -221,11 +357,15 @@ const MortyPage = ({ relPath, body, options }) => {
         <title>{relPath}</title>
         <Reset />
         <style dangerouslySetInnerHTML={{ __html: contentStyles }} />
+        {useGithubStyle && <style dangerouslySetInnerHTML={{ __html: githubContentStyles }} />}
+        {useGithubStyle && <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/styles/github.min.css' />}
+        {useGithubStyle && <script defer src='https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/highlight.min.js' />}
+        {useGithubStyle && <script dangerouslySetInnerHTML={{ __html: highlightScript }} />}
       </head>
       <body style={Styles.body}>
         <div style={Styles.wrapper}>
           <Header relPath={relPath} basePath={options.basePath} />
-          <div className='content' dangerouslySetInnerHTML={{ __html: body }} />
+          <div className={useGithubStyle ? 'content content-github' : 'content'} dangerouslySetInnerHTML={{ __html: body }} />
         </div>
         <Footer />
       </body>
