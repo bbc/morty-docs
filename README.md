@@ -43,6 +43,15 @@ To try it with markdown files from a custom directory
 mortyPath=/absolute/path/to/custom/directory npm start
 ```
 
+To preview the opt-in GitHub Markdown style locally:
+
+```bash
+markdownStyle=github npm start
+```
+
+Then open
+http://localhost:8080/morty-docs/some-repo/github-markdown-style.html.
+
 ## Use as a library
 
 ### Install

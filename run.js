@@ -5,13 +5,14 @@ const path = require('path')
 console.log('process.env.mortyPath = ', process.env.mortyPath)
 
 const directoryToConvert = process.env.mortyPath || 'default-md-files'
+const markdownStyle = process.env.markdownStyle
 const resolvedPath = path.resolve(directoryToConvert)
 
 const mortyDocs = async () => {
   const basePath = 'morty-docs/some-repo'
   const inputObjs = await generateTransformInput(resolvedPath)
 
-  const files = transform(inputObjs, { contentTitle: 'some-repo', basePath, rootPath: resolvedPath })
+  const files = transform(inputObjs, { contentTitle: 'some-repo', basePath, rootPath: resolvedPath, markdownStyle })
 
   files.forEach(file => {
     const filePath = `www/${basePath}/${file.relativePath}`
