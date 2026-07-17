@@ -209,7 +209,7 @@ describe('Markdown Parser', () => {
   })
 
   it('should add syntax highlighting imports when code blocks are present', () => {
-    const markdown = 
+    const markdown =
       '```js\n' +
       'console.log(\'First code block!\');\n' +
       '```\n' +
@@ -232,7 +232,7 @@ describe('Markdown Parser', () => {
   })
 
   it('should not add syntax highlighting imports when no code block has a language', () => {
-    const markdown = 
+    const markdown =
       '```\n' +
       'console.log(\'Hello, world!\');\n' +
       '```'

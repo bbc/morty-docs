@@ -17,7 +17,7 @@ const parseToHTML = (markdown, options = {}) => {
   // const parser = createParser(options)
   // return parser.makeHtml(markdown)
   const basePath = normaliseBasePath(options.basePath)
-  let hasCodeBlock = false;
+  let hasCodeBlock = false
 
   function flattenHeading (text) {
     // To match showdown behaviour
@@ -82,7 +82,6 @@ const parseToHTML = (markdown, options = {}) => {
   html = html.replace(/<li>(<input.*)<\/li>/g, '<li class="task-list-item">$1</li>') // add class for list items (must have input at beginning)
   html = html.replace(/<a href="\/([^:\n]*)">/g, `<a href="${basePath}/$1">`) // addBasePathToRootLinks
   html = html.replace(/<link(.+)href="\/([^:\n]*)"(.*)\/>/g, `<link$1href="${basePath}/$2"$3/>`) // addBasePathToLinkHrefs
-
 
   if (hasCodeBlock) {
     html = `<link rel="stylesheet" href="/morty-docs/highlightjs/styles/github.min.css" />
