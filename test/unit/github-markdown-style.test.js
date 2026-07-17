@@ -73,6 +73,19 @@ describe('Markdown presentation and highlighting', () => {
     expect(actual).toContain('<span class="diff-line diff-add">+<span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span></span>')
   })
 
+  it.each([
+    { name: 'original', options: { markdownStyle: 'original' } },
+    { name: 'GitHub', options: githubOptions }
+  ])('preserves Mermaid diagrams with the $name style', ({ options }) => {
+    const actual = parseToHtml('```mermaid\ngraph TD\n  A["<unsafe>"] --> B\n```', options)
+
+    expect(actual).toContain('<script src="/morty-docs/mermaid.min.js" type="module"></script>')
+    expect(actual).toContain('<script>mermaid.initialize({ startOnLoad: true });</script>')
+    expect(actual).toContain('<div class="mermaid">graph TD\n  A[&quot;&lt;unsafe&gt;&quot;] --&gt; B</div>')
+    expect(actual).not.toContain('language-mermaid')
+    expect(actual).not.toContain('class="hljs')
+  })
+
   it('leaves unknown languages escaped and unhighlighted', () => {
     const actual = parseToHtml('```made-up-language\n<tag> & value\n```', githubOptions)
 
