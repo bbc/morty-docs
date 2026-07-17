@@ -86,9 +86,9 @@ Do images still work?
  
 > [!CAUTION]
 > 
-> Testing blank spaces
+> This alert contains multiple paragraphs.
 > 
-> Testing blank spaces
+> Blank lines inside the alert should be preserved.
 
 ## Mermaid Image Conversion
 
