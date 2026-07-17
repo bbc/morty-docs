@@ -33,6 +33,16 @@ describe('Markdown presentation and highlighting', () => {
   it.each([
     { name: 'original', options: { markdownStyle: 'original' } },
     { name: 'GitHub', options: githubOptions }
+  ])('preserves multiple alert paragraphs with the $name style', ({ options }) => {
+    const actual = parseToHtml('> [!CAUTION]\n>\n> First paragraph.\n>\n> Second paragraph.', options)
+
+    expect(actual).toContain('<p>First paragraph.</p>\n<p>Second paragraph.</p>')
+    expect(actual).not.toContain('First paragraph.<br>')
+  })
+
+  it.each([
+    { name: 'original', options: { markdownStyle: 'original' } },
+    { name: 'GitHub', options: githubOptions }
   ])('styles plain and language-specific diff fences by line with the $name style', ({ options }) => {
     const plainDiff = parseToHtml('```diff\n-old\n+new\n unchanged\n```', options)
     const yamlDiff = parseToHtml('```diff yaml\n-enabled: false\n+enabled: true\n```', options)

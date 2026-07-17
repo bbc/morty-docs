@@ -89,32 +89,41 @@ const parseToHTML = (markdown, options = {}) => {
       return `<h${depth} id="${escapedText}">${text}</h${depth}>`
     },
     blockquote ({ tokens }) {
-      let textString = ''
-      tokens.forEach(token => {
-        if (token.tokens) {
-          textString += this.parser.parseInline(token.tokens)
-        } else if (token.type === 'space') {
-          textString += this.parser.parseInline([{ type: 'br', text: token.text, raw: token.raw }])
-        } else if (['list', 'code', 'hr', 'table'].includes(token.type)) {
-          textString += marked.Renderer.prototype[token.type].call(this, token) // use default renderer for these block-level tokens
-        } else {
-          textString += this.parser.parseInline(tokens)
-        }
-      })
-
-      const alertMatch = textString.match(/\[!(NOTE|TIP|WARNING|IMPORTANT|CAUTION)\]/i)
+      const firstToken = tokens[0]
+      const alertPattern = /^\[!(NOTE|TIP|WARNING|IMPORTANT|CAUTION)\][ \t]*(?:\n[ \t]*)?/i
+      const alertMatch = firstToken && firstToken.type === 'paragraph'
+        ? firstToken.text.match(alertPattern)
+        : null
       if (!alertMatch) return marked.Renderer.prototype.blockquote.call(this, { tokens }) // default behavior
 
       const type = alertMatch[1].toLowerCase()
-      let content = textString.replace(/\[![A-Z]+\]/i, '')
-      content = content.replace(/^<br>/, '')
       const title = type.charAt(0).toUpperCase() + type.slice(1).toLowerCase()
+      const firstInlineToken = firstToken.tokens[0]
+      const strippedInlineToken = {
+        ...firstInlineToken,
+        raw: firstInlineToken.raw.replace(alertPattern, ''),
+        text: firstInlineToken.text.replace(alertPattern, '')
+      }
+      const firstInlineTokens = [strippedInlineToken, ...firstToken.tokens.slice(1)]
+        .filter(token => token.raw || token.text)
+      while (firstInlineTokens[0] && firstInlineTokens[0].type === 'br') {
+        firstInlineTokens.shift()
+      }
+      const contentTokens = firstInlineTokens.length === 0
+        ? tokens.slice(1)
+        : [{
+            ...firstToken,
+            raw: firstToken.raw.replace(alertPattern, ''),
+            text: firstToken.text.replace(alertPattern, ''),
+            tokens: firstInlineTokens
+          }, ...tokens.slice(1)]
+      const content = this.parser.parse(contentTokens)
 
       if (useGithubStyle) {
-        return `<blockquote class="markdown-alert markdown-alert-${type}"><p class="markdown-alert-title">${alertIcons[type]}${title}</p><p>${content}</p></blockquote>`
+        return `<blockquote class="markdown-alert markdown-alert-${type}"><p class="markdown-alert-title">${alertIcons[type]}${title}</p>${content}</blockquote>`
       }
 
-      return `<blockquote class="markdown-alert markdown-alert-${type}"><p><strong>${title}</strong></p><p>${content}</p></blockquote>`
+      return `<blockquote class="markdown-alert markdown-alert-${type}"><p><strong>${title}</strong></p>${content}</blockquote>`
     },
     code (token) {
       if (token.lang === 'mermaid') {
