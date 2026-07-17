@@ -1,12 +1,51 @@
 const { marked } = require('marked')
+const hljs = require('highlight.js/lib/common')
 const emoji = require('node-emoji')
 const alertIcons = require('./alert-icons')
 const usesGithubMarkdownStyle = require('./helpers/uses-github-markdown-style')
+
+const MAX_HIGHLIGHTED_CODE_BLOCK_BYTES = 100 * 1024
+const MAX_HIGHLIGHTED_CODE_DOCUMENT_BYTES = 100 * 1024
+const MAX_HIGHLIGHTED_CODE_LINE_BYTES = 10 * 1024
+const MAX_HIGHLIGHTED_DIFF_LINES = 2000
 
 const anchorIcon = `
 <svg class="anchor-icon" aria-hidden="true" viewBox="0 0 16 16" width="16" height="16">
   <path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path>
 </svg>`
+
+const escapeHtml = value => value.replace(/[&<>"']/g, character => ({
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;'
+})[character])
+
+const normaliseCodeLanguage = language => {
+  const match = (language || '').trim().match(/^([A-Za-z0-9_+#-]+)(?:\s|$)/)
+  return match ? match[1] : ''
+}
+
+const normaliseCodeText = text => text.replace(/\n$/, '')
+
+const exceedsCodeLineLimits = (code, maximumLines = Infinity) => {
+  let lineCount = 1
+  let lineStart = 0
+
+  while (lineStart <= code.length) {
+    const newline = code.indexOf('\n', lineStart)
+    const lineEnd = newline === -1 ? code.length : newline
+    if (Buffer.byteLength(code.slice(lineStart, lineEnd), 'utf8') > MAX_HIGHLIGHTED_CODE_LINE_BYTES) return true
+    if (newline === -1) return false
+
+    lineCount += 1
+    if (lineCount > maximumLines) return true
+    lineStart = newline + 1
+  }
+
+  return false
+}
 
 const normaliseBasePath = (basePath) => {
   const pathElements = (basePath || '').split('/')
@@ -25,6 +64,7 @@ const parseToHTML = (markdown, options = {}) => {
   const basePath = normaliseBasePath(options.basePath)
   const useGithubStyle = usesGithubMarkdownStyle(options)
   let hasMermaid = false
+  let remainingHighlightedCodeBytes = MAX_HIGHLIGHTED_CODE_DOCUMENT_BYTES
 
   function flattenHeading (text) {
     // To match showdown behaviour
@@ -76,24 +116,56 @@ const parseToHTML = (markdown, options = {}) => {
 
       return `<blockquote class="markdown-alert markdown-alert-${type}"><p><strong>${title}</strong></p><p>${content}</p></blockquote>`
     },
-    code ({ text, lang, escaped }) {
-      if (lang === 'mermaid') {
-        try {
-          hasMermaid = true
-          return `<div class="mermaid">${text}</div>`
-        } catch (error) {
-          console.error('Error rendering Mermaid diagram:', error)
-          return marked.Renderer.prototype.code.call(this, { text, lang, escaped })
-        }
+    code (token) {
+      if (token.lang === 'mermaid') {
+        hasMermaid = true
+        return `<div class="mermaid">${escapeHtml(normaliseCodeText(token.text))}</div>`
       }
-      return marked.Renderer.prototype.code.call(this, { text, lang, escaped })
+
+      const language = normaliseCodeLanguage(token.lang)
+      const isDiff = language === 'diff' || language.endsWith('-diff')
+      const isHighlightable = isDiff || (language && hljs.getLanguage(language))
+      if (!isHighlightable) return marked.Renderer.prototype.code.call(this, token)
+
+      const codeBytes = Buffer.byteLength(token.text, 'utf8')
+      if (codeBytes > MAX_HIGHLIGHTED_CODE_BLOCK_BYTES || codeBytes > remainingHighlightedCodeBytes) {
+        return marked.Renderer.prototype.code.call(this, token)
+      }
+
+      const code = normaliseCodeText(token.text)
+      const maximumLines = isDiff ? MAX_HIGHLIGHTED_DIFF_LINES : Infinity
+      if (exceedsCodeLineLimits(code, maximumLines)) {
+        return marked.Renderer.prototype.code.call(this, token)
+      }
+      remainingHighlightedCodeBytes -= codeBytes
+
+      if (isDiff) {
+        const highlightedLanguage = language === 'diff' ? 'diff' : language.replace(/-diff$/, '')
+        const highlightedLines = code.split('\n').map(line => {
+          const lineClass = line.startsWith('+')
+            ? 'diff-add'
+            : line.startsWith('-')
+              ? 'diff-remove'
+              : 'diff-neutral'
+          const prefix = /^[+-]/.test(line) ? line.charAt(0) : ''
+          const value = prefix ? line.slice(1) : line
+          const highlightedValue = highlightedLanguage !== 'diff' && hljs.getLanguage(highlightedLanguage)
+            ? hljs.highlight(value, { language: highlightedLanguage, ignoreIllegals: true }).value
+            : escapeHtml(value)
+
+          return `<span class="diff-line ${lineClass}">${prefix}${highlightedValue}</span>`
+        }).join('\n')
+
+        return `<pre class="diff-block"><code class="language-${highlightedLanguage}">${highlightedLines}</code></pre>`
+      }
+
+      const highlighted = hljs.highlight(code, { language, ignoreIllegals: true }).value
+      return `<pre><code class="language-${language} hljs">${highlighted}\n</code></pre>`
     }
   }
 
   marked.use({ renderer, breaks: true })
-  const markdownToParse = useGithubStyle
-    ? markdown.replace(/^(\s*)(`{3,}|~{3,})[ \t]*diff[ \t]+([A-Za-z0-9_+-]+)[ \t]*$/gmi, '$1$2$3-diff')
-    : markdown
+  const markdownToParse = markdown.replace(/^([ \t]*)(`{3,}|~{3,})[ \t]*diff[ \t]+([A-Za-z0-9_+#-]+)[ \t]*$/gmi, '$1$2$3-diff')
   let html = marked.parse(markdownToParse).trim()
 
   // Custom replacements
@@ -101,22 +173,6 @@ const parseToHTML = (markdown, options = {}) => {
   html = html.replace(/<a href="([^:\n]*?).md#(.*?)">/g, '<a href="$1.html#$2">') // convertMdHashLinksToHtmlLinks
   if (useGithubStyle) {
     html = html.replace(/<(h[123456]) id="([^"]+)">([\s\S]*?)<\/\1>/g, `<$1 id="$2" class="heading-anchor"><a href="#$2" class="anchor-link" aria-label="Permalink">${anchorIcon}</a>$3</$1>`)
-    html = html.replace(/<pre><code class="language-([^"]+)">([\s\S]*?)<\/code><\/pre>/g, (match, language, code) => {
-      const isDiff = language === 'diff' || language.endsWith('-diff')
-      if (!isDiff) return match
-
-      const highlightedLanguage = language === 'diff' ? 'diff' : language.replace(/-diff$/, '')
-      const lines = code.replace(/\n$/, '').split('\n').map(line => {
-        const lineClass = line.startsWith('+')
-          ? 'diff-add'
-          : line.startsWith('-')
-            ? 'diff-remove'
-            : 'diff-neutral'
-        return `<span class="diff-line ${lineClass}">${line}</span>`
-      }).join('\n')
-
-      return `<pre class="diff-block"><code class="language-${highlightedLanguage}">${lines}</code></pre>`
-    })
   } else {
     html = html.replace(/<(h[123456]) id="([^"]+)">([\s\S]*?)<\/\1>/g, '<$1 id="$2"><a href="#$2">$3</a></$1>') // headingExtension
   }

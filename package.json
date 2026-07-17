@@ -40,6 +40,7 @@
   },
   "homepage": "https://github.com/bbc/morty-docs#readme",
   "dependencies": {
+    "highlight.js": "11.9.0",
     "marked": "^15.0.12",
     "node-emoji": "^2.2.0",
     "react": "^19.2.1",

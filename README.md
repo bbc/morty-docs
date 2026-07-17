@@ -81,7 +81,7 @@ that is displayed on the generated index pages and the base path below which you
 
 Generated Markdown pages use Morty Docs' original styling by default. Set
 `markdownStyle` to `github` to opt into GitHub-style heading permalinks, alert
-icons, syntax highlighting, and diff highlighting:
+icons, spacing, and presentation:
 
 ```javascript
 const outputObjs = transform(inputObjs, {
@@ -93,9 +93,10 @@ const outputObjs = transform(inputObjs, {
 ```
 
 Use `markdownStyle: 'original'`, or omit the option, to retain the original
-styling. The GitHub style loads Highlight.js 11.9.0 from jsDelivr when a
-generated page is opened, so the deployed site's content security policy and
-network access must allow that CDN.
+styling. Syntax highlighting and diff highlighting are available with both
+styles and are applied while the site is being generated. The generated pages
+include the highlighted markup and theme styles, so they do not load or execute
+Highlight.js in the browser and work without CDN access.
 
 Language-specific diffs can identify the language after `diff`:
 

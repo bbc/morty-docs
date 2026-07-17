@@ -236,22 +236,6 @@ const githubContentStyles = `
   color: #337ab7;
 }
 
-.content-github .diff-line {
-  display: block;
-  min-height: 1.4em;
-  margin: 0 -9.5px;
-  padding: 0 9.5px;
-  white-space: pre;
-}
-
-.content-github .diff-add {
-  background-color: #dafbe1;
-}
-
-.content-github .diff-remove {
-  background-color: #ffebe9;
-}
-
 .content-github blockquote.markdown-alert {
   padding: 8px 16px;
   font-size: inherit;
@@ -312,41 +296,136 @@ const githubContentStyles = `
 }
 `
 
-const highlightScript = `
-(function () {
-  function languageFor(code) {
-    var className = Array.from(code.classList).find(function (name) {
-      return name.indexOf('language-') === 0;
-    });
-    return className ? className.replace('language-', '') : '';
-  }
+// Highlight.js 11.9.0 GitHub theme. The dependency is BSD-3-Clause licensed.
+const highlightStyles = `
+.content .diff-block {
+  overflow-x: auto;
+  word-break: normal;
+  word-wrap: normal;
+}
 
-  window.addEventListener('DOMContentLoaded', function () {
-    if (!window.hljs) return;
+.content .diff-line {
+  display: block;
+  min-height: 1.4em;
+  margin: 0 -9.5px;
+  padding: 0 9.5px;
+  white-space: pre;
+}
 
-    document.querySelectorAll('.content-github pre:not(.diff-block) code[class*="language-"]').forEach(function (code) {
-      window.hljs.highlightElement(code);
-    });
+.content .diff-add {
+  background-color: #dafbe1;
+}
 
-    document.querySelectorAll('.content-github .diff-block code').forEach(function (code) {
-      var language = languageFor(code);
-      code.querySelectorAll('.diff-line').forEach(function (line) {
-        var source = line.textContent;
-        var prefix = /^[+-]/.test(source) ? source.charAt(0) : '';
-        var value = prefix ? source.slice(1) : source;
+.content .diff-remove {
+  background-color: #ffebe9;
+}
 
-        if (language && language !== 'diff' && window.hljs.getLanguage(language)) {
-          value = window.hljs.highlight(value, { language: language, ignoreIllegals: true }).value;
-          line.innerHTML = prefix + value;
-        }
-      });
-    });
-  });
-})();
+.content-github pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+}
+
+.content-github code.hljs {
+  padding: 3px 5px;
+}
+
+.hljs {
+  color: #24292e;
+  background: #ffffff;
+}
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable.language_ {
+  color: #d73a49;
+}
+
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-title.function_ {
+  color: #6f42c1;
+}
+
+.hljs-attr,
+.hljs-attribute,
+.hljs-literal,
+.hljs-meta,
+.hljs-number,
+.hljs-operator,
+.hljs-variable,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-id {
+  color: #005cc5;
+}
+
+.hljs-regexp,
+.hljs-string,
+.hljs-meta .hljs-string {
+  color: #032f62;
+}
+
+.hljs-built_in,
+.hljs-symbol {
+  color: #e36209;
+}
+
+.hljs-comment,
+.hljs-code,
+.hljs-formula {
+  color: #6a737d;
+}
+
+.hljs-name,
+.hljs-quote,
+.hljs-selector-tag,
+.hljs-selector-pseudo {
+  color: #22863a;
+}
+
+.hljs-subst {
+  color: #24292e;
+}
+
+.hljs-section {
+  color: #005cc5;
+  font-weight: bold;
+}
+
+.hljs-bullet {
+  color: #735c0f;
+}
+
+.hljs-emphasis {
+  color: #24292e;
+  font-style: italic;
+}
+
+.hljs-strong {
+  color: #24292e;
+  font-weight: bold;
+}
+
+.hljs-addition {
+  color: #22863a;
+  background-color: #f0fff4;
+}
+
+.hljs-deletion {
+  color: #b31d28;
+  background-color: #ffeef0;
+}
 `
 
 const MortyPage = ({ relPath, body, options }) => {
   const useGithubStyle = usesGithubMarkdownStyle(options)
+  const useHighlightStyles = typeof body === 'string' && (body.includes(' hljs"') || body.includes('class="diff-block"'))
 
   return (
     <html lang='en' style={Styles.html}>
@@ -358,9 +437,7 @@ const MortyPage = ({ relPath, body, options }) => {
         <Reset />
         <style dangerouslySetInnerHTML={{ __html: contentStyles }} />
         {useGithubStyle && <style dangerouslySetInnerHTML={{ __html: githubContentStyles }} />}
-        {useGithubStyle && <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/styles/github.min.css' />}
-        {useGithubStyle && <script defer src='https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.9.0/highlight.min.js' />}
-        {useGithubStyle && <script dangerouslySetInnerHTML={{ __html: highlightScript }} />}
+        {useHighlightStyles && <style dangerouslySetInnerHTML={{ __html: highlightStyles }} />}
       </head>
       <body style={Styles.body}>
         <div style={Styles.wrapper}>

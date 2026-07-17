@@ -30,6 +30,8 @@ Heading links remain available at every supported level.
 
 ## Syntax highlighting
 
+### JavaScript
+
 ```javascript
 const documents = ['guide.md', 'runbook.md']
 
@@ -41,11 +43,22 @@ const publishedDocuments = documents.map(document => ({
 console.log(publishedDocuments)
 ```
 
+### YAML
+
 ```yaml
 site:
   title: Morty Docs
   markdownStyle: github
   publish: true
+```
+
+### C#
+
+```c#
+public sealed class Document
+{
+    public string Name { get; init; } = "README.md";
+}
 ```
 
 Inline code remains compact and readable: `markdownStyle: 'github'`.
@@ -71,7 +84,12 @@ A typed diff combines line highlighting with the underlying language:
 
 ## Responsive code blocks
 
-The following deliberately long line scrolls horizontally instead of wrapping or changing the page width:
+Code blocks handle long lines according to the selected presentation. The
+original style wraps long lines to fit the available width, preserving Morty's
+existing behaviour. The GitHub style keeps each source line intact and allows
+the code block to scroll horizontally.
+
+The following deliberately long line demonstrates the selected behaviour:
 
 ```javascript
 const generatedPage = transform(inputObjects, { contentTitle: 'Morty Docs local showcase', basePath: '/morty-docs/some-repo', markdownStyle: 'github' })
