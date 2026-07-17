@@ -16,7 +16,7 @@ const parseToHTML = (markdown, options = {}) => {
   // const parser = createParser(options)
   // return parser.makeHtml(markdown)
   const basePath = normaliseBasePath(options.basePath)
-  let hasMermaid = false;
+  let hasMermaid = false
 
   function flattenHeading (text) {
     // To match showdown behaviour
@@ -63,7 +63,7 @@ const parseToHTML = (markdown, options = {}) => {
       const title = type.charAt(0).toUpperCase() + type.slice(1).toLowerCase()
       return `<blockquote class="markdown-alert markdown-alert-${type}"><p><strong>${title}</strong></p><p>${content}</p></blockquote>`
     },
-    code ({ text, lang, escaped}) {
+    code ({ text, lang, escaped }) {
       if (lang === 'mermaid') {
         try {
           hasMermaid = true
