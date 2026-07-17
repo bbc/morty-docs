@@ -189,10 +189,15 @@ const contentStyles = `
 
 .content .mermaid {
   visibility: hidden;
+  position: relative;
 
   &:before {
     content: 'Rendering diagram...';
     visibility: visible;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 
   &[data-processed] {
