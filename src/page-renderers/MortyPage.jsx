@@ -187,6 +187,23 @@ const contentStyles = `
   border-top: 1px solid #ddd;
 }
 
+.content .mermaid {
+  visibility: hidden;
+
+  &:before {
+    content: 'Rendering diagram...';
+    visibility: visible;
+  }
+
+  &[data-processed] {
+    visibility: visible;
+
+    &:before {
+      display: none;
+    }
+  }
+}
+
 `
 
 const MortyPage = ({ relPath, body, options }) => {
