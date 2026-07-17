@@ -207,4 +207,40 @@ describe('Markdown Parser', () => {
 
     expect(actual).toEqual(expected)
   })
+
+  it('should add syntax highlighting imports when code blocks are present', () => {
+    const markdown = 
+      '```js\n' +
+      'console.log(\'First code block!\');\n' +
+      '```\n' +
+      '```js\n' +
+      'console.log(\'Second code block!\');\n' +
+      '```'
+
+    const actual = parseToHtml(markdown)
+    const expected =
+      `
+<link rel="stylesheet" href="/morty-docs/highlightjs/styles/github.min.css" />
+<script src="/morty-docs/highlightjs/highlight.min.js"></script>
+<pre><code class="language-js">console.log(&#39;First code block!&#39;);
+</code></pre>
+<pre><code class="language-js">console.log(&#39;Second code block!&#39;);
+</code></pre>
+<script>hljs.highlightAll();</script>`.trim()
+
+    expect(actual).toEqual(expected)
+  })
+
+  it('should not add syntax highlighting imports when no code block has a language', () => {
+    const markdown = 
+      '```\n' +
+      'console.log(\'Hello, world!\');\n' +
+      '```'
+
+    const actual = parseToHtml(markdown)
+    const expected =
+      '<pre><code>console.log(&#39;Hello, world!&#39;);\n</code></pre>'
+
+    expect(actual).toEqual(expected)
+  })
 })
