@@ -12,7 +12,7 @@ const walkDirectory = (directory, outputDirectory, activeDirectories) => {
 
   activeDirectories.add(realDirectory)
   const entries = fs.readdirSync(directory, { withFileTypes: true })
-    .filter(entry => !entry.name.startsWith('.'))
+    .filter(entry => entry.name !== '.DS_Store')
   let list = []
 
   // Keep files before real subdirectories to retain the existing output order.

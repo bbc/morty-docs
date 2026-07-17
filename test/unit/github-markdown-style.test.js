@@ -83,6 +83,16 @@ describe('Markdown presentation and highlighting', () => {
     expect(actual).toContain('<span class="diff-line diff-add">+<span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span></span>')
   })
 
+  it('does not reinterpret diff fences shown inside another code block', () => {
+    const actual = parseToHtml('````plaintext\n```diff yaml\n-enabled: false\n+enabled: true\n```\n````', githubOptions)
+
+    expect(actual).toContain('class="language-plaintext hljs"')
+    expect(actual).toContain('```diff yaml')
+    expect(actual).not.toContain('diff-block')
+    expect(actual).not.toContain('diff-line')
+    expect(actual).not.toContain('yaml-diff')
+  })
+
   it.each([
     { name: 'original', options: { markdownStyle: 'original' } },
     { name: 'GitHub', options: githubOptions }

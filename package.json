@@ -19,7 +19,8 @@
     "postversion": "git push origin main && git push --tags origin main"
   },
   "files": [
-    "build/"
+    "build/",
+    "THIRD_PARTY_NOTICES.md"
   ],
   "repository": {
     "type": "git",

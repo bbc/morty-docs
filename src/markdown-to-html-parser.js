@@ -23,8 +23,12 @@ const escapeHtml = value => value.replace(/[&<>"']/g, character => ({
 })[character])
 
 const normaliseCodeLanguage = language => {
-  const match = (language || '').trim().match(/^([A-Za-z0-9_+#-]+)(?:\s|$)/)
-  return match ? match[1] : ''
+  const match = (language || '').trim().match(/^([A-Za-z0-9_+#-]+)(?:[ \t]+([A-Za-z0-9_+#-]+))?(?:[ \t]|$)/)
+  if (!match) return ''
+
+  return match[1].toLowerCase() === 'diff' && match[2]
+    ? `${match[2]}-diff`
+    : match[1]
 }
 
 const normaliseCodeText = text => text.replace(/\n$/, '')
@@ -136,15 +140,19 @@ const parseToHTML = (markdown, options = {}) => {
       const isHighlightable = isDiff || (language && hljs.getLanguage(language))
       if (!isHighlightable) return marked.Renderer.prototype.code.call(this, token)
 
+      const fallbackToken = language.endsWith('-diff')
+        ? { ...token, lang: language }
+        : token
+
       const codeBytes = Buffer.byteLength(token.text, 'utf8')
       if (codeBytes > MAX_HIGHLIGHTED_CODE_BLOCK_BYTES || codeBytes > remainingHighlightedCodeBytes) {
-        return marked.Renderer.prototype.code.call(this, token)
+        return marked.Renderer.prototype.code.call(this, fallbackToken)
       }
 
       const code = normaliseCodeText(token.text)
       const maximumLines = isDiff ? MAX_HIGHLIGHTED_DIFF_LINES : Infinity
       if (exceedsCodeLineLimits(code, maximumLines)) {
-        return marked.Renderer.prototype.code.call(this, token)
+        return marked.Renderer.prototype.code.call(this, fallbackToken)
       }
       remainingHighlightedCodeBytes -= codeBytes
 
@@ -174,8 +182,7 @@ const parseToHTML = (markdown, options = {}) => {
   }
 
   marked.use({ renderer, breaks: true })
-  const markdownToParse = markdown.replace(/^([ \t]*)(`{3,}|~{3,})[ \t]*diff[ \t]+([A-Za-z0-9_+#-]+)[ \t]*$/gmi, '$1$2$3-diff')
-  let html = marked.parse(markdownToParse).trim()
+  let html = marked.parse(markdown).trim()
 
   // Custom replacements
   html = html.replace(/<a href="([^:\n]*?).md">/g, '<a href="$1.html">') // convertMdLinksToHtmlLinks
