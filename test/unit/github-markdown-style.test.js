@@ -99,8 +99,8 @@ describe('Markdown presentation and highlighting', () => {
   ])('preserves Mermaid diagrams with the $name style', ({ options }) => {
     const actual = parseToHtml('```mermaid\ngraph TD\n  A["<unsafe>"] --> B\n```', options)
 
-    expect(actual).toContain('<script src="/morty-docs/mermaid.min.js" type="module"></script>')
-    expect(actual).toContain('<script>mermaid.initialize({ startOnLoad: true });</script>')
+    expect(actual).toContain('<script src="/morty-docs/mermaid.min.js" defer></script>')
+    expect(actual).toContain("mermaid.initialize({ startOnLoad: false, securityLevel: 'strict' }); mermaid.run();")
     expect(actual).toContain('<div class="mermaid">graph TD\n  A[&quot;&lt;unsafe&gt;&quot;] --&gt; B</div>')
     expect(actual).not.toContain('language-mermaid')
     expect(actual).not.toContain('class="hljs')

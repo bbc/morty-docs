@@ -9,7 +9,7 @@
   "scripts": {
     "prepare": "npm run build",
     "prebuild": "[ -d node_modules ] || npm ci",
-    "start": "rm -rf www && npm run build -- --sourcemap && node run.js && npx http-server www",
+    "start": "rm -rf www && npm run build -- --sourcemap && node scripts/fetch-mermaid-preview-assets.js && node run.js && npx http-server www",
     "build": "rm -rf build && esbuild src/index.js --bundle --minify --platform=node --target=node22 --outfile=build/index.js",
     "test": "jest --runInBand --outputFile test-results.json --json",
     "coverage": "jest --coverage --runInBand && open coverage/lcov-report/index.html",

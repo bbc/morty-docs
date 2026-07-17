@@ -107,6 +107,16 @@ Language-specific diffs can identify the language after `diff`:
 ```
 ````
 
+### Mermaid diagrams
+
+Mermaid code fences are rendered in the browser using the Mermaid runtime
+provided by the hosting application at `/morty-docs/mermaid.min.js`; Mermaid is
+not a Morty Docs dependency and diagrams are not rendered during generation.
+For local previews, `npm start` downloads an exact, pinned Mermaid browser
+bundle into the ignored `www` output directory after verifying its SHA-256
+checksum. The downloaded preview asset is not included in the repository or
+published npm package.
+
 - `outputObjs` will be an array of objects like this:
 
 ``` javascript
