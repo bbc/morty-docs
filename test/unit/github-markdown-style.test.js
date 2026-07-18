@@ -51,6 +51,8 @@ describe('Markdown presentation and highlighting', () => {
     expect(plainDiff).toContain('<span class="diff-line diff-remove">-old</span>')
     expect(plainDiff).toContain('<span class="diff-line diff-add">+new</span>')
     expect(plainDiff).toContain('<span class="diff-line diff-neutral"> unchanged</span>')
+    expect(plainDiff).toContain('</span><span class="diff-line diff-add">')
+    expect(plainDiff).not.toContain('</span>\n<span class="diff-line')
     expect(yamlDiff).toContain('<pre class="diff-block"><code class="language-yaml">')
   })
 

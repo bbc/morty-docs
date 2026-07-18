@@ -171,7 +171,7 @@ const parseToHTML = (markdown, options = {}) => {
             : escapeHtml(value)
 
           return `<span class="diff-line ${lineClass}">${prefix}${highlightedValue}</span>`
-        }).join('\n')
+        }).join('')
 
         return `<pre class="diff-block"><code class="language-${highlightedLanguage}">${highlightedLines}</code></pre>`
       }
