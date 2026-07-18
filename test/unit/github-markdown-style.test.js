@@ -65,7 +65,15 @@ describe('Markdown presentation and highlighting', () => {
     expect(original).toContain('class="language-js hljs"')
     expect(original).toContain('<span class="hljs-keyword">const</span>')
     expect(original).toContain('.hljs-keyword')
+    expect(original).not.toContain('class="theme-github"')
+    expect(original).not.toContain('@media (prefers-color-scheme: dark)')
     expect(github).toContain('class="content content-github"')
+    expect(github).toContain('class="theme-github"')
+    expect(github).toContain('<meta name="color-scheme" content="light dark"/>')
+    expect(github).toContain('@media (prefers-color-scheme: dark)')
+    expect(github).toContain('--morty-page-bg: #0d1117')
+    expect(github).toContain('--morty-hljs-keyword: #ff7b72')
+    expect(github).toContain('--morty-alert-warning-bg: #bb800926')
     expect(github).toContain('class="language-js hljs"')
     expect(github).toContain('<span class="hljs-keyword">const</span>')
     expect(github).toContain('.hljs-keyword')
@@ -96,11 +104,18 @@ describe('Markdown presentation and highlighting', () => {
   it.each([
     { name: 'original', options: { markdownStyle: 'original' } },
     { name: 'GitHub', options: githubOptions }
-  ])('preserves Mermaid diagrams with the $name style', ({ options }) => {
+  ])('preserves Mermaid diagrams with the $name style', ({ name, options }) => {
     const actual = parseToHtml('```mermaid\ngraph TD\n  A["<unsafe>"] --> B\n```', options)
 
     expect(actual).toContain('<script src="/morty-docs/mermaid.min.js" defer></script>')
-    expect(actual).toContain("mermaid.initialize({ startOnLoad: false, securityLevel: 'strict' }); mermaid.run();")
+    expect(actual).toContain("mermaid.initialize({ startOnLoad: false, securityLevel: 'strict', theme:")
+    expect(actual).toContain('mermaid.run();')
+    if (name === 'GitHub') {
+      expect(actual).toContain("window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default'")
+    } else {
+      expect(actual).toContain("theme: 'default'")
+      expect(actual).not.toContain('window.matchMedia')
+    }
     expect(actual).toContain('<div class="mermaid">graph TD\n  A[&quot;&lt;unsafe&gt;&quot;] --&gt; B</div>')
     expect(actual).not.toContain('language-mermaid')
     expect(actual).not.toContain('class="hljs')

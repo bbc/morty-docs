@@ -98,6 +98,11 @@ styles and are applied while the site is being generated. The generated pages
 include the highlighted markup and theme styles, so they do not load or execute
 Highlight.js in the browser and work without CDN access.
 
+GitHub presentation follows the operating system's light or dark preference
+through `prefers-color-scheme`. The dark palette covers generated content,
+indexes, alerts, tables, code, syntax highlighting, diffs, and Mermaid diagrams.
+Original presentation intentionally retains its existing light appearance.
+
 Language-specific diffs can identify the language after `diff`:
 
 ````markdown

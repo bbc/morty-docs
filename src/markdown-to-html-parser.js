@@ -199,7 +199,10 @@ const parseToHTML = (markdown, options = {}) => {
   html = html.replace(/<link(.+)href="\/([^:\n]*)"(.*)\/>/g, `<link$1href="${basePath}/$2"$3/>`) // addBasePathToLinkHrefs
 
   if (hasMermaid) {
-    html = `<script src="/morty-docs/mermaid.min.js" defer></script>\n<script>document.addEventListener('DOMContentLoaded', () => { mermaid.initialize({ startOnLoad: false, securityLevel: 'strict' }); mermaid.run(); });</script>\n${html}`
+    const mermaidTheme = useGithubStyle
+      ? "window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default'"
+      : "'default'"
+    html = `<script src="/morty-docs/mermaid.min.js" defer></script>\n<script>document.addEventListener('DOMContentLoaded', () => { mermaid.initialize({ startOnLoad: false, securityLevel: 'strict', theme: ${mermaidTheme} }); mermaid.run(); });</script>\n${html}`
   }
 
   const withEmoji = emoji.emojify(html) // convert emoji shortcodes to unicode e.g. :warning:

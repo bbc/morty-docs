@@ -3,6 +3,7 @@ const ReactDOMServer = require('react-dom/server')
 
 const Header = require('./Components/Header')
 const Footer = require('./Components/Footer')
+const GithubTheme = require('./Components/GithubTheme')
 const Reset = require('./Components/Reset')
 const usesGithubMarkdownStyle = require('../helpers/uses-github-markdown-style')
 
@@ -213,6 +214,18 @@ const contentStyles = `
 `
 
 const githubContentStyles = `
+.content-github {
+  color: var(--morty-page-fg);
+}
+
+.content-github a {
+  color: var(--morty-link-fg);
+}
+
+.content-github hr {
+  border-top-color: var(--morty-border);
+}
+
 .content-github pre {
   line-height: 1.4;
   overflow-x: auto;
@@ -220,6 +233,9 @@ const githubContentStyles = `
   white-space: pre;
   word-break: normal;
   word-wrap: normal;
+  color: var(--morty-page-fg);
+  background-color: var(--morty-surface);
+  border-color: var(--morty-border);
 }
 
 .content-github pre code {
@@ -228,12 +244,22 @@ const githubContentStyles = `
 }
 
 .content-github :not(pre) code {
-  color: #24292f;
-  background-color: #eff1f3;
+  color: var(--morty-page-fg);
+  background-color: var(--morty-inline-code-bg);
 }
 
 .content-github a code {
-  color: #337ab7;
+  color: var(--morty-link-fg);
+}
+
+.content-github blockquote:not(.markdown-alert) {
+  color: var(--morty-muted-fg);
+  border-left-color: var(--morty-border);
+}
+
+.content-github th,
+.content-github td {
+  border-color: var(--morty-border);
 }
 
 .content-github blockquote.markdown-alert {
@@ -257,11 +283,11 @@ const githubContentStyles = `
   flex-shrink: 0;
 }
 
-.content-github .markdown-alert-note { --alert-colour: #0969da; --alert-background: #ddf4ff; }
-.content-github .markdown-alert-tip { --alert-colour: #1a7f37; --alert-background: #dafbe1; }
-.content-github .markdown-alert-important { --alert-colour: #8250df; --alert-background: #fbefff; }
-.content-github .markdown-alert-warning { --alert-colour: #9a6700; --alert-background: #fff8c5; }
-.content-github .markdown-alert-caution { --alert-colour: #cf222e; --alert-background: #ffebe9; }
+.content-github .markdown-alert-note { --alert-colour: var(--morty-alert-note-fg); --alert-background: var(--morty-alert-note-bg); }
+.content-github .markdown-alert-tip { --alert-colour: var(--morty-alert-tip-fg); --alert-background: var(--morty-alert-tip-bg); }
+.content-github .markdown-alert-important { --alert-colour: var(--morty-alert-important-fg); --alert-background: var(--morty-alert-important-bg); }
+.content-github .markdown-alert-warning { --alert-colour: var(--morty-alert-warning-fg); --alert-background: var(--morty-alert-warning-bg); }
+.content-github .markdown-alert-caution { --alert-colour: var(--morty-alert-caution-fg); --alert-background: var(--morty-alert-caution-bg); }
 
 .content-github .heading-anchor {
   position: relative;
@@ -313,11 +339,11 @@ const highlightStyles = `
 }
 
 .content .diff-add {
-  background-color: #dafbe1;
+  background-color: var(--morty-diff-add-bg, #dafbe1);
 }
 
 .content .diff-remove {
-  background-color: #ffebe9;
+  background-color: var(--morty-diff-remove-bg, #ffebe9);
 }
 
 .content-github pre code.hljs {
@@ -331,8 +357,8 @@ const highlightStyles = `
 }
 
 .hljs {
-  color: #24292e;
-  background: #ffffff;
+  color: var(--morty-hljs-fg, #24292e);
+  background: var(--morty-hljs-bg, #ffffff);
 }
 
 .hljs-doctag,
@@ -342,14 +368,14 @@ const highlightStyles = `
 .hljs-template-variable,
 .hljs-type,
 .hljs-variable.language_ {
-  color: #d73a49;
+  color: var(--morty-hljs-keyword, #d73a49);
 }
 
 .hljs-title,
 .hljs-title.class_,
 .hljs-title.class_.inherited__,
 .hljs-title.function_ {
-  color: #6f42c1;
+  color: var(--morty-hljs-entity, #6f42c1);
 }
 
 .hljs-attr,
@@ -362,70 +388,73 @@ const highlightStyles = `
 .hljs-selector-attr,
 .hljs-selector-class,
 .hljs-selector-id {
-  color: #005cc5;
+  color: var(--morty-hljs-constant, #005cc5);
 }
 
 .hljs-regexp,
 .hljs-string,
 .hljs-meta .hljs-string {
-  color: #032f62;
+  color: var(--morty-hljs-string, #032f62);
 }
 
 .hljs-built_in,
 .hljs-symbol {
-  color: #e36209;
+  color: var(--morty-hljs-variable, #e36209);
 }
 
 .hljs-comment,
 .hljs-code,
 .hljs-formula {
-  color: #6a737d;
+  color: var(--morty-hljs-comment, #6a737d);
 }
 
 .hljs-name,
 .hljs-quote,
 .hljs-selector-tag,
 .hljs-selector-pseudo {
-  color: #22863a;
+  color: var(--morty-hljs-tag, #22863a);
 }
 
 .hljs-subst {
-  color: #24292e;
+  color: var(--morty-hljs-fg, #24292e);
 }
 
 .hljs-section {
-  color: #005cc5;
+  color: var(--morty-hljs-section, #005cc5);
   font-weight: bold;
 }
 
 .hljs-bullet {
-  color: #735c0f;
+  color: var(--morty-hljs-bullet, #735c0f);
 }
 
 .hljs-emphasis {
-  color: #24292e;
+  color: var(--morty-hljs-fg, #24292e);
   font-style: italic;
 }
 
 .hljs-strong {
-  color: #24292e;
+  color: var(--morty-hljs-fg, #24292e);
   font-weight: bold;
 }
 
 .hljs-addition {
-  color: #22863a;
-  background-color: #f0fff4;
+  color: var(--morty-hljs-addition-fg, #22863a);
+  background-color: var(--morty-hljs-addition-bg, #f0fff4);
 }
 
 .hljs-deletion {
-  color: #b31d28;
-  background-color: #ffeef0;
+  color: var(--morty-hljs-deletion-fg, #b31d28);
+  background-color: var(--morty-hljs-deletion-bg, #ffeef0);
 }
 `
 
 const MortyPage = ({ relPath, body, options }) => {
   const useGithubStyle = usesGithubMarkdownStyle(options)
   const useHighlightStyles = typeof body === 'string' && (body.includes(' hljs"') || body.includes('class="diff-block"'))
+  const bodyStyles = useGithubStyle
+    ? { ...Styles.body, color: 'var(--morty-page-fg)', backgroundColor: 'var(--morty-page-bg)' }
+    : Styles.body
 
   return (
     <html lang='en' style={Styles.html}>
@@ -433,18 +462,20 @@ const MortyPage = ({ relPath, body, options }) => {
         <meta charSet='utf-8' />
         <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
+        {useGithubStyle && <meta name='color-scheme' content='light dark' />}
         <title>{relPath}</title>
         <Reset />
+        {useGithubStyle && <GithubTheme />}
         <style dangerouslySetInnerHTML={{ __html: contentStyles }} />
         {useGithubStyle && <style dangerouslySetInnerHTML={{ __html: githubContentStyles }} />}
         {useHighlightStyles && <style dangerouslySetInnerHTML={{ __html: highlightStyles }} />}
       </head>
-      <body style={Styles.body}>
+      <body className={useGithubStyle ? 'theme-github' : undefined} style={bodyStyles}>
         <div style={Styles.wrapper}>
           <Header relPath={relPath} basePath={options.basePath} />
           <div className={useGithubStyle ? 'content content-github' : 'content'} dangerouslySetInnerHTML={{ __html: body }} />
         </div>
-        <Footer />
+        <Footer useGithubStyle={useGithubStyle} />
       </body>
     </html>
   )
