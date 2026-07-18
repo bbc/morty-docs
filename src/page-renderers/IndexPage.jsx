@@ -5,7 +5,9 @@ const Header = require('./Components/Header')
 const Title = require('./Components/Title')
 const Footer = require('./Components/Footer')
 const IndexListItem = require('./Components/IndexListItem')
+const GithubTheme = require('./Components/GithubTheme')
 const Reset = require('./Components/Reset')
+const usesGithubMarkdownStyle = require('../helpers/uses-github-markdown-style')
 
 const Styles = {
   headingContainer: {
@@ -44,17 +46,24 @@ const Styles = {
 }
 
 const IndexPage = ({ listItems, options, relPath }) => {
+  const useGithubStyle = usesGithubMarkdownStyle(options)
+  const bodyStyles = useGithubStyle
+    ? { ...Styles.body, color: 'var(--morty-page-fg)', backgroundColor: 'var(--morty-page-bg)' }
+    : Styles.body
+
   return (
     <html lang='en' style={Styles.html}>
       <head>
         <meta charSet='utf-8' />
         <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
+        {useGithubStyle && <meta name='color-scheme' content='light dark' />}
 
         <title>Morty Docs</title>
         <Reset />
+        {useGithubStyle && <GithubTheme />}
       </head>
-      <body style={Styles.body}>
+      <body className={useGithubStyle ? 'theme-github' : undefined} style={bodyStyles}>
         <div style={Styles.wrapper}>
           <Header relPath={relPath} basePath={options.basePath} />
           <div style={{ marginTop: '10px' }}>
@@ -62,14 +71,14 @@ const IndexPage = ({ listItems, options, relPath }) => {
             <div style={Styles.listContainer}>
               <ul>
                 {
-                  (() => listItems.map((item, index) => <IndexListItem key={index} {...item} />))()
+                  (() => listItems.map((item, index) => <IndexListItem key={index} {...item} useGithubStyle={useGithubStyle} />))()
                 }
               </ul>
 
             </div>
           </div>
         </div>
-        <Footer />
+        <Footer useGithubStyle={useGithubStyle} />
       </body>
     </html>
   )

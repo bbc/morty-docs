@@ -43,6 +43,15 @@ To try it with markdown files from a custom directory
 mortyPath=/absolute/path/to/custom/directory npm start
 ```
 
+To preview the opt-in GitHub Markdown style locally:
+
+```bash
+markdownStyle=github npm start
+```
+
+Then open
+http://localhost:8080/morty-docs/some-repo/github-markdown-style.html.
+
 ## Use as a library
 
 ### Install
@@ -67,6 +76,51 @@ const outputObjs = transform(inputObjs, { contentTitle: 'My Docs', basePath: '/p
 directory the `generateTransformInput()` function is a convenience
 - the 2nd argument to `transform()` can *optionally* be used to provide a Title
 that is displayed on the generated index pages and the base path below which your files will be served (this required to make markdown links starting with `/` work).
+
+### Markdown styles
+
+Generated Markdown pages use Morty Docs' original styling by default. Set
+`markdownStyle` to `github` to opt into GitHub-style heading permalinks, alert
+icons, spacing, and presentation:
+
+```javascript
+const outputObjs = transform(inputObjs, {
+  contentTitle: 'My Docs',
+  basePath: '/path/my/docs/are/hosted/under',
+  rootPath: resolvedPath,
+  markdownStyle: 'github'
+})
+```
+
+Use `markdownStyle: 'original'`, or omit the option, to retain the original
+styling. Syntax highlighting and diff highlighting are available with both
+styles and are applied while the site is being generated. The generated pages
+include the highlighted markup and theme styles, so they do not load or execute
+Highlight.js in the browser and work without CDN access.
+
+GitHub presentation follows the operating system's light or dark preference
+through `prefers-color-scheme`. The dark palette covers generated content,
+indexes, alerts, tables, code, syntax highlighting, diffs, and Mermaid diagrams.
+Original presentation intentionally retains its existing light appearance.
+
+Language-specific diffs can identify the language after `diff`:
+
+````markdown
+```diff yaml
+-enabled: false
++enabled: true
+```
+````
+
+### Mermaid diagrams
+
+Mermaid code fences are rendered in the browser using the Mermaid runtime
+provided by the hosting application at `/morty-docs/mermaid.min.js`; Mermaid is
+not a Morty Docs dependency and diagrams are not rendered during generation.
+For local previews, `npm start` downloads an exact, pinned Mermaid browser
+bundle into the ignored `www` output directory after verifying its SHA-256
+checksum. The downloaded preview asset is not included in the repository or
+published npm package.
 
 - `outputObjs` will be an array of objects like this:
 

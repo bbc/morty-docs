@@ -30,17 +30,27 @@ const Styles = {
   }
 }
 
-const Icon = ({ iconName }) => {
+const Icon = ({ iconName, style = Styles.icon }) => {
   if (iconName === 'folder') {
-    return <IconFolderOpen style={Styles.icon} />
+    return <IconFolderOpen style={style} />
   }
-  return <IconFileLines style={Styles.icon} />
+  return <IconFileLines style={style} />
 }
 
-const IndexListItem = ({ link, text, iconName }) => {
+const IndexListItem = ({ link, text, iconName, useGithubStyle = false }) => {
+  const itemStyles = useGithubStyle
+    ? { ...Styles.indexListItem, borderBottomColor: 'var(--morty-border)' }
+    : Styles.indexListItem
+  const anchorStyles = useGithubStyle
+    ? { ...Styles.linkAnchor, color: 'var(--morty-link-fg)' }
+    : Styles.linkAnchor
+  const iconStyles = useGithubStyle
+    ? { ...Styles.icon, fill: 'var(--morty-link-fg)' }
+    : Styles.icon
+
   return (
-    <li style={Styles.indexListItem}>
-      <a href={link} style={Styles.linkAnchor}><span style={Styles.iconWrap}><Icon iconName={iconName} /></span><span style={Styles.linkText}>{text}</span></a>
+    <li style={itemStyles}>
+      <a href={link} style={anchorStyles}><span style={Styles.iconWrap}><Icon iconName={iconName} style={iconStyles} /></span><span style={Styles.linkText}>{text}</span></a>
     </li>
   )
 }

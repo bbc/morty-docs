@@ -19,10 +19,17 @@ const Styles = {
   }
 }
 
-const Footer = () => {
+const Footer = ({ useGithubStyle = false }) => {
+  const footerStyles = useGithubStyle
+    ? { ...Styles.footer, backgroundColor: 'var(--morty-footer-bg)' }
+    : Styles.footer
+  const footerLinkStyles = useGithubStyle
+    ? { ...Styles.footerLink, color: 'var(--morty-link-fg)' }
+    : Styles.footerLink
+
   return (
-    <footer style={Styles.footer}>
-      <a href='https://github.com/bbc/morty-docs' style={Styles.footerLink}>Morty-Docs on github</a>
+    <footer style={footerStyles}>
+      <a href='https://github.com/bbc/morty-docs' style={footerLinkStyles}>Morty-Docs on github</a>
       <br />
       Page generated on {prettyDate(new Date())}
     </footer>

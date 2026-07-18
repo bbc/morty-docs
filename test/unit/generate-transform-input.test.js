@@ -35,6 +35,17 @@ describe('Test outputs for different returns from readdirSync', () => {
     ])
   })
 
+  it('includes hidden files and files inside hidden directories', () => {
+    const relativePaths = generateTransformInput('test/files/test7')
+      .map(({ relativePath }) => relativePath)
+
+    expect(relativePaths).toEqual(expect.arrayContaining([
+      '.hidden.md',
+      '.hidden-dir/nested.md'
+    ]))
+    expect(relativePaths).toHaveLength(2)
+  })
+
   it('should fail when directory doesnt exist', () => {
     expect.assertions(1)
     try {

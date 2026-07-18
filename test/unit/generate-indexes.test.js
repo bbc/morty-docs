@@ -129,6 +129,20 @@ describe('Generating indexes', () => {
 })
 
 describe('Generate Indexes with the correct html', () => {
+  it('adds automatic dark-mode theming to indexes only with GitHub presentation', () => {
+    const input = [{ relativePath: 'guide.html' }]
+    const original = generateIndexes(input, { basePath: '', markdownStyle: 'original' })[0].raw.toString()
+    const github = generateIndexes(input, { basePath: '', markdownStyle: 'github' })[0].raw.toString()
+
+    expect(original).not.toContain('class="theme-github"')
+    expect(original).not.toContain('@media (prefers-color-scheme: dark)')
+    expect(github).toContain('class="theme-github"')
+    expect(github).toContain('<meta name="color-scheme" content="light dark"/>')
+    expect(github).toContain('@media (prefers-color-scheme: dark)')
+    expect(github).toContain('color:var(--morty-link-fg)')
+    expect(github).toContain('border-bottom-color:var(--morty-border)')
+  })
+
   it('The correct links are included in the raw output', () => {
     const input = [{
       relativePath: 'rootFile.html'
