@@ -1,4 +1,3 @@
-// const showdown = require('showdown')
 const { marked } = require('marked')
 const emoji = require('node-emoji')
 
@@ -18,6 +17,7 @@ const parseToHTML = (markdown, options = {}) => {
   // return parser.makeHtml(markdown)
   const basePath = normaliseBasePath(options.basePath)
   let hasCodeBlock = false
+  let hasMermaid = false
 
   function flattenHeading (text) {
     // To match showdown behaviour
@@ -66,6 +66,15 @@ const parseToHTML = (markdown, options = {}) => {
     },
     code ({ text, lang, escaped }) {
       hasCodeBlock = Boolean(lang)
+      if (lang === 'mermaid') {
+        try {
+          hasMermaid = true
+          return `<div class="mermaid">${text}</div>`
+        } catch (error) {
+          console.error('Error rendering Mermaid diagram:', error)
+          return marked.Renderer.prototype.code.call(this, { text, lang, escaped })
+        }
+      }
       return marked.Renderer.prototype.code.call(this, { text, lang, escaped })
     }
   }
@@ -88,6 +97,10 @@ const parseToHTML = (markdown, options = {}) => {
 <script src="/morty-docs/highlightjs/highlight.min.js"></script>
 ${html}
 <script>hljs.highlightAll();</script>`
+  }
+  
+  if (hasMermaid) {
+    html = `<script src="/morty-docs/mermaid.min.js" type="module"></script>\n<script>mermaid.initialize({ startOnLoad: true });</script>\n${html}`
   }
 
   const withEmoji = emoji.emojify(html) // convert emoji shortcodes to unicode e.g. :warning:
