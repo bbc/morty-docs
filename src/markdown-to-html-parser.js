@@ -98,7 +98,7 @@ const parseToHTML = (markdown, options = {}) => {
 ${html}
 <script>hljs.highlightAll();</script>`
   }
-  
+
   if (hasMermaid) {
     html = `<script src="/morty-docs/mermaid.min.js" type="module"></script>\n<script>mermaid.initialize({ startOnLoad: true });</script>\n${html}`
   }
