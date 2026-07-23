@@ -1,15 +1,18 @@
 const React = require('react')
 const getHeaderPaths = require('../../helpers/get-header-paths')
+const { ThemeToggle } = require('./Theme')
 
 const Styles = {
   navbar: {
     border: 'none',
     borderRadius: '0',
-    backgroundColor: '#000',
+    backgroundColor: 'var(--bg-header)',
     marginBottom: '0',
     width: '100%'
   },
   headerNav: {
+    display: 'flex',
+    alignItems: 'center'
   },
   headerLinks: {
     padding: '1rem',
@@ -19,13 +22,13 @@ const Styles = {
   },
   headerLink: {
     textAlign: 'left',
-    color: 'lightblue',
+    color: 'var(--text-header)',
     fontSize: '1.5rem',
     textDecoration: 'none'
   },
   separator: {
     margin: '0 0.28rem',
-    color: '#ebebeb'
+    color: 'var(--separator-colour)'
   }
 }
 
@@ -45,6 +48,7 @@ const Header = ({ relPath, basePath }) => {
         <ol style={Styles.headerLinks}>
           <HeaderLinks paths={getHeaderPaths(basePath, relPath)} />
         </ol>
+        <ThemeToggle />
       </nav>
     </div>
   )

@@ -4,6 +4,7 @@ const ReactDOMServer = require('react-dom/server')
 const Header = require('./Components/Header')
 const Footer = require('./Components/Footer')
 const Reset = require('./Components/Reset')
+const { ThemeStyles, ThemeInitScript } = require('./Components/Theme')
 
 const Styles = {
   wrapper: {
@@ -12,13 +13,14 @@ const Styles = {
   },
   html: {
     minHeight: '100vh',
-    fontSize: '16px'
+    fontSize: '16px',
+    backgroundColor: 'var(--bg-primary)'
   },
   body: {
     minHeight: '100vh',
     fontFamily: '"Helvetica Neue",Helvetica,Arial,sans-serif',
-    color: '#333',
-    backgroundColor: '#fff'
+    color: 'var(--text-primary)',
+    backgroundColor: 'var(--bg-primary)'
   }
 }
 
@@ -28,10 +30,11 @@ const contentStyles = `
   line-height: 1.42857143;
   max-width: 960px;
   margin: 0 auto;
+  color: var(--text-primary);
 }
 
 .content a {
-  color: #337ab7;
+  color: var(--text-link);
   text-decoration: none;
 }
 
@@ -100,7 +103,7 @@ const contentStyles = `
     padding: 10px 20px;
     margin: 0 0 20px;
     font-size: 17.5px;
-    border-left: 5px solid #eee;
+    border-left: 5px solid var(--blockquote-border);
 }
 .content blockquote.markdown-alert-note{ border-left: 5px solid #0A67D8; }
 .content blockquote.markdown-alert-warning{ border-left: 5px solid #9D6800; }
@@ -123,7 +126,7 @@ const contentStyles = `
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;
-  border-top: 1px solid #949494;
+  border-top: 1px solid var(--border-colour-hr);
 }
 
 .content pre {
@@ -132,11 +135,11 @@ const contentStyles = `
   margin: 0 0 10px;
   font-size: 13px;
   line-height: 1.42857143;
-  color: #333;
+  color: var(--text-primary);
   word-break: break-all;
   word-wrap: break-word;
-  background-color: #f5f5f5;
-  border: 1px solid #ccc;
+  background-color: var(--bg-code-block);
+  border: 1px solid var(--border-colour);
   border-radius: 4px;
 }
 
@@ -156,8 +159,8 @@ const contentStyles = `
 .content :not(pre) code {
   padding: 2px 4px;
   font-size: 90%;
-  color: #c7254e;
-  background-color: #f9f2f4;
+  color: var(--text-code);
+  background-color: var(--bg-code);
   border-radius: 4px;
 }
 
@@ -173,7 +176,7 @@ const contentStyles = `
 .content th {
   text-align: left;
   vertical-align: bottom;
-  border-bottom: 2px solid #ddd;
+  border-bottom: 2px solid var(--border-colour-light);
   font-weight: bold;
   font-size: 1.2rem;
   padding: 8px;
@@ -184,7 +187,7 @@ const contentStyles = `
   padding: 8px;
   line-height: 1.42857143;
   vertical-align: top;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--border-colour-light);
 }
 
 .content .mermaid {
@@ -219,7 +222,9 @@ const MortyPage = ({ relPath, body, options }) => {
         <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <title>{relPath}</title>
+        <ThemeInitScript />
         <Reset />
+        <ThemeStyles />
         <style dangerouslySetInnerHTML={{ __html: contentStyles }} />
       </head>
       <body style={Styles.body}>

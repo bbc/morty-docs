@@ -5,17 +5,18 @@ const Styles = {
   footer: {
     bottom: '0',
     width: '100%',
-    backgroundColor: '#f5f5f5',
+    backgroundColor: 'var(--bg-secondary)',
     boxSizing: 'border-box',
     minHeight: '25vh',
     position: 'relative',
     textAlign: 'center',
     padding: '1em 0 2em 0',
-    lineHeight: '1.5rem'
+    lineHeight: '1.5rem',
+    color: 'var(--text-primary)'
   },
 
   footerLink: {
-    color: '#337ab7'
+    color: 'var(--text-link)'
   }
 }
 

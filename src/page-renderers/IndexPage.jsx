@@ -6,6 +6,7 @@ const Title = require('./Components/Title')
 const Footer = require('./Components/Footer')
 const IndexListItem = require('./Components/IndexListItem')
 const Reset = require('./Components/Reset')
+const { ThemeStyles, ThemeInitScript } = require('./Components/Theme')
 
 const Styles = {
   headingContainer: {
@@ -28,13 +29,14 @@ const Styles = {
   },
   html: {
     minHeight: '100vh',
-    fontSize: '16px'
+    fontSize: '16px',
+    backgroundColor: 'var(--bg-primary)'
   },
   body: {
     minHeight: '100vh',
     fontFamily: '"Helvetica Neue",Helvetica,Arial,sans-serif',
-    color: '#333',
-    backgroundColor: '#fff'
+    color: 'var(--text-primary)',
+    backgroundColor: 'var(--bg-primary)'
   },
   listContainer: {
     marginTop: '10px',
@@ -52,7 +54,9 @@ const IndexPage = ({ listItems, options, relPath }) => {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
 
         <title>Morty Docs</title>
+        <ThemeInitScript />
         <Reset />
+        <ThemeStyles />
       </head>
       <body style={Styles.body}>
         <div style={Styles.wrapper}>
