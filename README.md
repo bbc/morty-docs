@@ -4,7 +4,7 @@
 
 Morty Docs is a library to enable documentation to be generated as a static
 website, to allow users to consume the content in an easily accessible format.
-It takes an array of markdown and/or asciidoc files and creates a static website.
+It takes an array of markdown files and creates a static website.
 
 Morty is specifically aimed at requiring little to no change in the markdown files.
 
@@ -16,7 +16,7 @@ The documentation located [here](https://github.com/bbc/lrud) has been converted
 
 ## Why use Morty Docs over other static site generation?
 
-Use Morty Docs when you already have some markdown/asciidoc files in a directory structure which you want to publish.
+Use Morty Docs when you already have some markdown files in a directory structure which you want to publish.
 
 Morty Docs was specifically created to publish already existing markdown files without having to change the contents of those files.
 It does not use specific directory structures or meta data about the files.
@@ -81,17 +81,23 @@ that is displayed on the generated index pages and the base path below which you
 ```
 
 where value for raw is either generated HTML **or** input that was passed
-through because it is not markdown or asciidoc e.g. images
+through because it is not markdown e.g. images **or** is an ancillary file used so support search.
+
+## Search
+
+As well as transforming the input files into static HTML, Morty also creates a search index and a search results page. Markdown files are indexed for search and the search index is serialised to JSON and included in the output from `transform()` along with the static HTML and JS for the search results page.
+
+The search box in the header of each documentation page can then be used to return all of the pages that match the search term.
 
 ## Things to Consider
 
 ### Index file generation
 
 Morty will automatically generate an `index.html` file for any directory that
-contains markdown or asciidoc files (or has descendants that contain these
+contains markdown files (or has descendants that contain these
 files). This file contains links to any documentation files or subdirectories
 the directory contains. The generation will be skipped for any directory that
-already contains an `index.md`, `index.asciidoc`, `index.adoc` or `index.asc` file.
+already contains an `index.md` file.
 
 ### File & Directory Ordering
 

@@ -9,7 +9,7 @@
   "scripts": {
     "prepare": "npm run build",
     "prebuild": "[ -d node_modules ] || npm ci",
-    "start": "rm -rf www && npm run build -- --sourcemap && node run.js && npx http-server www",
+    "start": "rm -rf www && npm run build -- --sourcemap && node run.js && npx http-server www -c -1",
     "build": "rm -rf build && esbuild src/index.js --bundle --minify --platform=node --target=node22 --outfile=build/index.js",
     "test": "jest --runInBand --outputFile test-results.json --json",
     "coverage": "jest --coverage --runInBand && open coverage/lcov-report/index.html",
@@ -45,12 +45,16 @@
     "react": "^19.2.1",
     "react-dom": "^19.2.1"
   },
+  "peerDependencies": {
+    "flexsearch": "^0.8.212"
+  },
   "devDependencies": {
     "@babel/core": "^7.28.5",
     "@babel/preset-react": "^7.28.5",
     "@happy-dom/jest-environment": "^20.0.11",
     "@testing-library/react": "^16.3.0",
     "esbuild": "^0.27.1",
+    "flexsearch": "^0.8.212",
     "http-server": "^14.1.1",
     "jest": "^30.2.0",
     "standard": "^17.1.2"
