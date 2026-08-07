@@ -48,6 +48,7 @@ try {
       preview.classList.add('preview')
 
       const previewIFrame = document.createElement('iframe')
+      previewIFrame.tabIndex = -1
       previewIFrame.src = `${link.href}?preview`
       preview.appendChild(previewIFrame)
 
