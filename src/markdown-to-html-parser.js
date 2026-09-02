@@ -100,7 +100,7 @@ ${html}
   }
 
   if (hasMermaid) {
-    html = `<script src="/morty-docs/mermaid.min.js" type="module"></script>\n<script>mermaid.initialize({ startOnLoad: true });</script>\n${html}`
+    html = `<script src="/morty-docs/mermaid.min.js"></script>\n<script>mermaid.initialize({ startOnLoad: true });</script>\n${html}`
   }
 
   const withEmoji = emoji.emojify(html) // convert emoji shortcodes to unicode e.g. :warning:
