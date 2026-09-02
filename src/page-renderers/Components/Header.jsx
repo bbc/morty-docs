@@ -10,6 +10,9 @@ const Styles = {
     width: '100%'
   },
   headerNav: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between'
   },
   headerLinks: {
     padding: '1rem',
@@ -26,25 +29,51 @@ const Styles = {
   separator: {
     margin: '0 0.28rem',
     color: '#ebebeb'
+  },
+  searchForm: {
+    paddingRight: '1rem',
+    display: 'flex',
+    gap: '0.5em'
+  },
+  searchInput: {
+    fontSize: 'inherit',
+    fontFamily: 'inherit'
   }
 }
 
-const HeaderLinks = ({ paths }) => paths.map(({ text, path }, index) => {
-  return (
-    <li key={index}>
-      {index !== paths.length ? <span aria-hidden style={Styles.separator}>/</span> : undefined}
-      <a style={Styles.headerLink} href={path}>{text}</a>
-    </li>
-  )
-})
+const HeaderLinks = ({ paths }) =>
+  paths.map(({ text, path }, index) => {
+    return (
+      <li key={index}>
+        {index !== paths.length
+          ? (
+            <span aria-hidden style={Styles.separator}>
+              /
+            </span>
+            )
+          : undefined}
+        <a style={Styles.headerLink} href={path}>
+          {text}
+        </a>
+      </li>
+    )
+  })
 
-const Header = ({ relPath, basePath }) => {
+const Header = ({ relPath, basePath, className }) => {
   return (
-    <div style={Styles.navbar}>
+    <div style={Styles.navbar} className={className}>
       <nav style={Styles.headerNav}>
         <ol style={Styles.headerLinks}>
           <HeaderLinks paths={getHeaderPaths(basePath, relPath)} />
         </ol>
+        <form
+          style={Styles.searchForm}
+          action={`/${basePath}/search-results.html`}
+          method='GET'
+        >
+          <input style={Styles.searchInput} name='term' id='search-term' type='text' aria-description='Search term' />
+          <input style={Styles.searchInput} type='submit' value='Search' />
+        </form>
       </nav>
     </div>
   )

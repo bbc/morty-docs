@@ -1,7 +1,9 @@
 const path = require('path')
+const { Index } = require('flexsearch')
 
 const transformContent = require('./transform-content')
 const generateIndexes = require('./generate-indexes')
+const generateSearchOutputs = require('./generate-search-outputs')
 
 const validate = (inputObjs) => {
   if (!Array.isArray(inputObjs)) throw new Error('First arg to transform() must be an array')
@@ -15,18 +17,28 @@ const validate = (inputObjs) => {
 const transform = (inputObjs, options) => {
   validate(inputObjs)
 
-  const contentObjs = inputObjs.map(inputObj => {
+  const searchIndex = new Index('memory')
+
+  const contentObjs = inputObjs.map((inputObj) => {
     const ext = path.extname(inputObj.relativePath)
     if (ext === '.md') { //  || ext === '.asciidoc' || ext === '.adoc' || ext === '.asc'
-      return transformContent(inputObj, options)
+      const transformed = transformContent(inputObj, options)
+      searchIndex.add(transformed.relativePath, inputObj.raw.toString('utf-8'))
+      return transformed
     } else {
       return inputObj
     }
   })
 
+  const searchObjs = generateSearchOutputs(options, searchIndex)
+
   const indexObjs = generateIndexes(contentObjs, options)
 
-  return [...contentObjs, ...indexObjs]
+  return [
+    ...contentObjs,
+    ...indexObjs,
+    ...searchObjs
+  ]
 }
 
 module.exports = transform

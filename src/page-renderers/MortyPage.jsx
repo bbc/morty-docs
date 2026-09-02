@@ -36,21 +36,21 @@ const contentStyles = `
 }
 
 .content h1 {
-  font-size: 2.2rem;
+  font-size: 2.2em;
   font-weight: 500;
   margin-top: 20px;
   margin-bottom: 10px;
 }
 
 .content h2 {
-  font-size: 1.8rem;
+  font-size: 1.8em;
   font-weight: 500;
   margin-top: 20px;
   margin-bottom: 10px;
 }
 
 .content h3 {
-  font-size: 1.5rem;
+  font-size: 1.5em;
   font-weight: 500;
   margin-top: 20px;
   margin-bottom: 10px;
@@ -175,7 +175,7 @@ const contentStyles = `
   vertical-align: bottom;
   border-bottom: 2px solid #ddd;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.2em;
   padding: 8px;
   line-height: 1.42857143;
 }
@@ -208,7 +208,27 @@ const contentStyles = `
     }
   }
 }
+`
 
+const previewStyles = `
+.preview {
+  overflow: hidden;
+}
+  
+.preview .header {
+  display: none;
+}
+
+.preview .header {
+  display: none;
+}
+
+.preview .content {
+  padding: 0;
+  margin: 0;
+  max-width: 100%;
+  font-size: 0.9em;
+}
 `
 
 const MortyPage = ({ relPath, body, options }) => {
@@ -221,13 +241,20 @@ const MortyPage = ({ relPath, body, options }) => {
         <title>{relPath}</title>
         <Reset />
         <style dangerouslySetInnerHTML={{ __html: contentStyles }} />
+        <style dangerouslySetInnerHTML={{ __html: previewStyles }} />
+        <script>{
+`if (new URLSearchParams(window.location.search).has('preview')) {
+  document.documentElement.classList.add('preview');
+}`
+          }
+        </script>
       </head>
       <body style={Styles.body}>
         <div style={Styles.wrapper}>
-          <Header relPath={relPath} basePath={options.basePath} />
+          <Header relPath={relPath} basePath={options.basePath} className='header' />
           <div className='content' dangerouslySetInnerHTML={{ __html: body }} />
         </div>
-        <Footer />
+        <Footer className='footer' />
       </body>
     </html>
   )

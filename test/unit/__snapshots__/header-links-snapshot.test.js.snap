@@ -5,7 +5,9 @@ exports[`The header is rendered with the correct breadcrumb links  When a basepa
   <div
     style="border: none none; border-radius: 0px; background-color: #000; margin-bottom: 0px; width: 100%;"
   >
-    <nav>
+    <nav
+      style="display: flex; align-items: center; justify-content: space-between;"
+    >
       <ol
         style="padding: 1rem; list-style: none; display: flex; align-items: center;"
       >
@@ -38,6 +40,24 @@ exports[`The header is rendered with the correct breadcrumb links  When a basepa
           </a>
         </li>
       </ol>
+      <form
+        action="//search-results.html"
+        method="GET"
+        style="padding-right: 1rem; display: flex; gap: 0.5em;"
+      >
+        <input
+          aria-description="Search term"
+          id="search-term"
+          name="term"
+          style="font-size: inherit; font-family: inherit;"
+          type="text"
+        />
+        <input
+          style="font-size: inherit; font-family: inherit;"
+          type="submit"
+          value="Search"
+        />
+      </form>
     </nav>
   </div>
 </DocumentFragment>
@@ -48,7 +68,9 @@ exports[`The header is rendered with the correct breadcrumb links  When a basepa
   <div
     style="border: none none; border-radius: 0px; background-color: #000; margin-bottom: 0px; width: 100%;"
   >
-    <nav>
+    <nav
+      style="display: flex; align-items: center; justify-content: space-between;"
+    >
       <ol
         style="padding: 1rem; list-style: none; display: flex; align-items: center;"
       >
@@ -109,6 +131,24 @@ exports[`The header is rendered with the correct breadcrumb links  When a basepa
           </a>
         </li>
       </ol>
+      <form
+        action="/morty-docs/some-repo/search-results.html"
+        method="GET"
+        style="padding-right: 1rem; display: flex; gap: 0.5em;"
+      >
+        <input
+          aria-description="Search term"
+          id="search-term"
+          name="term"
+          style="font-size: inherit; font-family: inherit;"
+          type="text"
+        />
+        <input
+          style="font-size: inherit; font-family: inherit;"
+          type="submit"
+          value="Search"
+        />
+      </form>
     </nav>
   </div>
 </DocumentFragment>

@@ -9,7 +9,7 @@
   "scripts": {
     "prepare": "npm run build",
     "prebuild": "[ -d node_modules ] || npm ci",
-    "start": "rm -rf www && npm run build -- --sourcemap && node run.js && npx http-server www",
+    "start": "rm -rf www && npm run build -- --sourcemap && node run.js && npx http-server www -c -1",
     "build": "rm -rf build && esbuild src/index.js --bundle --minify --platform=node --target=node22 --outfile=build/index.js",
     "test": "jest --runInBand --outputFile test-results.json --json",
     "coverage": "jest --coverage --runInBand && open coverage/lcov-report/index.html",
@@ -40,6 +40,7 @@
   },
   "homepage": "https://github.com/bbc/morty-docs#readme",
   "dependencies": {
+    "flexsearch": "^0.8.212",
     "marked": "^15.0.12",
     "node-emoji": "^2.2.0",
     "react": "^19.2.1",

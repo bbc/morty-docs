@@ -1,8 +1,18 @@
-const mockTransformContentOutput = { relativePath: 'transformedPath', raw: 'transformedRaw' }
-jest.mock('../../src/transform-content', () => jest.fn(() => mockTransformContentOutput))
+const { Index } = require('flexsearch')
+const { transform } = require('../../src')
 const mockTransformContent = require('../../src/transform-content')
 
-const { transform } = require('../../src')
+jest.mock('../../src/transform-content', () => jest.fn())
+
+const mockTransformContentOutput = {
+  relativePath: 'transformedPath',
+  raw: 'transformedRaw'
+}
+
+beforeEach(() => {
+  jest.resetAllMocks()
+  mockTransformContent.mockReturnValue(mockTransformContentOutput)
+})
 
 describe('transform.js', () => {
   it('returns the input object unchanged when it is not a .md file', () => {
@@ -22,14 +32,14 @@ describe('transform.js', () => {
     }).toThrow('First arg to transform() must be an array')
   })
 
-  it('throws an error when the input array has an object that does not have a \'relativePath\'', () => {
+  it("throws an error when the input array has an object that does not have a 'relativePath'", () => {
     const objWithoutRelativePath = { raw: '', path: '' }
     expect(() => {
       transform([objWithoutRelativePath])
     }).toThrow('All objects in input array must have a .relativePath property')
   })
 
-  it('throws an error when the input array has an object that does not have a \'raw\'', () => {
+  it("throws an error when the input array has an object that does not have a 'raw'", () => {
     const objWithoutRaw = { roar: '', relativePath: '' }
     expect(() => {
       transform([objWithoutRaw])
@@ -46,6 +56,38 @@ describe('transform.js', () => {
 
     expect(result).toEqual(expect.arrayContaining([mockTransformContentOutput]))
     expect(mockTransformContent).toHaveBeenCalledWith(mdObj, { basePath: 'morty-docs/some-repo' })
+  })
+
+  it('indexes .md files for search', () => {
+    mockTransformContent.mockImplementation((inputObj) => ({
+      relativePath: inputObj.relativePath,
+      raw: 'transformed content'
+    }))
+
+    const files = [
+      {
+        relativePath: 'simple-content-containing-term.md',
+        raw: 'This is some content containing the term "searchable"'
+      },
+      {
+        relativePath: 'simple-content-not-containing-term.md',
+        raw: 'This is some content not containing the term'
+      }
+    ]
+
+    const result = transform(files, { basePath: 'morty-docs/some-repo' })
+
+    const searchIndex = result.find(
+      (obj) => obj.relativePath === 'search-index.json'
+    ).raw
+    const index = new Index('memory')
+
+    Object.entries(JSON.parse(searchIndex).index).forEach(([key, value]) => {
+      index.import(key, value)
+    })
+
+    const results = index.search('searchable')
+    expect(results).toEqual(['simple-content-containing-term.md'])
   })
 
   /*

@@ -19,9 +19,9 @@ const Styles = {
   }
 }
 
-const Footer = () => {
+const Footer = ({ className }) => {
   return (
-    <footer style={Styles.footer}>
+    <footer className={className} style={Styles.footer}>
       <a href='https://github.com/bbc/morty-docs' style={Styles.footerLink}>Morty-Docs on github</a>
       <br />
       Page generated on {prettyDate(new Date())}
