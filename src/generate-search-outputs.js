@@ -13,14 +13,9 @@ const generateSearchOutputs = (options, searchIndex) => {
     raw: Buffer.from(renderSearchResultsPage(options, 'search-results.html'))
   }
 
-  const searchLibrary = fs.readFileSync(
-    path.join(
-      __dirname,
-      '../node_modules/flexsearch/dist/flexsearch.bundle.min.js'
-    )
-  )
+  const searchLibrary = fs.readFileSync(require.resolve('flexsearch'))
   const searchResultsJS = fs.readFileSync(
-    path.join(__dirname, '../src/assets/search-results.js')
+    path.join(__dirname, 'assets/search-results.js')
   )
 
   return [
